@@ -7,6 +7,19 @@
 <ion-content padding>
   <h3>Start a New Assessment</h3>
 
+
+  <ion-card>
+      
+        <ion-card-header>
+          Hello there!
+        </ion-card-header>
+      
+        <ion-card-content style="font-family:Avenir Next , sans-serif;">
+          <!-- Add card content here! -->
+          ARB Assessment has never been this easy. We will guide you through each step. By the end of this you will not only have a good understanding of our Architecure standards, but will have a score for your project. Start by entering your project's name.
+        </ion-card-content>
+      
+      </ion-card>
   <p>
     <ion-item>
       <ion-label floating>Project Name</ion-label>
@@ -16,7 +29,7 @@
 
   <ion-row>
     
-    <ion-col><button ion-button block color="danger" (click)="closeModal()">Cancel</button></ion-col>
+    <ion-col><button ion-button block color="danger" (click)="dismiss()">Cancel</button></ion-col>
       <ion-col><button ion-button block color="primary" (click)="startAssessment()">Enter</button></ion-col>
   </ion-row>
     
