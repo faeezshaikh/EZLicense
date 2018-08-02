@@ -3,7 +3,7 @@ import { NavController, NavParams, MenuController, ModalController } from 'ionic
 import { AngularFireDatabase } from 'angularfire2/database';
 // import { Observable } from 'rxjs/Observable';
 import { HelperProvider } from '../../providers/helper/helper';
-import { HomePage } from '../home/home';
+import { CreatePage } from '../create/create';
 
 @Component({
   selector: 'page-list',
@@ -77,7 +77,7 @@ export class ListPage {
 
     // this.navCtrl.setRoot(HomePage);
 
-    let profileModal = this.modalCtrl.create(HomePage, { userId: 8675309 });
+    let profileModal = this.modalCtrl.create(CreatePage, { userId: 8675309 });
     profileModal.present();
 
 

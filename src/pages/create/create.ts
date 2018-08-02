@@ -4,9 +4,9 @@ import { FormPage } from '../form/form';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'create.html'
 })
-export class HomePage {
+export class CreatePage {
 
   constructor(public navCtrl: NavController,public viewCtrl: ViewController) {
 
