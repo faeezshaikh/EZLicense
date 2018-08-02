@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 // import { Observable } from 'rxjs/Observable';
 import { HelperProvider } from '../../providers/helper/helper';
@@ -14,10 +14,12 @@ export class ListPage {
   items: Array<{title: string, note: string, icon: string}>;
   projects: any;
   // afDatabase:any;
+  activeMenu: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase,public helper:HelperProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase,public helper:HelperProvider,public menu: MenuController) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
+    this.activeMenu = 'menu1'
 
     // Let's populate this page with some filler content for funzies
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
@@ -66,6 +68,16 @@ export class ListPage {
         return item.title.toLowerCase().includes(val.toLowerCase());
       });
     }
+  }
+
+
+  menu2Active() {
+    this.activeMenu = 'menu2';
+    console.log('Menu2');
+    
+    this.menu.enable(false, 'menu1');
+    this.menu.enable(true, 'menu2');
+    this.menu.open();
   }
 
 }

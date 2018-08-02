@@ -1,6 +1,6 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "ARB Self-assessment",
+  "short_name": "TurboARB",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{

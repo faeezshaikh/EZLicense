@@ -1,4 +1,4 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" side="left" id="menu1">
   <ion-header>
     <ion-toolbar color="primary">
       <ion-title>Menu</ion-title>
@@ -38,6 +38,25 @@
   </ion-content>
 
 </ion-menu>
+
+
+<ion-menu [content]="content" id="menu2" side="right" type="push">
+  
+    <ion-header>
+      <ion-toolbar color="danger">
+        <ion-title>Menu 2</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+      <ion-list>
+        <button ion-item menuClose="menu2" detail-none>
+          Close Menu 2
+        </button>
+      </ion-list>
+    </ion-content>
+  
+  </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
