@@ -11,7 +11,7 @@ export class ListPage {
   selectedItem: any;
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
-  companies: any;
+  projects: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, afDatabase: AngularFireDatabase) {
     // If we navigated to this page, we will have an item available as a nav param
@@ -31,9 +31,9 @@ export class ListPage {
     }
 
 
-      afDatabase.list('/companies').valueChanges().subscribe((datas) => { 
+      afDatabase.list('/projects').valueChanges().subscribe((datas) => { 
         console.log("datas", datas);
-        this.companies = datas;
+        this.projects = datas;
     },(err)=>{
        console.log("probleme : ", err)
     });

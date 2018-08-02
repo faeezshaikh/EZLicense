@@ -19,12 +19,97 @@
     </ion-list> -->
 
 
-   <ion-list>
-      <ion-item *ngFor="let c of companies">
-        Name: {{c.name}}
-      </ion-item>
-    </ion-list>
-
+    <ion-list>
+        
+            <ion-item-divider color="light">Projects </ion-item-divider>
+         
+         
+                <ion-grid fixed>
+                <ion-row responsive-sm>
+                    <ion-searchbar
+                    [(ngModel)]="myInput"
+                    [showCancelButton]="shouldShowCancel"
+                    (ionInput)="onInput($event)"
+                    (ionCancel)="onCancel($event)">
+                  </ion-searchbar> 
+                  <ion-col col-md *ngFor="let p of projects" (click)="itemTapped($event, p)" >
+                     
+        
+                      
+        
+        
+                            <ion-card>
+                              
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                  <ion-fab right top>
+                                    <button ion-fab *ngIf="p.score>60" color="secondary">
+                                      <ion-icon  name=""> <label style="font-family:arial;font-size:1.9rem;font-weight:bold">{{p.score}}%</label></ion-icon>
+                                    </button>
+                                    <button ion-fab *ngIf="p.score<30" color="danger">
+                                        <ion-icon  name=""><label style="font-family:arial;font-size:1.9rem;font-weight:bold">{{p.score}}%</label></ion-icon>
+                                      </button>
+                                      <button ion-fab *ngIf="p.score>30 && p.score<60" color="orange">
+                                          <ion-icon  name=""><label style="font-family:arial;font-size:1.9rem;font-weight:bold">{{p.score}}%</label></ion-icon>
+                                        </button>
+                                  </ion-fab>
+                                
+                                  <ion-item>
+                                    <ion-icon name="football" item-start large></ion-icon>
+                                    <h2>{{p.title}}</h2>
+                                    <p>{{p.note}}, {{p.time}}</p>
+                                  </ion-item>
+                                
+                                  <ion-item>
+                                    <ion-icon name="wine" item-start large ></ion-icon>
+                                    <h2>Institute of Fine Cocktails</h2>
+                                    <!-- <p>14 S. Hop Avenue, Madison, WI 53703</p> -->
+                                    <p>Last Updated: {{p.hiScore || '(Not attempted)'}} {{p.hiScore ? '%' : '' }}</p>
+                                  </ion-item>
+                                
+                                  <ion-item>
+                                    <span item-start>18 min</span>
+                                    <span item-start>(2.6 mi)</span>
+                                    <button ion-button icon-start clear item-end>
+                                      <ion-icon name="navigate"></ion-icon>
+                                      Start
+                                    </button>
+                                  </ion-item>
+                                
+                                </ion-card>
+            
+        
+        
+        
+        
+                  </ion-col>
+                 
+                </ion-row>
+                </ion-grid>
+        
+                <!--<ion-item-options side="left">
+                  <button ion-button (click)="favorite(item)"><ion-icon name="star"></ion-icon>Favorite</button>
+                  <button ion-button color="danger" (click)="share(item)"><ion-icon name="share"></ion-icon>Share</button>
+                </ion-item-options>
+                <ion-item-options side="right">
+                  <button ion-button color="danger" (click)="unread(item)"><ion-icon name="trash"></ion-icon>Delete</button>
+                </ion-item-options>-->
+        
+              <!--</ion-item-sliding>-->
+           
+            <!-- <ion-item-divider color="light">Mock Exams</ion-item-divider>
+            <ion-item-group [reorder]="reorder" (ionItemReorder)="reorderExams($event)">
+              <ion-item *ngFor="let exam of topics | slice:8:10; let i = index;" (click)="itemTapped($event, exam)" detail-push>
+                <ion-thumbnail item-left>
+                  <img src="{{exam.icon}}">
+                </ion-thumbnail>
+                <h2>{{exam.title}}</h2>
+                <p>{{exam.note}}, {{exam.time}}</p>
+                 <p>Last Score: {{exam.hiScore || '(Not attempted)'}} {{exam.hiScore ? '%' : '' }}</p>
+              </ion-item>
+            </ion-item-group> -->
+        
+          </ion-list>
+        
 
 
   <div *ngIf="selectedItem" padding>
