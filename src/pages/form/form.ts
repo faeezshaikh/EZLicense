@@ -1,5 +1,5 @@
 import { Component,ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams,Content,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, MenuController, NavParams,Content,AlertController } from 'ionic-angular';
 import { HelperProvider } from '../../providers/helper/helper';
 
 
@@ -17,10 +17,12 @@ export class FormPage {
   questionNumber: number;   // this is to support shuffling of array. the question.id is no longer used to display 'Question 1 of 10' ..
   confirmAbortAlert: any;
   confirmSubmitAlert: any;
+  activeMenu: string;
 
   @ViewChild(Content) content: Content;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public helper: HelperProvider,public alertCtrl:AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public helper: HelperProvider,
+    public menu: MenuController,public alertCtrl:AlertController) {
 
     helper.getData().then(theResult => {
       this.data = theResult;
@@ -142,4 +144,12 @@ export class FormPage {
     }
   
 
+    openHelp(){
+        this.activeMenu = 'menu2';
+    console.log('Menu2');
+    
+    this.menu.enable(false, 'menu1');
+    this.menu.enable(true, 'menu2');
+    this.menu.open();
+    }
 }

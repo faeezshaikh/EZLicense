@@ -7,18 +7,14 @@
   </ion-header>
   
 
-<ion-content padding  id="listScroll">
+<ion-content padding  id="listScroll" style="font-family:Avenir Next , sans-serif;">
 
     <p></p>
     
         <div id="quiz" *ngIf="data != undefined && data.quiz != undefined && mode === 'quiz'">
             <div class="center">
                 <h3> {{data.quiz.name|| "Assessment"}}</h3>
-                <img height="80" width="80" src="{{data.quiz.logo}}" />
-            </div>
-    
-            <div class="center">
-                <button ion-button outline (click)="openExplanationModal(question)"></button>
+                <img height="80" width="80" src="{{data.quiz.logo}}" (click)="openHelp()" />
             </div>
     
             <ion-card>
@@ -54,41 +50,42 @@
                     <!--</div>-->
                 </ion-card-content>
     
-                <ion-card-header>
-                    <div style="text-align:center">
-    
-                        <button *ngIf="questionNumber!=1" (click)="left()" ion-button icon-left>
-                                  <ion-icon name="arrow-back"></ion-icon>
-                                  Prev
-                                </button>
-    
-                        <button [hidden] = "questionNumber == questions.length" (click)="right()" ion-button icon-left>
-                                  Next &nbsp;
-                                   <ion-icon name="arrow-forward"></ion-icon>
-                                </button>
-    
-                    </div>
-                </ion-card-header>
+                  
                 <br />
-                <div style="text-align:center">
-                    <button (click)="presentAbortConfirm()" color="danger" ion-button icon-left>
-                                  <ion-icon name="close"></ion-icon>
-                                  Abort
-                                </button>
-    
-                    <button (click)="setMode('review')" ion-button icon-left>
-                                  <ion-icon name="list"></ion-icon>
-                                  Review
-                                </button>
-    
-    
-                    <button (click)="presentSubmitConfirm()" ion-button icon-left>
-                                  Submit &nbsp;
-                                   <ion-icon name="checkmark-circle-outline"></ion-icon>
-                                </button>
-    
-                </div>
+              
             </ion-card>
+
+            <div style="text-align:center">
+                
+                                    <button *ngIf="questionNumber!=1" (click)="left()" ion-button icon-left>
+                                              <ion-icon name="arrow-back"></ion-icon>
+                                              Prev
+                                            </button>
+                
+                                    <button [hidden] = "questionNumber == questions.length" (click)="right()" ion-button icon-left>
+                                              Next &nbsp;
+                                               <ion-icon name="arrow-forward"></ion-icon>
+                                            </button>
+                
+                                </div>
+            <div style="text-align:center">
+                <button (click)="presentAbortConfirm()" color="danger" ion-button icon-left>
+                              <ion-icon name="close"></ion-icon>
+                              Abort
+                            </button>
+
+                <button (click)="setMode('review')" ion-button icon-left>
+                              <ion-icon name="list"></ion-icon>
+                              Review
+                            </button>
+
+
+                <button (click)="presentSubmitConfirm()" ion-button icon-left>
+                              Submit &nbsp;
+                               <ion-icon name="checkmark-circle-outline"></ion-icon>
+                            </button>
+
+            </div>
         </div>
     
     
@@ -105,4 +102,27 @@
         </div>
     
 
+
+
+<ion-menu [content]="mycontent" id="menu2" side="right" width="500" >
+    
+      <ion-header>
+        <ion-toolbar color="grey">
+          <ion-title>Help</ion-title>
+        </ion-toolbar>
+      </ion-header>
+    
+      <ion-content>
+        <ion-list>
+          <button ion-item menuClose="menu2" detail-none>
+            Close Menu 2
+          </button>
+        </ion-list>
+      </ion-content>
+    
+    </ion-menu>
+  
+
 </ion-content>
+
+<ion-nav [root]="ListPage" #mycontent swipeBackEnabled="false"></ion-nav>

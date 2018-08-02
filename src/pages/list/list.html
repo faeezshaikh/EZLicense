@@ -22,11 +22,14 @@
     <ion-list>
         
             <ion-item-divider color="light">Projects </ion-item-divider>
-         
-         
+         <div *ngIf="!projects" style="text-align:center;margin-top:150px;">
+           <!-- <img  src="http://www.plateforme-re-sources.org/wp-content/uploads/2018/06/lg.rotating-balls-spinner.gif"/> -->
+           <img  src="https://cdn.dribbble.com/users/375824/screenshots/2230417/dots-2.gif"/>
+         </div>
+
                 <ion-grid fixed>
                 <ion-row responsive-sm>
-                  <ion-searchbar
+                  <ion-searchbar *ngIf="projects"
                   [showCancelButton]="shouldShowCancel"
                   (ionInput)="filterItems($event)"
                   (ionCancel)="onCancel($event)">

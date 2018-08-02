@@ -1,7 +1,7 @@
 {
     "quiz": {
         "name": "ARB Self Assessment",
-        "logo" : "assets/img/CloudFormation.png",
+        "logo" : "https://vignette.wikia.nocookie.net/mysims/images/2/22/EA_logo.png/revision/latest?cb=20090801182220",
         "score": 50,
         "sponsor":"Joe Solari"
     },

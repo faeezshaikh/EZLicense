@@ -14,11 +14,13 @@ export class HomePage {
 
   startAssessment(){
      this.navCtrl.setRoot(FormPage);
+    //  this.navCtrl.push(FormPage, {});
   }
 
   dismiss() {
     // let data = { 'foo': 'bar' };
     this.viewCtrl.dismiss();
+    
   }
   
 
