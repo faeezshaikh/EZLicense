@@ -60,14 +60,14 @@
                                 
                                   <ion-item>
                                     <ion-icon name="wine" item-start large ></ion-icon>
-                                    <h2>Institute of Fine Cocktails</h2>
+                                    <h2>Sponsor: {{p.sponsor}}</h2>
                                     <!-- <p>14 S. Hop Avenue, Madison, WI 53703</p> -->
                                     <p>Last Updated: {{p.hiScore || '(Not attempted)'}} {{p.hiScore ? '%' : '' }}</p>
                                   </ion-item>
                                 
                                   <ion-item>
-                                    <span item-start>18 min</span>
-                                    <span item-start>(2.6 mi)</span>
+                                    <span item-start>Architect:</span>
+                                    <span item-start>{{p.architect}}</span>
                                     <button ion-button icon-start clear item-end>
                                       <ion-icon name="navigate"></ion-icon>
                                       Start
@@ -114,4 +114,26 @@
   <div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>
   </div>
+
+  <ion-fab top right >
+    <button ion-fab color="primary">  <ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>
+
+<ion-footer >
+  <ion-toolbar color="primary">
+    <ion-title>
+      <ion-grid>
+
+        <ion-row> <div class="bottomTitleicon">Ameren EA</div></ion-row>
+        <ion-row>  
+            <div class="bottomTitleicon">
+               
+                <label style='text-align:right;color:#ede7e7;padding: 0 12px;font-size:1.5rem'>Contact Us: fshaikh@ameren.com</label>
+           </div>
+        </ion-row>
+      </ion-grid>
+   </ion-title>  
+    
+  </ion-toolbar>
+</ion-footer>
