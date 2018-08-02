@@ -9,9 +9,12 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { HttpClientModule } from '@angular/common/http'; 
+
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { HelperProvider } from '../providers/helper/helper';
  
  
 // AF2 Settings
@@ -35,6 +38,7 @@ export const firebaseConfig = {
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
+    HttpClientModule
     
   ],
   bootstrap: [IonicApp],
@@ -46,7 +50,8 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HelperProvider
   ]
 })
 export class AppModule {}

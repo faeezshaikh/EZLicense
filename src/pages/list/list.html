@@ -26,12 +26,11 @@
          
                 <ion-grid fixed>
                 <ion-row responsive-sm>
-                    <ion-searchbar
-                    [(ngModel)]="myInput"
-                    [showCancelButton]="shouldShowCancel"
-                    (ionInput)="onInput($event)"
-                    (ionCancel)="onCancel($event)">
-                  </ion-searchbar> 
+                  <ion-searchbar
+                  [showCancelButton]="shouldShowCancel"
+                  (ionInput)="filterItems($event)"
+                  (ionCancel)="onCancel($event)">
+                </ion-searchbar>
                   <ion-col col-md *ngFor="let p of projects" (click)="itemTapped($event, p)" >
                      
         

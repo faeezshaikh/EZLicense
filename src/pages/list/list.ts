@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
+import { AngularFireDatabase } from 'angularfire2/database';
+// import { Observable } from 'rxjs/Observable';
+import { HelperProvider } from '../../providers/helper/helper';
 
 @Component({
   selector: 'page-list',
@@ -12,8 +13,9 @@ export class ListPage {
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
   projects: any;
+  // afDatabase:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, afDatabase: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase,public helper:HelperProvider) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
@@ -30,14 +32,20 @@ export class ListPage {
       });
     }
 
+   this.getProjects();
+   
 
-      afDatabase.list('/projects').valueChanges().subscribe((datas) => { 
-        console.log("datas", datas);
-        this.projects = datas;
-    },(err)=>{
-       console.log("probleme : ", err)
-    });
+  }
 
+  getProjects() {
+    this.afDatabase.list('/projects').valueChanges().subscribe((data) => { 
+      console.log("datas", data);
+      this.projects = data;
+      this.helper.setProjectList(data);
+  },(err)=>{
+     console.log("probleme : ", err)
+  });
+ 
   }
 
   itemTapped(event, item) {
@@ -46,4 +54,18 @@ export class ListPage {
       item: item
     });
   }
+
+
+  filterItems(ev: any) {
+    // this.getProjects();
+    this.projects = this.helper.getProjectList();
+    let val = ev.target.value;
+
+    if (val && val.trim() !== '') {
+      this.projects = this.projects.filter(function(item) {
+        return item.title.toLowerCase().includes(val.toLowerCase());
+      });
+    }
+  }
+
 }
