@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, MenuController } from 'ionic-angular';
+import { NavController, NavParams, MenuController, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 // import { Observable } from 'rxjs/Observable';
 import { HelperProvider } from '../../providers/helper/helper';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-list',
@@ -16,7 +17,8 @@ export class ListPage {
   // afDatabase:any;
   activeMenu: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase,public helper:HelperProvider,public menu: MenuController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase,
+    public modalCtrl: ModalController,public helper:HelperProvider,public menu: MenuController) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     this.activeMenu = 'menu1'
@@ -72,12 +74,19 @@ export class ListPage {
 
 
   menu2Active() {
-    this.activeMenu = 'menu2';
-    console.log('Menu2');
+
+    // this.navCtrl.setRoot(HomePage);
+
+    let profileModal = this.modalCtrl.create(HomePage, { userId: 8675309 });
+    profileModal.present();
+
+
+    // this.activeMenu = 'menu2';
+    // console.log('Menu2');
     
-    this.menu.enable(false, 'menu1');
-    this.menu.enable(true, 'menu2');
-    this.menu.open();
+    // this.menu.enable(false, 'menu1');
+    // this.menu.enable(true, 'menu2');
+    // this.menu.open();
   }
 
 }
