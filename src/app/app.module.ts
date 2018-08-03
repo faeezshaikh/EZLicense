@@ -43,7 +43,6 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     HttpClientModule
-    
   ],
   bootstrap: [IonicApp],
   entryComponents: [

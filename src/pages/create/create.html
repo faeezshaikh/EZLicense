@@ -23,11 +23,18 @@
 
   </ion-card>
   <p></p>
-    <form #loginForm="ngForm">
+    <form #companyForm="ngForm">
     
       <ion-item class="mycolor">
         <ion-label floating>Project Name</ion-label>
-        <ion-input type="text" required class="form-control"></ion-input>
+        <!-- <ion-input type="text" required class="form-control"></ion-input> -->
+        <ion-input type="text" 
+        class="form-control" 
+        name="project-name"
+        ngModel
+        #nameField="ngModel"
+        required
+        minlength="3"></ion-input>
       </ion-item>
     </form>
   
@@ -37,7 +44,7 @@
       <button ion-button block color="danger" (click)="dismiss()">Cancel</button>
     </ion-col>
     <ion-col>
-      <button ion-button block color="primary" (click)="startAssessment()" [disabled]="loginForm.form.invalid">Enter</button>
+      <button ion-button block color="primary" (click)="startAssessment()" [disabled]="!companyForm.valid">Enter</button>
 
     </ion-col>
   </ion-row>

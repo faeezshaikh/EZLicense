@@ -19,6 +19,7 @@ export class FormPage {
   confirmSubmitAlert: any;
   activeMenu: string;
   somedata:string;
+  projectTitle:string;
 
   @ViewChild(Content) content: Content;
 
@@ -35,6 +36,10 @@ export class FormPage {
     });
 
     this.questionNumber = 1;  // wil always start at 1.
+    this.projectTitle = navParams.get('title');
+    console.log("Project is ",this.projectTitle);
+    
+    
   }
 
 

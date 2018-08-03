@@ -12,8 +12,8 @@ export class CreatePage {
 
   }
 
-  startAssessment(){
-     this.navCtrl.setRoot(FormPage);
+  startAssessment(name:string){
+     this.navCtrl.setRoot(FormPage,{title:name});
     //  this.navCtrl.push(FormPage, {});
   }
 
