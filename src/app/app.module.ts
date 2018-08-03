@@ -16,6 +16,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { HelperProvider } from '../providers/helper/helper';
 import { FormPage } from '../pages/form/form';
+import { DetailsPage } from '../pages/details/details';
  
  
 // AF2 Settings
@@ -33,7 +34,8 @@ export const firebaseConfig = {
     MyApp,
     CreatePage,
     ListPage,
-    FormPage
+    FormPage,
+    DetailsPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ export const firebaseConfig = {
     MyApp,
     CreatePage,
     ListPage,
-    FormPage
+    FormPage,
+    DetailsPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

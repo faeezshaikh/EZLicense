@@ -34,13 +34,13 @@
                   (ionInput)="filterItems($event)"
                   (ionCancel)="onCancel($event)">
                 </ion-searchbar>
-                  <ion-col col-md *ngFor="let p of projects" (click)="itemTapped($event, p)" >
+                  <ion-col col-md *ngFor="let p of projects"  >
                      
         
                       
         
         
-                            <ion-card>
+                            <ion-card (click)="itemTapped($event, p)">
                               
                                 <i class="fa fa-plus" aria-hidden="true"></i>
                                   <ion-fab right top>

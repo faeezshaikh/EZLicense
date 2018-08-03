@@ -137,6 +137,7 @@ export class FormPage {
               console.log('Submit clicked');
               // Submit the exam.
               // this.calculateAndUpdateScore();
+              this.navCtrl.pop();
             }
           }
         ]

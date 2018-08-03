@@ -4,6 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 // import { Observable } from 'rxjs/Observable';
 import { HelperProvider } from '../../providers/helper/helper';
 import { CreatePage } from '../create/create';
+import { DetailsPage } from '../details/details';
 
 @Component({
   selector: 'page-list',
@@ -54,9 +55,13 @@ export class ListPage {
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
-      item: item
-    });
+    // this.navCtrl.push(ListPage, {
+    //   item: item
+    // });
+
+    let profileModal = this.modalCtrl.create(DetailsPage, { item: item });
+    profileModal.present();
+
   }
 
 
