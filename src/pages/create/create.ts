@@ -8,12 +8,16 @@ import { FormPage } from '../form/form';
 })
 export class CreatePage {
 
+  pname: string;
   constructor(public navCtrl: NavController,public viewCtrl: ViewController) {
 
   }
 
-  startAssessment(name:string){
-     this.navCtrl.setRoot(FormPage,{title:name});
+  startAssessment(){
+    console.log('user entered->:', this.pname);
+    
+
+     this.navCtrl.setRoot(FormPage,{title:this.pname});
     //  this.navCtrl.push(FormPage, {});
   }
 
