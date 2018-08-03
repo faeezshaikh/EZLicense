@@ -18,6 +18,7 @@ export class FormPage {
   confirmAbortAlert: any;
   confirmSubmitAlert: any;
   activeMenu: string;
+  somedata:string;
 
   @ViewChild(Content) content: Content;
 
@@ -151,5 +152,6 @@ export class FormPage {
     this.menu.enable(false, 'menu1');
     this.menu.enable(true, 'menu2');
     this.menu.open();
+    this.somedata = "<pre>balalalalalal<h2>sdsf</h2></pre>";
     }
 }
