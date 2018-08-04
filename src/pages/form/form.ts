@@ -23,6 +23,7 @@ export class FormPage {
   projectTitle: string;
   odometer: any = "0";
   showSpinner = false;
+  attempted:number = 0;
 
   @ViewChild(Content) content: Content;
 
@@ -154,7 +155,7 @@ export class FormPage {
           handler: () => {
             console.log('Submit clicked');
             // Submit the exam.
-            // this.calculateAndUpdateScore();
+            this.calculateAndUpdateScore();
             this.showSpinner = true;
             let that = this;
             setTimeout(function () {
@@ -172,6 +173,27 @@ export class FormPage {
     this.confirmSubmitAlert.present();
   }
 
+  calculateAndUpdateScore() {
+    
+    
+        let that = this;
+        // $scope.$broadcast('timer-stop');
+        this.questions.forEach(function (q, index) {
+          if (q.answer) {
+            that.attempted++;
+          } else {
+
+          }
+    
+        });
+    
+        // this.correct = this.questions.length - wrong;
+        // this.score = Math.round((Number(this.correct) / this.questions.length) * 100);
+        // this.verdict = (this.score > 65) ? 'Pass' : 'Fail';
+        // this.setMode('result');
+        // this.storage.saveScore(this.selectedTopic.no, this.score);
+      }
+    
 
   openHelp() {
     this.activeMenu = 'menu2';
