@@ -120,53 +120,61 @@
             <ion-card>
                 <ion-item>
                     <ion-avatar item-left>
-                        <img src="assets/img/exam.jpg">
+                        <img src="https://vignette.wikia.nocookie.net/mysims/images/2/22/EA_logo.png/revision/latest?cb=20090801182220">
                     </ion-avatar>
                     <h2>Score Card</h2>
                     <p>{{verdict}}</p>
                 </ion-item>
                 <hr/>
     
-                <div class="item item-body">
-    
-                    <div class="row">
-                        <div class="col col-80">Total Questions</div>
-                        <div class="col col-20">{{questions.length}}</div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col col-80">Correct Answers</div>
-                        <div class="col col-20">{{correct}}</div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col col-80">Incorrect Answers</div>
-                        <div class="col col-20">{{questions.length - correct}}</div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col col-80">Total</div>
-                        <div class="col col-20"><strong>{{score}} %</strong></div>
-                    </div>
-                    <div class="row">
-                        <div class="col col-80"><strong>Result</strong></div>
-                        <div class="col col-20"><strong>{{verdict}}</strong></div>
-                    </div>
-                    <hr/>
-                    <!-- <img class="full-image" height="150" width="100" ng-src="data/img/table.jpg"> -->
-                    <p class="center">
-    
-                        <button ion-button (click)="closeResults()">Close</button>
-                    </p>
-    
-                </div>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                             <img src="https://communications.fidelity.com/pi/calculators/saving-for-retirement/assets/images/rpm-dial.png"/>
+                        </ion-col>
+                        <ion-col>
+                                <div class="item item-body">
+                    
+                                    <div class="row">
+                                        <div class="col col-80">Total Questions</div>
+                                        <div class="col col-20">{{questions.length}}</div>
+                                    </div>
+                    
+                                    <div class="row">
+                                        <div class="col col-80">Correct Answers</div>
+                                        <div class="col col-20">{{correct}}</div>
+                                    </div>
+                    
+                                    <div class="row">
+                                        <div class="col col-80">Incorrect Answers</div>
+                                        <div class="col col-20">{{questions.length - correct}}</div>
+                                    </div>
+                    
+                                    <div class="row">
+                                        <div class="col col-80">Total</div>
+                                        <div class="col col-20"><strong>{{score}} %</strong></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-80"><strong>Result</strong></div>
+                                        <div class="col col-20"><strong>{{verdict}}</strong></div>
+                                    </div>
+                                    <hr/>
+                                    <!-- <img class="full-image" height="150" width="100" ng-src="data/img/table.jpg"> -->
+                                    <p class="center">
+                    
+                                        <button ion-button (click)="closeResults()">Close</button>
+                                    </p>
+                    
+                                </div></ion-col>
+                    </ion-row>
+                </ion-grid>
             </ion-card>
             <p></p>
     
     
     
             <p class="center">
-                The correct answers are highlighted in green.
+                Your responses are highlighted in green.
             </p>
             <div *ngFor="let question of questions; let i = index">
                 <div class="result-question">
