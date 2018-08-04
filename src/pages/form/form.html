@@ -11,8 +11,12 @@
 <ion-content padding id="listScroll" style="font-family:Avenir Next , sans-serif;" class="mycolor">
 
     <p></p>
-
-    <div id="quiz" *ngIf="data != undefined && data.quiz != undefined && mode === 'quiz'">
+    <div *ngIf="showSpinner" style="text-align:center;margin-top:150px;">
+            <img  src="http://www.plateforme-re-sources.org/wp-content/uploads/2018/06/lg.rotating-balls-spinner.gif"/>
+            <h4>Calculating score...</h4>
+          </div>
+ 
+    <div id="quiz" *ngIf="data != undefined && data.quiz != undefined && mode === 'quiz' && !showSpinner">
         <div class="center">
             <h3>{{projectTitle}}</h3>
             <h4> {{data.quiz.name|| "Assessment"}}</h4>
@@ -100,7 +104,7 @@
     <p></p>
 
 
-    <div *ngIf="mode=='review'" class="review">
+    <div *ngIf="mode=='review' && !showSpinner" class="review">
         <p></p>
         <div *ngFor="let question of questions; let i = index;">
             <div (click)="goTo(i + 1)" class="{{ isAnswered(question) == 'Answered'? 'answered': 'not-answered' }}">{{i + 1}}. {{ isAnswered(question) }}</div>
@@ -111,7 +115,7 @@
 
 
 
-    <div class="center result" *ngIf="mode=='result'">
+    <div class="center result" *ngIf="mode=='result' && !showSpinner">
             <p></p>
             <ion-card>
                 <ion-item>
