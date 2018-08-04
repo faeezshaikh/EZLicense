@@ -26,17 +26,17 @@
 
                 <p style="text-align:center">Question {{questionNumber}} of {{questions.length}}.</p>
             </ion-item>
-            <ion-card-header>
-                <ion-item>
-                    <h3 style="margin-top:-0rem;white-space:normal;">{{question.Description}}&nbsp;
-                        <ion-icon item-center (click)="openHelp()" name="help-circle"></ion-icon>
-                    </h3>
-                </ion-item>
-                <ion-item class="item item-text-wrap item-divider " style="font-weight:bold">{{question.Name}}</ion-item>
-                <img *ngIf="question.Pic" src="{{question.Pic}}" />
-            </ion-card-header>
+            <!-- <ion-card-header>
+            </ion-card-header> -->
 
             <ion-card-content>
+                    <ion-item>
+                            <h3 style="margin-top:-0rem;white-space:normal;">{{question.Description}}&nbsp;
+                                <ion-icon item-center (click)="openHelp()" name="help-circle"></ion-icon>
+                            </h3>
+                        </ion-item>
+                        <ion-item class="item item-text-wrap item-divider " style="font-weight:bold">{{question.Name}}</ion-item>
+                        <img *ngIf="question.Pic" src="{{question.Pic}}" />
                 <ion-list radio-group>
 
                     <ion-item *ngFor="let option of question.Options">
