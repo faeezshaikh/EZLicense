@@ -126,8 +126,8 @@ export class FormPage {
             text: 'Yes',
             handler: () => {
               console.log('Abort clicked');
-              // this.navCtrl.pop();
-              this.navCtrl.setRoot(ListPage);
+              this.navCtrl.pop();
+              // this.navCtrl.setRoot(ListPage);
   
             }
           }
@@ -154,8 +154,8 @@ export class FormPage {
               console.log('Submit clicked');
               // Submit the exam.
               // this.calculateAndUpdateScore();
-              // this.navCtrl.pop();
-              this.navCtrl.setRoot(ListPage);
+              this.navCtrl.pop();
+              // this.navCtrl.setRoot(ListPage);
             }
           }
         ]

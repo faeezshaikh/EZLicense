@@ -114,15 +114,31 @@
      ,
      {
         "Id": 10,
-        "Name": "", 
-        "Description":"","Tag":"CloudMigration",
+        "Name": "In your project or solution how will Ameren data be accessed?", 
+        "Description":"Data can be accessed via devices that are managed by Ameren admin (eg. Airwatch managed mobile devices) or it can be accessed via devices that are not under Ameren admin's control (eg. contractor using their cell phone to access files in Office 365).",
         "Options": [
-            { "Id": 1055, "QuestionId": 1010, "Name": "A VM Import of the current virtual machine.", "IsAnswer": true },
-            { "Id": 1056, "QuestionId": 1010, "Name": "An Internet Gateway to allow a VPN connection.", "IsAnswer": false },
-            { "Id": 1057, "QuestionId": 1010, "Name": "Entries in Amazon Route 53 that allow the Instance to resolve its dependencies' IP addresses", "IsAnswer": false },
-            { "Id": 1058, "QuestionId": 1010, "Name": "An IP address space that does not conflict with the one on-premises", "IsAnswer": true },
-            { "Id": 1058, "QuestionId": 1010, "Name": "An Elastic IP address on the VPC instance", "IsAnswer": false },
-            { "Id": 1058, "QuestionId": 1010, "Name": "An AWS Direct Connect link between the VPC and the network housing the internal services", "IsAnswer": true }]
-    } 
+            { "Id": 1055, "QuestionId": 1010, "Name": "Through managed devices only."},
+            { "Id": 1057, "QuestionId": 1010, "Name": "Through nonmanaged devices only."},
+            { "Id": 1058, "QuestionId": 1010, "Name": "Both" }]
+    } ,
+    {
+       "Id": 11,
+       "Name": "Does your solution or app require access to Ameren's network?", 
+       "Description":"Many apps will require to integrate with existing Ameren systems in order to provide meaningful services. Sometimes app app or a solution maybe completely standalone with no integration requirements. When integration is required however, it is important to understand if the new app/solution will be accessing any systems that reside inside Ameren data center (examples include ADMS, CSS etc.) ",
+       "Options": [
+        { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
+        { "Id": 1057, "QuestionId": 1010, "Name": "No"},
+        { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }]
+   } 
+   ,
+   {
+      "Id": 12,
+      "Name": "Does your solution or app require access to Ameren's network?", 
+      "Description":"Many apps will require to integrate with existing Ameren systems in order to provide meaningful services. Sometimes app app or a solution maybe completely standalone with no integration requirements. When integration is required however, it is important to understand if the new app/solution will be accessing any systems that reside inside Ameren data center (examples include ADMS, CSS etc.) ",
+      "Options": [
+       { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
+       { "Id": 1057, "QuestionId": 1010, "Name": "No"},
+       { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }]
+  } 
      ]
 }
