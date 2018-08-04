@@ -1,5 +1,5 @@
 import { Component,ViewChild } from '@angular/core';
-import { IonicPage, NavController, MenuController, NavParams,Content,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, MenuController, NavParams,Content,AlertController,ToastController } from 'ionic-angular';
 import { HelperProvider } from '../../providers/helper/helper';
 import { ListPage } from '../list/list';
 
@@ -26,7 +26,7 @@ export class FormPage {
   @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public helper: HelperProvider,
-    public menu: MenuController,public alertCtrl:AlertController) {
+    public menu: MenuController,public alertCtrl:AlertController,private toastCtrl: ToastController) {
 
     helper.getData().then(theResult => {
       this.data = theResult;
@@ -154,7 +154,8 @@ export class FormPage {
               console.log('Submit clicked');
               // Submit the exam.
               // this.calculateAndUpdateScore();
-              this.navCtrl.pop();
+              this.setMode('result');
+              // this.navCtrl.pop();
               // this.navCtrl.setRoot(ListPage);
             }
           }
@@ -197,7 +198,25 @@ export class FormPage {
     if(question.answer) answered = 'Answered';
     return answered;
   }
-
+  closeResults(){
+    this.navCtrl.pop();
+    this.presentToast("Thank you for taking the assessment. Your assessment has been added to this list. Cheers!");
+  }
  
+  presentToast(msg:string) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'middle',
+      cssClass: "toastClass"
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
+  }
+  
 
 }

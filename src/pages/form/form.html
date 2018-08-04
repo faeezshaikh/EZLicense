@@ -111,6 +111,85 @@
 
 
 
+    <div class="center result" *ngIf="mode=='result'">
+            <p></p>
+            <ion-card>
+                <ion-item>
+                    <ion-avatar item-left>
+                        <img src="assets/img/exam.jpg">
+                    </ion-avatar>
+                    <h2>Score Card</h2>
+                    <p>{{verdict}}</p>
+                </ion-item>
+                <hr/>
+    
+                <div class="item item-body">
+    
+                    <div class="row">
+                        <div class="col col-80">Total Questions</div>
+                        <div class="col col-20">{{questions.length}}</div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col col-80">Correct Answers</div>
+                        <div class="col col-20">{{correct}}</div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col col-80">Incorrect Answers</div>
+                        <div class="col col-20">{{questions.length - correct}}</div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col col-80">Total</div>
+                        <div class="col col-20"><strong>{{score}} %</strong></div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-80"><strong>Result</strong></div>
+                        <div class="col col-20"><strong>{{verdict}}</strong></div>
+                    </div>
+                    <hr/>
+                    <!-- <img class="full-image" height="150" width="100" ng-src="data/img/table.jpg"> -->
+                    <p class="center">
+    
+                        <button ion-button (click)="closeResults()">Close</button>
+                    </p>
+    
+                </div>
+            </ion-card>
+            <p></p>
+    
+    
+    
+            <p class="center">
+                The correct answers are highlighted in green.
+            </p>
+            <div *ngFor="let question of questions; let i = index">
+                <div class="result-question">
+                    <h3>{{i + 1}}. {{question.Name}}</h3>
+                    <div class="result-options">
+                        <div *ngFor="let Option of question.Options">
+                            <label class="{{  question.answer == Option.Name ? 'result-correct': 'result-incorrect' }}"> 
+                                <input id="{{Option.Id}}" type="checkbox" disabled="disabled" readonly="readonly" [checked]="question.answer == Option.Name" /> {{Option.Name}}
+                            </label>
+                        </div>
+                    </div>
+                    <p></p>
+                    <!-- <button ion-button color="secondary" *ngIf="isCorrect(question) == 'Correct'" round>Correct Answer.</button>
+                    <button ion-button color="danger" *ngIf="isCorrect(question) != 'Correct'" round>Wrong Answer.</button>
+    
+                    <button *ngIf="question.Explanation" (click)="openExplanationModal(question)" ion-button round>Explanation</button>
+     -->
+                </div>
+            </div>
+            <div class="center">
+                <button ion-button (click)="closeResults()">Close</button>
+            </div>
+    
+    
+        </div>
+    
+
 
     <ion-menu [content]="mycontent" id="menu2" side="right" width="500">
 
