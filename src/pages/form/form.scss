@@ -6,4 +6,12 @@ page-form {
 .odometer {
     font-size: 100px;
 }
+
+ion-menu[side=right] .menu-inner {
+    width: 30%;
+}
+.button-outline {
+    color:#312e2e;
+    background-color: #e0e0e0
+}
 }

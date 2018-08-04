@@ -1,5 +1,5 @@
 <script src="http://github.hubspot.com/odometer/odometer.js"></script>
-    <link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-car.css" />
+<link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-car.css" />
 <ion-header>
     <ion-navbar color="primary">
 
@@ -17,7 +17,7 @@
             <h3>{{projectTitle}}</h3>
             <h4> {{data.quiz.name|| "Assessment"}}</h4>
             <img height="80" width="80" src="{{data.quiz.logo}}" (click)="openHelp()" />
-            <div id="odometer" class="odometer">{{odometer}}</div>
+            <!-- <div id="odometer" class="odometer">{{odometer}}</div> -->
         </div>
 
         <ion-card>
@@ -27,9 +27,11 @@
                 <p style="text-align:center">Question {{questionNumber}} of {{questions.length}}.</p>
             </ion-item>
             <ion-card-header>
-                    <ion-item ><h3 style="margin-top:-0rem;white-space:normal;">{{question.Description}}&nbsp;
-                    <ion-icon item-center (click)="openHelp()" name="help-circle"></ion-icon>
-                </h3></ion-item>
+                <ion-item>
+                    <h3 style="margin-top:-0rem;white-space:normal;">{{question.Description}}&nbsp;
+                        <ion-icon item-center (click)="openHelp()" name="help-circle"></ion-icon>
+                    </h3>
+                </ion-item>
                 <ion-item class="item item-text-wrap item-divider " style="font-weight:bold">{{question.Name}}</ion-item>
                 <img *ngIf="question.Pic" src="{{question.Pic}}" />
             </ion-card-header>
@@ -112,17 +114,36 @@
 
         <ion-header>
             <ion-toolbar color="grey">
-                <ion-title>Help</ion-title>
+                <ion-title>Help1</ion-title>
+                <ion-buttons large end>
+                    <button ion-button outline menuClose="menu2"><ion-icon style="" name="close"></ion-icon></button>
+                        
+                </ion-buttons>
+
+               
+                
             </ion-toolbar>
         </ion-header>
 
         <ion-content>
             <ion-list>
-                <button ion-item menuClose="menu2" detail-none>
+                <!-- <button ion-item  detail-none>
                     Close Menu 2
-                </button>
+                </button> -->
                 <div [innerHTML]="somedata"></div>
+
+               
+                
+                <p>&nbsp;</p>
+                <div>
+                        Was this helpful? 
+                        <button ion-button color="light" outline>No</button>
+                        <button ion-button color="light" outline>Yes</button>
+                    </div>
             </ion-list>
+
+            
+
         </ion-content>
 
     </ion-menu>

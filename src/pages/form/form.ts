@@ -42,22 +42,16 @@ export class FormPage {
     console.log("Project is ",this.projectTitle);
     
 
-    setTimeout(function(){
-      this.odometer = "1234";
-      console.log("odo -> ",this.odometer);
-      
-  }, 1000);
+   
     
   }
 
   ngAfterViewInit(){
-    setTimeout(function(){
-      document.getElementById('odometer').innerHTML = '123344';
-      console.log("odo -> ");
+  //   setTimeout(function(){
+  //     document.getElementById('odometer').innerHTML = '123344';
+  //     console.log("odo -> ");
       
-  }, 1000);
-    
-    
+  // }, 1000);
   }
   
 
@@ -177,6 +171,8 @@ export class FormPage {
     this.menu.enable(false, 'menu1');
     this.menu.enable(true, 'menu2');
     this.menu.open();
-    this.somedata = "<pre>balalalalalal<h2>sdsf</h2></pre>";
+
+    this.somedata ="<h3>What is Lorem Ipsum?</h3><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. <ul><li>Coffee</li><li>Tea</li><li>Milk</li></ul>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p> Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>"
+    
     }
 }
