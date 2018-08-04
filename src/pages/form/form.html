@@ -13,18 +13,21 @@
     
         <div id="quiz" *ngIf="data != undefined && data.quiz != undefined && mode === 'quiz'">
             <div class="center">
-                <h3> {{data.quiz.name|| "Assessment"}}</h3>
-                <h4>{{projectTitle}}</h4>
+                <h3>{{projectTitle}}</h3>
+                <h4> {{data.quiz.name|| "Assessment"}}</h4>
                 <img height="80" width="80" src="{{data.quiz.logo}}" (click)="openHelp()" />
             </div>
     
             <ion-card>
     
                 <ion-item>
+                    
                     <p style="text-align:center">Question {{questionNumber}} of {{questions.length}}.</p>
                 </ion-item>
                 <ion-card-header>
-                    <div class="item item-text-wrap item-divider ">{{question.Name}}</div>
+                    <ion-row><div><h3>{{question.Description}}</h3><ion-icon (click)="openHelp()" name="help-circle"></ion-icon></div></ion-row>
+                        <p>&nbsp;</p>
+                    <div class="item item-text-wrap item-divider " style="font-weight:bold">{{question.Name}}</div>
                     <img *ngIf="question.Pic" src="{{question.Pic}}"/>
                 </ion-card-header>
     

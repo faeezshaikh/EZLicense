@@ -29,7 +29,7 @@ export class FormPage {
     helper.getData().then(theResult => {
       this.data = theResult;
       this.questions = theResult.questions;
-      this.questions = this.shuffle(this.questions);   /// TODO: Make shuffling of question order user configurable
+    //  this.questions = this.shuffle(this.questions);   /// TODO: Make shuffling of question order user configurable
       this.question = this.questions[0];
       console.log("Data is this => ", this.data);
       console.log("Questions => ", theResult.questions);
@@ -44,13 +44,13 @@ export class FormPage {
 
 
   ///// [Shuffling of Questions ] //////////
-  shuffle(a) {
-    for (let i = a.length; i; i--) {
-      let j = Math.floor(Math.random() * i);
-      [a[i - 1], a[j]] = [a[j], a[i - 1]];
-    }
-    return a;
-  }
+  // shuffle(a) {
+  //   for (let i = a.length; i; i--) {
+  //     let j = Math.floor(Math.random() * i);
+  //     [a[i - 1], a[j]] = [a[j], a[i - 1]];
+  //   }
+  //   return a;
+  // }
 
 
   ///// [ Navigation code] ///////

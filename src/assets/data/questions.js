@@ -7,11 +7,14 @@
     },
     "questions": [{
         "Id": 1,
-        "Name": "A user can use Storage gateway to migrate the virtual machine data to AWS.",
+        "Name": "What is the classification of data involved in your project?",
+        "Description":"At Ameren, all data is classified in 4 broad categories depending on its sensitivity. To learn more click here:",
         
         "Options": [
-            { "Id": 1055, "QuestionId": 1010, "Name": "True", "IsAnswer": true },
-            { "Id": 1056, "QuestionId": 1010, "Name": "False", "IsAnswer": false }]
+            { "Id": 1055, "QuestionId": 1010, "Name": "Highly Confidential"},
+            { "Id": 1056, "QuestionId": 1010, "Name": "Confidential"},
+            { "Id": 1056, "QuestionId": 1010, "Name": "Proprietary" },
+            { "Id": 1056, "QuestionId": 1010, "Name": "Public" }]
     },
     {
         "Id": 2,
