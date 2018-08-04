@@ -192,10 +192,12 @@ export class FormPage {
     //     return false;
     //   }
     // });
-    console.log('Questions answer',question.answer);
+    // console.log('Questions answer',question.answer);
     
     if(question.answer) answered = 'Answered';
     return answered;
   }
+
+ 
 
 }
