@@ -1,132 +1,131 @@
-
 <ion-header>
     <ion-navbar color="primary">
-   
-      <ion-title>Form</ion-title>
-    </ion-navbar>
-  </ion-header>
-  
 
-<ion-content padding  id="listScroll" style="font-family:Avenir Next , sans-serif;" class="mycolor">
+        <ion-title>Form</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding id="listScroll" style="font-family:Avenir Next , sans-serif;" class="mycolor">
 
     <p></p>
-    
-        <div id="quiz" *ngIf="data != undefined && data.quiz != undefined && mode === 'quiz'">
-            <div class="center">
-                <h3>{{projectTitle}}</h3>
-                <h4> {{data.quiz.name|| "Assessment"}}</h4>
-                <img height="80" width="80" src="{{data.quiz.logo}}" (click)="openHelp()" />
-            </div>
-    
-            <ion-card>
-    
-                <ion-item>
-                    
-                    <p style="text-align:center">Question {{questionNumber}} of {{questions.length}}.</p>
-                </ion-item>
-                <ion-card-header>
-                    <ion-row><div><h3>{{question.Description}}</h3><ion-icon (click)="openHelp()" name="help-circle"></ion-icon></div></ion-row>
-                        <p>&nbsp;</p>
-                    <div class="item item-text-wrap item-divider " style="font-weight:bold">{{question.Name}}</div>
-                    <img *ngIf="question.Pic" src="{{question.Pic}}"/>
-                </ion-card-header>
-    
-                <ion-card-content>
-                
-    
-                    <div *ngFor="let option of question.Options">
-                        <!--<li class="item item-checkbox"><label class="checkbox"> 
-                                              <input type="checkbox" id="{{option.Id}}" ng-model="option.Selected" ng-change="onSelect(question, option);">
-                                                </label> {{option.Name}}
-                                    
-                                              </li>-->
-    
+
+    <div id="quiz" *ngIf="data != undefined && data.quiz != undefined && mode === 'quiz'">
+        <div class="center">
+            <h3>{{projectTitle}}</h3>
+            <h4> {{data.quiz.name|| "Assessment"}}</h4>
+            <img height="80" width="80" src="{{data.quiz.logo}}" (click)="openHelp()" />
+        </div>
+
+        <ion-card>
+
+            <ion-item>
+
+                <p style="text-align:center">Question {{questionNumber}} of {{questions.length}}.</p>
+            </ion-item>
+            <ion-card-header>
+                <ion-row>
+                    <ion-item>
+                        <h3 style="margin-top:-0rem">{{question.Description}}&nbsp;<ion-icon item-center (click)="openHelp()" name="help-circle"></ion-icon></h3>
+                    </ion-item>
+                </ion-row>
+                <ion-item class="item item-text-wrap item-divider " style="font-weight:bold">{{question.Name}}</ion-item>
+                <img *ngIf="question.Pic" src="{{question.Pic}}" />
+            </ion-card-header>
+
+            <ion-card-content>
+                <ion-list radio-group>
+
+                    <ion-item *ngFor="let option of question.Options">
+                        <ion-radio item-left value="{{option.Name}}"></ion-radio>
+                        <ion-label>{{option.Name}}</ion-label>
+                    </ion-item>
+
+
+                    <!-- <div *ngFor="let option of question.Options">
                         <ion-item>
-    
+
                             <ion-checkbox color="primary" checked="false" [(ngModel)]="option.Selected"></ion-checkbox>
                             <ion-label> {{option.Name}}</ion-label>
                         </ion-item>
-                    </div>
-    
-                    <!--</ul>-->
-    
-    
-                    <!--</div>-->
-                </ion-card-content>
-    
-                  
-                <br />
-              
-            </ion-card>
+                    </div> -->
+                </ion-list>
 
-            <div style="text-align:center">
-                
-                                    <button *ngIf="questionNumber!=1" (click)="left()" ion-button icon-left>
-                                              <ion-icon name="arrow-back"></ion-icon>
-                                              Prev
-                                            </button>
-                
-                                    <button [hidden] = "questionNumber == questions.length" (click)="right()" ion-button icon-left>
-                                              Next &nbsp;
-                                               <ion-icon name="arrow-forward"></ion-icon>
-                                            </button>
-                
-                                </div>
-            <div style="text-align:center">
-                <button (click)="presentAbortConfirm()" color="danger" ion-button icon-left>
-                              <ion-icon name="close"></ion-icon>
-                              Abort
-                            </button>
-
-                <button (click)="setMode('review')" ion-button icon-left>
-                              <ion-icon name="list"></ion-icon>
-                              Review
-                            </button>
+            </ion-card-content>
 
 
-                <button (click)="presentSubmitConfirm()" ion-button icon-left>
-                              Submit &nbsp;
-                               <ion-icon name="checkmark-circle-outline"></ion-icon>
-                            </button>
+            <br />
 
-            </div>
+        </ion-card>
+
+        <div style="text-align:center">
+
+            <button *ngIf="questionNumber!=1" (click)="left()" ion-button icon-left>
+                <ion-icon name="arrow-back"></ion-icon>
+                Prev
+            </button>
+
+            <button [hidden]="questionNumber == questions.length" (click)="right()" ion-button icon-left>
+                Next &nbsp;
+                <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+
         </div>
-    
-    
+        <div style="text-align:center">
+            <button (click)="presentAbortConfirm()" color="danger" ion-button icon-left>
+                <ion-icon name="close"></ion-icon>
+                Abort
+            </button>
+
+            <button (click)="setMode('review')" ion-button icon-left>
+                <ion-icon name="list"></ion-icon>
+                Review
+            </button>
+
+
+            <button (click)="presentSubmitConfirm()" ion-button icon-left>
+                Submit &nbsp;
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+            </button>
+
+        </div>
+    </div>
+
+
+    <p></p>
+
+
+    <div *ngIf="mode=='review'" class="review">
         <p></p>
-    
-    
-        <div *ngIf="mode=='review'" class="review">
-            <p></p>
-            <div *ngFor="let question of questions; let i = index;">
-                <div (click)="goTo(i + 1)" class="{{ isAnswered(question) == 'Answered'? 'answered': 'not-answered' }}">{{i + 1}}. {{ isAnswered(question) }}</div>
-            </div>
-            <p></p>
-            <button ion-button (click)="setMode('quiz')"> Back </button>
+        <div *ngFor="let question of questions; let i = index;">
+            <div (click)="goTo(i + 1)" class="{{ isAnswered(question) == 'Answered'? 'answered': 'not-answered' }}">{{i + 1}}. {{ isAnswered(question) }}</div>
         </div>
-    
+        <p></p>
+        <button ion-button (click)="setMode('quiz')"> Back </button>
+    </div>
 
 
 
-<ion-menu [content]="mycontent" id="menu2" side="right" width="500" >
-    
-      <ion-header>
-        <ion-toolbar color="grey">
-          <ion-title>Help</ion-title>
-        </ion-toolbar>
-      </ion-header>
-    
-      <ion-content>
-        <ion-list>
-          <button ion-item menuClose="menu2" detail-none>
-            Close Menu 2
-          </button>
-          <div [innerHTML]="somedata"></div>
-        </ion-list>
-      </ion-content>
-    
+
+    <ion-menu [content]="mycontent" id="menu2" side="right" width="500">
+
+        <ion-header>
+            <ion-toolbar color="grey">
+                <ion-title>Help</ion-title>
+            </ion-toolbar>
+        </ion-header>
+
+        <ion-content>
+            <ion-list>
+                <button ion-item menuClose="menu2" detail-none>
+                    Close Menu 2
+                </button>
+                <div [innerHTML]="somedata"></div>
+            </ion-list>
+        </ion-content>
+
     </ion-menu>
-  
+
 
 </ion-content>
 
