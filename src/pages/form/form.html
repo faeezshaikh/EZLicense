@@ -35,8 +35,10 @@
                                 <ion-icon item-center (click)="openHelp()" name="help-circle"></ion-icon>
                             </h3>
                         </ion-item>
+                        <div style="text-align:center">
+                            <img *ngIf="question.Pic" src="{{question.Pic}}" style="width:25%"/>
+                        </div>
                         <ion-item class="item item-text-wrap item-divider " style="font-weight:bold">{{question.Name}}</ion-item>
-                        <img *ngIf="question.Pic" src="{{question.Pic}}" />
                 <ion-list radio-group>
 
                     <ion-item *ngFor="let option of question.Options">
