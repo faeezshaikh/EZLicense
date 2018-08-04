@@ -1,6 +1,7 @@
 import { Component,ViewChild } from '@angular/core';
 import { IonicPage, NavController, MenuController, NavParams,Content,AlertController } from 'ionic-angular';
 import { HelperProvider } from '../../providers/helper/helper';
+import { ListPage } from '../list/list';
 
 
 @IonicPage()
@@ -20,6 +21,7 @@ export class FormPage {
   activeMenu: string;
   somedata:string;
   projectTitle:string;
+  odometer:any = "0";
 
   @ViewChild(Content) content: Content;
 
@@ -39,9 +41,25 @@ export class FormPage {
     this.projectTitle = navParams.get('title');
     console.log("Project is ",this.projectTitle);
     
+
+    setTimeout(function(){
+      this.odometer = "1234";
+      console.log("odo -> ",this.odometer);
+      
+  }, 1000);
     
   }
 
+  ngAfterViewInit(){
+    setTimeout(function(){
+      document.getElementById('odometer').innerHTML = '123344';
+      console.log("odo -> ");
+      
+  }, 1000);
+    
+    
+  }
+  
 
   ///// [Shuffling of Questions ] //////////
   // shuffle(a) {
@@ -114,8 +132,8 @@ export class FormPage {
             text: 'Yes',
             handler: () => {
               console.log('Abort clicked');
-              this.navCtrl.pop();
-  
+              // this.navCtrl.pop();
+              this.navCtrl.setRoot(ListPage);
   
             }
           }
@@ -142,7 +160,8 @@ export class FormPage {
               console.log('Submit clicked');
               // Submit the exam.
               // this.calculateAndUpdateScore();
-              this.navCtrl.pop();
+              // this.navCtrl.pop();
+              this.navCtrl.setRoot(ListPage);
             }
           }
         ]

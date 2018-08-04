@@ -56,9 +56,9 @@
                                   </ion-fab>
                                 
                                   <ion-item>
-                                    <ion-icon name="football" item-start large></ion-icon>
+                                    <ion-icon name="analytics" item-start large></ion-icon>
                                     <h2>{{p.title}}</h2>
-                                    <p>{{p.note}}, {{p.time}}</p>
+                                    <p>Contact: {{p.contact}}</p>
                                   </ion-item>
                                 
                                   <ion-item>
@@ -69,11 +69,11 @@
                                   </ion-item>
                                 
                                   <ion-item>
-                                    <span item-start>Architect:</span>
+                                    <span item-start>Assessor:</span>
                                     <span item-start>{{p.architect}}</span>
                                     <button ion-button icon-start clear item-end>
-                                      <ion-icon name="navigate"></ion-icon>
-                                      Start
+                                      <ion-icon name="paper-plane"></ion-icon>
+                                      View Details
                                     </button>
                                   </ion-item>
                                 
@@ -119,7 +119,7 @@
   </div>
 
   <ion-fab top right >
-    <button ion-fab color="primary" (click)="menu2Active()">  <ion-icon name="add"></ion-icon></button>
+    <button ion-fab color="primary" (click)="menu2Active()">  <ion-icon name="create"></ion-icon></button>
   </ion-fab>
 </ion-content>
 
