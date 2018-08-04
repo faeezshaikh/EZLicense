@@ -186,12 +186,15 @@ export class FormPage {
 
   isAnswered(question: any) {
     var answered = 'Not Answered';
-    question.Options.forEach(function (element, index, array) {
-      if (element.Selected == true) {
-        answered = 'Answered';
-        return false;
-      }
-    });
+    // question.Options.forEach(function (element, index, array) {
+    //   if (element.Selected == true) {
+    //     answered = 'Answered';
+    //     return false;
+    //   }
+    // });
+    console.log('Questions answer',question.answer);
+    
+    if(question.answer) answered = 'Answered';
     return answered;
   }
 

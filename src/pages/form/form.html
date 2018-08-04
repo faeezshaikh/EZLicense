@@ -30,16 +30,16 @@
             </ion-card-header> -->
 
             <ion-card-content>
-                    <ion-item>
-                            <h3 style="margin-top:-0rem;white-space:normal;">{{question.Description}}&nbsp;
-                                <ion-icon item-center (click)="openHelp()" name="help-circle"></ion-icon>
-                            </h3>
-                        </ion-item>
-                        <div style="text-align:center">
-                            <img *ngIf="question.Pic" src="{{question.Pic}}" style="width:25%"/>
-                        </div>
-                        <ion-item class="item item-text-wrap item-divider " style="font-weight:bold">{{question.Name}}</ion-item>
-                <ion-list radio-group>
+                <ion-item>
+                    <h3 style="margin-top:-0rem;white-space:normal;">{{question.Description}}&nbsp;
+                        <ion-icon item-center (click)="openHelp()" name="help-circle"></ion-icon>
+                    </h3>
+                </ion-item>
+                <div style="text-align:center">
+                    <img *ngIf="question.Pic" src="{{question.Pic}}" style="width:25%" />
+                </div>
+                <ion-item class="item item-text-wrap item-divider " style="font-weight:bold">{{question.Name}}</ion-item>
+                <ion-list radio-group [(ngModel)]="question.answer">
 
                     <ion-item *ngFor="let option of question.Options">
                         <ion-radio item-left value="{{option.Name}}"></ion-radio>
@@ -118,10 +118,12 @@
             <ion-toolbar color="grey">
                 <ion-title>Help1</ion-title>
                 <ion-buttons large end>
-                        <button ion-button outline clear menuClose="menu2"><ion-icon style="font-size:3rem;font-weight:bold;" name="close"></ion-icon></button>
-                    </ion-buttons>
-               
-                
+                    <button ion-button outline clear menuClose="menu2">
+                        <ion-icon style="font-size:3rem;font-weight:bold;" name="close"></ion-icon>
+                    </button>
+                </ion-buttons>
+
+
             </ion-toolbar>
         </ion-header>
 
@@ -132,17 +134,17 @@
                 </button> -->
                 <div [innerHTML]="somedata"></div>
 
-               
-                
+
+
                 <p>&nbsp;</p>
                 <div>
-                        Was this helpful? 
-                        <button ion-button color="light" outline>No</button>
-                        <button ion-button color="light" outline>Yes</button>
-                    </div>
+                    Was this helpful?
+                    <button ion-button color="light" outline>No</button>
+                    <button ion-button color="light" outline>Yes</button>
+                </div>
             </ion-list>
 
-            
+
 
         </ion-content>
 
