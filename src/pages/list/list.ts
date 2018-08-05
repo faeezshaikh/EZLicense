@@ -17,6 +17,7 @@ export class ListPage {
   projects: any;
   // afDatabase:any;
   activeMenu: string;
+  odo:any = 123;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase,
     public modalCtrl: ModalController,public helper:HelperProvider,public menu: MenuController) {
@@ -38,6 +39,11 @@ export class ListPage {
     }
 
    this.getProjects();
+   setTimeout(function(){
+    // odometer.innerHTML = 456;
+    document.getElementById('odometer').innerHTML = '124';
+    // this.odo=567;
+}, 1000);
    
 
   }
