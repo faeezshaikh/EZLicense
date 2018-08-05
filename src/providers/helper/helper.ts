@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 // import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { AngularFireDatabase, AngularFireList } from "angularfire2/database"; 
 
 /*
   Generated class for the HelperProvider provider.
@@ -13,9 +14,12 @@ import 'rxjs/add/operator/map';
 export class HelperProvider {
 
   projects:any;
+  projects$:AngularFireList<Object>;
   data: any = null;
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,private af: AngularFireDatabase) {
     console.log('Hello HelperProvider Provider');
+
+    this.projects$ = this.af.list('/projects');
   }
 
   setProjectList(p) {
@@ -36,6 +40,11 @@ export class HelperProvider {
     });
   }
 
+  addData() {
+    console.log('adding data');
+    
+    this.projects$.push({'title':'new','assessor':'faeez'});
+  }
   load() {
     
         console.log("Loading file..");

@@ -186,6 +186,7 @@ export class FormPage {
           }
     
         });
+        this.helper.addData();
     
         // this.correct = this.questions.length - wrong;
         // this.score = Math.round((Number(this.correct) / this.questions.length) * 100);
