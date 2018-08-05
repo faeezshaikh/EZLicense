@@ -17,7 +17,8 @@ export class ListPage {
   projects: any;
   // afDatabase:any;
   activeMenu: string;
-  odo:any = 123;
+  // odo:any = 123;
+  odo:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase,
     public modalCtrl: ModalController, public helper: HelperProvider, public menu: MenuController) {
@@ -41,10 +42,6 @@ export class ListPage {
     this.getProjects();
 
 
-    setTimeout(function () {
-      document.getElementById('odometer').innerHTML = '2345';
-    }, 1000);
-
 
   }
 
@@ -52,6 +49,13 @@ export class ListPage {
     this.afDatabase.list('/projects').valueChanges().subscribe((data) => {
       console.log("datas", data);
       this.projects = data;
+      let txt = data.length.toString();
+
+
+    setTimeout(function () {
+      document.getElementById('odometer').innerHTML = txt;
+    }, 1000);
+
       this.helper.setProjectList(data);
     }, (err) => {
       console.log("probleme : ", err)

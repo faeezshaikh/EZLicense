@@ -3,7 +3,11 @@
     <button ion-button [menuToggle]="activeMenu">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Assessed Projects!</ion-title>
+    <ion-title>Assessed Projects  </ion-title>
+
+    <ion-buttons large end>
+        <button ion-button outline clear (click)="dismiss()"><div id="odometer" class="odometer">{{odo}}</div></button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -23,7 +27,7 @@
         
             <ion-item-divider color="light">Projects List</ion-item-divider>
             <!-- <div id="odometer" class="odometer">123</div> -->
-            <div id="odometer" class="odometer">{{odo}}</div>
+           
          <div *ngIf="!projects" style="text-align:center;margin-top:150px;">
            <!-- <img  src="http://www.plateforme-re-sources.org/wp-content/uploads/2018/06/lg.rotating-balls-spinner.gif"/> -->
            <img  src="https://cdn.dribbble.com/users/375824/screenshots/2230417/dots-2.gif"/>
