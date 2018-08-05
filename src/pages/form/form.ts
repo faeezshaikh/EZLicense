@@ -237,7 +237,7 @@ export class FormPage {
   closeResults() {
     this.navCtrl.pop();
     this.navCtrl.pop();
-    this.presentToast("Thank you for taking the assessment. Your assessment has been added to this list. Cheers!");
+    this.presentToast("Thank you for taking the assessment. Cheers!");
     this.helper.addData({
       'title':this.projectTitle,
       'description':'lorem ipspum',
@@ -252,7 +252,7 @@ export class FormPage {
   presentToast(msg: string) {
     let toast = this.toastCtrl.create({
       message: msg,
-      duration: 3000,
+      duration: 4000,
       position: 'top',
       cssClass: "toastClass"
     });
