@@ -32,30 +32,37 @@
             </ion-card-header> -->
 
             <ion-card-content>
-                <ion-item>
+                <ion-item *ngIf="!question.Pic">
                     <h3 style="margin-top:-0rem;white-space:normal;">{{question.Description}}&nbsp;
                         <ion-icon item-center (click)="openHelp()" name="help-circle"></ion-icon>
                     </h3>
                 </ion-item>
-                <div style="text-align:center">
-                    <img *ngIf="question.Pic" src="{{question.Pic}}" style="width:25%" />
-                </div>
-                <ion-item class="item item-text-wrap item-divider " style="font-weight:bold">{{question.Name}}</ion-item>
-                <ion-list radio-group [(ngModel)]="question.answer">
+                
+                <ion-grid *ngIf="question.Pic"  >
+                        <ion-row>
+                            <ion-col> 
+                                <h3 style="margin-top:-0rem;white-space:normal;">{{question.Description}}&nbsp;
+                                    <ion-icon item-center (click)="openHelp()" name="help-circle"></ion-icon>
+                                </h3>
+                                <ion-item class="item item-text-wrap item-divider " style="font-weight:bold">{{question.Name}}</ion-item>
+                                <ion-list radio-group [(ngModel)]="question.answer">
+                
+                                    <ion-item *ngFor="let option of question.Options">
+                                        <ion-radio item-left value="{{option.Name}}"></ion-radio>
+                                        <ion-label>{{option.Name}}</ion-label>
+                                    </ion-item>
+                                </ion-list>
+                            </ion-col>
+                            <ion-col> <img *ngIf="question.Pic" src="{{question.Pic}}" style="width:50%" /></ion-col>
+                        </ion-row>
+                </ion-grid>
+                <ion-item *ngIf="!question.Pic" class="item item-text-wrap item-divider " style="font-weight:bold">{{question.Name}}</ion-item>
+                <ion-list *ngIf="!question.Pic" radio-group [(ngModel)]="question.answer">
 
                     <ion-item *ngFor="let option of question.Options">
                         <ion-radio item-left value="{{option.Name}}"></ion-radio>
                         <ion-label>{{option.Name}}</ion-label>
                     </ion-item>
-
-
-                    <!-- <div *ngFor="let option of question.Options">
-                        <ion-item>
-
-                            <ion-checkbox color="primary" checked="false" [(ngModel)]="option.Selected"></ion-checkbox>
-                            <ion-label> {{option.Name}}</ion-label>
-                        </ion-item>
-                    </div> -->
                 </ion-list>
 
             </ion-card-content>

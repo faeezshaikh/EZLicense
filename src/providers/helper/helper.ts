@@ -38,6 +38,9 @@ export class HelperProvider {
       console.log('data received->', res);
       return this.data;
     });
+
+
+  // this.af.list('projects').map( (arr) => { return arr.reverse(); } );
   }
 
   addData(obj) {
