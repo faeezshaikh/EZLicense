@@ -112,7 +112,7 @@ export class FormPage {
   presentAbortConfirm() {
     this.confirmAbortAlert = this.alertCtrl.create({
       title: 'Confirm Abort',
-      message: 'This will end the test and take you back to the home menu. Do you want to proceed?',
+      message: 'This will end the assessment and take you back to the home menu. Do you want to proceed?',
       buttons: [
         {
           text: 'Cancel',
@@ -126,6 +126,7 @@ export class FormPage {
           handler: () => {
             console.log('Abort clicked');
             this.navCtrl.pop();
+            this.navCtrl.pop();
             // this.navCtrl.setRoot(ListPage);
 
           }
@@ -138,7 +139,7 @@ export class FormPage {
   presentSubmitConfirm() {
     this.confirmSubmitAlert = this.alertCtrl.create({
       title: 'Confirm Submit',
-      message: 'This will submit your test and show you the final score. Do you want to proceed?',
+      message: 'This will submit your assessment and show you the final score. Do you want to proceed?',
       buttons: [
         {
           text: 'Cancel',
@@ -237,7 +238,8 @@ export class FormPage {
       'sponsor': 'John Doe',
       'lastUpdated': new Date().toLocaleString(),
       'questions':this.questions,
-      'score':80
+      'score':80,
+      'verdict':'Aligned'
     });
   }
 

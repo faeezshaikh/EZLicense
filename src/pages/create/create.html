@@ -17,8 +17,7 @@
     <ion-card-content>
       <!-- Add card content here! -->
       ARB Assessment has never been this easy. We will guide you through each step. By the end of this you will not only have a
-      good understanding of our Architecure standards, but will have a score for your project. Start by entering your project's
-      name.
+      good understanding of our Architecure standards, but will have a score for your project. Start by telling us a few things about your project.
     </ion-card-content>
 
   </ion-card>
@@ -37,6 +36,33 @@
         required
         minlength="3"></ion-input>
       </ion-item>
+
+      <ion-item class="mycolor">
+          <ion-label floating>Brief Decription</ion-label>
+          <!-- <ion-input type="text" required class="form-control"></ion-input> -->
+          <ion-textarea type="text-area" 
+          class="form-control" 
+          name="project-desc"
+          ngModel
+          #nameField="ngModel"
+          [(ngModel)] = "pdesc"
+          required
+          minlength="8"></ion-textarea>
+        </ion-item>
+
+
+      <ion-item class="mycolor">
+          <ion-label floating>Your Email</ion-label>
+          <!-- <ion-input type="text" required class="form-control"></ion-input> -->
+          <ion-input type="text-area" 
+          class="form-control" 
+          name="project-assessor"
+          ngModel
+          #nameField="ngModel"
+          [(ngModel)] = "assessor"
+          required email
+          minlength="4"></ion-input>
+        </ion-item>
     </form>
   
   <ion-row>
