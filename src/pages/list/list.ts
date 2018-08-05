@@ -39,7 +39,7 @@ export class ListPage {
     }
 
     this.getProjects();
-
+    
 
 
   }
@@ -48,13 +48,7 @@ export class ListPage {
     this.afDatabase.list('/projects').valueChanges().subscribe((data) => {
       console.log("datas", data);
       this.projects = data;
-      let txt = data.length.toString();
-
-
-    setTimeout(function () {
-      document.getElementById('odometer').innerHTML = txt;
-    }, 1000);
-
+      this.updateOdometer(data);
       this.helper.setProjectList(data);
     }, (err) => {
       console.log("probleme : ", err)
@@ -62,6 +56,14 @@ export class ListPage {
 
   }
 
+  updateOdometer(data) {
+    let txt =   data.length.toString();
+    setTimeout(function () {
+      document.getElementById('odometer').innerHTML = txt;
+      console.log('updating odometer...');
+      
+    }, 1000);
+  }
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
     // this.navCtrl.push(ListPage, {
@@ -101,6 +103,19 @@ export class ListPage {
     // this.menu.enable(false, 'menu1');
     // this.menu.enable(true, 'menu2');
     // this.menu.open();
+  }
+  ionViewDidLoad(){
+    console.log("ionViewDidLoad called...");
+
+  }
+
+  ionViewWillEnter(){
+    console.log("ionViewWillEnter called...");
+  }
+
+  ionViewDidEnter(){
+    console.log("ionViewDidEnter called...");
+
   }
 
 }

@@ -23,7 +23,7 @@ export class FormPage {
   projectTitle: string;
   showSpinner = false;
   attempted:number = 0;
-  // odo:any;
+  // odo:any=90;
 
   @ViewChild(Content) content: Content;
 
@@ -50,8 +50,8 @@ export class FormPage {
 
   ngAfterViewInit() {
     //   setTimeout(function(){
-    //     document.getElementById('odometer').innerHTML = '123344';
-    //     console.log("odo -> ");
+    //     document.getElementById('odometer2').innerHTML = '123344';
+    //     console.log("odometer new -> ");
 
     // }, 1000);
   }
@@ -97,7 +97,7 @@ export class FormPage {
     }
 
     // setTimeout(function () {
-    //   document.getElementById('odometer').innerHTML = '200';
+    //   document.getElementById('odometer2').innerHTML = '200';
     // }, 1000);
 
   }
@@ -191,15 +191,7 @@ export class FormPage {
           }
     
         });
-        this.helper.addData({
-          'title':this.projectTitle,
-          'description':'lorem ipspum',
-          'assessor':'Tim O\'neal',
-          'sponsor': 'John Doe',
-          'lastUpdated': new Date().toLocaleString(),
-          'questions':this.questions,
-          'score':80
-        });
+      
     
         // this.correct = this.questions.length - wrong;
         // this.score = Math.round((Number(this.correct) / this.questions.length) * 100);
@@ -244,14 +236,24 @@ export class FormPage {
   }
   closeResults() {
     this.navCtrl.pop();
+    this.navCtrl.pop();
     this.presentToast("Thank you for taking the assessment. Your assessment has been added to this list. Cheers!");
+    this.helper.addData({
+      'title':this.projectTitle,
+      'description':'lorem ipspum',
+      'assessor':'Tim O\'neal',
+      'sponsor': 'John Doe',
+      'lastUpdated': new Date().toLocaleString(),
+      'questions':this.questions,
+      'score':80
+    });
   }
 
   presentToast(msg: string) {
     let toast = this.toastCtrl.create({
       message: msg,
       duration: 3000,
-      position: 'middle',
+      position: 'top',
       cssClass: "toastClass"
     });
 

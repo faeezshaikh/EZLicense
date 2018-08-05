@@ -17,8 +17,8 @@ export class CreatePage {
     console.log('user entered->:', this.pname);
     
 
-     this.navCtrl.setRoot(FormPage,{title:this.pname});
-    //  this.navCtrl.push(FormPage, {});
+    //  this.navCtrl.setRoot(FormPage,{title:this.pname});
+     this.navCtrl.push(FormPage, {title:this.pname});
   }
 
   dismiss() {
