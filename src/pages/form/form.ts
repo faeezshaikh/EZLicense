@@ -187,11 +187,13 @@ export class FormPage {
     
         });
         this.helper.addData({
-          'title':'New Proj',
+          'title':this.projectTitle,
+          'description':'lorem ipspum',
           'assessor':'Tim O\'neal',
           'sponsor': 'John Doe',
           'lastUpdated': new Date().toLocaleString(),
-          'questions':this.questions
+          'questions':this.questions,
+          'score':80
         });
     
         // this.correct = this.questions.length - wrong;
