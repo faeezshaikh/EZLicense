@@ -1,5 +1,5 @@
-<script src="http://github.hubspot.com/odometer/odometer.js"></script>
-<link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-car.css" />
+<!-- <script src="http://github.hubspot.com/odometer/odometer.js"></script>
+<link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-car.css" /> -->
 <ion-header>
     <ion-navbar color="primary">
 
@@ -21,6 +21,7 @@
             <h3>{{projectTitle}}</h3>
             <h4> {{data.quiz.name|| "Assessment"}}</h4>
             <img height="80" width="80" src="{{data.quiz.logo}}" (click)="openHelp()" />
+            <div id="odometer" class="odometer">11{{score}}</div>
             <!-- <div id="odometer" class="odometer">{{odometer}}</div> -->
         </div>
 

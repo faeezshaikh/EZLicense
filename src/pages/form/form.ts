@@ -24,6 +24,7 @@ export class FormPage {
   odometer: any = "0";
   showSpinner = false;
   attempted:number = 0;
+  score:string='0';
 
   @ViewChild(Content) content: Content;
 
@@ -95,6 +96,11 @@ export class FormPage {
     } else {
       this.questionNumber++;
     }
+
+    setTimeout(function () {
+      document.getElementById('odometer').innerHTML = '4';
+    }, 1000);
+
   }
 
   goTo(index: number) {

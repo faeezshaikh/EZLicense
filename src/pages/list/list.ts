@@ -13,21 +13,21 @@ import { DetailsPage } from '../details/details';
 export class ListPage {
   selectedItem: any;
   icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  items: Array<{ title: string, note: string, icon: string }>;
   projects: any;
   // afDatabase:any;
   activeMenu: string;
   odo:any = 123;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase,
-    public modalCtrl: ModalController,public helper:HelperProvider,public menu: MenuController) {
+    public modalCtrl: ModalController, public helper: HelperProvider, public menu: MenuController) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     this.activeMenu = 'menu1'
 
     // Let's populate this page with some filler content for funzies
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
+      'american-football', 'boat', 'bluetooth', 'build'];
 
     this.items = [];
     for (let i = 1; i < 11; i++) {
@@ -38,25 +38,25 @@ export class ListPage {
       });
     }
 
-   this.getProjects();
-   setTimeout(function(){
-    // odometer.innerHTML = 456;
-    document.getElementById('odometer').innerHTML = '124';
-    // this.odo=567;
-}, 1000);
-   
+    this.getProjects();
+
+
+    setTimeout(function () {
+      document.getElementById('odometer').innerHTML = '2345';
+    }, 1000);
+
 
   }
 
   getProjects() {
-    this.afDatabase.list('/projects').valueChanges().subscribe((data) => { 
+    this.afDatabase.list('/projects').valueChanges().subscribe((data) => {
       console.log("datas", data);
       this.projects = data;
       this.helper.setProjectList(data);
-  },(err)=>{
-     console.log("probleme : ", err)
-  });
- 
+    }, (err) => {
+      console.log("probleme : ", err)
+    });
+
   }
 
   itemTapped(event, item) {
@@ -77,7 +77,7 @@ export class ListPage {
     let val = ev.target.value;
 
     if (val && val.trim() !== '') {
-      this.projects = this.projects.filter(function(item) {
+      this.projects = this.projects.filter(function (item) {
         return item.title.toLowerCase().includes(val.toLowerCase());
       });
     }
@@ -94,7 +94,7 @@ export class ListPage {
 
     // this.activeMenu = 'menu2';
     // console.log('Menu2');
-    
+
     // this.menu.enable(false, 'menu1');
     // this.menu.enable(true, 'menu2');
     // this.menu.open();
