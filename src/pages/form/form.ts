@@ -186,7 +186,13 @@ export class FormPage {
           }
     
         });
-        this.helper.addData();
+        this.helper.addData({
+          'title':'New Proj',
+          'assessor':'Tim O\'neal',
+          'sponsor': 'John Doe',
+          'lastUpdated': new Date().toLocaleString(),
+          'questions':this.questions
+        });
     
         // this.correct = this.questions.length - wrong;
         // this.score = Math.round((Number(this.correct) / this.questions.length) * 100);

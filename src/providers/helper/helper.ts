@@ -40,10 +40,10 @@ export class HelperProvider {
     });
   }
 
-  addData() {
+  addData(obj) {
     console.log('adding data');
     
-    this.projects$.push({'title':'new','assessor':'faeez'});
+    this.projects$.push(obj);
   }
   load() {
     
