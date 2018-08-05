@@ -49,11 +49,6 @@ export class FormPage {
   }
 
   ngAfterViewInit() {
-    //   setTimeout(function(){
-    //     document.getElementById('odometer2').innerHTML = '123344';
-    //     console.log("odometer new -> ");
-
-    // }, 1000);
   }
 
 
@@ -96,9 +91,6 @@ export class FormPage {
       this.questionNumber++;
     }
 
-    // setTimeout(function () {
-    //   document.getElementById('odometer2').innerHTML = '200';
-    // }, 1000);
 
   }
 

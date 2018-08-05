@@ -60,7 +60,6 @@ export class ListPage {
     let txt =   data.length.toString();
     setTimeout(function () {
       document.getElementById('odometer').innerHTML = txt;
-      // console.log('updating odometer...');
       
     }, 1000);
   }
