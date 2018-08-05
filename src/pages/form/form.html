@@ -1,9 +1,13 @@
 <!-- <script src="http://github.hubspot.com/odometer/odometer.js"></script>
-<link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-car.css" /> -->
+<style>
+    <link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-car.css" />
+</style> -->
 <ion-header>
     <ion-navbar color="primary">
-
-        <ion-title>Form</ion-title>
+        <ion-title>Form!</ion-title>
+        <!-- <ion-buttons large end>
+                <button ion-button outline clear (click)="dismiss()"><div id="odometer" class="odometer">{{odo}}</div></button>
+        </ion-buttons> -->
     </ion-navbar>
 </ion-header>
 
@@ -189,11 +193,6 @@
                         </div>
                     </div>
                     <p></p>
-                    <!-- <button ion-button color="secondary" *ngIf="isCorrect(question) == 'Correct'" round>Correct Answer.</button>
-                    <button ion-button color="danger" *ngIf="isCorrect(question) != 'Correct'" round>Wrong Answer.</button>
-    
-                    <button *ngIf="question.Explanation" (click)="openExplanationModal(question)" ion-button round>Explanation</button>
-     -->
                 </div>
             </div>
             <div class="center">
@@ -222,13 +221,7 @@
 
         <ion-content>
             <ion-list>
-                <!-- <button ion-item  detail-none>
-                    Close Menu 2
-                </button> -->
                 <div [innerHTML]="somedata"></div>
-
-
-
                 <p>&nbsp;</p>
                 <div>
                     Was this helpful?

@@ -17,7 +17,6 @@ export class ListPage {
   projects: any;
   // afDatabase:any;
   activeMenu: string;
-  // odo:any = 123;
   odo:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase,

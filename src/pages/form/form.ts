@@ -21,10 +21,9 @@ export class FormPage {
   activeMenu: string;
   somedata: string;
   projectTitle: string;
-  odometer: any = "0";
   showSpinner = false;
   attempted:number = 0;
-  score:string='0';
+  // odo:any;
 
   @ViewChild(Content) content: Content;
 
@@ -97,9 +96,9 @@ export class FormPage {
       this.questionNumber++;
     }
 
-    setTimeout(function () {
-      document.getElementById('odometer').innerHTML = '4';
-    }, 1000);
+    // setTimeout(function () {
+    //   document.getElementById('odometer').innerHTML = '200';
+    // }, 1000);
 
   }
 
