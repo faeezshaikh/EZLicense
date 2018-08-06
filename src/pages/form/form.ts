@@ -22,6 +22,9 @@ export class FormPage {
   activeMenu: string;
   somedata: string;
   projectTitle: string;
+  projectDescription:string;
+  assessor:string;
+
   showSpinner = false;
   attempted:number = 0;
   // odo:any=90;
@@ -42,6 +45,8 @@ export class FormPage {
 
     this.questionNumber = 1;  // wil always start at 1.
     this.projectTitle = navParams.get('title');
+    this.projectDescription = navParams.get('desc');
+    this.assessor = navParams.get('assessor');
     console.log("Project is ", this.projectTitle);
 
 
@@ -127,7 +132,7 @@ export class FormPage {
           handler: () => {
             console.log('Abort clicked');
             this.navCtrl.pop();
-            this.navCtrl.pop();
+            // this.navCtrl.pop();
             // this.navCtrl.setRoot(ListPage);
 
           }
@@ -243,12 +248,12 @@ export class FormPage {
   }
   closeResults() {
     this.navCtrl.pop();
-    this.navCtrl.pop();
+    // this.navCtrl.pop();
     this.presentToast("Thank you for taking the assessment. Cheers!");
     this.helper.addData({
       'title':this.projectTitle,
-      'description':'lorem ipspum',
-      'assessor':'Tim O\'neal',
+      'description':this.projectDescription,
+      'assessor':this.assessor,
       'sponsor': 'John Doe',
       'lastUpdated': new Date().toLocaleString(),
       'questions':this.questions,
