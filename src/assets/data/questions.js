@@ -18,6 +18,30 @@
     },
     {
         "Id": 2,
+        "Name": "Is Ameren data encrypted at rest?", 
+        "Description":"Encryption of data is important. If bad actors get hold of Ameren data storage (database disks), they will be unable to make sense of it if its encrypted using a strong encryption algorithm like SHA 256. Click here to learn more:", 
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
+            { "Id": 1057, "QuestionId": 1010, "Name": "No"},
+            { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }],
+        "Explanation": "AWS Data Pipeline provides built-in support for the following preconditions: DynamoDBDataExists,DynamoDBTableExists,S3KeyExists,S3PrefixExists,ShellCommandPrecondition",
+        "Ref":"https://aws.amazon.com/datapipeline/faqs/"   
+        
+    },
+    {
+        "Id": 3,
+        "Name": "Is Ameren data encrypted in transit?", 
+        "Description":"It is important that when you are transferring data across the internet or across networks, you encrypt data. This will prevent from 'Man in the middle attacks' - a term used to describe programs or bad actors trying to hack into the system by listening to the traffic on the wire. Ckick here to learn more:", 
+        
+        "Options": [
+            { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
+            { "Id": 1057, "QuestionId": 1010, "Name": "No"},
+            { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }],
+         "Explanation": "Your volumes are stored in Amazon S3 and accessible through AWS Storage Gateway. You cannot directly access them by using Amazon S3 API actions. You can take point-in-time snapshots of gateway volumes that are made available in the form of Amazon EBS snapshots. Use the file interface to work with your data natively in S3.",
+        "Ref":"https://aws.amazon.com/storagegateway/faqs/"  
+    },
+    {
+        "Id": 4,
         "Name": "Where do you plan on hosting the data?", 
         "Description":"Typically you will need some kind of storage (think database) to store your data. This storage can be hosted inside the Ameren Data Center (on-prem network), or externally.",
         
@@ -25,11 +49,11 @@
             { "Id": 1055, "QuestionId": 1010, "Name": "Ameren Data Center"},
             { "Id": 1057, "QuestionId": 1010, "Name": "Ameren VPC in AWS"},
             { "Id": 1058, "QuestionId": 1010, "Name": "Public Cloud" },
-            { "Id": 1058, "QuestionId": 1010, "Name": "Expernal Data Provider"}]
+            { "Id": 1058, "QuestionId": 1010, "Name": "External Data Provider"}]
         
     },
     {
-        "Id": 3,
+        "Id": 5,
         "Description": "Netskope is a tool that Cyber Security at Ameren uses to evaluate external solutions. The Netskope tool has conducted tests for several commercial products in the market and assigned scores to them. Below is an example of what a score looks like. To learn more, click here:", 
         "Name":"Is the Netskope rating of the product/solution you plan on using above 50?",
         "Pic": "http://www.detech.com.tr/wp-content/uploads/3-3-2-netskop-bulut-guvenligi-03.png",
@@ -42,7 +66,7 @@
         "Ref":"http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html"    
     },
     {
-        "Id": 4,
+        "Id": 6,
         "Description": "Some projects will hire a vendor who will help with implmenting a solution. Occassionaly the vendor will own or host Ameren data", 
         "Name":"If the vendor owns data, is there a way for Ameren to download the data from the vendor?",
         "Options": [
@@ -54,7 +78,7 @@
         
     },
     {
-        "Id": 5,
+        "Id": 7,
         "Description": "It is a very good practice to backup data to prevent from accidental loss , theft and also for disaster recovery purposes.", 
         "Name":"Is any customer data backed up to a different location other than Ameren Data Center or Ameren AWS VPC?",
         "Options": [
@@ -64,7 +88,7 @@
         
     },
     {
-        "Id": 6,
+        "Id": 8,
         "Description": "From a regulatory standpoint it is very important that Ameren stores all data inside the US. Click here to learn more:", 
         "Name":"Is the data and its backup always stored inside the US?",
         "Options": [
@@ -75,30 +99,7 @@
         "Ref":"http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html"   
         
     },
-    {
-        "Id": 7,
-        "Name": "Is Ameren data encrypted at rest?", 
-        "Description":"Encryption of data is important. If bad actors get hold of Ameren data storage (databases), they will be unable to make sense of it if its encrypted using a strong encryption algorithm like SHA 256. Click here to learn more:", 
-        "Options": [
-            { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
-            { "Id": 1057, "QuestionId": 1010, "Name": "No"},
-            { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }],
-        "Explanation": "AWS Data Pipeline provides built-in support for the following preconditions: DynamoDBDataExists,DynamoDBTableExists,S3KeyExists,S3PrefixExists,ShellCommandPrecondition",
-        "Ref":"https://aws.amazon.com/datapipeline/faqs/"   
-        
-    },
-    {
-        "Id": 8,
-        "Name": "Is Ameren data encrypted in transit?", 
-        "Description":"It is important that when you are transferring data across the internet or across networks, you encrypt data. This will prevent from 'Man in the middle attacks' - a term used to describe programs or bad actors trying to hack into the system by listening to the traffic on the wire. Ckick here to learn more:", 
-        
-        "Options": [
-            { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
-            { "Id": 1057, "QuestionId": 1010, "Name": "No"},
-            { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }],
-         "Explanation": "Your volumes are stored in Amazon S3 and accessible through AWS Storage Gateway. You cannot directly access them by using Amazon S3 API actions. You can take point-in-time snapshots of gateway volumes that are made available in the form of Amazon EBS snapshots. Use the file interface to work with your data natively in S3.",
-        "Ref":"https://aws.amazon.com/storagegateway/faqs/"  
-    },
+    
     {
         "Id": 9,
         "Name": "Has the vendor's data ever been breached?", 

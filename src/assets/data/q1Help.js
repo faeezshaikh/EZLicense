@@ -4,15 +4,15 @@
 },
 {
     "id":2,
-    "help":"Help for second question"
+    "help":"<p><strong>Ameren Data Encryption Policy</strong></p><p>Information Owners and Privileged Users must ensure that Highly Confidential data and information is encrypted at all times when stored electronically or in transit. In addition, Highly Confidential electronic data and information must never be transmitted outside an Ameren owned or managed facility. Exceptions to this policy must be approved by Information Security or be mandated by law. Information Owners must consult with Information Security before approving storage or transmission of any Highly Confidential electronic data.</p><p>Information Owners and Privileged Users must ensure the Confidential data is encrypted in transport or when stored on any portable electronic media. In addition, Information Owners and Privileged Users should strongly consider encryption for any Confidential data and information maintained in electronic format inside the Ameren network.</p><p>For methods of encryption and other details pls refer to the <a href=\"http://scholar/ITPolicies/Documents/Data_Classification_Encryption/Data%20and%20Information%20Encryption%20Policy.pdf#search=Data%20and%20Information%20Encryption%20Policy\"> DATA AND INFORMATION ENCRYPTION POLICY </a></p>"
 },
 {
     "id":3,
-    "help":"Help for third question"
+    "help":"Help for 2 question"
 },
 {
     "id":4,
-    "help":"Help for fourth question"
+    "help":"Help for 3 question"
 },
 {
     "id":5,

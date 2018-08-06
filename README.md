@@ -12,6 +12,7 @@ aws s3 cp --recursive ./www s3://turboarb/www
 4. Calculate score.
 5. Calculate image for score.
 6. Contact us page
+7. Disable create button in form
 
 5. Bug wth sidemenu
 6. Bug with odometer css changing on clicks in sidemenu
