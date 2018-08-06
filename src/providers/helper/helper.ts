@@ -32,8 +32,8 @@ export class HelperProvider {
 
 
 
-  getData() {
-    return this.load().then(res => {
+  getData(url) {
+    return this.load(url).then(res => {
       this.data = res;
       console.log('data received->', res);
       return this.data;
@@ -48,7 +48,7 @@ export class HelperProvider {
     
     this.projects$.push(obj);
   }
-  load() {
+  load(url) {
     
         console.log("Loading file..");
         
@@ -57,7 +57,7 @@ export class HelperProvider {
         // }
         // if (!this.data) {
           return new Promise(resolve => {
-            this.http.get('assets/data/questions.js')
+            this.http.get(url)
               // .map(res => res.json())
               .subscribe(data => {
                 this.data = data;

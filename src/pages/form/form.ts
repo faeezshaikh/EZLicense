@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, MenuController, NavParams, Content, AlertController, ToastController } from 'ionic-angular';
 import { HelperProvider } from '../../providers/helper/helper';
-import { ListPage } from '../list/list';
+// import { ListPage } from '../list/list';
+import _ from "lodash";
 
 
 @IonicPage()
@@ -30,7 +31,7 @@ export class FormPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public helper: HelperProvider,
     public menu: MenuController, public alertCtrl: AlertController, private toastCtrl: ToastController) {
 
-    helper.getData().then(theResult => {
+    helper.getData('assets/data/questions.js').then(theResult => {
       this.data = theResult;
       this.questions = theResult.questions;
       //  this.questions = this.shuffle(this.questions);   /// TODO: Make shuffling of question order user configurable
@@ -194,7 +195,7 @@ export class FormPage {
       }
     
 
-  openHelp() {
+  openHelp(questionId) {
     this.activeMenu = 'menu2';
     console.log('Menu2');
 
@@ -202,7 +203,20 @@ export class FormPage {
     this.menu.enable(true, 'menu2');
     this.menu.open();
 
-    this.somedata = "<h3>What is Lorem Ipsum?</h3><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. <ul><li>Coffee</li><li>Tea</li><li>Milk</li></ul>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p> Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>"
+    //this.somedata = "<h3>What is Lorem Ipsum?</h3><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. <ul><li>Coffee</li><li>Tea</li><li>Milk</li></ul>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p> Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>"
+
+    // this.helper.load('assets/data/q1Help.txt')
+    this.helper.getData('assets/data/q1Help.js').then(theResult => {
+      
+      console.log("Help content array => ", theResult);
+      console.log('Question id :',questionId);
+      
+      let item = _.find(theResult,{'id':questionId});
+      if(item) {
+        console.log("Help content  found ", item);
+        this.somedata = item.help;
+      }
+    });
 
   }
 

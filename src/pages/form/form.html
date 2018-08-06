@@ -1,7 +1,7 @@
 
 <ion-header>
     <ion-navbar color="primary">
-        <ion-title>Form!</ion-title>
+        <ion-title>Form</ion-title>
     
     </ion-navbar>
 </ion-header>
@@ -19,7 +19,7 @@
         <div class="center">
             <h3>{{projectTitle}}</h3>
             <p> {{data.quiz.name|| "Assessment"}}</p>
-            <img height="80" width="80" src="{{data.quiz.logo}}" (click)="openHelp()" />
+            <img height="80" width="80" src="{{data.quiz.logo}}" />
         </div>
 
         <ion-card>
@@ -34,7 +34,7 @@
             <ion-card-content>
                 <ion-item *ngIf="!question.Pic">
                     <h3 style="margin-top:-0rem;white-space:normal;">{{question.Description}}&nbsp;
-                        <ion-icon item-center (click)="openHelp()" name="help-circle"></ion-icon>
+                        <ion-icon item-center (click)="openHelp(question.Id)" name="help-circle"></ion-icon>
                     </h3>
                 </ion-item>
                 
@@ -42,7 +42,7 @@
                         <ion-row>
                             <ion-col> 
                                 <h3 style="margin-top:-0rem;white-space:normal;">{{question.Description}}&nbsp;
-                                    <ion-icon item-center (click)="openHelp()" name="help-circle"></ion-icon>
+                                    <ion-icon item-center (click)="openHelp(question.Id)" name="help-circle"></ion-icon>
                                 </h3>
                                 <ion-item class="item item-text-wrap item-divider " style="font-weight:bold">{{question.Name}}</ion-item>
                                 <ion-list radio-group [(ngModel)]="question.answer">
