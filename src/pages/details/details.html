@@ -36,28 +36,26 @@
             </div>
           </ion-col>
           <ion-col>
-            <div class="item item-body">
+            <div class="item item-body" style="text-align:left">
 
               <div class="row">
-                <div class="col col-80">Total 1Questions</div>
-                <div class="col col-20">{{project.questions?.length}}</div>
+                <div class="col col-80">Assessor</div>
+                <div class="col col-20">{{project.assessor}}</div>
               </div>
 
-              <!-- <div class="row">
-                                    <div class="col col-80">Total attempted</div>
-                                    <div class="col col-20">{{attempted}}</div>
-                                </div> -->
+              <div class="row">
+                <div class="col col-80">Last Assessed</div>
+                <div class="col col-20">{{project.lastUpdated}}</div>
+              </div>
 
               <div class="row">
-                <div class="col col-80">Your score</div>
+                <div class="col col-80">Assessment score</div>
                 <div class="col col-20">
                   <strong>{{project.score}} %</strong>
                 </div>
               </div>
               <div class="row">
-                <div class="col col-80">
-                  <strong>Result</strong>
-                </div>
+                <div class="col col-80">Result</div>
                 <div class="col col-20">
                   <strong>{{project.verdict}}</strong>
                 </div>
@@ -68,13 +66,22 @@
           </ion-col>
         </ion-row>
         <ion-row>
-            <hr/>
-            <p style="text-align:left"><strong>Explanation: </strong>Although the phrase is nonsense, it does have a long history. The phrase has been used for several centuries by typographers to show the most distinctive features of their fonts. It is used because the letters involved and the letter spacing in those combinations reveal, at their best, the weight, design, and other important features of the typeface.</p>
-            <p>&nbsp;</p>
-            <p style="text-align:left"><strong>Recommendations: </strong> A 1994 issue of "Before & After" magazine traces "Lorem ipsum ..." to a jumbled Latin version of a passage from de Finibus Bonorum et Malorum, a treatise on the theory of ethics written by Cicero in 45 B.C. The passage "Lorem ipsum ..." is taken from text that reads, "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ...," which translates as, "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
-                </p>
-            <!-- <img class="full-image" height="150" width="100" ng-src="data/img/table.jpg"> -->
-           
+          <hr/>
+          <p style="text-align:left">
+            <strong>Explanation: </strong>Although the phrase is nonsense, it does have a long history. The phrase has been used
+            for several centuries by typographers to show the most distinctive features of their fonts. It is used because
+            the letters involved and the letter spacing in those combinations reveal, at their best, the weight, design,
+            and other important features of the typeface.</p>
+          <p>&nbsp;</p>
+          <p style="text-align:left">
+            <strong>Recommendations: </strong> A 1994 issue of "Before & After" magazine traces "Lorem ipsum ..." to a jumbled Latin
+            version of a passage from de Finibus Bonorum et Malorum, a treatise on the theory of ethics written by Cicero
+            in 45 B.C. The passage "Lorem ipsum ..." is taken from text that reads, "Neque porro quisquam est qui dolorem
+            ipsum quia dolor sit amet, consectetur, adipisci velit ...," which translates as, "There is no one who loves
+            pain itself, who seeks after it and wants to have it, simply because it is pain..."
+          </p>
+          <!-- <img class="full-image" height="150" width="100" ng-src="data/img/table.jpg"> -->
+
         </ion-row>
       </ion-grid>
     </ion-card>
@@ -82,32 +89,32 @@
 
 
     <ion-card>
-    <p class="center" style="font-size:1.9rem">
-      <u>The Assessment Responses</u>
-    </p>
-    <hr/>
-    <div *ngFor="let question of project.questions; let i = index">
-      <div style="text-align:left">
-        <strong>{{i + 1}}. {{question.Name}}</strong>
-        <ul *ngIf="question.answer">
-          <li>{{question.answer}}</li>
-        </ul> 
-        <ul *ngIf="!question.answer">
+      <p class="center" style="font-size:1.9rem">
+        <u>The Assessment Responses</u>
+      </p>
+      <hr/>
+      <div *ngFor="let question of project.questions; let i = index">
+        <div style="text-align:left">
+          <strong>{{i + 1}}. {{question.Name}}</strong>
+          <ul *ngIf="question.answer">
+            <li>{{question.answer}}</li>
+          </ul>
+          <ul *ngIf="!question.answer">
             <li>No response</li>
-        </ul> 
-        <!-- <div class="result-options">
+          </ul>
+          <!-- <div class="result-options">
           <div *ngFor="let Option of question.Options">
             <label class="{{  question.answer == Option.Name ? 'result-correct': 'result-incorrect' }}">
               <input id="{{Option.Id}}" type="checkbox" disabled="disabled" readonly="readonly" [checked]="question.answer == Option.Name"/> {{Option.Name}}
             </label>
           </div>
         </div> -->
-        <p>&nbsp;</p>
-      </div>
-    </div>
-    <div class="center">
-            <button ion-button (click)="dismiss()">Close</button>
+          <p>&nbsp;</p>
         </div>
+      </div>
+      <div class="center">
+        <button ion-button (click)="dismiss()">Close</button>
+      </div>
     </ion-card>
 
   </div>
