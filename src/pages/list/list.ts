@@ -57,6 +57,8 @@ export class ListPage {
   }
 
   updateOdometer(data) {
+    console.log('updating odometer');
+    
     let txt =   data.length.toString();
     setTimeout(function () {
       document.getElementById('odometer').innerHTML = txt;
@@ -114,6 +116,11 @@ export class ListPage {
 
   ionViewDidEnter(){
     console.log("ionViewDidEnter called...");
+    if(this.projects) {
+      console.log('Calling update odometer');
+      
+      this.updateOdometer(this.projects);
+    }
 
   }
 
