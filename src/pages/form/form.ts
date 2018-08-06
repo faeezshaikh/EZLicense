@@ -24,7 +24,7 @@ export class FormPage {
   projectTitle: string;
   projectDescription:string;
   assessor:string;
-
+  thanked=false;
   showSpinner = false;
   attempted:number = 0;
   // odo:any=90;
@@ -55,6 +55,10 @@ export class FormPage {
   }
 
   ngAfterViewInit() {
+  }
+
+  thankyou(){
+    this.thanked = true;
   }
 
 
@@ -203,6 +207,7 @@ export class FormPage {
   openHelp(questionId) {
     this.activeMenu = 'menu2';
     console.log('Menu2');
+    this.thanked = false;
 
     this.menu.enable(false, 'menu1');
     this.menu.enable(true, 'menu2');

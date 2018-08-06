@@ -223,11 +223,15 @@
             <ion-list>
                 <div [innerHTML]="somedata"></div>
                 <p>&nbsp;</p>
-                <div>
+                <div *ngIf="!thanked">
                     Was this helpful?
-                    <button ion-button color="light" outline>No</button>
-                    <button ion-button color="light" outline>Yes</button>
+                    <button ion-button color="light" outline (click)="thankyou()">No</button>
+                    <button ion-button color="light" outline (click)="thankyou()">Yes</button>
                 </div>
+                <div *ngIf="thanked">
+                        <ion-icon name="thumbs-up"></ion-icon>&nbsp;&nbsp;Thank you for your feedback!
+                        
+                    </div>
             </ion-list>
 
 
