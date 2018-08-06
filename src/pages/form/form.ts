@@ -1,11 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, MenuController, NavParams, Content, AlertController, ToastController } from 'ionic-angular';
+import {  NavController, MenuController, NavParams, Content, AlertController, ToastController } from 'ionic-angular';
 import { HelperProvider } from '../../providers/helper/helper';
 // import { ListPage } from '../list/list';
 import _ from "lodash";
 
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-form',
   templateUrl: 'form.html',

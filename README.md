@@ -1,5 +1,12 @@
+ npm run build
+aws s3 cp --recursive ./www s3://turboarb/www
+
 
 1. Deployment
+    1. Css & js for odometer
+    2. Spinner calculating score
+    3. pic for netskope
+    4. other pics download
 7. Update questions content
 8. Update help content ** main!
 4. Calculate score.
