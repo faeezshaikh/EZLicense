@@ -27,6 +27,8 @@ export class FormPage {
   thanked=false;
   showSpinner = false;
   attempted:number = 0;
+  explanation:string;
+  recommendations:string;
   // odo:any=90;
 
   @ViewChild(Content) content: Content;
@@ -184,6 +186,9 @@ export class FormPage {
 
   calculateAndUpdateScore() {
     
+    this.explanation = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat. Fusce lacinia gravida lorem, eget dictum lacus dignissim tempor. Quisque euismod vitae nisl et sollicitudin. Nulla massa ligula, molestie in tincidunt a, dapibus ac nibh. Donec elementum pretium eros, id rhoncus risus lacinia at. In posuere erat eros, a fermentum purus fringilla sed. Donec pretium placerat libero, ut pulvinar augue sagittis vel. Vivamus sit amet pellentesque eros, in porttitor lectus. Sed vel tincidunt mauris, condimentum ultrices ex. Aliquam mollis fermentum libero et varius. Nullam vestibulum vitae neque sit amet laoreet. Vestibulum pellentesque tellus enim, et varius risus auctor vel. Praesent eget nisi sit amet diam dictum fermentum. Maecenas augue est, dictum in felis a, pharetra pharetra augue.";
+    this.recommendations="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat. Fusce lacinia gravida lorem, eget dictum lacus dignissim tempor. Quisque euismod vitae nisl et sollicitudin. Nulla massa ligula, molestie in tincidunt a, dapibus ac nibh. Donec elementum pretium eros, id rhoncus risus lacinia at. In posuere erat eros, a fermentum purus fringilla sed. Donec pretium placerat libero, ut pulvinar augue sagittis vel. Vivamus sit amet pellentesque eros, in porttitor lectus. Sed vel tincidunt mauris, condimentum ultrices ex. Aliquam mollis fermentum libero et varius. Nullam vestibulum vitae neque sit amet laoreet. Vestibulum pellentesque tellus enim, et varius risus auctor vel. Praesent eget nisi sit amet diam dictum fermentum. Maecenas augue est, dictum in felis a, pharetra pharetra augue.";
+
     
         let that = this;
         // $scope.$broadcast('timer-stop');
@@ -196,7 +201,6 @@ export class FormPage {
     
         });
       
-    
         // this.correct = this.questions.length - wrong;
         // this.score = Math.round((Number(this.correct) / this.questions.length) * 100);
         // this.verdict = (this.score > 65) ? 'Pass' : 'Fail';
@@ -270,7 +274,9 @@ export class FormPage {
       'lastUpdated': new Date().toLocaleString(),
       'questions':this.questions,
       'score':80,
-      'verdict':'Aligned'
+      'verdict':'Aligned',
+      'explanation':this.explanation,
+      'recommendations':this.recommendations
     });
   }
 
