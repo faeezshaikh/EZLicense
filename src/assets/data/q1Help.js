@@ -53,6 +53,10 @@
 {
     "id":14,
     "help":"<p><strong>Role Based Access Control</strong></p><p>Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within an enterprise. In this context, access is the ability of an individual user to perform a specific task, such as view, create, or modify a file. Roles are defined according to job competency, authority, and responsibility within the enterprise.</p><p>When properly implemented, RBAC enables users to carry out a wide range of authorized tasks by dynamically regulating their actions according to flexible functions, relationships, and constraints. This is in contrast to conventional methods of access control, which grant or revoke user access on a rigid, object-by-object basis. In RBAC, roles can be easily created, changed, or discontinued as the needs of the enterprise evolve, without having to individually update the privileges for every user.</p>"
+},
+{
+    "id":15,
+    "help":"<p><strong>Single Sign On (SSO) and Active Directory (AD)</strong></p><p>At Ameren we use Microsoft Active Directory to manage employee and contractor usernames and passwords. Sometimes a solution requires you to implement its own identiy system to manage its users. Creation of a separate identity store introduces a lot of maintenance and security hassle. Someone other than the Enterprise Identity Management Team has to manage this identity store and this is not always good.</p><p>Think about what happens when the employee or contractor leaves Ameren and you forget to delete his access to the systems, just because his identity was not centrally managed. This can lead to a serious security breach.</p><p>Hence it is always desirable that projects implementing new solutions or products ensure that the product integrates with AD, so that all identities can be centrally managed.</p>"
 }]
 
 

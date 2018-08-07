@@ -153,6 +153,16 @@
        { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
        { "Id": 1057, "QuestionId": 1010, "Name": "No"},
        { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }]
+} ,
+{
+   "Id": 15,
+   "Name": "Assuming your solution uses a secondary user identity store, can this identity store be disabled?", 
+   "Description":"At Ameren we use Microsoft Active Directory to manage employee and contractor usernames and passwords. Sometimes a solution requires you to implement its own identiy system to manage its users. Click here to learn more:",
+   "tag": "Active Directory (SSO)",
+   "Options": [
+    { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
+    { "Id": 1057, "QuestionId": 1010, "Name": "No"},
+    { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable (solution implements SSO With AD)" }]
 } 
      ]
 }
