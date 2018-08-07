@@ -13,12 +13,12 @@
   
   
    <ion-list>
-          <ion-item text-wrap *ngFor="let r of resources" (click)="openLink($event, paper.link)">
+          <ion-item text-wrap *ngFor="let r of resources" (click)="openLink($event, r.link)">
             <ion-avatar item-left>
                     <img src="{{r.icon}}">
             </ion-avatar>
             <h2>{{r.title}}</h2>
-            <ion-icon item-right name="md-download"></ion-icon>
+            <ion-icon item-right name="{{r.symbol}}"></ion-icon>
           </ion-item>
     </ion-list>
   </ion-content>
