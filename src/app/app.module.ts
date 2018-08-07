@@ -19,6 +19,7 @@ import { FormPage } from '../pages/form/form';
 import { DetailsPage } from '../pages/details/details';
 import { ContactusPage } from '../pages/contactus/contactus';
 import { ResourcesPage } from '../pages/resources/resources';
+import { Ng2OdometerModule } from 'ng2-odometer'; 
  
  
 // AF2 Settings
@@ -45,6 +46,7 @@ export const firebaseConfig = {
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
+    Ng2OdometerModule.forRoot(),
     AngularFireDatabaseModule,
     HttpClientModule
   ],

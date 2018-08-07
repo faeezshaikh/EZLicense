@@ -58,12 +58,7 @@ export class ListPage {
 
   updateOdometer(data) {
     console.log('updating odometer');
-    
-    let txt =   data.length.toString();
-    setTimeout(function () {
-      document.getElementById('odometer').innerHTML = txt;
-      
-    }, 1000);
+    this.odo = data.length.toString();
   }
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!

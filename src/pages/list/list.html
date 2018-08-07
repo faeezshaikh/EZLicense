@@ -12,7 +12,14 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Ameren_logo.svg/2000px-Ameren_logo.svg.png" width="100px" style="margin-bottom:9px;margin-right:10px;" />
    </div>
     <ion-buttons large end>
-        <button ion-button outline clear ><span style="font-family:Arial Narrow, Helvetica, sans-serif;font-size:2rem">Total:</span> &nbsp;<div id="odometer" class="odometer">{{odo}}</div></button>
+        <button ion-button outline clear ><span style="font-family:Arial Narrow, Helvetica, sans-serif;font-size:2rem">Total:</span> &nbsp;
+            <!-- <div id="odometer" class="odometer">{{odo}}</div> -->
+            <ng2-odometer 
+            [number]="odo" 
+            [config]="{ animation: 'count', format: 'd', theme: 'car', value: 0, auto: true }">
+        </ng2-odometer>
+        </button>
+       
     </ion-buttons>
   </ion-navbar>
 </ion-header>
