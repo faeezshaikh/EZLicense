@@ -9,6 +9,7 @@
         "Id": 1,
         "Name": "What is the classification of data involved in your project?",
         "Description":"At Ameren, all data is classified in 4 broad categories depending on its sensitivity. To learn more click here:",
+        "tag":"Data Classification",
         
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Highly Confidential"},
@@ -20,6 +21,7 @@
         "Id": 2,
         "Name": "Is Ameren data encrypted at rest?", 
         "Description":"Encryption of data is important. If bad actors get hold of Ameren data storage (database disks), they will be unable to make sense of it if its encrypted using a strong encryption algorithm like SHA 256. Click here to learn more:", 
+        "tag":"Data Encryption",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
             { "Id": 1057, "QuestionId": 1010, "Name": "No"},
@@ -134,12 +136,33 @@
    ,
    {
       "Id": 12,
-      "Name": "Does your solution or app require access to Ameren's network?", 
-      "Description":"Many apps will require to integrate with existing Ameren systems in order to provide meaningful services. Sometimes app app or a solution maybe completely standalone with no integration requirements. When integration is required however, it is important to understand if the new app/solution will be accessing any systems that reside inside Ameren data center (examples include ADMS, CSS etc.) ",
+      "Name": "Assuming your solution requires access to Ameren's network including Ameren's control systems what is the integration pattern you will use?", 
+      "Description":"Many apps will require to integrate with existing Ameren systems in order to provide meaningful services. Sometimes an app or a solution maybe completely standalone with no integration requirements. When integration is required however, it is important to understand if the new app/solution will be accessing any systems that reside inside Ameren data center (examples include ADMS, CSS etc.) ",
       "Options": [
+       { "Id": 1055, "QuestionId": 1010, "Name": "External to Internal"},
+       { "Id": 1057, "QuestionId": 1010, "Name": "Internal to External"},
+       { "Id": 1058, "QuestionId": 1010, "Name": "Internal to Internal" },
+       { "Id": 1058, "QuestionId": 1010, "Name": "External to External" },
+       { "Id": 1058, "QuestionId": 1010, "Name": "Other" },
+       { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable (app is standalone)" }]
+  } ,
+  {
+     "Id": 13,
+     "Name": "Does software adhere to Ameren's preferred technology list?", 
+     "Description":"See the help section for the Preferred Tech List",
+     "Options": [
+        { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
+        { "Id": 1057, "QuestionId": 1010, "Name": "No"},
+        { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }]
+ } ,
+ {
+    "Id": 14,
+    "Name": "Does the application support role-based authorization?", 
+    "Description":"It is generally a good practice to allow role based access to your systems. See help for more details:",
+    "Options": [
        { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
        { "Id": 1057, "QuestionId": 1010, "Name": "No"},
        { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }]
-  } 
+} 
      ]
 }

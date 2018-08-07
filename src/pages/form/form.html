@@ -112,7 +112,7 @@
     <div *ngIf="mode=='review' && !showSpinner" class="review">
         <p></p>
         <div *ngFor="let question of questions; let i = index;">
-            <div (click)="goTo(i + 1)" class="{{ isAnswered(question) == 'Answered'? 'answered': 'not-answered' }}">{{i + 1}}. {{ isAnswered(question) }}</div>
+            <div (click)="goTo(i + 1)" class="{{ isAnswered(question) == 'Answered'? 'answered': 'not-answered' }}"> <strong>{{i + 1}}.{{question.tag}}</strong> <p>{{ isAnswered(question) }}</p></div>
         </div>
         <p></p>
         <button ion-button (click)="setMode('quiz')"> Back </button>
