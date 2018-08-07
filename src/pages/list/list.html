@@ -12,7 +12,7 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Ameren_logo.svg/2000px-Ameren_logo.svg.png" width="100px" style="margin-bottom:9px;margin-right:10px;" />
    </div>
     <ion-buttons large end>
-        <button ion-button outline clear (click)="dismiss()"><span style="font-family:Arial Narrow, Helvetica, sans-serif;font-size:2rem">Total:</span> &nbsp;<div id="odometer" class="odometer">{{odo}}</div></button>
+        <button ion-button outline clear ><span style="font-family:Arial Narrow, Helvetica, sans-serif;font-size:2rem">Total:</span> &nbsp;<div id="odometer" class="odometer">{{odo}}</div></button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -69,19 +69,20 @@
                                   <ion-item>
                                     <ion-icon name="analytics" item-start large></ion-icon>
                                     <h2>{{p.title}}</h2>
-                                    <p>Contact: {{p.contact}}</p>
+                                    <p>ARB result: {{p.verdict}}</p>
                                   </ion-item>
                                 
                                   <ion-item>
                                     <ion-icon name="logo-usd" item-start large ></ion-icon>
                                     <h2>Sponsor: {{p.sponsor}}</h2>
                                     <!-- <p>14 S. Hop Avenue, Madison, WI 53703</p> -->
-                                    <p>Last Updated: {{p.hiScore || '(Not attempted)'}} {{p.hiScore ? '%' : '' }}</p>
+                                    <p>Last Updated: {{p.lastUpdated }}</p>
                                   </ion-item>
                                 
                                   <ion-item>
                                     <span item-start>Assessor:</span>
-                                    <span item-start>{{p.architect}}</span>
+                                    <!-- <span item-start>{{p.assessor}}</span> -->
+                                    <p>{{p.assessor}}</p>
                                     <button ion-button icon-start clear item-end>
                                       <ion-icon name="paper-plane"></ion-icon>
                                       View Details

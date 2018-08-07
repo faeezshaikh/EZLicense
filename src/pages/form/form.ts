@@ -1,11 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import {  NavController, MenuController, NavParams, Content, AlertController, ToastController } from 'ionic-angular';
 import { HelperProvider } from '../../providers/helper/helper';
-// import { ListPage } from '../list/list';
 import _ from "lodash";
 
 
-// @IonicPage()
 @Component({
   selector: 'page-form',
   templateUrl: 'form.html',
@@ -29,6 +27,8 @@ export class FormPage {
   attempted:number = 0;
   explanation:string;
   recommendations:string;
+  score:any;
+  verdict:any;
   // odo:any=90;
 
   @ViewChild(Content) content: Content;
@@ -63,15 +63,6 @@ export class FormPage {
     this.thanked = true;
   }
 
-
-  ///// [Shuffling of Questions ] //////////
-  // shuffle(a) {
-  //   for (let i = a.length; i; i--) {
-  //     let j = Math.floor(Math.random() * i);
-  //     [a[i - 1], a[j]] = [a[j], a[i - 1]];
-  //   }
-  //   return a;
-  // }
 
 
   ///// [ Navigation code] ///////
@@ -189,7 +180,8 @@ export class FormPage {
     this.explanation = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat. Fusce lacinia gravida lorem, eget dictum lacus dignissim tempor. Quisque euismod vitae nisl et sollicitudin. Nulla massa ligula, molestie in tincidunt a, dapibus ac nibh. Donec elementum pretium eros, id rhoncus risus lacinia at. In posuere erat eros, a fermentum purus fringilla sed. Donec pretium placerat libero, ut pulvinar augue sagittis vel. Vivamus sit amet pellentesque eros, in porttitor lectus. Sed vel tincidunt mauris, condimentum ultrices ex. Aliquam mollis fermentum libero et varius. Nullam vestibulum vitae neque sit amet laoreet. Vestibulum pellentesque tellus enim, et varius risus auctor vel. Praesent eget nisi sit amet diam dictum fermentum. Maecenas augue est, dictum in felis a, pharetra pharetra augue.";
     this.recommendations="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat. Fusce lacinia gravida lorem, eget dictum lacus dignissim tempor. Quisque euismod vitae nisl et sollicitudin. Nulla massa ligula, molestie in tincidunt a, dapibus ac nibh. Donec elementum pretium eros, id rhoncus risus lacinia at. In posuere erat eros, a fermentum purus fringilla sed. Donec pretium placerat libero, ut pulvinar augue sagittis vel. Vivamus sit amet pellentesque eros, in porttitor lectus. Sed vel tincidunt mauris, condimentum ultrices ex. Aliquam mollis fermentum libero et varius. Nullam vestibulum vitae neque sit amet laoreet. Vestibulum pellentesque tellus enim, et varius risus auctor vel. Praesent eget nisi sit amet diam dictum fermentum. Maecenas augue est, dictum in felis a, pharetra pharetra augue.";
 
-    
+    this.score = 45;
+    this.verdict = 'Marginally aligned';
         let that = this;
         // $scope.$broadcast('timer-stop');
         this.questions.forEach(function (q, index) {
@@ -273,8 +265,8 @@ export class FormPage {
       'sponsor': 'John Doe',
       'lastUpdated': new Date().toLocaleString(),
       'questions':this.questions,
-      'score':80,
-      'verdict':'Aligned',
+      'score':this.score,
+      'verdict':this.verdict,
       'explanation':this.explanation,
       'recommendations':this.recommendations
     });
