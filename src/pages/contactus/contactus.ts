@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {  NavController, NavParams } from 'ionic-angular';
+import { HelperProvider } from '../../providers/helper/helper';
 
 
 @Component({
@@ -8,7 +9,7 @@ import {  NavController, NavParams } from 'ionic-angular';
 })
 export class ContactusPage {
 arb:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private helper: HelperProvider) {
 
     this.arb = [
       { name: 'Joe Solari', title:'Sr. IT Director', pic:'http://uai.socious.com/higherlogic/s/media/lcfbkctq.gif',phone:'314-814-6195',email:'fshaikh@ameren.com'},
@@ -23,4 +24,11 @@ arb:any;
     console.log('ionViewDidLoad ContactusPage');
   }
 
+  itemTapped() {
+    this.helper.presentToast("Slide the name left or right to see options for contacting.","middle","toastClass2",true,"OK");
+  }
+
+  tbd() {
+    this.helper.presentToast("Feature will be implemented in the next iteration","bottom","toastClass2",true,"OK");
+  }
 }

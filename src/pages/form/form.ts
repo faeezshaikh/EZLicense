@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import {  NavController, MenuController, NavParams, Content, AlertController, ToastController } from 'ionic-angular';
+import {  NavController, MenuController, NavParams, Content, AlertController } from 'ionic-angular';
 import { HelperProvider } from '../../providers/helper/helper';
 import _ from "lodash";
 
@@ -34,7 +34,7 @@ export class FormPage {
   @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public helper: HelperProvider,
-    public menu: MenuController, public alertCtrl: AlertController, private toastCtrl: ToastController) {
+    public menu: MenuController, public alertCtrl: AlertController) {
 
     helper.getData('assets/data/questions.js').then(theResult => {
       this.data = theResult;
@@ -257,7 +257,7 @@ export class FormPage {
 
     this.navCtrl.pop();
     // this.navCtrl.pop();
-    this.presentToast("Thank you for taking the assessment. Cheers!");
+    this.helper.presentToast("Thank you for taking the assessment. Cheers!","top","toastClass",false,"");
     this.helper.addData({
       'title':this.projectTitle,
       'description':this.projectDescription,
@@ -270,21 +270,6 @@ export class FormPage {
       'explanation':this.explanation,
       'recommendations':this.recommendations
     });
-  }
-
-  presentToast(msg: string) {
-    let toast = this.toastCtrl.create({
-      message: msg,
-      duration: 4000,
-      position: 'top',
-      cssClass: "toastClass"
-    });
-
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-
-    toast.present();
   }
 
 

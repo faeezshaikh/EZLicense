@@ -13,8 +13,8 @@
 <ion-content padding>
 
     <ion-list>
-        <ion-item-sliding *ngFor="let member of arb">
-          <ion-item>
+        <ion-item-sliding *ngFor="let member of arb" >
+          <ion-item (click)="itemTapped()">
             <ion-avatar item-start>
               <img src="{{member.pic}}">
             </ion-avatar>
@@ -22,17 +22,17 @@
             <p>{{member.title}}</p>
           </ion-item>
           <ion-item-options side="left">
-            <button ion-button color="primary">
+            <button ion-button color="primary" (click)="tbd()">
               <ion-icon name="text"></ion-icon>
               Text
             </button>
-            <button ion-button color="secondary">
+            <button ion-button color="secondary"  (click)="tbd()">
               <ion-icon name="call"></ion-icon>
               Call
             </button>
           </ion-item-options>
           <ion-item-options side="right">
-            <button ion-button color="primary">
+            <button ion-button color="primary"  (click)="tbd()">
               <ion-icon name="mail"></ion-icon>
               Email
             </button>
