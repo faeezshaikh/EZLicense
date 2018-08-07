@@ -18,6 +18,7 @@ import { HelperProvider } from '../providers/helper/helper';
 import { FormPage } from '../pages/form/form';
 import { DetailsPage } from '../pages/details/details';
 import { ContactusPage } from '../pages/contactus/contactus';
+import { ResourcesPage } from '../pages/resources/resources';
  
  
 // AF2 Settings
@@ -37,7 +38,8 @@ export const firebaseConfig = {
     ListPage,
     FormPage,
     DetailsPage,
-    ContactusPage
+    ContactusPage,
+    ResourcesPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ export const firebaseConfig = {
     ListPage,
     FormPage,
     DetailsPage,
-    ContactusPage
+    ContactusPage,
+    ResourcesPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

@@ -5,6 +5,7 @@ import { Nav, Platform } from 'ionic-angular';
 
 import { ListPage } from '../pages/list/list';
 import { ContactusPage } from '../pages/contactus/contactus';
+import { ResourcesPage } from '../pages/resources/resources';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,7 +24,7 @@ export class MyApp {
     this.pages = [
       { title: 'Projects', component: ListPage, icon: 'list' },
       // { title: 'Video Resources', component: ListPage, icon: 'logo-youtube' },
-      { title: 'Reference Resources', component: ContactusPage, icon: 'folder' },
+      { title: 'Reference Resources', component: ResourcesPage, icon: 'folder' },
       { title: 'Contact Us', component: ContactusPage, icon: 'people' }
     ];
 

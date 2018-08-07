@@ -173,6 +173,16 @@
     { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
     { "Id": 1057, "QuestionId": 1010, "Name": "No"},
     { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }]
+}  ,
+{
+   "Id": 17,
+   "Name": "Roughly how many users will be using your solution/product/application?", 
+   "Description":"This will help determine the risk, should the product not support SSO",
+   "tag": "User base",
+   "Options": [
+    { "Id": 1055, "QuestionId": 1010, "Name": "Less than 25"},
+    { "Id": 1057, "QuestionId": 1010, "Name": "Greater than 25"},
+    { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }]
 } 
      ]
 }
