@@ -57,6 +57,10 @@
 {
     "id":15,
     "help":"<p><strong>Single Sign On (SSO) and Active Directory (AD)</strong></p><p>At Ameren we use Microsoft Active Directory to manage employee and contractor usernames and passwords. Sometimes a solution requires you to implement its own identiy system to manage its users. Creation of a separate identity store introduces a lot of maintenance and security hassle. Someone other than the Enterprise Identity Management Team has to manage this identity store and this is not always good.</p><p>Think about what happens when the employee or contractor leaves Ameren and you forget to delete his access to the systems, just because his identity was not centrally managed. This can lead to a serious security breach.</p><p>Hence it is always desirable that projects implementing new solutions or products ensure that the product integrates with AD, so that all identities can be centrally managed.</p>"
+},
+{
+    "id":16,
+    "help":"<p><strong>Muliti factor Authentication</strong></p><p>At Ameren the standards are to have MFA on admin services. This would include access to admin portal of an application or a product.</p><p>MFA secures the system from common hacking scenarios and alhough MFA is not a requirement for regular users to access the application, it is imperative that the solution supports 2FA or MFA for the administration role</p><p>Two-factor authentication (also known as 2FA) is a type (subset) of multi-factor authentication. It is a method of confirming users' claimed identities by using a combination of two different factors: 1) something they know, 2) something they have, or 3) something they are.</p>"
 }]
 
 

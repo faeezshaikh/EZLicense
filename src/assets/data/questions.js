@@ -163,6 +163,18 @@
     { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
     { "Id": 1057, "QuestionId": 1010, "Name": "No"},
     { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable (solution implements SSO With AD)" }]
+}  ,
+{
+   "Id": 16,
+   "Name": "Does the product's administration role support multi-factor authentication?", 
+   "Description":"Multi-factor authentication (MFA) is a method of confirming a user's claimed identity in which a computer user is granted access only after successfully presenting 2 or more pieces of evidence (or factors) to an authentication mechanism.Click here to learn more:",
+   "tag": "Multi factor authentication",
+   "Options": [
+    { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
+    { "Id": 1057, "QuestionId": 1010, "Name": "No"},
+    { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }]
 } 
      ]
 }
+
+
