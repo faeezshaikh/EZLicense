@@ -135,6 +135,7 @@ export class FormPage {
           text: 'Yes',
           handler: () => {
             console.log('Abort clicked');
+            this.resetMenus();
             this.navCtrl.pop();
             // this.navCtrl.pop();
             // this.navCtrl.setRoot(ListPage);
@@ -203,6 +204,10 @@ export class FormPage {
         // this.storage.saveScore(this.selectedTopic.no, this.score);
       }
     
+      resetMenus(){
+        this.menu.enable(true, 'menu1');
+        this.menu.enable(false, 'menu2');
+      }
 
   openHelp(questionId) {
     this.activeMenu = 'menu2';
@@ -252,6 +257,8 @@ export class FormPage {
     return answered;
   }
   closeResults() {
+    this.resetMenus();
+
     this.navCtrl.pop();
     // this.navCtrl.pop();
     this.presentToast("Thank you for taking the assessment. Cheers!");

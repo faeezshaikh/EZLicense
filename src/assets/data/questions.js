@@ -25,9 +25,7 @@
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
             { "Id": 1057, "QuestionId": 1010, "Name": "No"},
-            { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }],
-        "Explanation": "AWS Data Pipeline provides built-in support for the following preconditions: DynamoDBDataExists,DynamoDBTableExists,S3KeyExists,S3PrefixExists,ShellCommandPrecondition",
-        "Ref":"https://aws.amazon.com/datapipeline/faqs/"   
+            { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }]
         
     },
     {
@@ -38,9 +36,7 @@
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
             { "Id": 1057, "QuestionId": 1010, "Name": "No"},
-            { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }],
-         "Explanation": "Your volumes are stored in Amazon S3 and accessible through AWS Storage Gateway. You cannot directly access them by using Amazon S3 API actions. You can take point-in-time snapshots of gateway volumes that are made available in the form of Amazon EBS snapshots. Use the file interface to work with your data natively in S3.",
-        "Ref":"https://aws.amazon.com/storagegateway/faqs/"  
+            { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }]
     },
     {
         "Id": 4,
@@ -58,14 +54,12 @@
         "Id": 5,
         "Description": "Netskope is a tool that Cyber Security at Ameren uses to evaluate external solutions. The Netskope tool has conducted tests for several commercial products in the market and assigned scores to them. Below is an example of what a score looks like. To learn more, click here:", 
         "Name":"Is the Netskope rating of the product/solution you plan on using above 50?",
-        "Pic": "http://www.detech.com.tr/wp-content/uploads/3-3-2-netskop-bulut-guvenligi-03.png",
+        "Pic": "assets/imgs/netskope.png",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
             { "Id": 1057, "QuestionId": 1010, "Name": "No"},
             { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" },
-            { "Id": 1058, "QuestionId": 1010, "Name": "Applicable, but I am not aware of the score" }],
-        "Explanation": "AWS reserves the FIRST four addresses and LAST one address of the CIDR block. A CIDR block does not always start at 0 or end at 255. Work with the CIDR calculator to see how this works. http://www.subnet-calculator.com/cidr.php",
-        "Ref":"http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html"    
+            { "Id": 1058, "QuestionId": 1010, "Name": "Applicable, but I am not aware of the score" }]
     },
     {
         "Id": 6,
@@ -74,9 +68,7 @@
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
             { "Id": 1057, "QuestionId": 1010, "Name": "No"},
-            { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }],
-        "Explanation": "See link for further information",
-        "Ref":"https://aws.amazon.com/ec2/vcenter-portal/"   
+            { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }]
         
     },
     {
@@ -96,9 +88,7 @@
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes"},
             { "Id": 1057, "QuestionId": 1010, "Name": "No"},
-            { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }],
-        "Explanation": "Ans: /28. See link for further information",
-        "Ref":"http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html"   
+            { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }]
         
     },
     
