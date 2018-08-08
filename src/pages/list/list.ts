@@ -60,6 +60,15 @@ export class ListPage {
     console.log('updating odometer');
     this.odo = data.length.toString();
   }
+
+  animateOdometer(data) {
+    console.log('animating odometer');
+    this.odo = 0;
+    setTimeout(()=>{
+      this.odo = data.length.toString();
+    },500)
+    
+  }
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
     // this.navCtrl.push(ListPage, {
