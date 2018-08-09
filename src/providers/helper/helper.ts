@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { ToastController } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database"; 
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
@@ -79,6 +80,15 @@ export class HelperProvider {
     });
 
     toast.present();
+  }
+
+  getIP() {
+    var json = 'http://ipv4.myexternalip.com/json';
+    return this.http.get(json).subscribe(result => {
+      console.log("Result for my ip1:",result);
+      // return result.ip;
+      
+    });
   }
 
 }

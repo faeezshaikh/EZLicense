@@ -39,6 +39,8 @@ export class ListPage {
     }
 
     this.getProjects();
+    let myIp = this.helper.getIP();
+    console.log("Got my ip:", myIp);
     
 
 
