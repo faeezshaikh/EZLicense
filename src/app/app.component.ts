@@ -7,7 +7,8 @@ import { ListPage } from '../pages/list/list';
 import { ContactusPage } from '../pages/contactus/contactus';
 import { ResourcesPage } from '../pages/resources/resources';
 
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// TS pluging didnt work..so added <script> tag in index.html for googgle analytics
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 
 @Component({
@@ -20,17 +21,16 @@ export class MyApp {
 
   pages: Array<{title: string, component: any,icon: string}>;
 
-  constructor(public platform: Platform,private ga: GoogleAnalytics) {
-   this.initializeApp();
+  constructor(public platform: Platform) {
+  //  this.initializeApp();
 
-   this.ga.startTrackerWithId('UA-123713684-1')
-   .then(() => {
-     console.log('Google analytics is ready now');
-        this.ga.trackView('App.component.ts');
-     // Tracker is ready
-     // You can now track pages or set additional information such as AppVersion or UserId
-   })
-   .catch(e => console.log('Error starting GoogleAnalytics', e));
+  //  this.ga.startTrackerWithId('UA-123713684-1')
+  //  .then(() => {
+  //    console.log('Google analytics is ready now');
+  //       this.ga.trackView('App.component.ts');
+  //    // Tracker is ready./ You can now track pages or set additional information such as AppVersion or UserId
+  //  })
+  //  .catch(e => console.log('Error starting GoogleAnalytics', e));
 
     // used for an example of ngFor and navigation
     this.pages = [

@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { ToastController } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database"; 
-import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()

@@ -20,7 +20,7 @@ import { DetailsPage } from '../pages/details/details';
 import { ContactusPage } from '../pages/contactus/contactus';
 import { ResourcesPage } from '../pages/resources/resources';
 import { Ng2OdometerModule } from 'ng2-odometer'; 
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
  
 // AF2 Settings
 export const firebaseConfig = {
@@ -62,8 +62,7 @@ export const firebaseConfig = {
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HelperProvider,
-    GoogleAnalytics
+    HelperProvider
   ]
 })
 export class AppModule {}
