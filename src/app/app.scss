@@ -56,12 +56,11 @@ body {
   font-family:Avenir Next , sans-serif;
 }
 
-.modal-wrapper {
-  height: 900px;
-  width: 700PX;
-  top: calc(50% - (900px/2));
-  
-}
+// .modal-wrapper {
+//   height: 900px;
+//   width: 700PX;
+//   top: calc(50% - (900px/2));
+// }
 
 .toastClass { .toast-message { border-radius: 0.65rem !important; background: color($colors, success) ;color:#fff!important;} }
 
