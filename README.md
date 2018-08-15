@@ -57,3 +57,65 @@ aws s3 cp --recursive ./www s3://turboarb/www
         }
     ]
 }
+
+
+
+
+/////
+
+
+{
+    "Version": "2008-10-17",
+    "Id": "S3PolicyId1",
+    "Statement": [
+        {
+            "Sid": "IPDeny",
+            "Effect": "Deny",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::turboarb/*",
+            "Condition": {
+                "NotIpAddress": {
+                    "aws:SourceIp": ""
+                }
+            }
+        },
+        {
+            "Sid": "GiveSESPermissionToWriteEmail",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "ses.amazonaws.com"
+            },
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::turboarb/*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:Referer": "180466373676"
+                }
+            }
+        },
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::turboarb/*"
+        }
+    ]
+}
+
+
+//////
+
+For cdn:
+Origin Domain Name: turboarb.s3.amazonaws.com
+Origin Path: /www
+
+Default Root Object: index.html
+
+In Route 53
+-   Create A record (Alias) pointing to : d3ds6fv6dwkxm9.cloudfront.net.
