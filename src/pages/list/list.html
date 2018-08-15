@@ -7,12 +7,15 @@
     <button ion-button [menuToggle]="activeMenu">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Assessed Projects</ion-title>
-    <div class="titleicon">
+    <ion-title *ngIf="!isMobile">Assessed Projects</ion-title>
+    <ion-title *ngIf="isMobile">Projects</ion-title>
+
+    <div *ngIf="!isMobile" class="titleicon">
         <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Ameren_logo.svg/2000px-Ameren_logo.svg.png" width="100px" style="margin-bottom:9px;margin-right:10px;" /> -->
         <img src="assets/imgs/ameren-white-logo.png" width="100px" style="margin-right:10px;" />
         
    </div>
+
     <ion-buttons large end>
         <button ion-button outline clear (click)="animateOdometer(projects)"><span style="font-family:Arial Narrow, Helvetica, sans-serif;font-size:2rem">Total:</span> &nbsp;
             <!-- <div id="odometer" class="odometer">{{odo}}</div> -->
@@ -21,7 +24,6 @@
             [config]="{ animation: 'count', format: 'd', theme: 'car', value: 0, auto: true }">
         </ng2-odometer>
         </button>
-       
     </ion-buttons>
   </ion-navbar>
 </ion-header>

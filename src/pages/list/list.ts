@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, MenuController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, MenuController, ModalController,Platform } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 // import { Observable } from 'rxjs/Observable';
 import { HelperProvider } from '../../providers/helper/helper';
@@ -18,9 +18,19 @@ export class ListPage {
   // afDatabase:any;
   activeMenu: string;
   odo:any;
+  isMobile = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase,
-    public modalCtrl: ModalController, public helper: HelperProvider, public menu: MenuController) {
+    public modalCtrl: ModalController, public helper: HelperProvider, public menu: MenuController,public plt: Platform) {
+
+      if (this.plt.is('mobile') || this.plt.is('mobileweb')) {
+        console.log('Running on a mobile device');
+        this.isMobile = true;
+      } else {
+        console.log('Not Running on a mobile device');
+      }
+
+
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     this.activeMenu = 'menu1'

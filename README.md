@@ -2,7 +2,11 @@
 aws s3 cp --recursive ./www s3://turboarb/www
 
 
-
+1. top navbar on phone - to test
+2. ionicons on PWA not appearing  - to test
+3. Pull to refresh
+4. Block IE
+5. Restrict dns to corp.
 7. Update questions content
 8. Update help content ** main!
 4. Calculate score.

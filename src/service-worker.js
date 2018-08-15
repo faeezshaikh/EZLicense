@@ -19,7 +19,13 @@ self.toolbox.precache(
     './build/main.css',
     './build/polyfills.js',
     'index.html',
-    'manifest.json'
+    'manifest.json',
+    '/assets/fonts/ionicons.eot',
+    '/assets/fonts/ionicons.scss',
+    '/assets/fonts/ionicons.svg',
+    '/assets/fonts/ionicons.ttf',
+    '/assets/fonts/ionicons.woff',
+    '/assets/fonts/ionicons.woff2'
   ]
 );
 
