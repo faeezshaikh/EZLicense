@@ -31,6 +31,8 @@ export class ListPage {
       }
 
 
+      
+
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     this.activeMenu = 'menu1'
@@ -49,11 +51,21 @@ export class ListPage {
     }
 
     this.getProjects();
-    let myIp = this.helper.getIP();
-    console.log("Got my ip:", myIp);
+    // let myIp = this.helper.getIP();
+    // console.log("Got my ip:", myIp);
     
 
 
+  }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+      this.helper.presentToast("Successfully refreshed.","middle","toastClass",false,'')
+    }, 2000);
+    
   }
 
   getProjects() {

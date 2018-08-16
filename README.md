@@ -2,11 +2,10 @@
 aws s3 cp --recursive ./www s3://turboarb/www
 
 
-1. top navbar on phone - to test
-2. ionicons on PWA not appearing  - to test
-3. Pull to refresh
+1. PwA icon and home screen
 4. Block IE
 5. Restrict dns to corp.
+
 7. Update questions content
 8. Update help content ** main!
 4. Calculate score.
@@ -22,6 +21,9 @@ aws s3 cp --recursive ./www s3://turboarb/www
 
 
 ------
+1. top navbar on phone - tested
+2. ionicons on PWA not appearing  - tested
+3. Pull to refresh
 1. Deployment
     1. Css & js for odometer
     2. Spinner calculating score
@@ -54,6 +56,7 @@ aws s3 cp --recursive ./www s3://turboarb/www
                 "NotIpAddress": {
                     "aws:SourceIp": [
                         "199.38.133.55/32",
+                        "199.38.133.61/32",
                         "192.189.96.55/32"
                     ]
                 }
@@ -123,3 +126,7 @@ Default Root Object: index.html
 
 In Route 53
 -   Create A record (Alias) pointing to : d3ds6fv6dwkxm9.cloudfront.net.
+///
+
+After deployment
+    - invalidate CDN by running * for origin root. wait for a few minutes 
