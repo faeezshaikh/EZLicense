@@ -36,10 +36,23 @@ export class FormPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public helper: HelperProvider,
     public menu: MenuController, public alertCtrl: AlertController) {
 
+    let project = navParams.get('project');
+    if(project) {
+      console.log('In EDIT mode..project is:',project);
+      let quiz = {
+        "name": "ARB Self Assessment",
+            "logo" : "https://vignette.wikia.nocookie.net/mysims/images/2/22/EA_logo.png/revision/latest?cb=20090801182220",
+                "score": 50,
+                    "sponsor":""
+    }
+      this.data.quiz = quiz;
+      this.questions = project.questions;
+      this.question = this.questions[0];
+    } else {
+
     helper.getData('assets/data/questions.js').then(theResult => {
       this.data = theResult;
       this.questions = theResult.questions;
-      //  this.questions = this.shuffle(this.questions);   /// TODO: Make shuffling of question order user configurable
       this.question = this.questions[0];
       console.log("Data is this => ", this.data);
       console.log("Questions => ", theResult.questions);
@@ -51,8 +64,11 @@ export class FormPage {
     this.assessor = navParams.get('assessor');
     console.log("Project is ", this.projectTitle);
 
-    // let project = navParams.get('project');
 
+    }
+ 
+    
+   
 
 
 
