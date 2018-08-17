@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, MenuController, ModalController,Platform } from 'ionic-angular';
+import { NavController, NavParams, MenuController, ModalController, Platform, AlertController, ViewController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 // import { Observable } from 'rxjs/Observable';
 import { HelperProvider } from '../../providers/helper/helper';
@@ -19,9 +19,11 @@ export class ListPage {
   activeMenu: string;
   odo:any;
   isMobile = false;
+  showDelete:number=0;
+  detailsModal:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase,
-    public modalCtrl: ModalController, public helper: HelperProvider, public menu: MenuController,public plt: Platform) {
+    public modalCtrl: ModalController, public helper: HelperProvider, public menu: MenuController,public plt: Platform,private alertCtrl: AlertController) {
 
       if (this.plt.is('mobile') || this.plt.is('mobileweb')) {
         console.log('Running on a mobile device');
@@ -100,8 +102,8 @@ export class ListPage {
     //   item: item
     // });
 
-    let profileModal = this.modalCtrl.create(DetailsPage, { item: item });
-    profileModal.present();
+    this.detailsModal = this.modalCtrl.create(DetailsPage, { item: item });
+    this.detailsModal.present();
 
   }
 
@@ -151,6 +153,42 @@ export class ListPage {
       this.updateOdometer(this.projects);
     }
 
+  }
+  increment(){
+    this.showDelete++
+  }
+  hideDelete(){
+    this.showDelete = 0;
+  }
+
+  deleteProject(project){
+    // this.ViewController.dismiss();
+    this.confirmDelete(project);
+  }
+
+  confirmDelete(p) {
+    let confirmAbortAlert = this.alertCtrl.create({
+      title: 'Confirm Abort',
+      message: 'This will delete: \'' + p.title + '\'. Are you sure?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Delete confirmed');
+            //TBD
+
+          }
+        }
+      ]
+    });
+    confirmAbortAlert.present();
   }
 
 }

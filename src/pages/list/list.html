@@ -65,10 +65,10 @@
                       
         
         
-                            <ion-card (click)="itemTapped($event, p)">
+                            <ion-card >
                               
                                 <i class="fa fa-plus" aria-hidden="true"></i>
-                                  <ion-fab right top>
+                                  <ion-fab right top (click)="itemTapped($event, p)">
                                     <button ion-fab *ngIf="p.score>60" color="secondary">
                                       <ion-icon  name=""> <label style="font-family:arial;font-size:1.9rem;font-weight:bold">{{p.score}}%</label></ion-icon>
                                     </button>
@@ -97,10 +97,14 @@
                                     <span item-start>Assessor:</span>
                                     <!-- <span item-start>{{p.assessor}}</span> -->
                                     <p>{{p.assessor}}</p>
-                                    <button ion-button icon-start clear item-end>
+                                    <button ion-button icon-start clear item-end (click)="itemTapped($event, p)">
                                       <ion-icon name="paper-plane"></ion-icon>
                                       View Details
                                     </button>
+
+                                    <button *ngIf="showDelete>3" (click)="deleteProject(p)" ion-button icon-start clear item-end>
+                                        <ion-icon name="trash"></ion-icon>
+                                      </button>
                                   </ion-item>
                                 
                                 </ion-card>
@@ -154,11 +158,11 @@
     <ion-title>
       <ion-grid>
 
-        <ion-row> <div class="bottomTitleicon">Ameren EA</div></ion-row>
+        <ion-row> <div class="bottomTitleicon" (click)="increment()">Ameren EA</div></ion-row>
         <ion-row>  
             <div class="bottomTitleicon">
                
-                <label style='text-align:right;color:#ede7e7;padding: 0 12px;font-size:1.5rem'>Contact Us: ea@ameren.com</label>
+                <label (click)="hideDelete()" style='text-align:right;color:#ede7e7;padding: 0 12px;font-size:1.5rem'>Contact Us: ea@ameren.com</label>
            </div>
         </ion-row>
       </ion-grid>
