@@ -51,6 +51,8 @@ export class FormPage {
     this.assessor = navParams.get('assessor');
     console.log("Project is ", this.projectTitle);
 
+    // let project = navParams.get('project');
+
 
 
 

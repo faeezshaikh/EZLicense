@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {  NavController, NavParams,ViewController } from 'ionic-angular';
+import { FormPage } from '../form/form';
 
 
 // @IonicPage()
@@ -21,5 +22,10 @@ export class DetailsPage {
 
   dismiss() {
     this.viewCtrl.dismiss();
+  }
+  edit() {
+    this.dismiss();
+    // console.log("project id:",this.project.id);
+    this.navCtrl.setRoot(FormPage,{'project':this.project,'edit':true});
   }
 }
