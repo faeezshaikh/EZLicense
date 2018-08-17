@@ -73,14 +73,12 @@ export class ListPage {
 
   getProjects() {
     this.afDatabase.list('/projects').valueChanges().subscribe((data) => {
-      // console.log("datas", data);
       this.projects = data;
       this.updateOdometer(data);
       this.helper.setProjectList(data);
     }, (err) => {
       console.log("probleme : ", err)
     });
-
   }
 
   updateOdometer(data) {
@@ -182,8 +180,7 @@ export class ListPage {
           text: 'Yes',
           handler: () => {
             console.log('Delete confirmed');
-            //TBD
-
+            this.helper.deleteData(p);
           }
         }
       ]

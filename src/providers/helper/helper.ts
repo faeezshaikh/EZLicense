@@ -41,8 +41,13 @@ export class HelperProvider {
 
   addData(obj) {
     console.log('adding data');
-    
     this.projects$.push(obj);
+  }
+
+  deleteData(obj:any){
+    console.log('Deleting data',obj);
+    // this.af.object('/projects/' + obj.$key).remove();
+    this.projects$.remove(obj);
   }
   load(url) {
     
