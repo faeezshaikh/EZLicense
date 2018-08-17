@@ -60,6 +60,7 @@ export class ListPage {
 
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
+    this.helper.presentToast("Successfully refreshed.","middle","toastClass",false,'');
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();

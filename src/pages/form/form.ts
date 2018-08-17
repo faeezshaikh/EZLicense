@@ -177,8 +177,8 @@ export class FormPage {
 
   calculateAndUpdateScore() {
     
-    this.explanation = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat. Fusce lacinia gravida lorem, eget dictum lacus dignissim tempor. Quisque euismod vitae nisl et sollicitudin. Nulla massa ligula, molestie in tincidunt a, dapibus ac nibh. Donec elementum pretium eros, id rhoncus risus lacinia at. In posuere erat eros, a fermentum purus fringilla sed. Donec pretium placerat libero, ut pulvinar augue sagittis vel. Vivamus sit amet pellentesque eros, in porttitor lectus. Sed vel tincidunt mauris, condimentum ultrices ex. Aliquam mollis fermentum libero et varius. Nullam vestibulum vitae neque sit amet laoreet. Vestibulum pellentesque tellus enim, et varius risus auctor vel. Praesent eget nisi sit amet diam dictum fermentum. Maecenas augue est, dictum in felis a, pharetra pharetra augue.";
-    this.recommendations="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat. Fusce lacinia gravida lorem, eget dictum lacus dignissim tempor. Quisque euismod vitae nisl et sollicitudin. Nulla massa ligula, molestie in tincidunt a, dapibus ac nibh. Donec elementum pretium eros, id rhoncus risus lacinia at. In posuere erat eros, a fermentum purus fringilla sed. Donec pretium placerat libero, ut pulvinar augue sagittis vel. Vivamus sit amet pellentesque eros, in porttitor lectus. Sed vel tincidunt mauris, condimentum ultrices ex. Aliquam mollis fermentum libero et varius. Nullam vestibulum vitae neque sit amet laoreet. Vestibulum pellentesque tellus enim, et varius risus auctor vel. Praesent eget nisi sit amet diam dictum fermentum. Maecenas augue est, dictum in felis a, pharetra pharetra augue.";
+    this.explanation = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat.";
+    this.recommendations="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat.";
 
     this.score = 45;
     this.verdict = 'Marginally aligned';

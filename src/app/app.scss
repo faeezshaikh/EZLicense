@@ -62,8 +62,8 @@ body {
 //   top: calc(50% - (900px/2));
 // }
 
-.toastClass { .toast-message { border-radius: 0.65rem !important; background: color($colors, boostrap-success) ;color:#155724!important;} }
+.toastClass { .toast-message { border-radius: 0rem !important; background: color($colors, boostrap-success) ;color:#155724!important;} }
 
-.toastClass2 { .toast-message { border-radius: 0.65rem !important; background: color($colors, grey) ;color:#fff!important;} }
+.toastClass2 { .toast-message { border-radius: 0rem !important; background: color($colors, grey) ;color:#fff!important;} }
 
 
