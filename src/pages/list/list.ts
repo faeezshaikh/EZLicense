@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, MenuController, ModalController, Platform, AlertController, ViewController } from 'ionic-angular';
+import { NavController, NavParams, MenuController, ModalController, Platform, AlertController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 // import { Observable } from 'rxjs/Observable';
 import { HelperProvider } from '../../providers/helper/helper';
@@ -180,7 +180,7 @@ export class ListPage {
           text: 'Yes',
           handler: () => {
             console.log('Delete confirmed');
-            this.helper.deleteData(p);
+            this.helper.deleteData(p.$key);
           }
         }
       ]
