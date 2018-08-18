@@ -16,6 +16,7 @@ export class CreatePage {
   assessor: string;
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
+  uploading:boolean=false;
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController,private storage: AngularFireStorage) {
 
@@ -36,8 +37,14 @@ export class CreatePage {
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
 
+    this.uploading = true;
     // observe percentage changes
     this.uploadPercent = task.percentageChanges();
+
+    let that = this;
+    this.uploadPercent.subscribe(number => {
+      if(number == 100) that.uploading=false;
+    })
     // get notified when the download URL is available
     task.snapshotChanges().pipe(
         finalize(() => this.downloadURL = fileRef.getDownloadURL() )

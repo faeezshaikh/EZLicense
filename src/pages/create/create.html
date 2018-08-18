@@ -69,7 +69,7 @@
         <ion-item class="mycolor">
             <span style="color:grey">Solution Arch Diagram: (Image file)</span><p>&nbsp;</p>
         <input type="file" (change)="uploadFile($event)" />
-        <!-- <div>{{ uploadPercent | async }}%</div> -->
+        <div *ngIf="uploading">Uploading {{ uploadPercent | async }}% ...</div>
         <!-- <a [href]="downloadURL | async">{{ downloadURL | async }}</a> -->
       
       </ion-item>

@@ -170,7 +170,7 @@ export class FormPage {
   presentSubmitConfirm() {
     this.confirmSubmitAlert = this.alertCtrl.create({
       title: 'Confirm',
-      message: 'This will finish your assessment and show you the final score. Do you want to proceed?',
+      message: 'Based on the questions answered so far this will show you the current score. You can update later. Proceed?',
       buttons: [
         {
           text: 'Cancel',
