@@ -2,7 +2,7 @@
 aws s3 cp --recursive ./www s3://turboarb/www
 
 0. View details are not showing answered question for newly added project.
-0a. filtering broken
+
 1. Cleanup
 1. PwA icon and home screen
 4. Block IE
@@ -23,6 +23,7 @@ aws s3 cp --recursive ./www s3://turboarb/www
 
 
 ------
+0a. filtering broken
 1. top navbar on phone - tested
 2. ionicons on PWA not appearing  - tested
 3. Pull to refresh
