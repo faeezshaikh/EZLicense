@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController,ViewController } from 'ionic-angular';
+import { NavController, ViewController } from 'ionic-angular';
 import { FormPage } from '../form/form';
 
 @Component({
@@ -9,25 +9,19 @@ import { FormPage } from '../form/form';
 export class CreatePage {
 
   pname: string;
-  pdesc:string;
-  assessor:string;
-  constructor(public navCtrl: NavController,public viewCtrl: ViewController) {
+  pdesc: string;
+  assessor: string;
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController) {
 
   }
 
-  startAssessment(){
+  startAssessment() {
     console.log('user entered->:', this.pname);
-    
-
-     this.navCtrl.setRoot(FormPage,{title:this.pname, desc:this.pdesc,assessor:this.assessor});
-    //  this.navCtrl.push(FormPage, {title:this.pname});
+    this.navCtrl.setRoot(FormPage, { title: this.pname, desc: this.pdesc, assessor: this.assessor });
   }
 
   dismiss() {
-    // let data = { 'foo': 'bar' };
     this.viewCtrl.dismiss();
-    
   }
-  
 
 }
