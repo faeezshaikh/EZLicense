@@ -25,7 +25,7 @@
     <form #companyForm="ngForm">
     
       <ion-item class="mycolor">
-        <ion-label floating>Project Name</ion-label>
+        <ion-label floating>Project Name </ion-label>
         <!-- <ion-input type="text" required class="form-control"></ion-input> -->
         <ion-input type="text" 
         class="form-control" 
@@ -64,12 +64,16 @@
           minlength="4"></ion-input>
         </ion-item>
 
-
+        
+        <!-- <p>&nbsp;</p> -->
         <ion-item class="mycolor">
+            <span style="color:grey">Solution Arch Diagram: (Image file)</span><p>&nbsp;</p>
         <input type="file" (change)="uploadFile($event)" />
-        <div>{{ uploadPercent | async }}</div>
-        <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+        <!-- <div>{{ uploadPercent | async }}%</div> -->
+        <!-- <a [href]="downloadURL | async">{{ downloadURL | async }}</a> -->
+      
       </ion-item>
+      <img  *ngIf="downloadURL" [src]="downloadURL | async"/>
 
 
     </form>
