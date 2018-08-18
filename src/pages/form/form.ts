@@ -368,7 +368,7 @@ export class FormPage {
         'verdict': this.verdict,
         'explanation': this.explanation,
         'recommendations': this.recommendations,
-        'diagram':this.diagram
+        'diagram':this.diagram || ""
       });
     }
   }
