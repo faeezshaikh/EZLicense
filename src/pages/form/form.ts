@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import {  NavController, MenuController, NavParams, Content, AlertController } from 'ionic-angular';
+import { NavController, MenuController, NavParams, Content, AlertController } from 'ionic-angular';
 import { HelperProvider } from '../../providers/helper/helper';
 import _ from "lodash";
 
@@ -14,74 +14,73 @@ export class FormPage {
   question: string;
   showReview: boolean = false;
   mode: string = 'quiz';
-  questionNumber: number;   // this is to support shuffling of array. the question.id is no longer used to display 'Question 1 of 10' ..
+  questionNumber: number = 1;   // this is to support shuffling of array. the question.id is no longer used to display 'Question 1 of 10' ..
   confirmAbortAlert: any;
   confirmSubmitAlert: any;
   activeMenu: string;
   somedata: string;
   projectTitle: string;
-  projectDescription:string;
-  assessor:string;
-  thanked=false;
+  projectDescription: string;
+  assessor: string;
+  thanked = false;
   showSpinner = false;
-  attempted:number = 0;
-  explanation:string;
-  recommendations:string;
-  score:any;
-  verdict:any;
+  attempted: number = 0;
+  explanation: string;
+  recommendations: string;
+  score: any;
+  verdict: any;
   // odo:any=90;
-  project:any; // used in Edit mode.
-  disabled:boolean = true;
-  buttonText="Edit"
+  project: any; // used in Edit mode.
+  disabled: boolean = true;
+  buttonText = "Edit"
 
   @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public helper: HelperProvider,
     public menu: MenuController, public alertCtrl: AlertController) {
 
-      let p = navParams.get('project');
-      if(p) {
-        this.project = p;
-      console.log('In EDIT mode..project is:',this.project);
+    let p = navParams.get('project');
+    if (p) {
+      this.project = p;
+      console.log('In EDIT mode..Project is:', this.project);
       let quiz = {
         "name": "ARB Self Assessment",
-            "logo" : "https://vignette.wikia.nocookie.net/mysims/images/2/22/EA_logo.png/revision/latest?cb=20090801182220",
-                "score": 50,
-                    "sponsor":""
-    }
+        "logo": "https://vignette.wikia.nocookie.net/mysims/images/2/22/EA_logo.png/revision/latest?cb=20090801182220",
+        "score": 50,
+        "sponsor": ""
+      }
       this.data.quiz = quiz;
-      this.questions =this.project.questions;
+      this.questions = this.project.questions;
       this.question = this.questions[0];
+
+      this.projectTitle = p.title;
+      this.projectDescription = p.description;
+      this.assessor = p.assessor;
+      
+
+
     } else {
 
-    helper.getData('assets/data/questions.js').then(theResult => {
-      this.data = theResult;
-      this.questions = theResult.questions;
-      this.question = this.questions[0];
-      console.log("Data is this => ", this.data);
-      console.log("Questions => ", theResult.questions);
-    });
+      // Newly created mode.
+      helper.getData('assets/data/questions.js').then(theResult => {
+        this.data = theResult;
+        this.questions = theResult.questions;
+        this.question = this.questions[0];
+        console.log("Data is this => ", this.data);
+        console.log("Questions => ", theResult.questions);
+      });
 
-    this.questionNumber = 1;  // wil always start at 1.
-    this.projectTitle = navParams.get('title');
-    this.projectDescription = navParams.get('desc');
-    this.assessor = navParams.get('assessor');
-    console.log("Project is ", this.projectTitle);
-
-
+      this.projectTitle = navParams.get('title');
+      this.projectDescription = navParams.get('desc');
+      this.assessor = navParams.get('assessor');
+      console.log("Project is ", this.projectTitle);
     }
- 
-    
-   
-
-
-
   }
 
   ngAfterViewInit() {
   }
 
-  thankyou(){
+  thankyou() {
     this.thanked = true;
   }
 
@@ -185,8 +184,8 @@ export class FormPage {
             setTimeout(function () {
               that.showSpinner = false;
               that.setMode('result');
-              console.log('Spinner = ',that.showSpinner);
-              
+              console.log('Spinner = ', that.showSpinner);
+
 
             }, 3000);
 
@@ -198,34 +197,34 @@ export class FormPage {
   }
 
   calculateAndUpdateScore() {
-    
+
     this.explanation = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat.";
-    this.recommendations="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat.";
+    this.recommendations = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat.";
 
     this.score = 45;
     this.verdict = 'Marginally aligned';
-        let that = this;
-        // $scope.$broadcast('timer-stop');
-        this.questions.forEach(function (q, index) {
-          if (q.answer) {
-            that.attempted++;
-          } else {
+    let that = this;
+    // $scope.$broadcast('timer-stop');
+    this.questions.forEach(function (q, index) {
+      if (q.answer) {
+        that.attempted++;
+      } else {
 
-          }
-    
-        });
-      
-        // this.correct = this.questions.length - wrong;
-        // this.score = Math.round((Number(this.correct) / this.questions.length) * 100);
-        // this.verdict = (this.score > 65) ? 'Pass' : 'Fail';
-        // this.setMode('result');
-        // this.storage.saveScore(this.selectedTopic.no, this.score);
       }
-    
-      resetMenus(){
-        this.menu.enable(true, 'menu1');
-        this.menu.enable(false, 'menu2');
-      }
+
+    });
+
+    // this.correct = this.questions.length - wrong;
+    // this.score = Math.round((Number(this.correct) / this.questions.length) * 100);
+    // this.verdict = (this.score > 65) ? 'Pass' : 'Fail';
+    // this.setMode('result');
+    // this.storage.saveScore(this.selectedTopic.no, this.score);
+  }
+
+  resetMenus() {
+    this.menu.enable(true, 'menu1');
+    this.menu.enable(false, 'menu2');
+  }
 
   openHelp(questionId) {
     this.activeMenu = 'menu2';
@@ -237,12 +236,12 @@ export class FormPage {
     this.menu.open();
 
     this.helper.getData('assets/data/q1Help.js').then(theResult => {
-      
+
       console.log("Help content array => ", theResult);
-      console.log('Question id :',questionId);
-      
-      let item = _.find(theResult,{'id':questionId});
-      if(item) {
+      console.log('Question id :', questionId);
+
+      let item = _.find(theResult, { 'id': questionId });
+      if (item) {
         console.log("Help content  found ", item);
         this.somedata = item.help;
       }
@@ -271,42 +270,42 @@ export class FormPage {
     if (question.answer) answered = 'Answered';
     return answered;
   }
-  closeResults() {
+  submit() {
     this.resetMenus();
 
     this.navCtrl.pop();
-    this.helper.presentToast("Thank you for taking the assessment. Cheers!","middle","toastClass",false,"",2000);
+    this.helper.presentToast("Thank you for taking the assessment. Cheers!", "middle", "toastClass", false, "", 2000);
 
-    if(this.project && this.project.title) { // Edit mode
-      this.helper.updateItem(this.project.key,this.project);
+    if (this.project && this.project.title) { // Edit mode
+      this.helper.updateItem(this.project.key, this.project);
     } else {
-    this.helper.addData({
-      'title':this.projectTitle,
-      'description':this.projectDescription,
-      'assessor':this.assessor,
-      'sponsor': 'John Doe',
-      'status': 'Submitted',
-      'lastUpdated': new Date().toLocaleString(),
-      'questions':this.questions,
-      'score':this.score,
-      'verdict':this.verdict,
-      'explanation':this.explanation,
-      'recommendations':this.recommendations
-    });
+      this.helper.addData({
+        'title': this.projectTitle,
+        'description': this.projectDescription,
+        'assessor': this.assessor,
+        'sponsor': 'John Doe',
+        'status': 'Submitted',
+        'lastUpdated': new Date().toLocaleString(),
+        'questions': this.questions,
+        'score': this.score,
+        'verdict': this.verdict,
+        'explanation': this.explanation,
+        'recommendations': this.recommendations
+      });
+    }
   }
-}
 
-  edit(){
+  edit() {
     console.log('Enabled!');
-    if(this.buttonText == 'Edit') {
+    if (this.buttonText == 'Edit') {
       this.disabled = false;
-      this.buttonText="Save";
+      this.buttonText = "Save";
     } else {
       // Saving changes
       this.disabled = true;
-      this.buttonText="Edit";
+      this.buttonText = "Edit";
     }
-    
+
   }
 
 
