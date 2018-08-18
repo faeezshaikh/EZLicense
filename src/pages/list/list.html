@@ -1,7 +1,7 @@
 <style>
   <link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-car.css" />
-  
 </style>
+
 <ion-header>
   <ion-navbar color="primary">
     <button ion-button [menuToggle]="activeMenu">
@@ -11,132 +11,119 @@
     <ion-title *ngIf="isMobile">Projects</ion-title>
 
     <div *ngIf="!isMobile" class="titleicon">
-        <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Ameren_logo.svg/2000px-Ameren_logo.svg.png" width="100px" style="margin-bottom:9px;margin-right:10px;" /> -->
-        <img src="assets/imgs/ameren-white-logo.png" width="100px" style="margin-right:10px;" />
-        
-   </div>
+      <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Ameren_logo.svg/2000px-Ameren_logo.svg.png" width="100px" style="margin-bottom:9px;margin-right:10px;" /> -->
+      <img src="assets/imgs/ameren-white-logo.png" width="100px" style="margin-right:10px;" />
+
+    </div>
 
     <ion-buttons large end>
-        <button ion-button outline clear (click)="animateOdometer(projects)"><span style="font-family:Arial Narrow, Helvetica, sans-serif;font-size:2rem">Total:</span> &nbsp;
-            <ng2-odometer 
-            [number]="odo" 
-            [config]="{ animation: 'count', format: 'd', theme: 'car', value: 0, auto: true }">
+      <button ion-button outline clear (click)="animateOdometer(projects)">
+        <span style="font-family:Arial Narrow, Helvetica, sans-serif;font-size:2rem">Total:</span> &nbsp;
+        <ng2-odometer [number]="odo" [config]="{ animation: 'count', format: 'd', theme: 'car', value: 0, auto: true }">
         </ng2-odometer>
-        </button>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
 
-    <ion-refresher (ionRefresh)="doRefresh($event)">
-      <ion-refresher-content></ion-refresher-content>
-    </ion-refresher>
-  
-    <ion-list>
-        
-            <ion-item-divider color="light">Projects List</ion-item-divider>
-           
-         <div *ngIf="!projects" style="text-align:center;margin-top:0px;">
-           <!-- <img  src="http://www.plateforme-re-sources.org/wp-content/uploads/2018/06/lg.rotating-balls-spinner.gif"/> -->
-           <img  src="https://cdn.dribbble.com/users/375824/screenshots/2230417/dots-2.gif"/>
-         </div>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
-                <ion-grid fixed>
-                <ion-row responsive-sm>
-                  <ion-searchbar *ngIf="projects"
-                  [showCancelButton]="shouldShowCancel"
-                  (ionInput)="filterItems($event)"
-                  (ionCancel)="onCancel($event)">
-                </ion-searchbar>
-                  <ion-col col-md *ngFor="let p of projects | async"  >
-                     
-        
-                      
-        
-        
-                            <ion-card >
-                              
-                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                  <ion-fab right top (click)="itemTapped($event, p)">
-                                    <button ion-fab *ngIf="p.score>60" color="secondary">
-                                      <ion-icon  name=""> <label style="font-family:arial;font-size:1.9rem;font-weight:bold">{{p.score}}%</label></ion-icon>
-                                    </button>
-                                    <button ion-fab *ngIf="p.score<30" color="danger">
-                                        <ion-icon  name=""><label style="font-family:arial;font-size:1.9rem;font-weight:bold">{{p.score}}%</label></ion-icon>
-                                      </button>
-                                      <button ion-fab *ngIf="p.score>30 && p.score<60" color="orange">
-                                          <ion-icon  name=""><label style="font-family:arial;font-size:1.9rem;font-weight:bold">{{p.score}}%</label></ion-icon>
-                                        </button>
-                                  </ion-fab>
-                                
-                                  <ion-item>
-                                    <ion-icon name="analytics" item-start large></ion-icon>
-                                    <h2>{{p.title}}</h2>
-                                    <p>ARB result: {{p.verdict}}</p>
-                                  </ion-item>
-                                
-                                  <ion-item>
-                                    <ion-icon name="logo-usd" item-start large ></ion-icon>
-                                    <h2>Sponsor: {{p.sponsor}}</h2>
-                                    <!-- <p>14 S. Hop Avenue, Madison, WI 53703</p> -->
-                                    <p>Last Updated: {{p.lastUpdated }}</p>
-                                  </ion-item>
-                                
-                                  <ion-item>
-                                    <span item-start>Assessor:</span>
-                                    <!-- <span item-start>{{p.assessor}}</span> -->
-                                    <p>{{p.assessor}}</p>
-                                    <button ion-button icon-start clear item-end (click)="itemTapped($event, p)">
-                                      <ion-icon name="paper-plane"></ion-icon>
-                                      View Details
-                                    </button>
+  <ion-list>
 
-                                    <button *ngIf="showDelete>3" (click)="deleteProject(p)" ion-button icon-start clear item-end>
-                                        <ion-icon name="trash"></ion-icon>
-                                      </button>
-                                  </ion-item>
-                                
-                                </ion-card>
-            
-        
-        
-        
-        
-                  </ion-col>
-                 
-                </ion-row>
-                </ion-grid>
-        
-           
-        
-          </ion-list>
-        
+    <ion-item-divider color="light">Projects List</ion-item-divider>
+
+    <div *ngIf="!projects" style="text-align:center;margin-top:0px;">
+      <!-- <img  src="http://www.plateforme-re-sources.org/wp-content/uploads/2018/06/lg.rotating-balls-spinner.gif"/> -->
+      <img src="https://cdn.dribbble.com/users/375824/screenshots/2230417/dots-2.gif" />
+    </div>
+
+    <ion-grid fixed>
+      <ion-row responsive-sm>
+        <ion-searchbar *ngIf="projects" [showCancelButton]="shouldShowCancel" (ionInput)="filterItems($event)" (ionCancel)="onCancel($event)">
+        </ion-searchbar>
+        <ion-col col-md *ngFor="let p of projects | async">
+          <ion-card>
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <ion-fab right top (click)="itemTapped($event, p)">
+              <button ion-fab *ngIf="p.score>60" color="secondary">
+                <ion-icon name="">
+                  <label style="font-family:arial;font-size:1.9rem;font-weight:bold">{{p.score}}%</label>
+                </ion-icon>
+              </button>
+              <button ion-fab *ngIf="p.score<30" color="danger">
+                <ion-icon name="">
+                  <label style="font-family:arial;font-size:1.9rem;font-weight:bold">{{p.score}}%</label>
+                </ion-icon>
+              </button>
+              <button ion-fab *ngIf="p.score>30 && p.score<60" color="orange">
+                <ion-icon name="">
+                  <label style="font-family:arial;font-size:1.9rem;font-weight:bold">{{p.score}}%</label>
+                </ion-icon>
+              </button>
+            </ion-fab>
+
+            <ion-item>
+              <ion-icon name="analytics" item-start large></ion-icon>
+              <h2>{{p.title}}</h2>
+              <p>ARB result: {{p.verdict}}</p>
+            </ion-item>
+
+            <ion-item>
+              <ion-icon name="logo-usd" item-start large></ion-icon>
+              <h2>Sponsor: {{p.sponsor}}</h2>
+              <!-- <p>14 S. Hop Avenue, Madison, WI 53703</p> -->
+              <p>Last Updated: {{p.lastUpdated }}</p>
+            </ion-item>
+
+            <ion-item>
+              <span item-start>Assessor:</span>
+              <!-- <span item-start>{{p.assessor}}</span> -->
+              <p>{{p.assessor}}</p>
+              <button ion-button icon-start clear item-end (click)="itemTapped($event, p)">
+                <ion-icon name="paper-plane"></ion-icon>
+                View Details
+              </button>
+
+              <button *ngIf="showDelete>3" (click)="deleteProject(p)" ion-button icon-start clear item-end>
+                <ion-icon name="trash"></ion-icon>
+              </button>
+            </ion-item>
+
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
 
 
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
 
-  <ion-fab top right >
-    <button ion-fab color="primary" (click)="menu2Active()">  <ion-icon name="create"></ion-icon></button>
+  <ion-fab top right>
+    <button ion-fab color="primary" (click)="menu2Active()">
+      <ion-icon name="create"></ion-icon>
+    </button>
   </ion-fab>
 </ion-content>
 
-<ion-footer >
+<ion-footer>
   <ion-toolbar color="grey">
     <ion-title>
       <ion-grid>
 
-        <ion-row> <div class="bottomTitleicon" (click)="increment()">Ameren EA</div></ion-row>
-        <ion-row>  
-            <div class="bottomTitleicon">
-               
-                <label (click)="hideDelete()" style='text-align:right;color:#ede7e7;padding: 0 12px;font-size:1.5rem'>Contact Us: ea@ameren.com</label>
-           </div>
+        <ion-row>
+          <div class="bottomTitleicon" (click)="increment()">Ameren EA</div>
+        </ion-row>
+        <ion-row>
+          <div class="bottomTitleicon">
+
+            <label (click)="hideDelete()" style='text-align:right;color:#ede7e7;padding: 0 12px;font-size:1.5rem'>Contact Us: ea@ameren.com</label>
+          </div>
         </ion-row>
       </ion-grid>
-   </ion-title>  
-    
+    </ion-title>
+
   </ion-toolbar>
 </ion-footer>
