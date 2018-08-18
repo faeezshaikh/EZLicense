@@ -91,6 +91,9 @@
               <button *ngIf="showDelete>3" (click)="deleteProject(p)" ion-button icon-start clear item-end>
                 <ion-icon name="trash"></ion-icon>
               </button>
+              <button *ngIf="showDelete>3" (click)="edit(p)" ion-button icon-start clear item-end>
+                  <ion-icon name="create"></ion-icon>
+                </button>
             </ion-item>
 
           </ion-card>

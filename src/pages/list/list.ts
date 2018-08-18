@@ -6,6 +6,7 @@ import { HelperProvider } from '../../providers/helper/helper';
 import { CreatePage } from '../create/create';
 import { DetailsPage } from '../details/details';
 import { Observable } from 'rxjs';
+import { FormPage } from '../form/form';
 
 @Component({
   selector: 'page-list',
@@ -130,7 +131,7 @@ export class ListPage {
 
   confirmDelete(p) {
     let confirmAbortAlert = this.alertCtrl.create({
-      title: 'Confirm Abort',
+      title: 'Confirm Delete',
       message: 'This will delete: \'' + p.title + '\'. Are you sure?',
       buttons: [
         {
@@ -150,6 +151,10 @@ export class ListPage {
       ]
     });
     confirmAbortAlert.present();
+  }
+
+  edit(project) {
+    this.navCtrl.push(FormPage,{'project':project,'edit':true});
   }
 
 }
