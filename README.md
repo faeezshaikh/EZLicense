@@ -4,13 +4,14 @@ aws s3 cp --recursive ./www s3://turboarb/www
 
 
 0. Workflow
-1. Save for Later - In progress.
-2. Diagrams
+2. Diagrams upload
 1. PwA icon and home screen
 4. Block IE
 5. Restrict dns to corp.
 6. In mobile version, boxes on 'Review' page are unequal sizes
 7. in mobile, admin icons are not showing.
+
+
 
 7. Update questions content
 8. Update help content ** main!
@@ -29,6 +30,7 @@ aws s3 cp --recursive ./www s3://turboarb/www
 
 
 ------
+1. Save for Later - In progress.
 0. View details are not showing answered question for newly added project.
 1. Cleanup
 0a. filtering broken
