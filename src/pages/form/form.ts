@@ -200,9 +200,11 @@ export class FormPage {
 
     this.explanation = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat.";
     this.recommendations = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat.";
-
-    this.score = 45;
-    this.verdict = 'Marginally aligned';
+    this.attempted=0;
+    this.score = this.getRandomInt(100);
+    if(this.score>0&& this.score<36) this.verdict = 'Not Aligned';
+    if(this.score>36&& this.score<66) this.verdict = 'Marginally Aligned';
+    if(this.score>65) this.verdict = 'Aligned';
     let that = this;
     // $scope.$broadcast('timer-stop');
     this.questions.forEach(function (q, index) {
@@ -213,6 +215,9 @@ export class FormPage {
       }
 
     });
+
+    this.project.score = this.score;
+    this.project.verdict = this.verdict;
 
     // this.correct = this.questions.length - wrong;
     // this.score = Math.round((Number(this.correct) / this.questions.length) * 100);
@@ -278,6 +283,8 @@ export class FormPage {
 
     if (this.project && this.project.title) { // Edit mode
       this.helper.updateItem(this.project.key, this.project);
+      console.log('Updated project...',this.project);
+      
     } else {
       this.helper.addData({
         'title': this.projectTitle,
@@ -302,11 +309,14 @@ export class FormPage {
       this.buttonText = "Save";
     } else {
       // Saving changes
+  this.calculateAndUpdateScore();    
       this.disabled = true;
       this.buttonText = "Edit";
     }
 
   }
 
-
+   getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
 }

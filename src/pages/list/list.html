@@ -49,17 +49,17 @@
           <ion-card>
             <i class="fa fa-plus" aria-hidden="true"></i>
             <ion-fab right top (click)="itemTapped($event, p)">
-              <button ion-fab *ngIf="p.score>60" color="secondary">
+              <button ion-fab *ngIf="p.score>65" color="secondary">
                 <ion-icon name="">
                   <label style="font-family:arial;font-size:1.9rem;font-weight:bold">{{p.score}}%</label>
                 </ion-icon>
               </button>
-              <button ion-fab *ngIf="p.score<30" color="danger">
+              <button ion-fab *ngIf="p.score<36" color="danger">
                 <ion-icon name="">
                   <label style="font-family:arial;font-size:1.9rem;font-weight:bold">{{p.score}}%</label>
                 </ion-icon>
               </button>
-              <button ion-fab *ngIf="p.score>30 && p.score<60" color="orange">
+              <button ion-fab *ngIf="p.score>35 && p.score<66" color="orange">
                 <ion-icon name="">
                   <label style="font-family:arial;font-size:1.9rem;font-weight:bold">{{p.score}}%</label>
                 </ion-icon>
