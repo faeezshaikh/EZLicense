@@ -149,7 +149,14 @@
     </ion-card>
     <p></p>
 
-    <img  *ngIf="project.diagram," [src]="project.diagram"/>
+    <ion-card>
+        <p style="text-align:left" *ngIf="project.description">
+            <strong>Project Description: </strong><span style="text-align:left">{{project.description}}</span></p>
+            <hr/>
+     
+      <img  *ngIf="project.diagram," [src]="project.diagram"/>
+
+    </ion-card>
 
 
     <ion-card *ngIf="project.questions">
@@ -160,10 +167,7 @@
       </p>
       <hr/>
 
-      <p style="text-align:left" *ngIf="project.description">
-          <strong>About the Project: </strong><span style="text-align:left">{{project.description}}</span></p>
-          <p>&nbsp;</p>
-   
+    
       <div *ngFor="let question of project.questions; let i = index">
         <div style="text-align:left">
           <strong>{{i + 1}}. {{question.Name}}</strong>
