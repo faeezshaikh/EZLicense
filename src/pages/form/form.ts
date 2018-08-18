@@ -274,7 +274,7 @@ export class FormPage {
 
     this.navCtrl.pop();
     // this.navCtrl.pop();
-    this.helper.presentToast("Thank you for taking the assessment. Cheers!","top","toastClass",false,"");
+    this.helper.presentToast("Thank you for taking the assessment. Cheers!","middle","toastClass",false,"",2000);
 
     if(this.project && this.project.title) {
       this.helper.updateItem(this.project.key,this.project);

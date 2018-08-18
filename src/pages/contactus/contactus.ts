@@ -26,10 +26,10 @@ arb:any;
   }
 
   itemTapped() {
-    this.helper.presentToast("Slide the name left or right to see options for contacting.","middle","toastClass2",true,"OK");
+    this.helper.presentToast("Slide the name left or right to see options for contacting.","middle","toastClass2",true,"OK",4000);
   }
 
   tbd() {
-    this.helper.presentToast("Feature will be implemented in the next iteration","bottom","toastClass2",true,"OK");
+    this.helper.presentToast("Feature will be implemented in the next iteration","bottom","toastClass2",true,"OK",4000);
   }
 }

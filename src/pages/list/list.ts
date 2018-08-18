@@ -63,11 +63,10 @@ export class ListPage {
 
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
-    this.helper.presentToast("Successfully refreshed.","middle","toastClass",false,'');
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
-      this.helper.presentToast("Successfully refreshed.","middle","toastClass",false,'')
+      this.helper.presentToast("Successfully refreshed.","middle","toastClass",false,'',1500)
     }, 2000);
     
   }
@@ -101,8 +100,9 @@ export class ListPage {
     console.log('animating odometer');
     this.odo = 0;
     setTimeout(()=>{
-      this.odo = data.length.toString();
-    },500)
+      // this.odo = data.length.toString();
+      this.getProjects();
+    },1000)
     
   }
   itemTapped(event, item) {

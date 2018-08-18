@@ -101,10 +101,10 @@ export class HelperProvider {
   ////// [ Used to read local files] ////////
 
 
-  presentToast(msg: string, position: string, clazz: string, showCloseButton: boolean, closeButtonText: string) {
+  presentToast(msg: string, position: string, clazz: string, showCloseButton: boolean, closeButtonText: string,duration:number) {
     let toast = this.toastCtrl.create({
       message: msg,
-      duration: 4000,
+      duration: duration,
       position: position,
       cssClass: clazz,
       showCloseButton: showCloseButton,
