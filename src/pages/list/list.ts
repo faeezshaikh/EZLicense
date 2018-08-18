@@ -15,50 +15,26 @@ export class ListPage {
   selectedItem: any;
   icons: string[];
   items: Array<{ title: string, note: string, icon: string }>;
-  projects:  Observable<any[]>;;
-  // afDatabase:any;
+  projects: Observable<any[]>;;
   activeMenu: string;
-  odo:any;
+  odo: any;
   isMobile = false;
-  showDelete:number=0;
-  detailsModal:any;
+  showDelete: number = 0;
+  detailsModal: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase,
-    public modalCtrl: ModalController, public helper: HelperProvider, public menu: MenuController,public plt: Platform,private alertCtrl: AlertController) {
+    public modalCtrl: ModalController, public helper: HelperProvider, public menu: MenuController, public plt: Platform, private alertCtrl: AlertController) {
 
-      if (this.plt.is('mobile') || this.plt.is('mobileweb')) {
-        console.log('Running on a mobile device');
-        this.isMobile = true;
-      } else {
-        console.log('Not Running on a mobile device');
-      }
-
-
-      
-
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
-    this.activeMenu = 'menu1'
-
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-      'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
+    if (this.plt.is('mobile') || this.plt.is('mobileweb')) {
+      console.log('Running on a mobile device');
+      this.isMobile = true;
+    } else {
+      console.log('Not Running on a mobile device');
     }
 
+    this.selectedItem = navParams.get('item');
+    this.activeMenu = 'menu1'
     this.getProjects();
-    // let myIp = this.helper.getIP();
-    // console.log("Got my ip:", myIp);
-    
-
-
   }
 
   doRefresh(refresher) {
@@ -66,30 +42,19 @@ export class ListPage {
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
-      this.helper.presentToast("Successfully refreshed.","middle","toastClass",false,'',1500)
+      this.helper.presentToast("Successfully refreshed.", "middle", "toastClass", false, '', 1500)
     }, 2000);
-    
-  }
 
-  // getProjects() {
-  //   this.afDatabase.list('/projects').valueChanges().subscribe((data) => {
-  //     this.projects = data;
-  //     this.updateOdometer(data);
-  //     this.helper.setProjectList(data);
-  //   }, (err) => {
-  //     console.log("probleme : ", err)
-  //   });
-  // }
+  }
 
   getProjects() {
-    this.projects = this.helper.getItems();
+    this.projects = this.helper.getItems();  // Returns an Observable
     this.projects.subscribe(list => {
-        console.log('Lenght of list is:' , list.length)
-        this.updateOdometer(list);
-        this.helper.setProjectList(list);
-      });
+      console.log('Lenght of list is:', list.length)
+      this.updateOdometer(list);
+      // this.helper.setProjectList(list);
+    });
   }
-
 
   updateOdometer(data) {
     console.log('updating odometer');
@@ -99,23 +64,16 @@ export class ListPage {
   animateOdometer(data) {
     console.log('animating odometer');
     this.odo = 0;
-    setTimeout(()=>{
+    setTimeout(() => {
       // this.odo = data.length.toString();
       this.getProjects();
-    },1000)
-    
+    }, 1000)
+
   }
   itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    // this.navCtrl.push(ListPage, {
-    //   item: item
-    // });
-
     this.detailsModal = this.modalCtrl.create(DetailsPage, { item: item });
     this.detailsModal.present();
-
   }
-
 
   filterItems(ev: any) {
     // this.getProjects();
@@ -128,6 +86,7 @@ export class ListPage {
       //   return item.title.toLowerCase().includes(val.toLowerCase());
       // });
 
+      // Filter the Observable. First map the Observale to List then Filter the List
       this.projects = this.projects.map(list => list.filter(function (item) {
         return item.title.toLowerCase().includes(val.toLowerCase());
       }))
@@ -135,51 +94,36 @@ export class ListPage {
   }
 
 
-  
+
 
   menu2Active() {
-
-    // this.navCtrl.setRoot(HomePage);
-
     let profileModal = this.modalCtrl.create(CreatePage, { userId: 8675309 });
     profileModal.present();
-
-
-    // this.activeMenu = 'menu2';
-    // console.log('Menu2');
-
-    // this.menu.enable(false, 'menu1');
-    // this.menu.enable(true, 'menu2');
-    // this.menu.open();
   }
-  ionViewDidLoad(){
+  ionViewDidLoad() {
     console.log("ionViewDidLoad called...");
-
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     console.log("ionViewWillEnter called...");
   }
 
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     console.log("ionViewDidEnter called...");
-    if(this.projects) {
+    if (this.projects) {
       console.log('Calling update odometer');
-      
-      // this.updateOdometer(this.projects);
-      this.getProjects();
+      this.getProjects(); // animating odometer
     }
 
   }
-  increment(){
+  increment() {
     this.showDelete++
   }
-  hideDelete(){
+  hideDelete() {
     this.showDelete = 0;
   }
 
-  deleteProject(project){
-    // this.ViewController.dismiss();
+  deleteProject(project) {
     this.confirmDelete(project);
   }
 
