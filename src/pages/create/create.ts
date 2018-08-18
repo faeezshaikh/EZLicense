@@ -23,7 +23,7 @@ export class CreatePage {
 
   startAssessment() {
     console.log('user entered->:', this.pname);
-    this.navCtrl.setRoot(FormPage, { title: this.pname, desc: this.pdesc, assessor: this.assessor });
+    this.navCtrl.setRoot(FormPage, { title: this.pname, desc: this.pdesc, assessor: this.assessor, diagram:this.downloadURL});
   }
 
   dismiss() {

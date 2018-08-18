@@ -149,6 +149,8 @@
     </ion-card>
     <p></p>
 
+    <img  *ngIf="project.diagram," [src]="project.diagram"/>
+
 
     <ion-card *ngIf="project.questions">
         <!-- <p>&nbsp;</p> -->

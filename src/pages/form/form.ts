@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, MenuController, NavParams, Content, AlertController } from 'ionic-angular';
 import { HelperProvider } from '../../providers/helper/helper';
 import _ from "lodash";
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -34,6 +35,7 @@ export class FormPage {
   project: any; // used in Edit mode.
   disabled: boolean = true;
   buttonText = "Edit"
+  diagram: Observable<string>;
 
   @ViewChild(Content) content: Content;
 
@@ -74,7 +76,10 @@ export class FormPage {
       this.projectTitle = navParams.get('title');
       this.projectDescription = navParams.get('desc');
       this.assessor = navParams.get('assessor');
+      navParams.get('diagram').subscribe(res=> {console.log(res); this.diagram=res;})
       console.log("Project is ", this.projectTitle);
+      console.log("diagram was uploaded",this.diagram);
+      
     }
   }
 
@@ -360,7 +365,8 @@ export class FormPage {
         'score': this.score,
         'verdict': this.verdict,
         'explanation': this.explanation,
-        'recommendations': this.recommendations
+        'recommendations': this.recommendations,
+        'diagram':this.diagram
       });
     }
   }
