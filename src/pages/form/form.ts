@@ -24,6 +24,7 @@ export class FormPage {
   assessor: string;
   thanked = false;
   showSpinner = false;
+  showFilingSpinner=false;
   attempted: number = 0;
   explanation: string;
   recommendations: string;
@@ -285,12 +286,29 @@ export class FormPage {
     if (question.answer) answered = 'Answered';
     return answered;
   }
-  submit() {
+  submit(file:boolean) {
     this.resetMenus();
 
-    this.navCtrl.pop();
-    this.helper.presentToast("Thank you for taking the assessment. Cheers!", "middle", "toastClass", false, "", 2000);
+    if(file) {
+      this.showFilingSpinner = true;
+      let that = this;
+      setTimeout(function () {
+        that.showFilingSpinner = true;
+        that.updateInFb();
+      }, 2000);
+    } else {
+      // dont show the spinner;
+      this.updateInFb();
+    }
+ 
+  }
 
+
+  updateInFb(){
+
+    this.navCtrl.pop();
+    this.helper.presentToast("Thank you for taking the assessment. Cheers!", "middle", "toastClass", false, "", 2000);     
+       
     if (this.project && this.project.title) { // Edit mode
       this.helper.updateItem(this.project.key, this.project);
       console.log('Updated project...',this.project);

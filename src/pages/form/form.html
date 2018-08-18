@@ -7,7 +7,7 @@
 </ion-header>
 
 
-<ion-content padding id="listScroll" style="font-family:Avenir Next , sans-serif;" class="mycolor">
+<ion-content padding id="listScroll" style="font-family:Avenir Next , sans-serif;" [ngClass]="(!showFilingSpinner)?'mycolor':''">
 
     <p></p>
     <div *ngIf="showSpinner" style="text-align:center;margin-top:150px;">
@@ -121,8 +121,15 @@
 
 
 
-    <div class="center result" *ngIf="mode=='result' && !showSpinner">
+
+    <div style="text-align:center" *ngIf="showFilingSpinner">
+            <img src="http://newtowninvestments.com/included/image/Sending.gif"/>
+            
+            <h4>Filing Your Application...</h4>
+        </div>
+    <div class="center result" *ngIf="mode=='result' && !showSpinner && !showFilingSpinner">
             <p></p>
+           
             <ion-card>
                 <ion-item>
                     <ion-avatar item-left>
@@ -171,7 +178,7 @@
                                         <p>&nbsp;</p>
                                     <!-- <img class="full-image" height="150" width="100" ng-src="data/img/table.jpg"> -->
                                     <p class="center">
-                                        <button ion-button (click)="submit()"  color="secondary">File Application</button>
+                                        <button ion-button (click)="submit(true)"  color="secondary">File Application</button>
                                         <button ion-button (click)="submit()" outline >Save for Later</button>
                                     </p>
                     
