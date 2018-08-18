@@ -17,6 +17,7 @@ export class HelperProvider {
   data: any = null; // USed to read local files
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
+  isPlatformMobile:boolean;
 
   constructor(public http: HttpClient, private af: AngularFireDatabase, private toastCtrl: ToastController) {
     console.log('Hello HelperProvider Provider');
@@ -31,6 +32,12 @@ export class HelperProvider {
     );
   }
 
+  setPlatform(val: boolean){
+    this.isPlatformMobile = val;
+  }
+  getPlatform(){
+    return this.isPlatformMobile ;
+  }
   /////// [CRUD] //////
   getItems() {  // Returns Observable
     return this.items;

@@ -26,7 +26,7 @@
       </ion-item>
       <hr/>
 
-      <ion-grid>
+      <ion-grid *ngIf="!isPlatformMobile">
         <ion-row>
           <ion-col>
             <div style="text-align:center;width:60%">
@@ -73,10 +73,72 @@
           <p style="text-align:left">
             <strong>Recommendations: </strong>{{project.recommendations}}
           </p>
-          <!-- <img class="full-image" height="150" width="100" ng-src="data/img/table.jpg"> -->
-
         </ion-row>
       </ion-grid>
+
+
+     <!-- //////////////// [Layout for Mobile Platforms] ////////////////// -->
+
+      <ion-grid *ngIf="isPlatformMobile">
+          <ion-row>
+            <ion-col>
+              <div style="text-align:center;width:100%">
+                <img src="https://communications.fidelity.com/pi/calculators/saving-for-retirement/assets/images/rpm-dial.png" />
+  
+                <!-- <img src="assets/data/dial1.png"/> -->
+              </div>
+            </ion-col>
+            </ion-row>
+            <ion-row>
+            <ion-col>
+              <div class="item item-body" style="text-align:left">
+  
+                <div class="row">
+                  <div class="col col-80">Assessor</div>
+                  <div class="col col-20">{{project.assessor}}</div>
+                </div>
+  
+                <div class="row">
+                  <div class="col col-80">Last Assessed</div>
+                  <div class="col col-20">{{project.lastUpdated}}</div>
+                </div>
+  
+                <div class="row">
+                  <div class="col col-80">Assessment score</div>
+                  <div class="col col-20">
+                    <strong>{{project.score}} %</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col-80">Result</div>
+                  <div class="col col-20">
+                    <strong>{{project.verdict}}</strong>
+                  </div>
+                </div>
+  
+  
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <hr/>
+            <p style="text-align:left">
+              <strong>Explanation: </strong>{{project.explanation}}</p>
+            <p>&nbsp;</p>
+            <p style="text-align:left">
+              <strong>Recommendations: </strong>{{project.recommendations}}
+            </p>
+          </ion-row>
+        </ion-grid>
+    <!-- //////////////// [Layout for Mobile Platforms] ////////////////// -->
+
+
+
+
+
+
+
+
     </ion-card>
     <p></p>
 

@@ -28,6 +28,7 @@ export class ListPage {
     if (this.plt.is('mobile') || this.plt.is('mobileweb')) {
       console.log('Running on a mobile device');
       this.isMobile = true;
+      this.helper.setPlatform(true);
     } else {
       console.log('Not Running on a mobile device');
     }
