@@ -24,6 +24,13 @@
         <h2>Assessment Details</h2>
         <p>{{project.verdict}}</p>
       </ion-item>
+
+      <ion-fab right top (click)="edit()">
+          <button ion-fab  color="secondary">
+              <ion-icon name="create"></ion-icon>
+          </button>
+         
+        </ion-fab>
       <hr/>
 
       <ion-grid *ngIf="!isPlatformMobile">
