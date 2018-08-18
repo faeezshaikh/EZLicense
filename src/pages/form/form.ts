@@ -163,8 +163,8 @@ export class FormPage {
 
   presentSubmitConfirm() {
     this.confirmSubmitAlert = this.alertCtrl.create({
-      title: 'Confirm Submit',
-      message: 'This will submit your assessment and show you the final score. Do you want to proceed?',
+      title: 'Confirm',
+      message: 'This will finish your assessment and show you the final score. Do you want to proceed?',
       buttons: [
         {
           text: 'Cancel',
@@ -179,20 +179,28 @@ export class FormPage {
             console.log('Submit clicked');
             // Submit the exam.
             this.calculateAndUpdateScore();
-            this.showSpinner = true;
-            let that = this;
-            setTimeout(function () {
-              that.showSpinner = false;
-              that.setMode('result');
-              console.log('Spinner = ', that.showSpinner);
 
-
-            }, 3000);
+            if(this.project) {
+              // In Edit mode, dont want to show spinner. Just good user experience
+              this.setMode('result');
+            } else {
+              this.showSpinner = true;
+              let that = this;
+              setTimeout(function () {
+                that.showSpinner = false;
+                that.setMode('result');
+                console.log('Spinner = ', that.showSpinner);
+  
+  
+              }, 3000);
+            }
 
           }
         }
       ]
     });
+
+   
     this.confirmSubmitAlert.present();
   }
 
@@ -216,8 +224,10 @@ export class FormPage {
 
     });
 
-    this.project.score = this.score;
-    this.project.verdict = this.verdict;
+    if(this.project) {
+      this.project.score = this.score;
+      this.project.verdict = this.verdict;
+    }
 
     // this.correct = this.questions.length - wrong;
     // this.score = Math.round((Number(this.correct) / this.questions.length) * 100);
