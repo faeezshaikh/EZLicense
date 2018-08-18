@@ -2,9 +2,8 @@
 aws s3 cp --recursive ./www s3://turboarb/www
 
 
-1. Help put pf sink with questions.
-0. Workflow
-2. Diagrams upload
+1. Help out of sink with questions.
+2. Diag. update
 1. PwA icon and home screen
 4. Block IE
 5. Restrict dns to corp.
@@ -30,6 +29,8 @@ aws s3 cp --recursive ./www s3://turboarb/www
 
 
 ------
+0. Workflow
+2. Diagrams upload
 1. Save for Later - In progress.
 0. View details are not showing answered question for newly added project.
 1. Cleanup
