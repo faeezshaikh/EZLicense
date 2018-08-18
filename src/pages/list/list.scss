@@ -21,4 +21,22 @@ page-list {
         font-size: 30px;
     }
 
+    .approved {
+        color:#32db64;;
+    }
+    .rejected {
+        color: #f53d3d;
+    }
+    .review {
+        color: #488aff;
+    }
+    .submitted {
+        color:#222;
+    }
+    .progress {
+        color:#222;
+    }
+    .inputs {
+        color: #FFA500;
+    }
 }

@@ -286,30 +286,64 @@ export class FormPage {
     if (question.answer) answered = 'Answered';
     return answered;
   }
-  submit(file:boolean) {
+  submit(isFiling:boolean) {
     this.resetMenus();
 
-    if(file) {
-      this.showFilingSpinner = true;
-      let that = this;
-      setTimeout(function () {
-        that.showFilingSpinner = true;
-        that.updateInFb();
-      }, 2000);
+    if(isFiling) {
+      //  show confirmation box and then spinner for sending application
+      let alertbox = this.alertCtrl.create({
+        title: 'Confirm',
+        message: 'This will send your assessment to the ARB for review. Are you sure?',
+        buttons: [
+          {
+            text: 'No',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Yes',
+            handler: () => {
+              console.log('Submit clicked');
+              this.showFilingSpinner = true;
+              let that = this;
+              setTimeout(function () {
+                that.showFilingSpinner = true;
+                that.updateInFb(isFiling);
+              }, 2000);
+            
+  
+            }
+          }
+        ]
+      });
+      alertbox.present();
     } else {
-      // dont show the spinner;
-      this.updateInFb();
+      // Dont show confirmation box.
+      this.updateInFb(isFiling);
     }
  
   }
 
 
-  updateInFb(){
+  updateInFb(isFiling:boolean){
 
     this.navCtrl.pop();
-    this.helper.presentToast("Thank you for taking the assessment. Cheers!", "middle", "toastClass", false, "", 2000);     
+    let status, msg;
+    if(isFiling) {
+      // update status to : 'Submitted
+      status = 'Submitted';
+      msg = "Your assessment was successfuly submitted for review. Cheers!"
+    } else {
+      // update status to save for later.
+      status = "In Progress";
+      msg = "Your assessment was successfuly saved for later."
+    }
+    this.helper.presentToast(msg, "middle", "toastClass", false, "", 2000);     
        
     if (this.project && this.project.title) { // Edit mode
+      this.project.status = status;
       this.helper.updateItem(this.project.key, this.project);
       console.log('Updated project...',this.project);
       
@@ -319,7 +353,7 @@ export class FormPage {
         'description': this.projectDescription,
         'assessor': this.assessor,
         'sponsor': 'John Doe',
-        'status': 'Submitted',
+        'status': status,
         'lastUpdated': new Date().toLocaleString(),
         'questions': this.questions,
         'score': this.score,
