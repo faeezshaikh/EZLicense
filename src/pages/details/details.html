@@ -25,7 +25,7 @@
         <p>{{project.verdict}}</p>
       </ion-item>
 
-      <ion-fab right top (click)="edit()">
+      <ion-fab right top (click)="edit()" *ngIf="project.status == 'In Progress'">
           <button ion-fab  color="primary">
               <ion-icon name="create"></ion-icon>
           </button>
@@ -182,7 +182,7 @@
         </div>
       </div>
       <div class="center">
-          <button ion-button (click)="edit()">Edit</button>
+          <button ion-button (click)="edit()" *ngIf="project.status == 'In Progress'">Edit</button>
         <button ion-button (click)="dismiss()">Close</button>
       </div>
     </ion-card>
