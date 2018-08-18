@@ -126,13 +126,14 @@ export class ListPage {
   }
 
   deleteProject(project) {
-    this.confirmDelete(project);
+    let _msg = 'This will delete: \'' + project.title + '\'. Are you sure?';
+    this.confirmDelete(project,"Confirm Delete",_msg,"delete");
   }
 
-  confirmDelete(p) {
+  confirmDelete(p,_title,_msg,_action) {
     let confirmAbortAlert = this.alertCtrl.create({
-      title: 'Confirm Delete',
-      message: 'This will delete: \'' + p.title + '\'. Are you sure?',
+      title: _title,
+      message: _msg,
       buttons: [
         {
           text: 'Cancel',
@@ -145,7 +146,10 @@ export class ListPage {
           text: 'Yes',
           handler: () => {
             console.log('Delete confirmed');
-            this.helper.deleteItem(p.key);
+            if(_action == 'delete')
+              this.helper.deleteItem(p.key);
+            if(_action == 'approve') ;
+              // this.helper.tbd(p.key);
           }
         }
       ]
@@ -155,6 +159,11 @@ export class ListPage {
 
   edit(project) {
     this.navCtrl.push(FormPage,{'project':project,'edit':true});
+  }
+
+  approve(project){
+    let _msg = 'This will approve: \'' + project.title + '\'. Are you sure?'
+    this.confirmDelete(project,"Confirm Approval",_msg,"approve");
   }
 
 }
