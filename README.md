@@ -4,11 +4,11 @@ aws s3 cp --recursive ./www s3://turboarb/www
 
 0. Testing
 2. Diag. update
-1. PwA icon and home screen
+
 4. Block IE
 5. Restrict dns to corp.
 6. In mobile version, boxes on 'Review' page are unequal sizes
-
+1. PwA icon and home screen -- too small
 
 
 
