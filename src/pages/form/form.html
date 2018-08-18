@@ -167,9 +167,10 @@
                                     <p><strong>Explanation: </strong>{{explanation}}</p>
                                     <p><strong>Recommendations: </strong> {{recommendations}}
                                         </p>
+                                        <p>&nbsp;</p>
                                     <!-- <img class="full-image" height="150" width="100" ng-src="data/img/table.jpg"> -->
                                     <p class="center">
-                                        <button ion-button (click)="submit()">Submit</button>
+                                        <button ion-button (click)="submit()" block color="secondary">File Application</button>
                                     </p>
                     
                                 </div></ion-col>
@@ -181,25 +182,13 @@
     
     
             <p class="center">
-                Your responses are highlighted in green.
+                Your responses are below.
             </p>
-            <!-- <div *ngFor="let question of questions; let i = index">
-                <div class="result-question">
-                    <h3>{{i + 1}}. {{question.Name}}</h3>
-                    <div class="result-options">
-                        <div *ngFor="let Option of question.Options">
-                            <label *ngIf="disabled" class="{{  question.answer == Option.Name ? 'result-correct': 'result-incorrect' }}"> 
-                                <input id="{{Option.Id}}" type="checkbox" disabled [checked]="question.answer == Option.Name" /> {{Option.Name}}
-                            </label>
-                            <input *ngIf="!disabled" id="{{Option.Id}}" type="checkbox"   [checked]="question.answer == Option.Name" /> {{Option.Name}}
-                        </div>
-                    </div>
-                    <p></p>
+      
+            <div style="text-align:right">
+                    <button ion-button (click)="edit()">{{buttonText}}</button>
                 </div>
-            </div> -->
-
-            <!--  -->
-
+        
             <div *ngFor="let question of questions; let i = index">
                     <div class="result-question">
                         <h3>{{i + 1}}. {{question.Name}}</h3>
@@ -235,9 +224,8 @@
 
 
 
-            <div class="center">
-                <button ion-button (click)="submit()">Submit</button>
-                <button ion-button (click)="edit()">{{buttonText}}</button>
+            <div style="text-align:right">
+                <button ion-button (click)="edit()" >{{buttonText}}</button>
             </div>
     
     
