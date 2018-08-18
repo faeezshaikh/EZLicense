@@ -21,6 +21,7 @@ import { ContactusPage } from '../pages/contactus/contactus';
 import { ResourcesPage } from '../pages/resources/resources';
 import { Ng2OdometerModule } from 'ng2-odometer'; 
 // import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { AngularFireStorageModule } from 'angularfire2/storage';
  
 // AF2 Settings
 export const firebaseConfig = {
@@ -48,7 +49,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     Ng2OdometerModule.forRoot(),
     AngularFireDatabaseModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireStorageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
