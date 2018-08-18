@@ -183,21 +183,61 @@
             <p class="center">
                 Your responses are highlighted in green.
             </p>
-            <div *ngFor="let question of questions; let i = index">
+            <!-- <div *ngFor="let question of questions; let i = index">
                 <div class="result-question">
                     <h3>{{i + 1}}. {{question.Name}}</h3>
                     <div class="result-options">
                         <div *ngFor="let Option of question.Options">
-                            <label class="{{  question.answer == Option.Name ? 'result-correct': 'result-incorrect' }}"> 
-                                <input id="{{Option.Id}}" type="checkbox" disabled="disabled" readonly="readonly" [checked]="question.answer == Option.Name" /> {{Option.Name}}
+                            <label *ngIf="disabled" class="{{  question.answer == Option.Name ? 'result-correct': 'result-incorrect' }}"> 
+                                <input id="{{Option.Id}}" type="checkbox" disabled [checked]="question.answer == Option.Name" /> {{Option.Name}}
                             </label>
+                            <input *ngIf="!disabled" id="{{Option.Id}}" type="checkbox"   [checked]="question.answer == Option.Name" /> {{Option.Name}}
                         </div>
                     </div>
                     <p></p>
                 </div>
+            </div> -->
+
+            <!--  -->
+
+            <div *ngFor="let question of questions; let i = index">
+                    <div class="result-question">
+                        <h3>{{i + 1}}. {{question.Name}}</h3>
+                        <!-- <div class="result-options">
+                            <div *ngFor="let Option of question.Options">
+                                <label *ngIf="disabled" class="{{  question.answer == Option.Name ? 'result-correct': 'result-incorrect' }}"> 
+                                    <input id="{{Option.Id}}" type="checkbox" disabled [checked]="question.answer == Option.Name" /> {{Option.Name}}
+                                </label>
+                                <input *ngIf="!disabled" id="{{Option.Id}}" type="checkbox"   [checked]="question.answer == Option.Name" /> {{Option.Name}}
+                            </div>
+                        </div> -->
+
+                        <ion-list radio-group [(ngModel)]="question.answer" *ngIf="disabled">
+                            <ion-item *ngFor="let option of question.Options">
+                                <ion-radio  item-left value="{{option.Name}}" disabled></ion-radio>
+                                <ion-label>{{option.Name}}</ion-label>
+                            </ion-item>
+                        </ion-list>
+
+                        <ion-list radio-group [(ngModel)]="question.answer" *ngIf="!disabled">
+                                <ion-item *ngFor="let option of question.Options">
+                                    <ion-radio  item-left value="{{option.Name}}"></ion-radio>
+                                    <ion-label>{{option.Name}}</ion-label>
+                                </ion-item>
+                            </ion-list>
+
+                        <p></p>
+                    </div>
             </div>
+
+
+
+
+
+
             <div class="center">
                 <button ion-button (click)="closeResults()">Close</button>
+                <button ion-button (click)="edit()">{{buttonText}}</button>
             </div>
     
     

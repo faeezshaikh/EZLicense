@@ -31,6 +31,8 @@ export class FormPage {
   verdict:any;
   // odo:any=90;
   project:any; // used in Edit mode.
+  disabled:boolean = true;
+  buttonText="Edit"
 
   @ViewChild(Content) content: Content;
 
@@ -296,6 +298,18 @@ export class FormPage {
   }
 
    
+  }
+
+  edit(){
+    console.log('Enabled!!!!');
+    if(this.buttonText == 'Edit') {
+      this.disabled = false;
+      this.buttonText="Save";
+    } else {
+      this.disabled = true;
+      this.buttonText="Edit";
+    }
+    
   }
 
 
