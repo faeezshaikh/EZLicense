@@ -5,6 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { HelperProvider } from '../../providers/helper/helper';
 import { CreatePage } from '../create/create';
 import { DetailsPage } from '../details/details';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'page-list',
@@ -14,7 +15,7 @@ export class ListPage {
   selectedItem: any;
   icons: string[];
   items: Array<{ title: string, note: string, icon: string }>;
-  projects: any;
+  projects:  Observable<any[]>;;
   // afDatabase:any;
   activeMenu: string;
   odo:any;
@@ -71,15 +72,25 @@ export class ListPage {
     
   }
 
+  // getProjects() {
+  //   this.afDatabase.list('/projects').valueChanges().subscribe((data) => {
+  //     this.projects = data;
+  //     this.updateOdometer(data);
+  //     this.helper.setProjectList(data);
+  //   }, (err) => {
+  //     console.log("probleme : ", err)
+  //   });
+  // }
+
   getProjects() {
-    this.afDatabase.list('/projects').valueChanges().subscribe((data) => {
-      this.projects = data;
-      this.updateOdometer(data);
-      this.helper.setProjectList(data);
-    }, (err) => {
-      console.log("probleme : ", err)
-    });
+    this.projects = this.helper.getItems();
+    this.projects.subscribe(list => {
+        console.log('Lenght of list is:' , list.length)
+        this.updateOdometer(list);
+        this.helper.setProjectList(list);
+      });
   }
+
 
   updateOdometer(data) {
     console.log('updating odometer');
@@ -148,7 +159,8 @@ export class ListPage {
     if(this.projects) {
       console.log('Calling update odometer');
       
-      this.updateOdometer(this.projects);
+      // this.updateOdometer(this.projects);
+      this.getProjects();
     }
 
   }
@@ -180,7 +192,7 @@ export class ListPage {
           text: 'Yes',
           handler: () => {
             console.log('Delete confirmed');
-            this.helper.deleteData(p.$key);
+            this.helper.deleteItem(p.key);
           }
         }
       ]

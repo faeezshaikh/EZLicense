@@ -30,15 +30,17 @@ export class FormPage {
   score:any;
   verdict:any;
   // odo:any=90;
+  project:any; // used in Edit mode.
 
   @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public helper: HelperProvider,
     public menu: MenuController, public alertCtrl: AlertController) {
 
-    let project = navParams.get('project');
-    if(project) {
-      console.log('In EDIT mode..project is:',project);
+      let p = navParams.get('project');
+      if(p) {
+        this.project = p;
+      console.log('In EDIT mode..project is:',this.project);
       let quiz = {
         "name": "ARB Self Assessment",
             "logo" : "https://vignette.wikia.nocookie.net/mysims/images/2/22/EA_logo.png/revision/latest?cb=20090801182220",
@@ -46,7 +48,7 @@ export class FormPage {
                     "sponsor":""
     }
       this.data.quiz = quiz;
-      this.questions = project.questions;
+      this.questions =this.project.questions;
       this.question = this.questions[0];
     } else {
 
@@ -273,6 +275,12 @@ export class FormPage {
     this.navCtrl.pop();
     // this.navCtrl.pop();
     this.helper.presentToast("Thank you for taking the assessment. Cheers!","top","toastClass",false,"");
+
+    if(this.project && this.project.title) {
+      this.helper.updateItem(this.project.key,this.project);
+    } else {
+
+  
     this.helper.addData({
       'title':this.projectTitle,
       'description':this.projectDescription,
@@ -285,6 +293,9 @@ export class FormPage {
       'explanation':this.explanation,
       'recommendations':this.recommendations
     });
+  }
+
+   
   }
 
 

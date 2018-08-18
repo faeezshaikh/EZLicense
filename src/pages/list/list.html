@@ -49,7 +49,7 @@
                   (ionInput)="filterItems($event)"
                   (ionCancel)="onCancel($event)">
                 </ion-searchbar>
-                  <ion-col col-md *ngFor="let p of projects"  >
+                  <ion-col col-md *ngFor="let p of projects | async"  >
                      
         
                       

@@ -1,7 +1,9 @@
  npm run build
 aws s3 cp --recursive ./www s3://turboarb/www
 
-
+0. View details are not showing answered question for newly added project.
+0a. filtering broken
+1. Cleanup
 1. PwA icon and home screen
 4. Block IE
 5. Restrict dns to corp.
