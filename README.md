@@ -1,18 +1,23 @@
  npm run build
 aws s3 cp --recursive ./www s3://turboarb/www
 
-0. View details are not showing answered question for newly added project.
 
-1. Cleanup
+
+0. Workflow
+1. Save for Later - In progress.
+2. Diagrams
 1. PwA icon and home screen
 4. Block IE
 5. Restrict dns to corp.
 6. In mobile version, boxes on 'Review' page are unequal sizes
+7. in mobile, admin icons are not showing.
 
 7. Update questions content
 8. Update help content ** main!
 4. Calculate score.
 5. Calculate image for score.
+
+0. Smile to unlock
 
 6. Contact us page
 7. Resources
@@ -24,6 +29,8 @@ aws s3 cp --recursive ./www s3://turboarb/www
 
 
 ------
+0. View details are not showing answered question for newly added project.
+1. Cleanup
 0a. filtering broken
 1. top navbar on phone - tested
 2. ionicons on PWA not appearing  - tested

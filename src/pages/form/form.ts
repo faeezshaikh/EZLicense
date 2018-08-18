@@ -192,7 +192,7 @@ export class FormPage {
                 console.log('Spinner = ', that.showSpinner);
   
   
-              }, 3000);
+              }, 1000);
             }
 
           }
