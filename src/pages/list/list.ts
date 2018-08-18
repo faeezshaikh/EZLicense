@@ -119,16 +119,23 @@ export class ListPage {
 
   filterItems(ev: any) {
     // this.getProjects();
-    this.projects = this.helper.getProjectList();
+    // this.projects = this.helper.getProjectList();
+    this.getProjects();
     let val = ev.target.value;
 
     if (val && val.trim() !== '') {
-      this.projects = this.projects.filter(function (item) {
+      // this.projects = this.projects.filter(function (item) {
+      //   return item.title.toLowerCase().includes(val.toLowerCase());
+      // });
+
+      this.projects = this.projects.map(list => list.filter(function (item) {
         return item.title.toLowerCase().includes(val.toLowerCase());
-      });
+      }))
     }
   }
 
+
+  
 
   menu2Active() {
 
