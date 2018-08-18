@@ -74,8 +74,12 @@
 
             <ion-item>
               <ion-icon name="logo-usd" item-start large></ion-icon>
-              <h2>Sponsor: {{p.sponsor}}</h2>
-              <!-- <p>14 S. Hop Avenue, Madison, WI 53703</p> -->
+              <h2>Status:
+                 <span *ngIf="p.status == 'Approved'" style="color:#32db64;">{{p.status}}</span>
+                 <span *ngIf="p.status == 'Rejected'" style="color:#f53d3d;">{{p.status}}</span>
+                 <span *ngIf="p.status == 'Needs inputs'" style="color:#FFA500;">{{p.status}}</span>
+                 <span *ngIf="p.status == 'Under Review'" style="color:#222;">{{p.status}}</span>
+                 </h2>
               <p>Last Updated: {{p.lastUpdated }}</p>
             </ion-item>
 

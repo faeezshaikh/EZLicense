@@ -288,6 +288,7 @@ export class FormPage {
       'description':this.projectDescription,
       'assessor':this.assessor,
       'sponsor': 'John Doe',
+      'status': 'Under Review',
       'lastUpdated': new Date().toLocaleString(),
       'questions':this.questions,
       'score':this.score,

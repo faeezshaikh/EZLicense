@@ -148,8 +148,10 @@ export class ListPage {
             console.log('Delete confirmed');
             if(_action == 'delete')
               this.helper.deleteItem(p.key);
-            if(_action == 'approve') ;
-              // this.helper.tbd(p.key);
+            if(_action == 'approve') {
+              p.status = "Approved";
+              this.helper.updateItem(p.key,p);
+            }
           }
         }
       ]
@@ -162,8 +164,59 @@ export class ListPage {
   }
 
   approve(project){
-    let _msg = 'This will approve: \'' + project.title + '\'. Are you sure?'
-    this.confirmDelete(project,"Confirm Approval",_msg,"approve");
+    // let _msg = 'This will approve: \'' + project.title + '\'. Are you sure?'
+    // this.confirmDelete(project,"Confirm Approval",_msg,"approve");
+    this.doRadio(project);
   }
+
+
+
+
+  doRadio(project) {
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Update Status');
+
+    alert.addInput({
+      type: 'radio',
+      label: 'Under Review',
+      value: 'Under Review',
+      checked: true
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: 'Needs inputs',
+      value: 'Needs inputs'
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: 'Approved',
+      value: 'Approved',
+      
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: 'Rejected',
+      value: 'Rejected'
+    });
+
+   
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'Ok',
+      handler: (data: any) => {
+        console.log('Radio data:', data);
+        console.log("Submitted:",data);
+        project.status = data;
+        this.helper.updateItem(project.key,project);
+        
+      }
+    });
+
+    alert.present();
+  }
+
 
 }
