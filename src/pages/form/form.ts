@@ -275,14 +275,11 @@ export class FormPage {
     this.resetMenus();
 
     this.navCtrl.pop();
-    // this.navCtrl.pop();
     this.helper.presentToast("Thank you for taking the assessment. Cheers!","middle","toastClass",false,"",2000);
 
-    if(this.project && this.project.title) {
+    if(this.project && this.project.title) { // Edit mode
       this.helper.updateItem(this.project.key,this.project);
     } else {
-
-  
     this.helper.addData({
       'title':this.projectTitle,
       'description':this.projectDescription,
@@ -297,16 +294,15 @@ export class FormPage {
       'recommendations':this.recommendations
     });
   }
-
-   
-  }
+}
 
   edit(){
-    console.log('Enabled!!!!');
+    console.log('Enabled!');
     if(this.buttonText == 'Edit') {
       this.disabled = false;
       this.buttonText="Save";
     } else {
+      // Saving changes
       this.disabled = true;
       this.buttonText="Edit";
     }
