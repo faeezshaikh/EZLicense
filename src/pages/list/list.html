@@ -87,7 +87,7 @@
               <p>{{p.assessor}}</p>
               <button ion-button icon-start clear item-end (click)="itemTapped($event, p)">
                 <ion-icon name="paper-plane"></ion-icon>
-                View Details
+                <span *ngIf="!isMobile">View Details</span>
               </button>
 
               <button *ngIf="showDelete>3" (click)="deleteProject(p)" ion-button icon-start clear item-end>

@@ -76,9 +76,11 @@ export class FormPage {
       this.projectTitle = navParams.get('title');
       this.projectDescription = navParams.get('desc');
       this.assessor = navParams.get('assessor');
-      navParams.get('diagram').subscribe(res=> {console.log(res); this.diagram=res;})
+      if(navParams.get('diagram')) {
+        navParams.get('diagram').subscribe(res=> {console.log(res); this.diagram=res;})
+        console.log("diagram was uploaded",this.diagram);
+      }
       console.log("Project is ", this.projectTitle);
-      console.log("diagram was uploaded",this.diagram);
       
     }
   }

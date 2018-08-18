@@ -41,10 +41,13 @@ export class CreatePage {
     // observe percentage changes
     this.uploadPercent = task.percentageChanges();
 
-    let that = this;
-    this.uploadPercent.subscribe(number => {
-      if(number == 100) that.uploading=false;
-    })
+    if(this.uploadPercent) {
+      let that = this;
+      this.uploadPercent.subscribe(number => {
+        if(number == 100) that.uploading=false;
+      })
+    }
+   
     // get notified when the download URL is available
     task.snapshotChanges().pipe(
         finalize(() => this.downloadURL = fileRef.getDownloadURL() )
