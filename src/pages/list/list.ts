@@ -150,6 +150,7 @@ export class ListPage {
               this.helper.deleteItem(p.key);
             if(_action == 'approve') {
               p.status = "Approved";
+              p.lastUpdated = new Date().toLocaleString();
               this.helper.updateItem(p.key,p);
             }
           }
@@ -210,6 +211,7 @@ export class ListPage {
         console.log('Radio data:', data);
         console.log("Submitted:",data);
         project.status = data;
+        project.lastUpdated = new Date().toLocaleString();
         this.helper.updateItem(project.key,project);
         
       }
