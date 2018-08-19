@@ -103,15 +103,15 @@ export class ListPage {
     profileModal.present();
   }
   ionViewDidLoad() {
-    console.log("ionViewDidLoad called...");
+    // console.log("ionViewDidLoad called...");
   }
 
   ionViewWillEnter() {
-    console.log("ionViewWillEnter called...");
+    // console.log("ionViewWillEnter called...");
   }
 
   ionViewDidEnter() {
-    console.log("ionViewDidEnter called...");
+    // console.log("ionViewDidEnter called...");
     if (this.projects) {
       console.log('Calling update odometer');
       this.getProjects(); // animating odometer
