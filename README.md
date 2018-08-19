@@ -3,6 +3,7 @@ aws s3 cp --recursive ./www s3://turboarb/www
 
 
 0. Testing
+1. Diag for each project
 2. Diag. update
 
 4. Block IE
