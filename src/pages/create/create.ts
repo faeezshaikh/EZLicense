@@ -34,7 +34,7 @@ export class CreatePage {
   uploadFile(event) {
     const file = event.target.files[0];
     let pth = Math.floor(Date.now() / 1000);
-    const filePath = '/'+pth;
+    const filePath = 'turboarb/'+pth;
     console.log('Path is:',filePath);
     
     const fileRef = this.storage.ref(filePath);
