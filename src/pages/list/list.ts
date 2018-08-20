@@ -29,7 +29,7 @@ export class ListPage {
 
       this.isIEOrEdge = /msie\s|trident\/|edge\//i.test(window.navigator.userAgent);
       // this.isIEOrEdge = true;
-      console.log('Is Browser IE:',this.isIEOrEdge);
+      console.log('Is Browser IE?:',this.isIEOrEdge);
       
 
     if (this.plt.is('mobile') || this.plt.is('mobileweb')) {
