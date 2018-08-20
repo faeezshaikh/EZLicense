@@ -22,9 +22,15 @@ export class ListPage {
   isMobile = false;
   showDelete: number = 0;
   detailsModal: any;
+  isIEOrEdge:boolean=false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase,
     public modalCtrl: ModalController, public helper: HelperProvider, public menu: MenuController, public plt: Platform, private alertCtrl: AlertController) {
+
+      this.isIEOrEdge = /msie\s|trident\/|edge\//i.test(window.navigator.userAgent);
+      // this.isIEOrEdge = true;
+      console.log('Is Browser IE:',this.isIEOrEdge);
+      
 
     if (this.plt.is('mobile') || this.plt.is('mobileweb')) {
       console.log('Running on a mobile device');
