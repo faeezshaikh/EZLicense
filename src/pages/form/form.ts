@@ -30,12 +30,14 @@ export class FormPage {
   recommendations: string;
   score: any;
   verdict: any;
-  // odo:any=90;
+  odo:any;
+  sliderScore=0;
   project: any; // used in Edit mode.
   disabled: boolean = true;
   buttonText = "Edit"
   diagram: Observable<string>;
   reasons:any;
+  sliderColor:string;
 
   @ViewChild(Content) content: Content;
 
@@ -217,6 +219,20 @@ export class FormPage {
     this.attempted=0;
     // this.score = this.getRandomInt(100);
     this.score = this.foo();
+    this.odo = this.score;
+    console.log('Odometer val:',this.odo);
+
+   let that1 = this;
+    setTimeout(function () {
+      that1.sliderScore = that1.odo;
+      if(that1.sliderScore > 35 && that1.sliderScore<66) that1.sliderColor='orange';
+      if(that1.sliderScore < 36) that1.sliderColor='danger';
+      if(that1.sliderScore > 65) that1.sliderColor='secondary';
+
+     console.log('setting sliderscore to :',that1.sliderScore);
+     
+    }, 2000);
+    
 
     
 
@@ -239,11 +255,7 @@ export class FormPage {
       this.project.verdict = this.verdict;
     }
 
-    // this.correct = this.questions.length - wrong;
-    // this.score = Math.round((Number(this.correct) / this.questions.length) * 100);
-    // this.verdict = (this.score > 65) ? 'Pass' : 'Fail';
-    // this.setMode('result');
-    // this.storage.saveScore(this.selectedTopic.no, this.score);
+  
   }
 
   foo(){
@@ -369,6 +381,8 @@ export class FormPage {
   find(id){
     return _.find(this.questions, function(o) { return o.Id == id; });
   }
+
+
 
   resetMenus() {
     this.menu.enable(true, 'menu1');

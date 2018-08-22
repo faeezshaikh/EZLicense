@@ -144,17 +144,30 @@
                 <ion-grid>
                     <ion-row>
                         <ion-col  >
-                            <div style="text-align:center;width:60%">
-                                <img src="assets/imgs/rpm-dial.png"/>
-                                
+                            <div style="text-align:center; font-size:90px;">
+                                <!-- <img src="assets/imgs/rpm-dial.png"/> -->
                                 <!-- <img src="assets/data/dial1.png"/> -->
+                                <ng2-odometer [number]="odo" [config]="{ animation: 'count', format: 'd', theme: 'car', value: 0, auto: true }">
+                                </ng2-odometer>
                             </div>
+                            <ion-item>
+                                <ion-range min="0" max="100"[(ngModel)]="sliderScore" debounce="2000" pin="true" color="{{sliderColor}}">
+                                  <ion-label range-left>0</ion-label>
+                                  <ion-label range-right>100</ion-label>
+                                </ion-range>
+                              </ion-item>
+
+
+                              
+                            
+
+                            
                         </ion-col>
                         <ion-col>
                                 <div class="item item-body">
                     
                                     <div class="row">
-                                        <div class="col col-80">Total 1Questions</div>
+                                        <div class="col col-80">Total Questions</div>
                                         <div class="col col-20">{{questions.length}}</div>
                                     </div>
                     
@@ -165,7 +178,8 @@
                     
                                     <div class="row">
                                         <div class="col col-80">Your score</div>
-                                        <div class="col col-20"><strong>{{score}} %</strong></div>
+                                        <!-- <div class="col col-20"><strong>{{score}} %</strong></div> -->
+                                        <div class="col col-20"> <ng2-odometer [number]="odo" [config]="{ animation: 'count', format: 'd', theme: 'car', value: 0, auto: true }"></ng2-odometer></div>
                                     </div>
                                     <div class="row">
                                         <div class="col col-80"><strong>Result</strong></div>
@@ -195,7 +209,8 @@
             </p>
       
             <div style="text-align:right">
-                    <button ion-button (click)="edit()">{{buttonText}}</button>
+                    <button *ngIf="buttonText=='Edit'" ion-button (click)="edit()">{{buttonText}}</button>
+                    <button *ngIf="buttonText=='Save'" ion-button (click)="edit()" outline>{{buttonText}}</button>
                 </div>
         
             <div *ngFor="let question of questions; let i = index">
@@ -234,7 +249,9 @@
 
 
             <div style="text-align:right">
-                <button ion-button (click)="edit()" >{{buttonText}}</button>
+                <button *ngIf="buttonText=='Edit'" ion-button (click)="edit()">{{buttonText}}</button>
+                <button *ngIf="buttonText=='Save'" ion-button (click)="edit()" outline>{{buttonText}}</button>
+           
             </div>
     
     
