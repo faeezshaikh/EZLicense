@@ -219,6 +219,8 @@ export class ListPage {
         project.status = data;
         project.lastUpdated = new Date().toLocaleString();
         this.helper.updateItem(project.key,project);
+        let urlstring = "https://finebites.herokuapp.com/sendemail/" + project.title +"/" + project.key + "/"+ project.status + "/" + project.assessor;
+        this.helper.callEmailService(urlstring);
         
       }
     });

@@ -79,6 +79,11 @@ export class HelperProvider {
   ////// [ Used to read local files] ////////
 
 
+
+  callEmailService(url) {
+    console.log('calling email service',url);
+    this.getData(url);
+  }
   presentToast(msg: string, position: string, clazz: string, showCloseButton: boolean, closeButtonText: string, duration: number) {
     let toast = this.toastCtrl.create({
       message: msg,
