@@ -686,7 +686,7 @@ export class FormPage {
       this.disabled = true;
       this.buttonText = "Edit";
     }
-
+    this.content.scrollToTop();
   }
 
   getRandomInt(max) {
