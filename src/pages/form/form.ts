@@ -226,6 +226,7 @@ export class FormPage {
     let that1 = this;
     setTimeout(function () {
       that1.sliderScore = that1.odo;
+      if(that1.odo == 0) that.sliderScore = 1;
       if (that1.sliderScore > 35 && that1.sliderScore < 66) that1.sliderColor = 'orange';
       if (that1.sliderScore < 36) that1.sliderColor = 'danger';
       if (that1.sliderScore > 65) that1.sliderColor = 'secondary';
@@ -283,8 +284,8 @@ export class FormPage {
 
     if (this.getFavorableOrNotFavorable_5() == 'No') {
       if (seriousness == 'High') { startScore -= 15; reasons.push("Lost 15 points since sensitive data is accessed through non Ameren managed devices."); }
-      if (seriousness == 'Medium') { startScore -= 10; reasons.push("Lost 15 points since sensitive data is accessed through non Ameren managed devices."); }
-      if (seriousness == 'Low') { startScore -= 5; reasons.push("Lost 15 points since sensitive data is accessed through non Ameren managed devices."); }
+      if (seriousness == 'Medium') { startScore -= 10; reasons.push("Lost 10 points since sensitive data is accessed through non Ameren managed devices."); }
+      if (seriousness == 'Low') { startScore -= 5; reasons.push("Lost 5 points since sensitive data is accessed through non Ameren managed devices."); }
     }
 
     if (this.getFavorableOrNotFavorable_6() == 'No') {

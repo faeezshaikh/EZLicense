@@ -179,7 +179,7 @@
                                     <div class="row">
                                         <div class="col col-80">Your score</div>
                                         <!-- <div class="col col-20"><strong>{{score}} %</strong></div> -->
-                                        <div class="col col-20"> <ng2-odometer [number]="odo" [config]="{ animation: 'count', format: 'd', theme: 'car', value: 0, auto: true }"></ng2-odometer></div>
+                                        <div class="col col-20"> <ng2-odometer [number]="odo" [config]="{ animation: 'count', format: 'd', theme: 'minimal', value: 0, auto: true }"></ng2-odometer></div>
                                     </div>
                                     <div class="row">
                                         <div class="col col-80"><strong>Result</strong></div>
@@ -192,8 +192,8 @@
                                         <p>&nbsp;</p>
                                     <!-- <img class="full-image" height="150" width="100" ng-src="data/img/table.jpg"> -->
                                     <p class="center">
-                                        <button ion-button (click)="submit(true)"  color="secondary" [disabled]="!areAllQuestionsAnswered()">File Assessment</button>
-                                        <button ion-button (click)="submit(false)" color="light" >Save for Later</button>
+                                        <button ion-button (click)="submit(true)"  color="secondary" [disabled]="!areAllQuestionsAnswered() || buttonText=='Save'">File Assessment</button>
+                                        <button ion-button (click)="submit(false)" color="light" [disabled]=" buttonText=='Save'">Save for Later</button>
                                     </p>
                                     <div style="text-align:center">
                                         <p><small *ngIf="!areAllQuestionsAnswered()">You can only File after you have answered all questions.</small></p>
@@ -214,7 +214,7 @@
       
             <div style="text-align:right">
                     <button *ngIf="buttonText=='Edit'" ion-button (click)="edit()">{{buttonText}}</button>
-                    <button *ngIf="buttonText=='Save'" ion-button (click)="edit()" outline>{{buttonText}}</button>
+                    <button *ngIf="buttonText=='Save'" ion-button (click)="edit()" color="light" >{{buttonText}}</button>
                 </div>
         
             <div *ngFor="let question of questions; let i = index">
