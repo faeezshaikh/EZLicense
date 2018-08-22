@@ -27,7 +27,6 @@ export class FormPage {
   showSpinner = false;
   showFilingSpinner=false;
   attempted: number = 0;
-  explanation: string;
   recommendations: string;
   score: any;
   verdict: any;
@@ -36,6 +35,7 @@ export class FormPage {
   disabled: boolean = true;
   buttonText = "Edit"
   diagram: Observable<string>;
+  reasons:any;
 
   @ViewChild(Content) content: Content;
 
@@ -198,8 +198,6 @@ export class FormPage {
                 that.showSpinner = false;
                 that.setMode('result');
                 console.log('Spinner = ', that.showSpinner);
-  
-  
               }, 1000);
             }
 
@@ -214,15 +212,18 @@ export class FormPage {
 
   calculateAndUpdateScore() {
 
-    this.explanation = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat.";
+    // this.explanation = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat.";
     this.recommendations = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat.";
     this.attempted=0;
-    this.score = this.getRandomInt(100);
+    // this.score = this.getRandomInt(100);
+    this.score = this.foo();
+
+    
+
     if(this.score>0&& this.score<36) this.verdict = 'Not Aligned';
     if(this.score>36&& this.score<66) this.verdict = 'Marginally Aligned';
     if(this.score>65) this.verdict = 'Aligned';
     let that = this;
-    // $scope.$broadcast('timer-stop');
     this.questions.forEach(function (q, index) {
       if (q.answer) {
         that.attempted++;
@@ -232,6 +233,7 @@ export class FormPage {
 
     });
 
+    // For Updating an Existing Assessment.
     if(this.project) {
       this.project.score = this.score;
       this.project.verdict = this.verdict;
@@ -242,6 +244,130 @@ export class FormPage {
     // this.verdict = (this.score > 65) ? 'Pass' : 'Fail';
     // this.setMode('result');
     // this.storage.saveScore(this.selectedTopic.no, this.score);
+  }
+
+  foo(){
+    let startScore = 100;
+    let seriousness = this.determineSeriousness();
+    let reasons=[];
+
+
+    if(this.getFavorableOrNotFavorable_4() == 'No') {
+      if(seriousness == 'High') {startScore -=15;  reasons.push("Lost 15 points since sensitive data is accessed by non Ameren personnel.");}
+      if(seriousness == 'Medium') {startScore -=10; reasons.push("Lost 10 points since sensitive data is accessed by non Ameren personnel.");}
+      if(seriousness == 'Low') {startScore -=5; reasons.push("Lost 5 points since sensitive data is accessed by non Ameren personnel.");}
+    }
+
+
+    if(this.getFavorableOrNotFavorable_5() == 'No') {
+      if(seriousness == 'High') {startScore -=15;  reasons.push("Lost 15 points since sensitive data is accessed through non Ameren managed devices.");}
+      if(seriousness == 'Medium') {startScore -=10; reasons.push("Lost 15 points since sensitive data is accessed through non Ameren managed devices.");}
+      if(seriousness == 'Low') {startScore -=5; reasons.push("Lost 15 points since sensitive data is accessed through non Ameren managed devices.");}
+    }
+
+    if(this.getFavorableOrNotFavorable_6() == 'No') {
+      if(seriousness == 'High') {startScore -=15; reasons.push("Lost 15 points since data not encrypted at rest.");}
+      if(seriousness == 'Medium') {startScore -=10; reasons.push("Lost 10 points since data not encrypted at rest.");}
+      if(seriousness == 'Low') {startScore -=5; reasons.push("Lost 5 points since data not encrypted at rest.");}
+    }
+
+    if(this.getFavorableOrNotFavorable_7() == 'No') {
+      if(seriousness == 'High') {startScore -=15; reasons.push("Lost 15 points since data not encrypted in transit."); }
+      if(seriousness == 'Medium') { startScore -=10; reasons.push("Lost 10 points since data not encrypted in transit.");}
+      if(seriousness == 'Low') {startScore -=5; reasons.push("Lost 5 points since data not encrypted in transit.");}
+    }
+
+    if(this.getFavorableOrNotFavorable_8() == 'No') {
+        startScore -=5;
+        reasons.push("Lost 5 points since its not in Preferred Tech List.");
+    }
+    if(this.getFavorableOrNotFavorable_9() == 'No') {
+      startScore -=5;
+      reasons.push("Lost 5 points due to low Netskope rating.");
+  }
+
+  console.log('Final score:',startScore);
+  console.log('Reasons:',reasons);
+  this.reasons = reasons;
+  return startScore;
+
+  }
+
+  getFavorableOrNotFavorable_4(){  // who accesses data
+    if(this.find(4).answer && this.find(4).answer != 'Ameren Personnel (Employees / Consultant)') {
+      return 'No';
+    }
+    return 'Yes';
+  }
+
+
+  getFavorableOrNotFavorable_5(){  // How is data accessed?
+    if(this.find(5).answer && this.find(5).answer != 'Through managed devices only') { 
+      return 'No';
+    }
+    return 'Yes';
+  }
+
+  getFavorableOrNotFavorable_6(){  // Encryption at rest
+    if(this.find(6).answer && this.find(6).answer == 'No') { 
+      return 'No';
+    }
+    return 'Yes';
+  }
+
+  getFavorableOrNotFavorable_7(){  // Encryption in motion
+    if(this.find(7).answer && this.find(7).answer == 'No') { 
+      return 'No';
+    }
+    return 'Yes';
+  }
+  getFavorableOrNotFavorable_8(){  // Preferred Tech List
+    if(this.find(8).answer && this.find(8).answer == 'No') { 
+      return 'No';
+    }
+    return 'Yes';
+  }
+
+  getFavorableOrNotFavorable_9(){  // Netskope
+    if(this.find(9).answer && (this.find(9).answer == 'No' || this.find(9).answer == 'Applicable, but I am not aware of the score')) { 
+      return 'No';
+    }
+    return 'Yes';
+  }
+  
+
+  determineSeriousness(){
+      if(this.find(1).answer && this.find(1).answer != 'Public') {
+        if(this.find(2).answer && ( this.find(2).answer == 'Public Cloud' || this.find(2).answer == 'External Data Provider')  ) {
+          // if(this.find(3).answer && this.find(3).answer == 'Yes') {
+            return 'High'
+          // }
+        }
+      }
+
+      if(this.find(1).answer && this.find(1).answer != 'Public') {
+        if(this.find(2).answer && ( this.find(2).answer == 'Ameren Data Center' || this.find(2).answer == 'Ameren VPC in AWS')  ) {
+          if(this.find(3).answer && this.find(3).answer == 'Yes') {
+            return 'High'
+          }
+        }
+      }
+
+      if(this.find(1).answer && this.find(1).answer != 'Public') {
+        if(this.find(2).answer && ( this.find(2).answer == 'Ameren Data Center' || this.find(2).answer == 'Ameren VPC in AWS')  ) {
+          if(this.find(3).answer && this.find(3).answer != 'Yes') {
+            return 'Low'
+          }
+        }
+      }
+
+   
+      
+      return 'Other';
+  }
+
+  find(id){
+    return _.find(this.questions, function(o) { return o.Id == id; });
   }
 
   resetMenus() {
@@ -366,7 +492,7 @@ export class FormPage {
         'questions': this.questions,
         'score': this.score,
         'verdict': this.verdict,
-        'explanation': this.explanation,
+        'explanation': this.reasons,
         'recommendations': this.recommendations,
         'diagram':this.diagram || ""
       });

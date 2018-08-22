@@ -172,7 +172,7 @@
                                         <div class="col col-20"><strong>{{verdict}}</strong></div>
                                     </div>
                                     <hr/>
-                                    <p><strong>Explanation: </strong>{{explanation}}</p>
+                                    <p><strong>Explanation: </strong><ul><li *ngFor="let reason of reasons">{{reason}}</li></ul>
                                     <p><strong>Recommendations: </strong> {{recommendations}}
                                         </p>
                                         <p>&nbsp;</p>

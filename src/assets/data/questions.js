@@ -56,8 +56,8 @@
         "Description": "Data can be accessed via devices that are managed by Ameren admin (eg. Airwatch managed mobile devices) or it can be accessed via devices that are not under Ameren admin's control (eg. contractor using their cell phone to access files in Office 365).",
         "tag": "Data access",
         "Options": [
-            { "Id": 1055, "QuestionId": 1010, "Name": "Through managed devices only." },
-            { "Id": 1057, "QuestionId": 1010, "Name": "Through nonmanaged devices only." },
+            { "Id": 1055, "QuestionId": 1010, "Name": "Through managed devices only" },
+            { "Id": 1057, "QuestionId": 1010, "Name": "Through nonmanaged devices only" },
             { "Id": 1058, "QuestionId": 1010, "Name": "Both" }]
     },
     {
