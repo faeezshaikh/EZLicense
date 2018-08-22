@@ -186,9 +186,8 @@
                                         <div class="col col-20"><strong>{{verdict}}</strong></div>
                                     </div>
                                     <hr/>
-                                    <p><strong>Explanation: </strong><ul><li *ngFor="let reason of reasons">{{reason}}</li></ul>
-                                    <p><strong>Recommendations: </strong> {{recommendations}}
-                                        </p>
+                                    <p><strong>Explanation: </strong><ul><li *ngFor="let reason of reasons">{{reason}}</li></ul> <span *ngIf="score==100">You're awesome!</span>
+                                    <p><strong>Recommendations: </strong>  <span *ngIf="score!=100">{{recommendations}}</span> <span *ngIf="score==100">Great work! We recommend you to relax a bit now.</span></p>
                                         <p>&nbsp;</p>
                                     <!-- <img class="full-image" height="150" width="100" ng-src="data/img/table.jpg"> -->
                                     <p class="center">

@@ -214,8 +214,7 @@ export class FormPage {
 
   calculateAndUpdateScore() {
 
-    // this.explanation = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet et ipsum sagittis feugiat.";
-    this.recommendations = "Bssed on the reasons for losing points above, try addressing the issues to improve your score. Hit 'Edit' to update your assessment below";
+    this.recommendations = "Based on the reasons for losing points above, try addressing the issues to improve your score. Hit 'Edit' to update your assessment below";
     this.attempted = 0;
     // this.score = this.getRandomInt(100);
     this.score = this.foo();
