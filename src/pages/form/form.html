@@ -192,9 +192,13 @@
                                         <p>&nbsp;</p>
                                     <!-- <img class="full-image" height="150" width="100" ng-src="data/img/table.jpg"> -->
                                     <p class="center">
-                                        <button ion-button (click)="submit(true)"  color="secondary">File Application</button>
-                                        <button ion-button (click)="submit(false)" outline >Save for Later</button>
+                                        <button ion-button (click)="submit(true)"  color="secondary" [disabled]="!areAllQuestionsAnswered()">File Assessment</button>
+                                        <button ion-button (click)="submit(false)" color="light" >Save for Later</button>
                                     </p>
+                                    <div style="text-align:center">
+                                        <p><small *ngIf="!areAllQuestionsAnswered()">You can only File after you have answered all questions.</small></p>
+
+                                    </div>
                     
                                 </div></ion-col>
                     </ion-row>
