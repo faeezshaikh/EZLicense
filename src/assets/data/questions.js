@@ -256,7 +256,7 @@
         "Id": 24,
         "Name": "Does the solution support SSO or AD integration?",
         "Description": "",
-        "tag": "Information Rights Mgmt",
+        "tag": "SSO or AD Integration",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
