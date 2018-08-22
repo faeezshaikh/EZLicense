@@ -32,7 +32,7 @@
     {
         "Id": 3,
         "Name": "Does the solution involve integration with or management of Ameren control systems?",
-        "Description": "",
+        "Description": "Click here for more details:",
         "tag": "Information Rights Mgmt",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
@@ -42,7 +42,7 @@
     {
         "Id": 4,
         "Name": "Who will access the Ameren data?",
-        "Description": "",
+        "Description": "Click here for more details:",
         "tag": "Data Access",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Ameren Personnel (Employees / Consultant)" },
@@ -224,7 +224,7 @@
     {
         "Id": 21,
         "Name": "Select the Cyber Insurance amount:",
-        "Description": "",
+        "Description": "Many times vendors will have some insurance against security breaches.",
         "tag": "Cyber Insurance",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "None" },
@@ -235,7 +235,7 @@
     {
         "Id": 22,
         "Name": "Does the solution have a defined data retention and destruction policy?",
-        "Description": "",
+        "Description": "Click here for more details:",
         "tag": "Data Retention",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
@@ -245,7 +245,7 @@
     {
         "Id": 23,
         "Name": "Does the solution implement Information Rights Management Technology on the data accessed by the end user?",
-        "Description": "",
+        "Description": "Click here for more details:",
         "tag": "Information Rights Mgmt",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
@@ -255,7 +255,7 @@
     {
         "Id": 24,
         "Name": "Does the solution support SSO or AD integration?",
-        "Description": "",
+        "Description": "Click here for more details:",
         "tag": "SSO or AD Integration",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
