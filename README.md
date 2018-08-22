@@ -6,11 +6,14 @@ aws s3 cp --recursive ./www s3://turboarb/www
 1. Diag for each project
 2. Diag. update
 
-4. Block IE
+3. updated by
+4. update comments
+5. email
+
+
 
 6. In mobile version, boxes on 'Review' page are unequal sizes
 1. PwA icon and home screen -- too small
-
 
 
 7. Update questions content
@@ -18,10 +21,12 @@ aws s3 cp --recursive ./www s3://turboarb/www
 4. Calculate score.
 5. Calculate image for score.
 
-0. Smile to unlock
+
 
 6. Contact us page
 7. Resources
+
+0. Smile to unlock
 
 
 
@@ -31,6 +36,7 @@ aws s3 cp --recursive ./www s3://turboarb/www
 
 ------
 5. Restrict dns to corp.
+4. Block IE
 7. in mobile, admin icons are not showing.
 1. Help out of sink with questions.
 0. Workflow
