@@ -2,6 +2,12 @@
 aws s3 cp --recursive ./www s3://turboarb/www
 
 
+1. Send email when new assessment created 
+2. Remove dial from 'Details page'.
+3. show status on Results page and disable buttons if already approved?? idk
+4. negqtove score => 0
+5. 'Save for later' on zero score zero attempts not working.
+
 0. Testing
 1. Diag for each project
 2. Diag. update

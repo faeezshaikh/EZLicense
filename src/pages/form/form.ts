@@ -219,6 +219,7 @@ export class FormPage {
     // this.score = this.getRandomInt(100);
     this.score = this.foo();
     if (this.score == 100 && !this.areAllQuestionsAnswered()) this.score = 0;
+    if(this.score < 0 ) this.score = 0;
     this.odo = this.score;
     console.log('Odometer val:', this.odo);
 
@@ -237,7 +238,7 @@ export class FormPage {
 
 
 
-    if (this.score > 0 && this.score < 36) this.verdict = 'Not Aligned';
+    if (this.score >= 0 && this.score < 36) this.verdict = 'Not Aligned';
     if (this.score > 36 && this.score < 66) this.verdict = 'Marginally Aligned';
     if (this.score > 65) this.verdict = 'Aligned';
     let that = this;
@@ -666,7 +667,7 @@ export class FormPage {
         'lastUpdated': new Date().toLocaleString(),
         'questions': this.questions,
         'score': this.score,
-        'verdict': this.verdict,
+        'verdict': this.verdict || "",
         'explanation': this.reasons,
         'recommendations': this.recommendations,
         'diagram': this.diagram || ""
