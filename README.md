@@ -3,13 +3,13 @@ aws s3 cp --recursive ./www s3://turboarb/www
 
 
 1. Send email when new assessment created 
-2. Remove dial from 'Details page'.
 3. show status on Results page and disable buttons if already approved?? idk
-4. negqtove score => 0
-5. 'Save for later' on zero score zero attempts not working.
+1. Diag for each project
+
+
+
 
 0. Testing
-1. Diag for each project
 2. Diag. update
 
 3. updated by
@@ -24,8 +24,6 @@ aws s3 cp --recursive ./www s3://turboarb/www
 
 7. Update questions content
 8. Update help content ** main!
-4. Calculate score.
-5. Calculate image for score.
 
 
 
@@ -41,6 +39,12 @@ aws s3 cp --recursive ./www s3://turboarb/www
 
 
 ------
+
+4. Calculate score.
+5. Calculate image for score.
+2. Remove dial from 'Details page'.
+4. negqtove score => 0
+5. 'Save for later' on zero score zero attempts not working.
 5. Restrict dns to corp.
 4. Block IE
 7. in mobile, admin icons are not showing.
