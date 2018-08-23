@@ -77,10 +77,16 @@
             </div>
           </ion-col>
         </ion-row>
+        <p>&nbsp;</p>
         <ion-row>
-          <hr/>
-          <p style="text-align:left">
-            <strong>Explanation: </strong>{{project.explanation}}</p>
+          <!-- <hr/> -->
+          <div style="text-align:left">
+            <strong>Explanation: </strong></div>
+            <div style="text-align:left">
+            <ul><li *ngFor="let reason of project.explanation ">{{reason}}</li></ul>
+            </div>
+
+          <!-- </p> -->
           <p>&nbsp;</p>
           <p style="text-align:left">
             <strong>Recommendations: </strong>{{project.recommendations}}

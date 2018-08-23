@@ -654,6 +654,7 @@ export class FormPage {
     if (this.project && this.project.title) { // Edit mode
       this.project.status = status;
       this.project.lastUpdated = new Date().toLocaleString();
+      this.project.explanation = this.reasons;
       this.helper.updateItem(this.project.key, this.project);
       console.log('Updated project...', this.project);
 

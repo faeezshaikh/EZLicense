@@ -39,6 +39,7 @@ aws s3 cp --recursive ./www s3://turboarb/www
 
 
 ------
+0.  Details page not showing explanation
 
 4. Calculate score.
 5. Calculate image for score.
