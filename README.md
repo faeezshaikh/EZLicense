@@ -2,43 +2,34 @@
 aws s3 cp --recursive ./www s3://turboarb/www
 
 
+
 1. Send email when new assessment created 
-3. show status on Results page and disable buttons if already approved?? idk
-1. Diag for each project
+2. show status on Results page and disable buttons if already approved?? idk
+3. Diag for each project
+
+4. Testing
+5. Diag. update
+
+6. updated by
+7. update comments
+8. email
 
 
+9. In mobile version, boxes on 'Review' page are unequal sizes
+10. PwA icon and home screen -- too small
 
 
-0. Testing
-2. Diag. update
-
-3. updated by
-4. update comments
-5. email
+11. Update questions content
+12. Update help content ** main!
 
 
+13. Contact us page
+14. Resources
 
-6. In mobile version, boxes on 'Review' page are unequal sizes
-1. PwA icon and home screen -- too small
-
-
-7. Update questions content
-8. Update help content ** main!
-
-
-
-6. Contact us page
-7. Resources
-
-0. Smile to unlock
-
-
-
-
-
-
+15. Smile to unlock
 
 ------
+0. HIT 'EDIT' TO UPDATE
 0.  Details page not showing explanation
 
 4. Calculate score.

@@ -28,14 +28,18 @@
 
 <ion-content *ngIf="isIEOrEdge">
   <p></p>
-  <ion-card >
-    <div style="text-align:center">
-      <img widht="50%" src="assets/imgs/stopie.png"/>
-      <!-- <img widht="50%" src ="https://i.imgflip.com/1vzoeg.jpg"/> -->
-    </div>
-    <h1>Did you know that only  <a href="http://gs.statcounter.com/browser-market-share">3% of the world uses Internet Explorer</a> to browse the internet? About time you caught up with the ROW.</h1>
-    <h2>Sorry this app is not supported in IE. Please use Chrome now. Thanks!</h2>
-  </ion-card>
+  <ion-card>
+      <img src="assets/imgs/stopie.png"/>
+      <ion-card-content>
+        <ion-card-title>
+          Come On! 😤
+          </ion-card-title>
+        <p>
+            Did you know that only  <a href="http://gs.statcounter.com/browser-market-share">3% of the world uses Internet Explorer</a> to browse the internet? About time you caught up with the ROW.
+        </p>
+        <p>Sorry this app is not supported in IE. Please use Chrome now. Thanks!</p>
+      </ion-card-content>
+    </ion-card>
 </ion-content>
 <ion-content *ngIf="!isIEOrEdge">
 
