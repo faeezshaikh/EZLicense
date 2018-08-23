@@ -26,22 +26,82 @@
       </ion-item>
 
       <ion-fab right top (click)="edit()" *ngIf="project.status == 'In Progress'">
-          <button ion-fab  color="primary">
-              <ion-icon name="create"></ion-icon>
-          </button>
-         
-        </ion-fab>
+        <button ion-fab color="primary">
+          <ion-icon name="create"></ion-icon>
+        </button>
+
+      </ion-fab>
       <hr/>
 
       <ion-grid *ngIf="!isPlatformMobile">
         <ion-row>
           <ion-col>
-            <div style="text-align:center;width:60%">
+
+              <div id="container">
+                  <div id="navi"> <round-progress [current]="project.score" [max]="100" [color]="sliderColor" [background]="'#eaeaea'" [radius]="125" [stroke]="20"
+                    [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="true" [duration]="800" [animation]="'easeInOutQuart'"
+                    [animationDelay]="0"></round-progress></div>
+                  <div id="infoi" style="text-align:center; font-size:90px; top:40px;">
+                      <ng2-odometer [number]="project.score"></ng2-odometer>
+                    </div>
+              </div>
+
+          </ion-col>
+          <ion-col>
+            <div class="item item-body" style="text-align:left">
+
+              <div class="row">
+                <div class="col col-80">Assessor</div>
+                <div class="col col-20">{{project.assessor}}</div>
+              </div>
+
+              <div class="row">
+                <div class="col col-80">Last Assessed</div>
+                <div class="col col-20">{{project.lastUpdated}}</div>
+              </div>
+
+              <div class="row">
+                <div class="col col-80">Status</div>
+                <div class="col col-20">
+                  <strong>{{project.status}}</strong>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-80">Result</div>
+                <div class="col col-20">
+                  <strong>{{project.verdict}}</strong>
+                </div>
+              </div>
+
+
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <hr/>
+          <p style="text-align:left">
+            <strong>Explanation: </strong>{{project.explanation}}</p>
+          <p>&nbsp;</p>
+          <p style="text-align:left">
+            <strong>Recommendations: </strong>{{project.recommendations}}
+          </p>
+        </ion-row>
+      </ion-grid>
+
+
+      <!-- //////////////// [Layout for Mobile Platforms] ////////////////// -->
+
+      <ion-grid *ngIf="isPlatformMobile">
+        <ion-row>
+          <ion-col>
+            <div style="text-align:center;width:100%">
               <img src="https://communications.fidelity.com/pi/calculators/saving-for-retirement/assets/images/rpm-dial.png" />
 
               <!-- <img src="assets/data/dial1.png"/> -->
             </div>
           </ion-col>
+        </ion-row>
+        <ion-row>
           <ion-col>
             <div class="item item-body" style="text-align:left">
 
@@ -82,62 +142,7 @@
           </p>
         </ion-row>
       </ion-grid>
-
-
-     <!-- //////////////// [Layout for Mobile Platforms] ////////////////// -->
-
-      <ion-grid *ngIf="isPlatformMobile">
-          <ion-row>
-            <ion-col>
-              <div style="text-align:center;width:100%">
-                <img src="https://communications.fidelity.com/pi/calculators/saving-for-retirement/assets/images/rpm-dial.png" />
-  
-                <!-- <img src="assets/data/dial1.png"/> -->
-              </div>
-            </ion-col>
-            </ion-row>
-            <ion-row>
-            <ion-col>
-              <div class="item item-body" style="text-align:left">
-  
-                <div class="row">
-                  <div class="col col-80">Assessor</div>
-                  <div class="col col-20">{{project.assessor}}</div>
-                </div>
-  
-                <div class="row">
-                  <div class="col col-80">Last Assessed</div>
-                  <div class="col col-20">{{project.lastUpdated}}</div>
-                </div>
-  
-                <div class="row">
-                  <div class="col col-80">Assessment score</div>
-                  <div class="col col-20">
-                    <strong>{{project.score}} %</strong>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col col-80">Result</div>
-                  <div class="col col-20">
-                    <strong>{{project.verdict}}</strong>
-                  </div>
-                </div>
-  
-  
-              </div>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <hr/>
-            <p style="text-align:left">
-              <strong>Explanation: </strong>{{project.explanation}}</p>
-            <p>&nbsp;</p>
-            <p style="text-align:left">
-              <strong>Recommendations: </strong>{{project.recommendations}}
-            </p>
-          </ion-row>
-        </ion-grid>
-    <!-- //////////////// [Layout for Mobile Platforms] ////////////////// -->
+      <!-- //////////////// [Layout for Mobile Platforms] ////////////////// -->
 
 
 
@@ -150,24 +155,26 @@
     <p></p>
 
     <ion-card>
-        <p style="text-align:left" *ngIf="project.description">
-            <strong>Project Description: </strong><span style="text-align:left">{{project.description}}</span></p>
-            <hr/>
-     
-      <img  *ngIf="project.diagram," [src]="project.diagram"/>
+      <p style="text-align:left" *ngIf="project.description">
+        <strong>Project Description: </strong>
+        <span style="text-align:left">{{project.description}}</span>
+      </p>
+      <hr/>
+
+      <img *ngIf="project.diagram," [src]="project.diagram" />
 
     </ion-card>
 
 
     <ion-card *ngIf="project.questions">
-        <!-- <p>&nbsp;</p> -->
-       
+      <!-- <p>&nbsp;</p> -->
+
       <p class="center" style="font-size:1.9rem">
         <u>The Assessment Responses</u>
       </p>
       <hr/>
 
-    
+
       <div *ngFor="let question of project.questions; let i = index">
         <div style="text-align:left">
           <strong>{{i + 1}}. {{question.Name}}</strong>
@@ -188,7 +195,7 @@
         </div>
       </div>
       <div class="center">
-          <button ion-button (click)="edit()" *ngIf="project.status == 'In Progress'">Edit</button>
+        <button ion-button (click)="edit()" *ngIf="project.status == 'In Progress'">Edit</button>
         <button ion-button (click)="dismiss()">Close</button>
       </div>
     </ion-card>

@@ -1,4 +1,21 @@
 page-details {
 
+    #container {
+        width: 200px;
+        height: 200px;
+        position: relative;
+      }
+    
+      #navi , 
+      #infoi {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      #infoi {
+        z-index: 10;
+      }
 }
 

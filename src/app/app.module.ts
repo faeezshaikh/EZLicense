@@ -22,6 +22,8 @@ import { ResourcesPage } from '../pages/resources/resources';
 import { Ng2OdometerModule } from 'ng2-odometer'; 
 // import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
+
  
 // AF2 Settings
 export const firebaseConfig = {
@@ -50,7 +52,8 @@ export const firebaseConfig = {
     Ng2OdometerModule.forRoot(),
     AngularFireDatabaseModule,
     HttpClientModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    RoundProgressModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
