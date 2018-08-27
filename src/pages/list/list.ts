@@ -23,6 +23,31 @@ export class ListPage {
   showDelete: number = 0;
   detailsModal: any;
   isIEOrEdge:boolean=false;
+  gridMode=true;
+
+
+  columnDefs = [
+    {headerName: 'Project', field: 'title',rowDrag: true },
+    {headerName: 'Description', field: 'description' },
+    {headerName: 'Status', field: 'status'},
+    {headerName: 'Last updated', field: 'lastUpdated'},
+    {headerName: 'Score', field: 'score'},
+    {headerName: 'Assessor', field: 'assessor'},
+    {headerName: 'Result', field: 'verdict'},
+    {headerName: 'Details', field: ''},
+
+
+];
+
+rowData = [
+   {}
+];
+
+
+  ///  Grid
+
+
+  //// Grid
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase,
     public modalCtrl: ModalController, public helper: HelperProvider, public menu: MenuController, public plt: Platform, private alertCtrl: AlertController) {
@@ -53,6 +78,19 @@ export class ListPage {
       this.helper.presentToast("Successfully refreshed.", "middle", "toastClass", false, '', 1500)
     }, 2000);
 
+  }
+
+
+  onSelectionChanged(params) {
+    var selectedRows = params.api.getSelectedRows();
+    var selectedRowsString = "";
+    selectedRows.forEach(function(selectedRow, index) {
+      if (index !== 0) {
+        selectedRowsString += ", ";
+      }
+      selectedRowsString += selectedRow.title;
+    });
+    console.log('Selected row:',selectedRowsString);
   }
 
   getProjects() {

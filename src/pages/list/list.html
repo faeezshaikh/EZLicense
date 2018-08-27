@@ -29,42 +29,48 @@
 <ion-content *ngIf="isIEOrEdge">
   <p></p>
   <ion-card>
-      <img src="assets/imgs/stopie.png"/>
-      <ion-card-content>
-        <ion-card-title>
-          Come On! 😤
-          </ion-card-title>
-        <p>
-            Did you know that only  <a href="http://gs.statcounter.com/browser-market-share">3% of the world uses Internet Explorer</a> to browse the internet? About time you caught up with the ROW.
-        </p>
-        <p>Sorry this app is not supported in IE. Please use Chrome now. Thanks!</p>
-      </ion-card-content>
-    </ion-card>
+    <img src="assets/imgs/stopie.png" />
+    <ion-card-content>
+      <ion-card-title>
+        Come On! 😤
+      </ion-card-title>
+      <p>
+        Did you know that only
+        <a href="http://gs.statcounter.com/browser-market-share">3% of the world uses Internet Explorer</a> to browse the internet? About time you caught up with the ROW.
+      </p>
+      <p>Sorry this app is not supported in IE. Please use Chrome now. Thanks!</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
+
+
 <ion-content *ngIf="!isIEOrEdge">
 
-  
+    <!-- <ag-grid-angular style="width: 80%; height: 50%; padding:100px" class="ag-theme-balham" [rowData]="projects | async" [columnDefs]="columnDefs"
+    [enableSorting]="true" [enableFilter]="true" rowSelection="single" [rowDragManaged]="true" [animateRows]="true" (selectionChanged)="onSelectionChanged($event)">
+    </ag-grid-angular> -->
+
 
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
   <ion-list>
-
     <ion-item-divider color="light">Projects List</ion-item-divider>
 
+
+    
     <div *ngIf="!projects" style="text-align:center;margin-top:0px;">
       <!-- <img  src="http://www.plateforme-re-sources.org/wp-content/uploads/2018/06/lg.rotating-balls-spinner.gif"/> -->
       <img src="https://cdn.dribbble.com/users/375824/screenshots/2230417/dots-2.gif" />
     </div>
-
     <!-- <h4  *ngIf="projects && !projects.length>0"  style="font-weight:100;text-align:center">No projects. Click or Tap the round button up to create a new assessment</h4> -->
-
     <ion-grid fixed>
       <ion-row responsive-sm>
         <ion-searchbar *ngIf="projects" [showCancelButton]="shouldShowCancel" (ionInput)="filterItems($event)" (ionCancel)="onCancel($event)">
         </ion-searchbar>
-        <ion-col col-md *ngFor="let p of projects | async">
+        <ion-col  *ngFor="let p of projects | async" col-md>
           <ion-card>
             <i class="fa fa-plus" aria-hidden="true"></i>
             <ion-fab right top (click)="itemTapped($event, p)">
@@ -94,9 +100,9 @@
             <ion-item>
               <ion-icon name="logo-usd" item-start large></ion-icon>
               <h2>Status:
-                 <span [ngClass]="{Approved:'approved','Rejected':'rejected','Under Review':'review',
+                <span [ngClass]="{Approved:'approved','Rejected':'rejected','Under Review':'review',
                       Submitted:'submitted','In Progress':'progress','Needs inputs':'inputs'}[p.status]">{{p.status}}</span>
-                 </h2>
+              </h2>
               <p>Last Updated: {{p.lastUpdated }}</p>
             </ion-item>
 
@@ -113,11 +119,11 @@
                 <ion-icon name="trash"></ion-icon>
               </button>
               <button *ngIf="showDelete>3" (click)="edit(p)" ion-button icon-start clear item-end>
-                  <ion-icon name="create"></ion-icon>
-                </button>
-                <button *ngIf="showDelete>3" (click)="approve(p)" ion-button icon-start clear item-end>
-                    <ion-icon name="checkbox-outline"></ion-icon>
-                  </button>
+                <ion-icon name="create"></ion-icon>
+              </button>
+              <button *ngIf="showDelete>3" (click)="approve(p)" ion-button icon-start clear item-end>
+                <ion-icon name="checkbox-outline"></ion-icon>
+              </button>
             </ion-item>
 
           </ion-card>
@@ -125,6 +131,7 @@
       </ion-row>
     </ion-grid>
   </ion-list>
+
 
 
 
