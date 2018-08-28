@@ -24,6 +24,7 @@ import { Ng2OdometerModule } from 'ng2-odometer';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
 import { AgGridModule } from 'ag-grid-angular';
+import { FeedbackPage } from '../pages/feedback/feedback';
 
  
 // AF2 Settings
@@ -44,7 +45,8 @@ export const firebaseConfig = {
     FormPage,
     DetailsPage,
     ContactusPage,
-    ResourcesPage
+    ResourcesPage,
+    FeedbackPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ export const firebaseConfig = {
     FormPage,
     DetailsPage,
     ContactusPage,
-    ResourcesPage
+    ResourcesPage,
+    FeedbackPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

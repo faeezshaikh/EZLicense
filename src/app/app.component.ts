@@ -9,6 +9,7 @@ import { ResourcesPage } from '../pages/resources/resources';
 
 // TS pluging didnt work..so added <script> tag in index.html for googgle analytics
 // import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { FeedbackPage } from '../pages/feedback/feedback';
 
 
 @Component({
@@ -37,7 +38,8 @@ export class MyApp {
       { title: 'Projects', component: ListPage, icon: 'list' },
       // { title: 'Video Resources', component: ListPage, icon: 'logo-youtube' },
       { title: 'Reference Resources', component: ResourcesPage, icon: 'folder' },
-      { title: 'Contact Us', component: ContactusPage, icon: 'people' }
+      { title: 'Contact Us', component: ContactusPage, icon: 'people' },
+      { title: 'Feedback', component: FeedbackPage, icon: 'mail' }
     ];
 
   }
