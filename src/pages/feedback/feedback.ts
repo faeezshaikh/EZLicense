@@ -29,6 +29,8 @@ export class FeedbackPage {
   sendfeedback(){
     this.navCtrl.setRoot(ListPage);
     this.helper.presentToast("Your feedback was successfully emailed to the ARB.", "middle", "toastClass", false, '', 1500);
+    let msg = 'https://limitless-coast-79622.herokuapp.com/sendfeedback/' + this.feedback;
+    this.helper.callEmailService(msg);
   }
 
   enterText(val){
