@@ -1,9 +1,10 @@
-import { Component, ViewChild,ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import {  NavController, NavParams,ViewController } from 'ionic-angular';
 import { FormPage } from '../form/form';
 import { HelperProvider } from '../../providers/helper/helper';
 
 import * as jsPDF from 'jspdf';
+
 
 // @IonicPage()
 @Component({
@@ -46,31 +47,35 @@ export class DetailsPage {
   }
 
 
-  export(){
+  export() {
     console.log('Exporting..');
-    
+
     let doc = new jsPDF();
 
+    let name = this.project.title + '.pdf';
+
     let specialElementHandlers = {
-      '#editor':function(element,renderer){
+      '#editor': function (element, renderer) {
         return true;
       }
     };
 
     let content = this.content.nativeElement;
-    console.log('Content:',content);
-    
+    console.log('Content:', content);
+
     // doc.fromHTML(content.innerHTML,15,15);
 
     doc.fromHTML(content.innerHTML, 20, 20, {
       'width': 140, // max width of content on PDF
       'elementHandlers': specialElementHandlers
-  },
-  function(bla){
-      doc.save('newtest.pdf');
-    });
+    },
+      function (bla) {
+        // let name = this.project.title + '.pdf';
+        console.log('File name:', name);
+        doc.save(name);
+      });
     // doc.save('test.pdf');
-
-
   }
+
+ 
 }

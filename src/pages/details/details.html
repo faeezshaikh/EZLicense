@@ -12,7 +12,8 @@
 </ion-header>
 
 
-<ion-content padding >
+<ion-content padding>
+
 
   <div class="center result">
     <p></p>
@@ -23,16 +24,6 @@
         </ion-avatar>
         <h2>Assessment Details</h2>
         <p>{{project.verdict}}</p>
-
-
-
-        <ion-buttons large end>
-            <button ion-button outline clear (click)="export()">
-              Export
-            </button>
-          </ion-buttons>
-
-
 
       </ion-item>
 
@@ -48,14 +39,16 @@
         <ion-row>
           <ion-col>
 
-              <div id="container">
-                  <div id="navi"> <round-progress [current]="project.score" [max]="100" [color]="sliderColor" [background]="'#eaeaea'" [radius]="125" [stroke]="20"
-                    [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="true" [duration]="800" [animation]="'easeInOutQuart'"
-                    [animationDelay]="0"></round-progress></div>
-                  <div id="infoi" style="text-align:center; font-size:90px; top:40px;">
-                      <ng2-odometer [number]="project.score"></ng2-odometer>
-                    </div>
+            <div id="container">
+              <div id="navi">
+                <round-progress [current]="project.score" [max]="100" [color]="sliderColor" [background]="'#eaeaea'" [radius]="125" [stroke]="20"
+                  [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="true" [duration]="800" [animation]="'easeInOutQuart'"
+                  [animationDelay]="0"></round-progress>
               </div>
+              <div id="infoi" style="text-align:center; font-size:90px; top:40px;">
+                <ng2-odometer [number]="project.score"></ng2-odometer>
+              </div>
+            </div>
 
           </ion-col>
           <ion-col>
@@ -86,22 +79,31 @@
 
 
             </div>
+            <p>&nbsp;</p>
+            <button ion-button icon-start outline item-end (click)="export()">
+                <ion-icon name="download"></ion-icon>
+                <span *ngIf="!isMobile">Download Report</span>
+              </button>
           </ion-col>
         </ion-row>
         <p>&nbsp;</p>
         <ion-row>
           <!-- <hr/> -->
           <div style="text-align:left">
-            <strong>Explanation: </strong></div>
-            <div style="text-align:left">
-            <ul><li *ngFor="let reason of project.explanation ">{{reason}}</li></ul>
-            </div>
+            <strong>Explanation: </strong>
+          </div>
+          <div style="text-align:left">
+            <ul>
+              <li *ngFor="let reason of project.explanation ">{{reason}}</li>
+            </ul>
+          </div>
 
           <!-- </p> -->
           <p>&nbsp;</p>
           <p style="text-align:left">
             <!-- <strong>Recommendations: </strong>{{project.recommendations}} -->
-            <strong>Recommendations: </strong>Based on the above reasons for losing points, try addressing the issues to improve your score.
+            <strong>Recommendations: </strong>Based on the above reasons for losing points, try addressing the issues to improve
+            your score.
           </p>
         </ion-row>
       </ion-grid>
@@ -112,15 +114,17 @@
       <ion-grid *ngIf="isPlatformMobile">
         <ion-row>
           <ion-col>
-           
+
             <div id="container">
-              <div id="navi"> <round-progress [current]="project.score" [max]="100" [color]="sliderColor" [background]="'#eaeaea'" [radius]="125" [stroke]="20"
-                [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="true" [duration]="800" [animation]="'easeInOutQuart'"
-                [animationDelay]="0"></round-progress></div>
+              <div id="navi">
+                <round-progress [current]="project.score" [max]="100" [color]="sliderColor" [background]="'#eaeaea'" [radius]="125" [stroke]="20"
+                  [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="true" [duration]="800" [animation]="'easeInOutQuart'"
+                  [animationDelay]="0"></round-progress>
+              </div>
               <div id="infoi" style="text-align:center; font-size:90px; top:40px;">
-                  <ng2-odometer [number]="project.score"></ng2-odometer>
-                </div>
-          </div>
+                <ng2-odometer [number]="project.score"></ng2-odometer>
+              </div>
+            </div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -160,7 +164,8 @@
             <strong>Explanation: </strong>{{project.explanation}}</p>
           <p>&nbsp;</p>
           <p style="text-align:left">
-            <strong>Recommendations: </strong>Based on the above reasons for losing points, try addressing the issues to improve your score.
+            <strong>Recommendations: </strong>Based on the above reasons for losing points, try addressing the issues to improve
+            your score.
           </p>
         </ion-row>
       </ion-grid>
@@ -177,6 +182,42 @@
     <p></p>
 
     <div id="content" #content>
+      <ion-row [hidden]='true'>
+        <h2>{{project.title}}</h2>
+        <hr/>
+        <p>&nbsp;</p>
+        <ion-col>
+          <div class="item item-body" style="text-align:left">
+
+            <div class="row">
+              <div class="col col-80">Assessor: {{project.assessor}}</div>
+            </div>
+
+            <div class="row">
+              <div class="col col-80">Last Assessed: {{project.lastUpdated}}</div>
+            </div>
+
+            <div class="row">
+              <div class="col col-80">Assessment score:
+                <strong>{{project.score}} %</strong>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-80">Result:
+              <strong>{{project.verdict}}</strong>
+            </div>
+            <div class="col col-20">
+
+            </div>
+          </div>
+
+          <img src="project.diagram" />
+
+
+        </ion-col>
+      </ion-row>
+   
     <ion-card>
       <p style="text-align:left" *ngIf="project.description">
         <strong>Project Description: </strong>
@@ -218,14 +259,14 @@
           <p>&nbsp;</p>
         </div>
       </div>
-      <div class="center">
-        <button ion-button (click)="edit()" *ngIf="project.status == 'In Progress'">Edit</button>
-        <button ion-button (click)="dismiss()">Close</button>
-      </div>
+     
     </ion-card>
-
+  </div>
+  <div class="center">
+      <button ion-button (click)="edit()" *ngIf="project.status == 'In Progress'">Edit</button>
+      <button ion-button (click)="dismiss()">Close</button>
+    </div>
   </div>
 
-</div>
 
 </ion-content>
