@@ -25,6 +25,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
 import { AgGridModule } from 'ag-grid-angular';
 import { FeedbackPage } from '../pages/feedback/feedback';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
  
 // AF2 Settings
@@ -57,6 +58,7 @@ export const firebaseConfig = {
     HttpClientModule,
     AngularFireStorageModule,
     RoundProgressModule,
+    IonicImageViewerModule,
     AgGridModule.withComponents([])
   ],
   bootstrap: [IonicApp],

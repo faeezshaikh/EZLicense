@@ -273,8 +273,8 @@
                                     <div *ngIf="uploading">Uploading {{ uploadPercent | async }}% ...</div>
                                   
                                   </ion-item>
-                            <img *ngIf="!downloadURL && project.diagram," [src]="project.diagram" />
-                            <img  *ngIf="downloadURL" [src]="downloadURL | async"/>
+                            <img *ngIf="!downloadURL && project.diagram," [src]="project.diagram"  imageViewer/>
+                            <img  *ngIf="downloadURL" [src]="downloadURL | async" imageViewer/>
                         </ion-col>
                     </ion-row>
                     </ion-card>
