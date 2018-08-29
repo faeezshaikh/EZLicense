@@ -68,7 +68,7 @@
     <!-- <h4  *ngIf="projects && !projects.length>0"  style="font-weight:100;text-align:center">No projects. Click or Tap the round button up to create a new assessment</h4> -->
     <ion-grid fixed>
       <ion-row responsive-sm>
-        <ion-searchbar *ngIf="projects" [showCancelButton]="shouldShowCancel" (ionInput)="filterItems($event)" (ionCancel)="onCancel($event)">
+        <ion-searchbar placeholder="Search for Project Title, Description, Status, Assessor..." *ngIf="projects" [showCancelButton]="shouldShowCancel" (ionInput)="filterItems($event)" (ionCancel)="onCancel($event)">
         </ion-searchbar>
         <ion-col  *ngFor="let p of projects | async" col-md>
           <ion-card>

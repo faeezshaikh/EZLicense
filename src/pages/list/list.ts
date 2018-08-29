@@ -134,7 +134,13 @@ rowData = [
 
       // Filter the Observable. First map the Observale to List then Filter the List
       this.projects = this.projects.map(list => list.filter(function (item) {
-        return item.title.toLowerCase().includes(val.toLowerCase());
+        // return item.title.toLowerCase().includes(val.toLowerCase());
+        if(item.title.toLowerCase().includes(val.toLowerCase())) return item.title.toLowerCase().includes(val.toLowerCase());
+        if(item.assessor.toLowerCase().includes(val.toLowerCase())) return item.assessor.toLowerCase().includes(val.toLowerCase());
+        if(item.status.toLowerCase().includes(val.toLowerCase())) return item.status.toLowerCase().includes(val.toLowerCase());
+        if(item.description.toLowerCase().includes(val.toLowerCase())) return item.description.toLowerCase().includes(val.toLowerCase());
+
+        
       }))
     }
   }
