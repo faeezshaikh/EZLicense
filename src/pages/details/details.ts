@@ -63,19 +63,42 @@ export class DetailsPage {
     let content = this.content.nativeElement;
     console.log('Content:', content);
 
-    // doc.fromHTML(content.innerHTML,15,15);
+
+    // let img = new Image();
+    // img.src = this.project.diagram;
+    // img.crossOrigin = "Anonymous";
+    // doc.addImage(this.getBase64Image(img), 'PNG', 15, 40, 200, 114);
 
     doc.fromHTML(content.innerHTML, 20, 20, {
       'width': 140, // max width of content on PDF
       'elementHandlers': specialElementHandlers
     },
       function (bla) {
-        // let name = this.project.title + '.pdf';
         console.log('File name:', name);
         doc.save(name);
       });
-    // doc.save('test.pdf');
   }
+
+   getBase64Image(img) {
+    // Create an empty canvas element
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    // Copy the image contents to the canvas
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+
+    // Get the data-URL formatted image
+    // Firefox supports PNG and JPEG. You could check img.src to
+    // guess the original format, but be aware the using "image/jpg"
+    // will re-encode the image.
+    var dataURL = canvas.toDataURL("image/png");
+
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
+
+
 
  
 }

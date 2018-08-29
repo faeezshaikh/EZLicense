@@ -190,25 +190,27 @@
           <div class="item item-body" style="text-align:left">
 
             <div class="row">
-              <div class="col col-80">Assessor: {{project.assessor}}</div>
+              <div class="col">Assessor: {{project.assessor}}</div>
             </div>
 
             <div class="row">
-              <div class="col col-80">Last Assessed: {{project.lastUpdated}}</div>
+              <div class="col ">Last Assessed: {{project.lastUpdated}}</div>
             </div>
 
             <div class="row">
-              <div class="col col-80">Assessment score:
+              <div class="col ">Assessment score:
                 <strong>{{project.score}} %</strong>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col col-80">Result:
-              <strong>{{project.verdict}}</strong>
+              <div class="col">Status:
+                <strong>{{project.status}}</strong>
+              </div>
             </div>
-            <div class="col col-20">
-
+          <div class="row">
+            <div class="col">Result:
+              <strong>{{project.verdict}}</strong>
             </div>
           </div>
 
