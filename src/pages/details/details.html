@@ -172,7 +172,8 @@
       </p>
       <hr/>
 
-      <img *ngIf="project.diagram," [src]="project.diagram" imageViewer/>
+      <span *ngIf="project.diagram">(Click to enlarge)</span>
+      <img *ngIf="project.diagram" [src]="project.diagram" imageViewer/>
 
     </ion-card>
 
