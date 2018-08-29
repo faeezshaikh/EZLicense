@@ -4,6 +4,8 @@ import { HelperProvider } from '../../providers/helper/helper';
 import _ from "lodash";
 import { Observable } from 'rxjs/Observable';
 
+import { AngularFireStorage } from 'angularfire2/storage';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'page-form',
@@ -39,10 +41,14 @@ export class FormPage {
   reasons: any;
   sliderColor: string;
 
+  uploadPercent: Observable<number>;
+  downloadURL: Observable<string>;
+  uploading:boolean=false;
+
   @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public helper: HelperProvider,
-    public menu: MenuController, public alertCtrl: AlertController) {
+    public menu: MenuController, public alertCtrl: AlertController,private storage: AngularFireStorage) {
 
     let p = navParams.get('project');
     if (p) {
@@ -655,6 +661,14 @@ export class FormPage {
       this.project.status = status;
       this.project.lastUpdated = new Date().toLocaleString();
       this.project.explanation = this.reasons;
+
+      this.project.title = this.projectTitle;
+      this.project.description = this.projectDescription;
+      this.project.assessor = this.assessor;
+
+      if(this.downloadURL)
+      this.downloadURL.subscribe(res => { console.log('Updated diagram..',res); this.project.diagram = res; this.helper.updateItem(this.project.key, this.project);})
+
       this.helper.updateItem(this.project.key, this.project);
       console.log('Updated project...', this.project);
 
@@ -676,7 +690,7 @@ export class FormPage {
     }
   }
 
-  edit() {
+  edit(isScrollingReqd) {
     console.log('Enabled!');
     if (this.buttonText == 'Edit') {
       this.disabled = false;
@@ -687,10 +701,38 @@ export class FormPage {
       this.disabled = true;
       this.buttonText = "Edit";
     }
-    this.content.scrollToTop();
+   if(isScrollingReqd) this.content.scrollToTop();
   }
 
   getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  
+  uploadFile(event) {
+    const file = event.target.files[0];
+    let pth = Math.floor(Date.now() / 1000);
+    const filePath = 'turboarb/'+pth;
+    console.log('Path is:',filePath);
+    
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    this.uploading = true;
+    // observe percentage changes
+    this.uploadPercent = task.percentageChanges();
+
+    if(this.uploadPercent) {
+      let that = this;
+      this.uploadPercent.subscribe(number => {
+        if(number == 100) that.uploading=false;
+      })
+    }
+   
+    // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+        finalize(() => {  this.downloadURL = fileRef.getDownloadURL() ;})
+     )
+    .subscribe()
   }
 }

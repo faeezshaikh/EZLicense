@@ -46,7 +46,7 @@ export class FeedbackPage {
     this.feedback = 'It sucks.';
 
     if(val == 'luv')
-    this.feedback = 'I want to say something, but i\'d rather not';
+    this.feedback = 'I am trying to hate it, but i can\'t!';
   }
 
 }

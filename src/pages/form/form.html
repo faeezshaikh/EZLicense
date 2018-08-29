@@ -212,10 +212,77 @@
             </p>
       
             <div style="text-align:right">
-                    <button *ngIf="buttonText=='Edit'" ion-button (click)="edit()">{{buttonText}}</button>
-                    <button *ngIf="buttonText=='Save'" ion-button (click)="edit()" color="light" >{{buttonText}}</button>
+                    <button *ngIf="buttonText=='Edit'" ion-button (click)="edit(false)">{{buttonText}}</button>
+                    <button *ngIf="buttonText=='Save'" ion-button (click)="edit(true)" color="light" >{{buttonText}}</button>
                 </div>
+
+                    <ion-card>
+                    <ion-row>
+                        <ion-col>
+                            <form #companyForm="ngForm">
+                                
+                                  <ion-item class="mycolor">
+                                    <ion-label floating>Project Name </ion-label>
+                                    <!-- <ion-input type="text" required class="form-control"></ion-input> -->
+                                    <ion-input type="text" 
+                                    class="form-control" 
+                                    name="project-name"
+                                    ngModel
+                                    #nameField="ngModel"
+                                    [(ngModel)] = "projectTitle"
+                                    required
+                                    minlength="3"
+                                    [disabled]="disabled"></ion-input>
+                                  </ion-item>
+                            
+                                  <ion-item class="mycolor">
+                                      <ion-label floating>Brief Decription</ion-label>
+                                      <!-- <ion-input type="text" required class="form-control"></ion-input> -->
+                                      <ion-textarea type="text-area" 
+                                      class="form-control" 
+                                      name="project-desc"
+                                      ngModel
+                                      #nameField="ngModel"
+                                      [(ngModel)] = "projectDescription"
+                                      required
+                                      minlength="8"
+                                      [disabled]="disabled"></ion-textarea>
+                                    </ion-item>
+                            
+                            
+                                  <ion-item class="mycolor">
+                                      <ion-label floating>Your Email</ion-label>
+                                      <!-- <ion-input type="text" required class="form-control"></ion-input> -->
+                                      <ion-input type="text-area" 
+                                      class="form-control" 
+                                      name="project-assessor"
+                                      ngModel
+                                      #nameField="ngModel"
+                                      [(ngModel)] = "assessor"
+                                      required email
+                                      minlength="4"
+                                      [disabled]="disabled"></ion-input>
+                                    </ion-item>
+                            </form>
+                            
+                        </ion-col>
+                        <ion-col>  
+                                <ion-item class="mycolor">
+                                        <span style="color:grey">Solution Arch Diagram: (Image file)</span><p>&nbsp;</p>
+                                    <input type="file" (change)="uploadFile($event)" [disabled]="disabled"/>
+                                    <div *ngIf="uploading">Uploading {{ uploadPercent | async }}% ...</div>
+                                  
+                                  </ion-item>
+                            <img *ngIf="!downloadURL && project.diagram," [src]="project.diagram" />
+                            <img  *ngIf="downloadURL" [src]="downloadURL | async"/>
+                        </ion-col>
+                    </ion-row>
+                    </ion-card>
         
+                    <div style="text-align:right">
+                            <button *ngIf="buttonText=='Edit'" ion-button (click)="edit(false)">{{buttonText}}</button>
+                            <button *ngIf="buttonText=='Save'" ion-button (click)="edit(true)" color="light" >{{buttonText}}</button>
+                        </div>
             <div *ngFor="let question of questions; let i = index">
                     <div class="result-question">
                         <h3>{{i + 1}}. {{question.Name}}</h3>
@@ -252,8 +319,8 @@
 
 
             <div style="text-align:right">
-                <button *ngIf="buttonText=='Edit'" ion-button (click)="edit()">{{buttonText}}</button>
-                <button *ngIf="buttonText=='Save'" ion-button (click)="edit()" outline>{{buttonText}}</button>
+                <button *ngIf="buttonText=='Edit'" ion-button (click)="edit(false)">{{buttonText}}</button>
+                <button *ngIf="buttonText=='Save'" ion-button (click)="edit(true)" outline>{{buttonText}}</button>
            
             </div>
     

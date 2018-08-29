@@ -37,11 +37,17 @@
                               <!-- <button ion-button color="light" outline>  Bad</button> -->
                   
                               
-                              <i style="color:green" class="far fa-grin fa-3x"></i>&nbsp;&nbsp;
+                              <!-- <i style="color:green" class="far fa-grin fa-3x"></i>&nbsp;&nbsp;
                               <i style="color:blue"  class="far fa-meh fa-3x"></i> &nbsp;&nbsp;
                               <i style="color:red"  class="far fa-angry fa-3x"></i>&nbsp;&nbsp;
                               <i style="color:brown"  [ngClass]="clazz"  (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)"></i>
-                  
+                   -->
+
+                   <i  class="far fa-grin fa-3x"></i>&nbsp;&nbsp;
+                   <i  class="far fa-meh fa-3x"></i> &nbsp;&nbsp;
+                   <i  class="far fa-angry fa-3x"></i>&nbsp;&nbsp;
+                   <i   [ngClass]="clazz"  (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)"></i>
+       
                               <div>
                                 
                                 

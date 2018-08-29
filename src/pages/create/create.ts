@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, ViewController } from 'ionic-angular';
 import { FormPage } from '../form/form';
 import { AngularFireStorage } from 'angularfire2/storage';
-import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'page-home',

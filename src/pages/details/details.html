@@ -101,11 +101,15 @@
       <ion-grid *ngIf="isPlatformMobile">
         <ion-row>
           <ion-col>
-            <div style="text-align:center;width:100%">
-              <img src="https://communications.fidelity.com/pi/calculators/saving-for-retirement/assets/images/rpm-dial.png" />
-
-              <!-- <img src="assets/data/dial1.png"/> -->
-            </div>
+           
+            <div id="container">
+              <div id="navi"> <round-progress [current]="project.score" [max]="100" [color]="sliderColor" [background]="'#eaeaea'" [radius]="125" [stroke]="20"
+                [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="true" [duration]="800" [animation]="'easeInOutQuart'"
+                [animationDelay]="0"></round-progress></div>
+              <div id="infoi" style="text-align:center; font-size:90px; top:40px;">
+                  <ng2-odometer [number]="project.score"></ng2-odometer>
+                </div>
+          </div>
           </ion-col>
         </ion-row>
         <ion-row>
