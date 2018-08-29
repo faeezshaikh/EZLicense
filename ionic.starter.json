@@ -7,11 +7,10 @@
     "package-lock.json",
     "www"
   ],
-  "scripts": {
-    "test": "npm run build"
-  },
+  "scripts": [ "../node_modules/jspdf/dist/jspdf.min.js" , 
+    {"test": "npm run build"} ],
   "styles": [
     "../node_modules/ag-grid/dist/styles/ag-grid.css",
     "../node_modules/ag-grid/dist/styles/theme-fresh.css"
-],
+  ]
 }

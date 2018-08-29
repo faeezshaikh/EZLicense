@@ -12,7 +12,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding >
 
   <div class="center result">
     <p></p>
@@ -23,6 +23,17 @@
         </ion-avatar>
         <h2>Assessment Details</h2>
         <p>{{project.verdict}}</p>
+
+
+
+        <ion-buttons large end>
+            <button ion-button outline clear (click)="export()">
+              Export
+            </button>
+          </ion-buttons>
+
+
+
       </ion-item>
 
       <ion-fab right top (click)="edit()" *ngIf="project.status == 'In Progress'">
@@ -165,6 +176,7 @@
     </ion-card>
     <p></p>
 
+    <div id="content" #content>
     <ion-card>
       <p style="text-align:left" *ngIf="project.description">
         <strong>Project Description: </strong>
@@ -213,5 +225,7 @@
     </ion-card>
 
   </div>
+
+</div>
 
 </ion-content>
