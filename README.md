@@ -4,6 +4,7 @@ aws s3 cp --recursive ./www s3://turboarb/www
 https://angularfirebase.com/lessons/angular-firebase-authentication-tutorial-anonymous-auth/#Step-1-Enable-Anonymous-Auth-in-Firebase
 
 
+
 1. Send email when new assessment created 
 2. show status on Results page and disable buttons if already approved?? idk
 3. Diag for each project

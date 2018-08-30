@@ -666,9 +666,18 @@ export class FormPage {
       this.project.description = this.projectDescription;
       this.project.assessor = this.assessor;
 
-      if(this.downloadURL)
-      this.downloadURL.subscribe(res => { console.log('Updated diagram..',res); this.project.diagram = res; this.helper.updateItem(this.project.key, this.project);})
+      console.log("getting downloadURL...");
 
+      if(this.downloadURL) {
+        console.log("got downloadURL...");
+        
+        this.downloadURL.subscribe(res => { 
+          console.log('Updated diagram..',res); 
+          this.project.diagram = res; 
+          // Bug: If the project was never created..this update of the diag will not help. Rare case when the user doesnt upload pic on create page but does it on update page
+          this.helper.updateItem(this.project.key, this.project);
+        })
+      }
       this.helper.updateItem(this.project.key, this.project);
       console.log('Updated project...', this.project);
 
