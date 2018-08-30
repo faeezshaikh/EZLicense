@@ -70,7 +70,7 @@
       <ion-row responsive-sm>
         <ion-searchbar placeholder="Search for Project Title, Description, Status, Assessor..." *ngIf="projects" [showCancelButton]="shouldShowCancel" (ionInput)="filterItems($event)" (ionCancel)="onCancel($event)">
         </ion-searchbar>
-        <ion-col  *ngFor="let p of projects | async" col-md>
+        <ion-col  *ngFor="let p of projects | async | reverse" col-md>
           <ion-card>
             <!-- <i class="fa fa-plus" aria-hidden="true"></i> -->
             <ion-fab right top (click)="itemTapped($event, p)">

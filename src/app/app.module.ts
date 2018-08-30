@@ -26,6 +26,8 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
 import { AgGridModule } from 'ag-grid-angular';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { ReversePipe } from '../providers/helper/reversePipe';
+
 
  
 // AF2 Settings
@@ -58,7 +60,8 @@ export const firebaseConfig = {
     DetailsPage,
     ContactusPage,
     ResourcesPage,
-    FeedbackPage
+    FeedbackPage,
+    ReversePipe
   ],
   imports: [
     BrowserModule,
