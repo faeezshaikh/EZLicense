@@ -283,15 +283,15 @@ export class FormPage {
 
     if (this.getFavorableOrNotFavorable_4() == 'No') {
       if (seriousness == 'High') { startScore -= 15; reasons.push("Lost 15 points since sensitive data is accessed by non Ameren personnel."); }
-      if (seriousness == 'Medium') { startScore -= 10; reasons.push("Lost 10 points since sensitive data is accessed by non Ameren personnel."); }
-      if (seriousness == 'Low') { startScore -= 5; reasons.push("Lost 5 points since sensitive data is accessed by non Ameren personnel."); }
+      if (seriousness == 'Medium') { startScore -= 10; reasons.push("Lost 10 points since data is accessed by non Ameren personnel."); }
+      if (seriousness == 'Low') { startScore -= 5; reasons.push("Lost 5 points since data is accessed by non Ameren personnel."); }
     }
 
 
     if (this.getFavorableOrNotFavorable_5() == 'No') {
       if (seriousness == 'High') { startScore -= 15; reasons.push("Lost 15 points since sensitive data is accessed through non Ameren managed devices."); }
-      if (seriousness == 'Medium') { startScore -= 10; reasons.push("Lost 10 points since sensitive data is accessed through non Ameren managed devices."); }
-      if (seriousness == 'Low') { startScore -= 5; reasons.push("Lost 5 points since sensitive data is accessed through non Ameren managed devices."); }
+      if (seriousness == 'Medium') { startScore -= 10; reasons.push("Lost 10 points since data is accessed through non Ameren managed devices."); }
+      if (seriousness == 'Low') { startScore -= 5; reasons.push("Lost 5 points since data is accessed through non Ameren managed devices."); }
     }
 
     if (this.getFavorableOrNotFavorable_6() == 'No') {
@@ -343,16 +343,16 @@ export class FormPage {
 
     if (this.getFavorableOrNotFavorable_16() == 'No') {
       if (seriousness == 'High') { startScore -= 15; reasons.push("Lost 15 points for not readily being able to download data from vendor"); }
-      if (seriousness == 'Low') { startScore -= 10; reasons.push("Lost 10 points  for not readily being able to download data from vendor"); }
+      if (seriousness == 'Low') { startScore -= 10; reasons.push("Lost 10 points for not readily being able to download data from vendor"); }
     }
 
     if (this.getFavorableOrNotFavorable_17() == 'No') {
-      if (seriousness == 'High') { startScore -= 10; reasons.push("Lost 10 points since sensitive data is backed up outside of Ameren"); }
+      if (seriousness == 'High') { startScore -= 10; reasons.push("Lost 10 points since data is backed up outside of Ameren"); }
       if (seriousness == 'Low') { startScore -= 5; reasons.push("Lost 5 points since non-sensitive data is backed up outside of Ameren"); }
     }
 
     if (this.getFavorableOrNotFavorable_18() == 'No') {
-      if (seriousness == 'High') { startScore -= 10; reasons.push("Lost 10 points since sensitive data is outside USA"); }
+      if (seriousness == 'High') { startScore -= 10; reasons.push("Lost 10 points since data is outside USA"); }
       if (seriousness == 'Low') { startScore -= 5; reasons.push("Lost 5 points since non-sensitive data is outside USA"); }
     }
 

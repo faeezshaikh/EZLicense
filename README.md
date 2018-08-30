@@ -1,6 +1,7 @@
  npm run build
 aws s3 cp --recursive ./www s3://turboarb/www
 
+https://angularfirebase.com/lessons/angular-firebase-authentication-tutorial-anonymous-auth/#Step-1-Enable-Anonymous-Auth-in-Firebase
 
 
 1. Send email when new assessment created 
