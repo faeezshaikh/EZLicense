@@ -216,6 +216,7 @@
 
           <img src="project.diagram" />
 
+            <p style="color:red">! Please note: Diagram below has been omitted for security reasons !</p>
 
         </ion-col>
       </ion-row>
@@ -251,13 +252,6 @@
           <ul *ngIf="!question.answer">
             <li>No response</li>
           </ul>
-          <!-- <div class="result-options">
-          <div *ngFor="let Option of question.Options">
-            <label class="{{  question.answer == Option.Name ? 'result-correct': 'result-incorrect' }}">
-              <input id="{{Option.Id}}" type="checkbox" disabled="disabled" readonly="readonly" [checked]="question.answer == Option.Name"/> {{Option.Name}}
-            </label>
-          </div>
-        </div> -->
           <p>&nbsp;</p>
         </div>
       </div>
