@@ -24,6 +24,8 @@ export class ListPage {
   detailsModal: any;
   isIEOrEdge:boolean=false;
   gridMode=true;
+  loading:boolean= true;
+  version:string="1.0.1";
 
 
   columnDefs = [
@@ -52,6 +54,7 @@ rowData = [
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase,
     public modalCtrl: ModalController, public helper: HelperProvider, public menu: MenuController, public plt: Platform, private alertCtrl: AlertController) {
 
+      this.loading=true;
       this.isIEOrEdge = /msie\s|trident\/|edge\//i.test(window.navigator.userAgent);
       // this.isIEOrEdge = true;
       console.log('Is Browser IE?:',this.isIEOrEdge);
@@ -98,6 +101,7 @@ rowData = [
     this.projects.subscribe(list => {
       console.log('Lenght of list is:', list.length)
       this.updateOdometer(list);
+      this.loading=false;
       // this.helper.setProjectList(list);
     });
   }
