@@ -1,3 +1,4 @@
+
 <style>
   <link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-car.css" />
 </style>
@@ -10,7 +11,7 @@
     <ion-title *ngIf="!isMobile">Assessed Projects</ion-title>
     <ion-title *ngIf="isMobile" (click)="increment()">Projects</ion-title>
 
-    <div *ngIf="!isMobile" class="titleicon">
+    <div *ngIf="!isMobile" class="titleicon"  (click)="unleashBugs()">
       <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Ameren_logo.svg/2000px-Ameren_logo.svg.png" width="100px" style="margin-bottom:9px;margin-right:10px;" /> -->
       <img src="assets/imgs/ameren-white-logo.png" width="100px" style="margin-right:10px;" />
 
@@ -141,7 +142,7 @@
   </ion-fab>
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="!bugsUnleashed">
   <ion-navbar *ngIf="!isMobile" color="grey">
    
       <ion-title ><small style="margin-bottom: 15px;">Contact Us: ea@ameren.com</small></ion-title>

@@ -8,6 +8,10 @@ import { DetailsPage } from '../details/details';
 import { Observable } from 'rxjs';
 import { FormPage } from '../form/form';
 
+declare var BugController;
+declare var SpiderController;
+
+
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
@@ -26,6 +30,7 @@ export class ListPage {
   gridMode=true;
   loading:boolean= true;
   version:string="1.0.1";
+  bugsUnleashed=false;
 
 
   columnDefs = [
@@ -274,6 +279,33 @@ rowData = [
     });
 
     alert.present();
+  }
+
+  unleashBugs(){
+    console.log("unleashing bugs..");
+    this.bugsUnleashed=true;
+    var targethead = window.document.getElementsByTagName("head")[0],
+    loadedSpiders = false,
+    jst = window.document.createElement("script");
+  jst.async = true;
+  jst.type = "text/javascript";
+  jst.src = "assets\/data\/bug-min.js";
+  // jst.onload = jst.onreadystatechange = function() {
+    jst.onload =  function() {
+    // if (!loadedSpiders && (!this.readyState || this.readyState == 'complete')) {
+      if (!loadedSpiders) {
+      loadedSpiders = true;
+      // start fire the JS.
+      new BugController({
+        'imageSprite':"assets\/data\/fly-sprite.png"
+      });
+
+      new SpiderController({
+        'imageSprite':"assets\/data\/spider-sprite.png"
+      });
+    }
+  };
+  targethead.appendChild(jst);
   }
 
 
