@@ -301,12 +301,18 @@ rowData = [
       });
 
       new SpiderController({
-        'imageSprite':"assets\/data\/spider-sprite.png"
+        'imageSprite':"assets\/data\/spider-sprite.png",
+        'mouseOver':"die",
+        'minBugs':40
       });
     }
   };
   targethead.appendChild(jst);
   }
+
+  // gravity(){
+  // (function(){document.body.appendChild(document.createElement('script')).src='assets\/data\/gravityscript.js';})();
+  // }
 
 
 }
