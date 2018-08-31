@@ -1,5 +1,17 @@
- npm run build
-aws s3 cp --recursive ./www s3://turboarb/www
+### Best Practices for Security Rules in FB
+
+> Do not use open security rules in Firebase. TurboARB uses Anonymous login to authenticate the client to FB. This way the data is not open to the world for read and write (locking the backdoor)
+
+
+
+
+    `npm run build`
+
+    `aws s3 cp --recursive ./www s3://turboarb/www`
+
+
+
+![Architecture of TurboARB](https://firebasestorage.googleapis.com/v0/b/ameren-arb.appspot.com/o/turboarb%2F1535512153?alt=media&token=c3c6b7ab-458a-4f07-bfc1-af0ced29b49f)
 
 https://angularfirebase.com/lessons/angular-firebase-authentication-tutorial-anonymous-auth/#Step-1-Enable-Anonymous-Auth-in-Firebase
 

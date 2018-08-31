@@ -27,8 +27,9 @@ import { AgGridModule } from 'ag-grid-angular';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { ReversePipe } from '../providers/helper/reversePipe';
+import { AuthService } from '../providers/helper/AuthService';
 
-
+import { AngularFireAuthModule } from 'angularfire2/auth';
  
 // AF2 Settings
 export const firebaseConfig = {
@@ -73,6 +74,7 @@ export const firebaseConfig = {
     AngularFireStorageModule,
     RoundProgressModule,
     IonicImageViewerModule,
+    AngularFireAuthModule,
     AgGridModule.withComponents([])
   ],
   bootstrap: [IonicApp],
@@ -88,7 +90,8 @@ export const firebaseConfig = {
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HelperProvider
+    HelperProvider,
+    AuthService
   ]
 })
 export class AppModule {}

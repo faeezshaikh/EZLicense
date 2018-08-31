@@ -10,6 +10,7 @@ import { ResourcesPage } from '../pages/resources/resources';
 // TS pluging didnt work..so added <script> tag in index.html for googgle analytics
 // import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { FeedbackPage } from '../pages/feedback/feedback';
+import { AuthService } from '../providers/helper/AuthService';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any,icon: string}>;
 
-  constructor(public platform: Platform) {
+  constructor(public platform: Platform,public auth: AuthService) {
   //  this.initializeApp();
 
   //  this.ga.startTrackerWithId('UA-123713684-1')
@@ -41,6 +42,9 @@ export class MyApp {
       { title: 'Contact Us', component: ContactusPage, icon: 'people' },
       { title: 'Feedback', component: FeedbackPage, icon: 'mail' }
     ];
+
+    this.auth.anonymousLogin().then(() => console.log('Anonymous auth login successful'));
+    
 
   }
 
