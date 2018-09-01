@@ -5,9 +5,9 @@
 
 
 
-    `npm run build`
+`npm run build`
 
-    `aws s3 cp --recursive ./www s3://turboarb/www`
+`aws s3 cp --recursive ./www s3://turboarb/www`
 
 
 
