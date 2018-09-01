@@ -28,7 +28,7 @@
 },
 {
     "id":8,
-    "help":"<strong>Ameren's Preferred Technology list</strong><p><img src=\"assets/imgs/techlist.png\"/></p>"
+    "help":"<strong>Ameren's Preferred Technology list</strong><p><img src=\"https://s3.amazonaws.com/turboarb/assets/imgs/techlist.png\"/></p>"
 },
 {
     "id":9,

@@ -292,7 +292,7 @@ rowData = [
     jst = window.document.createElement("script");
   jst.async = true;
   jst.type = "text/javascript";
-  jst.src = "assets\/data\/bug-min.js";
+  jst.src = "https://s3.amazonaws.com/turboarb/assets/scripts/bug-min.js";
   // jst.onload = jst.onreadystatechange = function() {
     jst.onload =  function() {
     // if (!loadedSpiders && (!this.readyState || this.readyState == 'complete')) {
@@ -300,11 +300,13 @@ rowData = [
       loadedSpiders = true;
       // start fire the JS.
       new BugController({
-        'imageSprite':"assets\/data\/fly-sprite.png"
+        'imageSprite':"https://s3.amazonaws.com/turboarb/assets/imgs/fly-sprite.png"
       });
 
       new SpiderController({
-        'imageSprite':"assets\/data\/spider-sprite.png",
+        'imageSprite':"https://s3.amazonaws.com/turboarb/assets/imgs/spider-sprite.png",
+
+        
         'mouseOver':"die",
         'minBugs':40
       });

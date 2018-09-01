@@ -95,7 +95,7 @@
         "Id": 9,
         "Description": "Netskope is a tool that Cyber Security at Ameren uses to evaluate external solutions. The Netskope tool has conducted tests for several commercial products in the market and assigned scores to them. Below is an example of what a score looks like. To learn more, click here:",
         "Name": "Is the Netskope rating of the product/solution you plan on using above 50?",
-        "Pic": "assets/imgs/netskope.png",
+        "Pic": "https://s3.amazonaws.com/turboarb/assets/imgs/netskope.png",
         "tag": "Netskope",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
