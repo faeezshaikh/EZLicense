@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ElementRef, ViewChild} from '@angular/core';
 import { NavController, NavParams, MenuController, ModalController, Platform, AlertController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 // import { Observable } from 'rxjs/Observable';
@@ -29,8 +29,11 @@ export class ListPage {
   isIEOrEdge:boolean=false;
   gridMode=true;
   loading:boolean= true;
-  version:string="1.0.1";
+  version:string="1.0.37";
   bugsUnleashed=false;
+  doRoll=false;
+
+  @ViewChild('someVar') el:ElementRef;
 
 
   columnDefs = [
@@ -313,6 +316,9 @@ rowData = [
   // gravity(){
   // (function(){document.body.appendChild(document.createElement('script')).src='assets\/data\/gravityscript.js';})();
   // }
-
+  roll(){
+    this.doRoll = true;
+    setTimeout(()=> this.doRoll=false,3500);
+  }
 
 }
