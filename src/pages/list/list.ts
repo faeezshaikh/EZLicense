@@ -32,6 +32,7 @@ export class ListPage {
   version:string="1.0.38";
   bugsUnleashed=false;
   doRoll=false;
+  rollOnlyBoxes=false;
 
   @ViewChild('someVar') el:ElementRef;
 
@@ -320,7 +321,12 @@ rowData = [
   // }
   roll(){
     this.doRoll = true;
-    setTimeout(()=> this.doRoll=false,3500);
+    setTimeout(()=> this.doRoll=false,4000);
+  }
+
+  rollBoxes(){
+    this.rollOnlyBoxes = true;
+    setTimeout(()=> this.rollOnlyBoxes=false,4000);
   }
 
 }

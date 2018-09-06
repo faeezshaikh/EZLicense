@@ -39,7 +39,7 @@
         <ion-row>
           <ion-col>
 
-            <div id="container">
+            <div id="container" (click)="showComments()">
               <div id="navi">
                 <round-progress [current]="project.score" [max]="100" [color]="sliderColor" [background]="'#eaeaea'" [radius]="125" [stroke]="20"
                   [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="true" [duration]="800" [animation]="'easeInOutQuart'"
@@ -88,22 +88,36 @@
         </ion-row>
         <p>&nbsp;</p>
         
-        <!-- <form #companyForm="ngForm">
-        <ion-item class="mycolor">
+        <div style="text-align:left" *ngIf="project.arbComments">
+          <strong>ARB Comments: </strong>
+          <ul>
+            <li>{{project.arbComments}}</li>
+          </ul>
+
+          <div style="text-align:right">
+            <p>
+              <small>{{project.lastUpdated}}</small>
+            </p>
+          </div>
+
+        </div>
+
+        <form #companyForm="ngForm" [hidden]='hideComments'>
+        <ion-item class="mycolor" >
             <ion-label floating>ARB comments</ion-label>
             <ion-textarea type="text-area" 
             class="form-control" 
             name="project-desc"
             ngModel
             #nameField="ngModel"
-            [(ngModel)] = "arbcomments"
+            [(ngModel)] = "project.arbComments"
             required
             minlength="5"></ion-textarea>
           </ion-item>
 
-              <button ion-button block color="primary" (click)="saveArbComments()" [disabled]="!companyForm.valid">Save</button>
+              <button ion-button  color="primary" (click)="saveArbComments()" [disabled]="!companyForm.valid">Save</button>
             </form>
-            <p>&nbsp;</p> -->
+            <p>&nbsp;</p>
         <ion-row>
           <!-- <hr/> -->
           <div style="text-align:left">

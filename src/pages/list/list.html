@@ -3,7 +3,7 @@
   <link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-car.css" />
 </style>
 
-<ion-header>
+<ion-header [ngClass]="{'barrel_roll': doRoll == true }">
   <ion-navbar color="primary">
     <button ion-button [menuToggle]="activeMenu">
       <ion-icon name="menu"></ion-icon>
@@ -46,7 +46,7 @@
 
 
 
-<ion-content *ngIf="!isIEOrEdge">
+<ion-content *ngIf="!isIEOrEdge" [ngClass]="{'barrel_roll': doRoll == true }"> 
 
     <!-- <ag-grid-angular style="width: 80%; height: 50%; padding:100px" class="ag-theme-balham" [rowData]="projects | async" [columnDefs]="columnDefs"
     [enableSorting]="true" [enableFilter]="true" rowSelection="single" [rowDragManaged]="true" [animateRows]="true" (selectionChanged)="onSelectionChanged($event)">
@@ -72,7 +72,7 @@
         <ion-searchbar  placeholder="Search for Project Title, Description, Status, Assessor..." *ngIf="projects && !loading" [showCancelButton]="shouldShowCancel" (ionInput)="filterItems($event)" (ionCancel)="onCancel($event)">
         </ion-searchbar>
         <ion-col  *ngFor="let p of projects | async | reverse" col-md>
-          <ion-card [ngClass]="{'barrel_roll': doRoll == true }">
+          <ion-card  [ngClass]="{'barrel_roll': rollOnlyBoxes == true }">
             <!-- <i class="fa fa-plus" aria-hidden="true"></i> -->
             <ion-fab right top (click)="itemTapped($event, p)">
               <button ion-fab *ngIf="p.score>65" color="secondary">
@@ -104,7 +104,7 @@
                 <span [ngClass]="{Approved:'approved','Rejected':'rejected','Under Review':'review',
                       Submitted:'submitted','In Progress':'progress','Needs inputs':'inputs'}[p.status]">{{p.status}}</span>
               </h2>
-              <p>Last Updated: {{p.lastUpdated }}</p>
+              <p (click)="rollBoxes()">Last Updated: {{p.lastUpdated }}</p>
             </ion-item>
 
             <ion-item>
@@ -142,8 +142,8 @@
   </ion-fab>
 </ion-content>
 
-<ion-footer *ngIf="!bugsUnleashed">
-  <ion-navbar *ngIf="!isMobile" color="grey">
+<ion-footer *ngIf="!isMobile && !bugsUnleashed" [ngClass]="{'barrel_roll': doRoll == true }">
+  <ion-navbar color='grey'>
    
       <ion-title ><small style="margin-bottom: 15px;">Contact Us: ea@ameren.com</small></ion-title>
   

@@ -17,6 +17,8 @@ export class DetailsPage {
   sliderColor:string;
   semicircle: boolean = false;
   radius: number = 125;
+  hideComments:boolean=true;
+  arbcomments:string;
 
   @ViewChild('content') content: ElementRef;
 
@@ -36,7 +38,17 @@ export class DetailsPage {
     console.log('ionViewDidLoad DetailsPage');
   }
 
+  showComments(){
+    this.hideComments=!this.hideComments;
+  }
  
+  saveArbComments(){
+    console.log(this.arbcomments);
+    // this.project.arbComments.push(this.arbcomments);
+    this.project.lastUpdated = new Date().toLocaleString();
+    this.helper.updateItem(this.project.key,this.project);
+    this.hideComments = true;
+  }
   dismiss() {
     this.viewCtrl.dismiss();
   }
