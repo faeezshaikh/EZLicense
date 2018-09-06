@@ -47,7 +47,7 @@
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Ameren Personnel (Employees / Consultant)" },
             { "Id": 1057, "QuestionId": 1010, "Name": "Non Ameren Personnel (eg. Service Provider)" },
-            { "Id": 1058, "QuestionId": 1010, "Name": "Customer" },
+            { "Id": 1058, "QuestionId": 1010, "Name": "Ameren Customers." },
             { "Id": 1058, "QuestionId": 1010, "Name": "All of the above" }]
     },
     {
@@ -134,7 +134,7 @@
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
-            { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable (solution implements SSO With AD)" }]
+            { "Id": 1058, "QuestionId": 1010, "Name": "Not applicable" }]
     },
     {
         "Id": 13,
