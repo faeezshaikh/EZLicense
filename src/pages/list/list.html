@@ -145,22 +145,25 @@
 <ion-footer *ngIf="!isMobile && !bugsUnleashed" [ngClass]="{'barrel_roll': doRoll == true }">
   <ion-navbar color='grey'>
    
-      <ion-title ><small style="margin-bottom: 15px;">Contact Us: ea@ameren.com</small></ion-title>
-  
-      <div class="titleicon">
-        <ion-title style="font-family: Verdana;
-        font-style: normal;
-        font-weight: 600;
-        margin-bottom: 4px;" (click)="increment()"> Ameren EA</ion-title>
-        <ion-title (click)="hideDelete()"><small style="font-family:Arial Narrow, Helvetica, sans-serif;font-size:1.5rem">&copy; Copyright: 2018 All rights reserved for Ameren Corp </small></ion-title>
-      </div>
+      <ion-buttons large>
+          <button ion-button outline clear  (click)="unleashBugs()">
+            <span style="font-size:1.5rem" >Version:{{version}}</span> &nbsp;
+          </button>
+        </ion-buttons>
 
+     
   
-      <ion-buttons large end >
-        <button ion-button outline clear  (click)="unleashBugs()">
-          <span style="font-size:1.5rem">Version:{{version}}</span> &nbsp;
-        </button>
-      </ion-buttons>
-
+        
+        <div class="titleicon">
+          <ion-title style="font-family: Verdana;
+          font-style: normal;
+          font-weight: 600;
+          margin-bottom: 4px;" (click)="increment()"> Ameren EA</ion-title>
+          <ion-title (click)="hideDelete()"><small style="font-family:Arial Narrow, Helvetica, sans-serif;font-size:1.5rem">&copy; Copyright: 2018 All rights reserved for Ameren Corp </small></ion-title>
+        </div>
+        
+        <!-- <ion-title end><small style="margin-bottom: 15px;">Contact Us: ea@ameren.com</small></ion-title> -->
+  
+    
     </ion-navbar>
 </ion-footer>
