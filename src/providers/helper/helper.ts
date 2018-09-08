@@ -7,7 +7,7 @@ import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import * as xml2js from 'xml2js';
 
 @Injectable()
 export class HelperProvider {
@@ -84,6 +84,23 @@ export class HelperProvider {
     console.log('calling email service',url);
     this.getData(url);
   }
+
+  foo(){
+  let xml = "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><authenticateResponse xmlns=\"http://www.ameren.com/Architecture\">" +
+        "<response>Logon failure: unknown user name or bad password.</response>"+
+     "</authenticateResponse>" +
+  "</soap:Body>"+
+"</soap:Envelope>";
+  return  xml2js.parseString(xml, function (err, result) {
+    console.log(result);
+    return result;
+  });
+
+  
+  
+  
+}
+
   presentToast(msg: string, position: string, clazz: string, showCloseButton: boolean, closeButtonText: string, duration: number) {
     let toast = this.toastCtrl.create({
       message: msg,
@@ -100,5 +117,7 @@ export class HelperProvider {
 
     toast.present();
   }
+
+  
 
 }

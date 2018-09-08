@@ -170,3 +170,48 @@ In Route 53
 
 After deployment
     - invalidate CDN by running * for origin root. wait for a few minutes 
+
+
+ //////
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:arc="http://www.ameren.com/Architecture">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <arc:authenticate>
+         <!--Optional:-->
+         <arc:accountId></arc:accountId>
+         <!--Optional:-->
+         <arc:password></arc:password>
+      </arc:authenticate>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <soap:Body>
+      <authenticateResponse xmlns="http://www.ameren.com/Architecture"/>
+   </soap:Body>
+</soap:Envelope>
+
+
+
+ <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <soap:Body>
+      <authenticateResponse xmlns="http://www.ameren.com/Architecture">
+         <response>Logon failure: unknown user name or bad password.</response>
+      </authenticateResponse>
+   </soap:Body>
+</soap:Envelope>
+
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <soap:Body>
+      <authenticateResponse xmlns="http://www.ameren.com/Architecture">
+         <response>An operations error occurred.</response>
+      </authenticateResponse>
+   </soap:Body>
+</soap:Envelope>
+
+

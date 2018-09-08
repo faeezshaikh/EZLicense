@@ -67,6 +67,9 @@ rowData = [
       this.isIEOrEdge = /msie\s|trident\/|edge\//i.test(window.navigator.userAgent);
       // this.isIEOrEdge = true;
       console.log('Is Browser IE?:',this.isIEOrEdge);
+      let res = this.helper.foo();
+      console.log('received resp:',res);
+      
       
 
     if (this.plt.is('mobile') || this.plt.is('mobileweb')) {
