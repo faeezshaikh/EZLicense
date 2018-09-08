@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { HelperProvider } from '../../providers/helper/helper';
 
 
 @Component({
@@ -11,7 +12,7 @@ export class AuthPage {
   id: string;
   password:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private helper:HelperProvider) {
   }
 
   ionViewDidLoad() {
@@ -20,7 +21,7 @@ export class AuthPage {
   signMeIn(){
     console.log("Id:",this.id);
     console.log("password:",this.password);
-    
+    this.helper.foo();
 
   }
 

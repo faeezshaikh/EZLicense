@@ -31,6 +31,7 @@ import { AuthService } from '../providers/helper/AuthService';
 
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import {AuthPage} from '../pages/auth/auth';
+import {EventsService} from '../providers/helper/events';
  
 // AF2 Settings
 export const firebaseConfig = {
@@ -94,7 +95,8 @@ export const firebaseConfig = {
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HelperProvider,
-    AuthService
+    AuthService,
+    EventsService
   ]
 })
 export class AppModule {}

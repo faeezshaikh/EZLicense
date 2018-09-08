@@ -8,6 +8,8 @@ import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as xml2js from 'xml2js';
+import {EventsService} from './events';
+
 
 @Injectable()
 export class HelperProvider {
@@ -19,7 +21,7 @@ export class HelperProvider {
   items: Observable<any[]>;
   isPlatformMobile:boolean;
 
-  constructor(public http: HttpClient, private af: AngularFireDatabase, private toastCtrl: ToastController) {
+  constructor(public http: HttpClient, private af: AngularFireDatabase, private toastCtrl: ToastController,private events:EventsService) {
     console.log('Hello HelperProvider Provider');
 
     this.projects$ = this.af.list('/projects');
@@ -86,13 +88,16 @@ export class HelperProvider {
   }
 
   foo(){
-  let xml = "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><authenticateResponse xmlns=\"http://www.ameren.com/Architecture\">" +
-        "<response>Logon failure: unknown user name or bad password.</response>"+
-     "</authenticateResponse>" +
-  "</soap:Body>"+
-"</soap:Envelope>";
-  return  xml2js.parseString(xml, function (err, result) {
-    console.log(result);
+    let that = this;
+    let xml = "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><authenticateResponse xmlns=\"http://www.ameren.com/Architecture\">" +
+    "<response>Logon failure: unknown user name or bad password.</response>"+
+    "</authenticateResponse>" +
+    "</soap:Body>"+
+    "</soap:Envelope>";
+    return  xml2js.parseString(xml, function (err, result) {
+      console.log(result);
+      that.events.sendLoggedInEvent();
+      
     return result;
   });
 

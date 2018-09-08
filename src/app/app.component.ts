@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform ,Events} from 'ionic-angular';
 // import { StatusBar } from '@ionic-native/status-bar';
 // import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -23,10 +23,10 @@ export class MyApp {
   // rootPage: any = ListPage;
   rootPage: any = AuthPage;
 
-  loggedin = true;
+  loggedin = false;
   pages: Array<{title: string, component: any,icon: string}>;
 
-  constructor(public platform: Platform,public auth: AuthService) {
+  constructor(public platform: Platform,public auth: AuthService, public events:Events,) {
   //  this.initializeApp();
 
   //  this.ga.startTrackerWithId('UA-123713684-1')
@@ -43,11 +43,13 @@ export class MyApp {
       // { title: 'Video Resources', component: ListPage, icon: 'logo-youtube' },
       { title: 'Reference Resources', component: ResourcesPage, icon: 'folder' },
       { title: 'Contact Us', component: ContactusPage, icon: 'people' },
-      { title: 'Feedback', component: FeedbackPage, icon: 'mail' }
+      { title: 'Feedback', component: FeedbackPage, icon: 'mail' },
+      { title: 'Logout', component: FeedbackPage, icon: 'log-out' }
     ];
 
     this.auth.anonymousLogin().then(() => console.log('Anonymous auth login successful'));
-    this.rootPage = this.loggedin ? ListPage : AuthPage;
+    // this.rootPage = this.loggedin ? ListPage : AuthPage;
+    this.listenToLoginEvents();
 
   }
 
@@ -64,5 +66,21 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  listenToLoginEvents() {
+    this.events.subscribe('user:login', () => {
+      console.log('Heard Login !!');
+      
+      this.rootPage =  ListPage ;
+      // this.enableMenu(true);
+    });
+
+
+    this.events.subscribe('user:logout', () => {
+      // this.enableMenu(false);
+      console.log('Heard Logout !!');
+      this.rootPage =  AuthPage;
+    });
   }
 }
