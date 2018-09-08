@@ -32,6 +32,7 @@ import { AuthService } from '../providers/helper/AuthService';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import {AuthPage} from '../pages/auth/auth';
 import {EventsService} from '../providers/helper/events';
+import {SettingsPage} from '../pages/settings/settings';
  
 // AF2 Settings
 export const firebaseConfig = {
@@ -65,7 +66,8 @@ export const firebaseConfig = {
     ResourcesPage,
     FeedbackPage,
     ReversePipe,
-    AuthPage
+    AuthPage,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -90,7 +92,8 @@ export const firebaseConfig = {
     ContactusPage,
     ResourcesPage,
     FeedbackPage,
-    AuthPage
+    AuthPage,
+    SettingsPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

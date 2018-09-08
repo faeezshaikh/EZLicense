@@ -20,6 +20,7 @@ export class HelperProvider {
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
   isPlatformMobile:boolean;
+  loggedinUser:any = null;
 
   constructor(public http: HttpClient, private af: AngularFireDatabase, private toastCtrl: ToastController,private events:EventsService) {
     console.log('Hello HelperProvider Provider');
@@ -97,14 +98,19 @@ export class HelperProvider {
     return  xml2js.parseString(xml, function (err, result) {
       console.log(result);
       that.events.sendLoggedInEvent();
+      that.setLoggedInUser({'username':'Faeez Shaikh'});
+      
       
     return result;
   });
-
-  
-  
-  
 }
+
+  setLoggedInUser(obj){
+    this.loggedinUser = obj;
+  }
+  getLoggedInUser(){
+    return this.loggedinUser;
+  }
 
   presentToast(msg: string, position: string, clazz: string, showCloseButton: boolean, closeButtonText: string, duration: number) {
     let toast = this.toastCtrl.create({

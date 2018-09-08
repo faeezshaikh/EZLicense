@@ -19,7 +19,7 @@
  
 
 
-    <ion-list>
+    <ion-list *ngIf='user!=null'>
         <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
                 <ion-icon item-left name="{{p.icon}}"></ion-icon> &nbsp; {{p.title}}
         </button>

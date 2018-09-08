@@ -12,6 +12,8 @@ import { ResourcesPage } from '../pages/resources/resources';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { AuthService } from '../providers/helper/AuthService';
 import {AuthPage} from '../pages/auth/auth';
+import {SettingsPage} from '../pages/settings/settings';
+import { HelperProvider } from '../providers/helper/helper';
 
 
 @Component({
@@ -22,11 +24,11 @@ export class MyApp {
 
   // rootPage: any = ListPage;
   rootPage: any = AuthPage;
-
-  loggedin = false;
+  user:any;
+  
   pages: Array<{title: string, component: any,icon: string}>;
 
-  constructor(public platform: Platform,public auth: AuthService, public events:Events,) {
+  constructor(public platform: Platform,public auth: AuthService, public events:Events,private helper:HelperProvider) {
   //  this.initializeApp();
 
   //  this.ga.startTrackerWithId('UA-123713684-1')
@@ -44,13 +46,13 @@ export class MyApp {
       { title: 'Reference Resources', component: ResourcesPage, icon: 'folder' },
       { title: 'Contact Us', component: ContactusPage, icon: 'people' },
       { title: 'Feedback', component: FeedbackPage, icon: 'mail' },
-      { title: 'Logout', component: FeedbackPage, icon: 'log-out' }
+      { title: 'Logout', component: SettingsPage, icon: 'log-out' }
     ];
 
+    
     this.auth.anonymousLogin().then(() => console.log('Anonymous auth login successful'));
-    // this.rootPage = this.loggedin ? ListPage : AuthPage;
     this.listenToLoginEvents();
-
+    this.updateUserStatus();
   }
 
   initializeApp() {
@@ -62,6 +64,9 @@ export class MyApp {
     });
   }
 
+  updateUserStatus(){
+    this.user = this.helper.getLoggedInUser();
+  }
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
@@ -71,7 +76,7 @@ export class MyApp {
   listenToLoginEvents() {
     this.events.subscribe('user:login', () => {
       console.log('Heard Login !!');
-      
+      this.updateUserStatus();
       this.rootPage =  ListPage ;
       // this.enableMenu(true);
     });
@@ -80,6 +85,7 @@ export class MyApp {
     this.events.subscribe('user:logout', () => {
       // this.enableMenu(false);
       console.log('Heard Logout !!');
+      this.updateUserStatus();
       this.rootPage =  AuthPage;
     });
   }
