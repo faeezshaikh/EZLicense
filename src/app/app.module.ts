@@ -30,6 +30,7 @@ import { ReversePipe } from '../providers/helper/reversePipe';
 import { AuthService } from '../providers/helper/AuthService';
 
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import {AuthPage} from '../pages/auth/auth';
  
 // AF2 Settings
 export const firebaseConfig = {
@@ -62,7 +63,8 @@ export const firebaseConfig = {
     ContactusPage,
     ResourcesPage,
     FeedbackPage,
-    ReversePipe
+    ReversePipe,
+    AuthPage
   ],
   imports: [
     BrowserModule,
@@ -86,7 +88,8 @@ export const firebaseConfig = {
     DetailsPage,
     ContactusPage,
     ResourcesPage,
-    FeedbackPage
+    FeedbackPage,
+    AuthPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

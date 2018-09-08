@@ -11,6 +11,7 @@ import { ResourcesPage } from '../pages/resources/resources';
 // import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { AuthService } from '../providers/helper/AuthService';
+import {AuthPage} from '../pages/auth/auth';
 
 
 @Component({
@@ -19,8 +20,10 @@ import { AuthService } from '../providers/helper/AuthService';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ListPage;
+  // rootPage: any = ListPage;
+  rootPage: any = AuthPage;
 
+  loggedin = true;
   pages: Array<{title: string, component: any,icon: string}>;
 
   constructor(public platform: Platform,public auth: AuthService) {
@@ -44,7 +47,7 @@ export class MyApp {
     ];
 
     this.auth.anonymousLogin().then(() => console.log('Anonymous auth login successful'));
-    
+    this.rootPage = this.loggedin ? ListPage : AuthPage;
 
   }
 
