@@ -13,7 +13,6 @@ import { FeedbackPage } from '../pages/feedback/feedback';
 import { AuthService } from '../providers/helper/AuthService';
 import {AuthPage} from '../pages/auth/auth';
 import {SettingsPage} from '../pages/settings/settings';
-import { HelperProvider } from '../providers/helper/helper';
 
 
 @Component({
@@ -28,7 +27,7 @@ export class MyApp {
   
   pages: Array<{title: string, component: any,icon: string}>;
 
-  constructor(public platform: Platform,public auth: AuthService, public events:Events,private helper:HelperProvider) {
+  constructor(public platform: Platform,public auth: AuthService, public events:Events) {
   //  this.initializeApp();
 
   //  this.ga.startTrackerWithId('UA-123713684-1')
@@ -52,7 +51,7 @@ export class MyApp {
     
     this.auth.anonymousLogin().then(() => console.log('Anonymous auth login successful'));
     this.listenToLoginEvents();
-    this.updateUserStatus();
+    this.checkLoginStatus();
   }
 
   initializeApp() {
@@ -64,9 +63,33 @@ export class MyApp {
     });
   }
 
-  updateUserStatus(){
-    this.user = this.helper.getLoggedInUser();
+  checkLoginStatus(){
+    let storedToken:string = localStorage.getItem('user');
+    if(!storedToken) { // not logged in.
+      this.user = null;  // necessary to hide the side menu items
+    } else {
+      let token = JSON.parse(storedToken);
+      console.log('token:.time',token.time);
+      console.log('current time:',new Date().getTime());
+      
+      if(new Date().getTime() > token.time) { // see if expired
+        console.log('Login expired');
+        this.logout();
+      } else {
+        this.rootPage =  ListPage ;
+        this.user = storedToken;
+      }
+
+    }
   }
+
+   
+  logout() {
+    console.log("Publishing logout event");
+    localStorage.removeItem('user'); 
+    this.events.publish('user:logout');
+  }
+
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
@@ -76,16 +99,14 @@ export class MyApp {
   listenToLoginEvents() {
     this.events.subscribe('user:login', () => {
       console.log('Heard Login !!');
-      this.updateUserStatus();
+      this.checkLoginStatus();
       this.rootPage =  ListPage ;
-      // this.enableMenu(true);
     });
 
 
     this.events.subscribe('user:logout', () => {
-      // this.enableMenu(false);
       console.log('Heard Logout !!');
-      this.updateUserStatus();
+      this.checkLoginStatus();
       this.rootPage =  AuthPage;
     });
   }

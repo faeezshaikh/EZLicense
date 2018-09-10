@@ -21,7 +21,7 @@ export class AuthPage {
   signMeIn(){
     console.log("Id:",this.id);
     console.log("password:",this.password);
-    this.helper.foo();
+    this.helper.callAuthService(this.id,this.password);
 
   }
 

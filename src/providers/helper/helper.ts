@@ -20,7 +20,6 @@ export class HelperProvider {
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
   isPlatformMobile:boolean;
-  loggedinUser:any = null;
 
   constructor(public http: HttpClient, private af: AngularFireDatabase, private toastCtrl: ToastController,private events:EventsService) {
     console.log('Hello HelperProvider Provider');
@@ -88,29 +87,36 @@ export class HelperProvider {
     this.getData(url);
   }
 
-  foo(){
+  foo(xmlResp){
     let that = this;
+    xml2js.parseString(xmlResp, function (err, result) {
+      console.log('Parsed response:',result);
+      // let resObj =  JSON.stringify(result);
+      // console.log('Result:',resObj);
+      // let abj = {'name':'sdfsdfds','age:num':45}
+      // let x = Object.values(result)[0];
+
+      // console.log('RES.x:',Object.keys(x));
+      // console.log('RES [0]',Object.keys(result)[0]);
+
+      var expirationMS = 10 * 60 * 60 * 1000; // 10 hours expiration
+      let obj = {'username':'Faeez Shaikh','time': new Date().getTime() + expirationMS};
+      localStorage.setItem('user', JSON.stringify(obj));
+      that.events.sendLoggedInEvent();
+  });
+}
+
+  callAuthService(usr:string,pwd:string){
     let xml = "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><authenticateResponse xmlns=\"http://www.ameren.com/Architecture\">" +
     "<response>Logon failure: unknown user name or bad password.</response>"+
     "</authenticateResponse>" +
     "</soap:Body>"+
     "</soap:Envelope>";
-    return  xml2js.parseString(xml, function (err, result) {
-      console.log(result);
-      that.events.sendLoggedInEvent();
-      that.setLoggedInUser({'username':'Faeez Shaikh'});
-      
-      
-    return result;
-  });
-}
+    this.foo(xml);
 
-  setLoggedInUser(obj){
-    this.loggedinUser = obj;
   }
-  getLoggedInUser(){
-    return this.loggedinUser;
-  }
+
+ 
 
   presentToast(msg: string, position: string, clazz: string, showCloseButton: boolean, closeButtonText: string, duration: number) {
     let toast = this.toastCtrl.create({

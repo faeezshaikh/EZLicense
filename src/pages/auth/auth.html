@@ -29,7 +29,7 @@
       <div class="center">
       <img src="assets/imgs/logo.png" style="width:20%">
       </div>
-      <form #companyForm="ngForm">
+      <form #turboForm="ngForm">
       <ion-item>
         <ion-label floating>Ameren Id</ion-label>
         <ion-input [(ngModel)]="id" name="id" type="id" required minlength="5"></ion-input>
@@ -41,7 +41,7 @@
       </ion-item>
   
       <ion-item>
-        <button ion-button block outline large (click)="signMeIn()" [disabled]="!companyForm.valid">Sign in</button>
+        <button ion-button block outline large (click)="signMeIn()" [disabled]="!turboForm.valid">Sign in</button>
       </ion-item>
       </form>
   
