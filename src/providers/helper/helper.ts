@@ -10,6 +10,10 @@ import { map } from 'rxjs/operators';
 import * as xml2js from 'xml2js';
 import {EventsService} from './events';
 
+const auth_url_base = 'https://goblxdvesb12.ameren.com:8443/svc/build/auth/v1/account/';
+const acct_info_url_base = 'https://goblxdvesb12.ameren.com:8443/svc/build/auth/v1/account/';
+
+
 
 @Injectable()
 export class HelperProvider {
@@ -99,23 +103,47 @@ export class HelperProvider {
       // console.log('RES.x:',Object.keys(x));
       // console.log('RES [0]',Object.keys(result)[0]);
 
-      var expirationMS = 10 * 60 * 60 * 1000; // 10 hours expiration
-      let obj = {'username':'Faeez Shaikh','time': new Date().getTime() + expirationMS};
-      localStorage.setItem('user', JSON.stringify(obj));
-      that.events.sendLoggedInEvent();
+  
   });
 }
 
   callAuthService(usr:string,pwd:string){
-    let xml = "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><authenticateResponse xmlns=\"http://www.ameren.com/Architecture\">" +
-    "<response>Logon failure: unknown user name or bad password.</response>"+
-    "</authenticateResponse>" +
-    "</soap:Body>"+
-    "</soap:Envelope>";
-    this.foo(xml);
 
+    let that = this;
+    this.authenticate(usr,pwd).subscribe(resp => {  
+      console.log('Auth resp:',resp);
+      if(resp && resp.response == null) {
+        console.log('Login successful');  // Successful login
+        var expirationMS = 10 * 60 * 60 * 1000; // 10 hours expiration
+        let obj = {'username':usr,'time': new Date().getTime() + expirationMS};
+        localStorage.setItem('user', JSON.stringify(obj));
+        that.events.sendLoggedInEvent();
+        that.getAcctInfo(usr).subscribe(respObj => {
+          console.log('Retrieved account info:',respObj);
+        }, err => {console.log('Error occured in retrieving account info..',err);
+        });
+      }
+      if(resp && resp.response != null) {
+        // Login failure. // todo: display on ui
+        console.log('Login failure occured..',resp.response);
+      }
+    },
+    error => { // error path
+      console.log('something went wrong in authentication..',error);
+    });
   }
 
+
+  authenticate (usr:string,pwd:string): Observable {
+    let url = auth_url_base + usr + '/authenticate';
+    let obj = {'password':pwd};
+    return this.http.post(url, obj, {});
+  }
+
+  getAcctInfo(usr:string) {
+    let url = acct_info_url_base + usr;
+    return this.http.get(url);
+  }
  
 
   presentToast(msg: string, position: string, clazz: string, showCloseButton: boolean, closeButtonText: string, duration: number) {
