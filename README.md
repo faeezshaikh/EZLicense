@@ -17,6 +17,17 @@ https://angularfirebase.com/lessons/angular-firebase-authentication-tutorial-ano
 
 
 
+0. needing to refresh for menu and  acct detail after login.
+1. ShowLogin : fAlse giving blank page.
+5. Spinner
+3. Logout button single click
+
+
+
+4. Error msgs on login.
+2. Enable / Disable login configurable.
+1. AuthService URL Configurable.
+
 1. Send email when new assessment created 
 2. show status on Results page and disable buttons if already approved?? idk
 3. Diag for each project

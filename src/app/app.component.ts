@@ -11,7 +11,7 @@ import { ResourcesPage } from '../pages/resources/resources';
 // import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { AuthService } from '../providers/helper/AuthService';
-import {AuthPage} from '../pages/auth/auth';
+import { AuthPage } from '../pages/auth/auth';
 import {SettingsPage} from '../pages/settings/settings';
 import { HelperProvider } from '../providers/helper/helper';
 
@@ -22,10 +22,11 @@ import { HelperProvider } from '../providers/helper/helper';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // rootPage: any = ListPage;
-  rootPage: any = AuthPage;
+  rootPage: any ;
+  // rootPage: any = AuthPage;
   user:any;
   accountDetail:any;
+  username; name; title; department;
   
   pages: Array<{title: string, component: any,icon: string}>;
 
@@ -53,9 +54,27 @@ export class MyApp {
     
     this.auth.anonymousLogin().then(() => console.log('Anonymous auth login successful'));
     this.listenToLoginEvents();
-    this.checkLoginStatus();
+    console.log('Checking whether to show login:',this.helper.getShowLogin());
+    
+    this.helper.getShowLogin().subscribe(obj => {
+      console.log('TurboARB Config:',obj);
+      let config:any = obj;
+      if(config.showLogin){ //config says yes..check if session exists..if it exists dont show
+        console.log('config.showLogin',config.showLogin);
+        if(this.checkLoginExpiry()){ // if session expired
+          this.rootPage = AuthPage;
+        } else {
+          console.log('session exists..');
+          this.rootPage = ListPage;
+        }
+      }
+      // this.rootPage = config.showLogin ? AuthPage : ListPage;
+    });
+    
+    this.checkLoginExpiry();
   }
 
+  // Not called
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -65,21 +84,26 @@ export class MyApp {
     });
   }
 
-  checkLoginStatus(){
-    let storedToken:string = localStorage.getItem('user');
+  checkLoginExpiry(){
+    let storedToken:any = localStorage.getItem('user');
     if(!storedToken) { // not logged in.
-      this.user = null;  // necessary to hide the side menu items
+      this.user = null; //important to hide the sidemenu if session is expired.
+      return true; // yes session is expired
     } else {
       let token = JSON.parse(storedToken);
-      console.log('token:.time',token.time);
-      console.log('current time:',new Date().getTime());
-      
       if(new Date().getTime() > token.time) { // see if expired
         console.log('Login expired');
         this.logout();
       } else {
-        this.rootPage =  ListPage ;
+        // this.rootPage =  ListPage ;
         this.user = storedToken;
+        console.log('StoredToken found. Calling GetAcctDetail for:',token.username);
+        this.username = token.username;
+        this.name = token.name;
+        this.title = token.title;
+        this.department = token.department;
+        // this.accountDetail = this.helper.getAccountDetail(token.username);
+        return false;
       }
 
     }
@@ -99,18 +123,18 @@ export class MyApp {
   }
 
   listenToLoginEvents() {
-    this.events.subscribe('user:login', () => {
+    this.events.subscribe('user:login', (userId) => {
       console.log('Heard Login !!');
-      this.checkLoginStatus();
+      this.checkLoginExpiry();
       console.log('Calling getAccountDetail ...');
-      this.accountDetail = this.helper.getAccountDetail();
+      this.accountDetail = this.helper.getAccountDetail(userId);
       this.rootPage =  ListPage ;
     });
 
 
     this.events.subscribe('user:logout', () => {
       console.log('Heard Logout !!');
-      this.checkLoginStatus();
+      this.checkLoginExpiry();
       this.rootPage =  AuthPage;
     });
   }

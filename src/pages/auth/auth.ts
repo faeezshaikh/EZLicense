@@ -18,18 +18,20 @@ export class AuthPage {
       console.log('Heard Login Error');
       this.loginError = this.helper.getLoginError();
       console.log('Login Error',this.loginError);
-      this.showAlert(this.loginError.message);
+      let msg;
+      if(this.loginError.error && this.loginError.error.response) {
+        if(this.loginError.error.response.includes("unknown user name or bad password")) {
+           msg = "Invalid credentials. Please try again.";
+        }
+      } else if(this.loginError.message.includes('Http failure response for')) {
+        msg = 'Great Scott! The 1.21 Gigawatts flux capacitor just exploded on the server. Try again after sometime.';
+      }
+      this.showAlert(msg);
     });
-
   }
 
-  showAlert(msg) {
-    let message;
-    if(msg.includes('Http failure response for')) {
-      message = 'Great Scott! The 1.21 Gigawatts flux capacitor just exploded on the server. Try again after sometime.'
-    } else {
-      message = msg;
-    }
+  showAlert(message) {
+ 
     const alert = this.alertCtrl.create({
       title: 'Login Error',
       subTitle: message,

@@ -12,9 +12,9 @@ export class EventsService {
 
   }
 
-  sendLoggedInEvent() {
+  sendLoggedInEvent(usr:string) {
     console.log("Publishing login event");
-    this.events.publish(_USER_LOGIN_EVENT);
+    this.events.publish(_USER_LOGIN_EVENT,usr);
   }
 
   sendLogInErrorEvent() {

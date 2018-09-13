@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 // import * as xml2js from 'xml2js';
 import {EventsService} from './events';
 
-const auth_url_base = 'https://goblxdvesb12.ameren.com:8443/svc/build/auth/v1/account/';
+
 
 
 
@@ -23,6 +23,9 @@ export class HelperProvider {
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
   isPlatformMobile:boolean;
+  auth_url_base = 'https://goblxdvesb12.ameren.com:8443/svc/build/auth/v1/account/';
+  showLogin:boolean = true;
+
 
   accountDetail:any;
   loginError:string;
@@ -37,8 +40,24 @@ export class HelperProvider {
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
     );
+
+    // const config: AngularFireObject<any> = 
+    this.af.object('turboarbconfig').valueChanges().subscribe(obj => {
+      // console.log('TurboARB Config:',obj);
+      let config:any = obj;
+      this.auth_url_base = config.authUrl;
+      // this.showLogin = config.showLogin;
+      console.log('auth_url_base',this.auth_url_base);
+      // console.log('showLogin',config.showLogin);
+    });
+    
+    
+
   }
 
+  getShowLogin(){
+    return  this.af.object('turboarbconfig').valueChanges();
+  }
   setPlatform(val: boolean){
     this.isPlatformMobile = val;
   }
@@ -105,17 +124,7 @@ export class HelperProvider {
       console.log('Auth resp:',resp);
       if(resp && resp.response == null) {
         console.log('Login successful');  // Successful login
-        var expirationMS = 10 * 60 * 60 * 1000; // 10 hours expiration
-        let obj = {'username':usr,'time': new Date().getTime() + expirationMS};
-        localStorage.setItem('user', JSON.stringify(obj));
-        that.events.sendLoggedInEvent();
-        that.getAcctInfo(usr).subscribe(respObj => {
-          console.log('Retrieved account info:',respObj);
-          this.accountDetail = respObj;
-        }, err => {
-          console.log('Error occured in retrieving account info..',err);
-          this.accountDetail = null;
-        });
+        that.events.sendLoggedInEvent(usr);
       }
       if(resp && resp.response != null) {
         // Login failure. // todo: display on ui
@@ -129,25 +138,43 @@ export class HelperProvider {
     });
   }
 
+  addToLocalStorage(acctDetail:any){
+        var expirationMS = 10 * 60 * 60 * 1000; // 10 hours expiration
+        let obj = {'username':acctDetail.account.attributes.accountID,
+                  'name':acctDetail.account.attributes.givenName + ' ' + acctDetail.account.attributes.lastName,
+                  'title':acctDetail.account.attributes.title,
+                  'department':acctDetail.account.attributes.departmentDescription,
+                  'time': new Date().getTime() + expirationMS};
+        localStorage.setItem('user', JSON.stringify(obj));
+  }
+
   getLoginError(){
     console.log('Returning Login error from Helper: ',this.loginError);    
     return this.loginError;
   }
 
-  getAccountDetail(){
-    console.log('Returning accountDetail from Helper: ',this.accountDetail);
+  getAccountDetail(userId:string){
+    console.log('Returning accountDetail from Helper: ',userId);
+    this.getAcctInfo(userId).subscribe(respObj => {
+      console.log('Retrieved account info:',respObj);
+      this.accountDetail = respObj;
+      this.addToLocalStorage(respObj);
+    }, err => {
+      console.log('Error occured in retrieving account info..',err);
+      this.accountDetail = null;
+    });
     return this.accountDetail;
   }
 
   authenticate (usr:string,pwd:string): Observable<any> {
-    let url = auth_url_base + usr + '/authenticate';
+    let url = this.auth_url_base + usr + '/authenticate';
     let obj = {"password":pwd};
     console.log('object is...',obj);
     return this.http.post(url, obj, {});
   }
 
   getAcctInfo(usr:string) {
-    let url = auth_url_base + usr;
+    let url = this.auth_url_base + usr;
     return this.http.get(url);
   }
  
