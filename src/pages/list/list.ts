@@ -108,7 +108,7 @@ rowData = [
   getProjects() {
     this.projects = this.helper.getItems();  // Returns an Observable
     this.projects.subscribe(list => {
-      console.log('Lenght of list is:', list.length)
+      // console.log('Lenght of list is:', list.length)
       this.updateOdometer(list);
       this.loading=false;
       // this.helper.setProjectList(list);

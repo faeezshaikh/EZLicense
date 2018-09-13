@@ -171,7 +171,7 @@ export class HelperProvider {
   authenticate (usr:string,pwd:string): Observable<any> {
     let url = this.auth_url_base + usr + '/authenticate';
     let obj = {"password":pwd};
-    console.log('object is...',obj);
+    // console.log('object is...',obj);
     return this.http.post(url, obj, {});
   }
 
