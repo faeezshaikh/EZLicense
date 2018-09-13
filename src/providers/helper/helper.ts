@@ -19,6 +19,7 @@ export class HelperProvider {
 
   projects: any;
   projects$: AngularFireList<Object>;
+  objs$: AngularFireList<Object>;
   data: any = null; // USed to read local files
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
@@ -33,6 +34,7 @@ export class HelperProvider {
     console.log('Hello HelperProvider Provider');
 
     this.projects$ = this.af.list('/projects');
+    this.objs$ = this.af.list('/objs');
     this.itemsRef = this.af.list('projects');
     // Use snapshotChanges().map() to store the key
     this.items = this.itemsRef.snapshotChanges().pipe(
@@ -124,6 +126,7 @@ export class HelperProvider {
       console.log('Auth resp:',resp);
       if(resp && resp.response == null) {
         console.log('Login successful');  // Successful login
+        
         this.getAccountDetail(usr); // retreive acct detail and add to localstorage.
         
       }
