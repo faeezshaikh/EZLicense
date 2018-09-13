@@ -125,7 +125,7 @@ export class HelperProvider {
       if(resp && resp.response == null) {
         console.log('Login successful');  // Successful login
         this.getAccountDetail(usr); // retreive acct detail and add to localstorage.
-        that.events.sendLoggedInEvent(usr);
+        
       }
       if(resp && resp.response != null) {
         // Login failure. // todo: display on ui
@@ -147,6 +147,7 @@ export class HelperProvider {
                   'department':acctDetail.account.attributes.departmentDescription,
                   'time': new Date().getTime() + expirationMS};
         localStorage.setItem('user', JSON.stringify(obj));
+        this.events.sendLoggedInEvent(acctDetail.account.attributes.accountID);
   }
 
   getLoginError(){
