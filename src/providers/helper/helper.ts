@@ -7,11 +7,10 @@ import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as xml2js from 'xml2js';
+// import * as xml2js from 'xml2js';
 import {EventsService} from './events';
 
 const auth_url_base = 'https://goblxdvesb12.ameren.com:8443/svc/build/auth/v1/account/';
-const acct_info_url_base = 'https://goblxdvesb12.ameren.com:8443/svc/build/auth/v1/account/';
 
 
 
@@ -25,6 +24,8 @@ export class HelperProvider {
   items: Observable<any[]>;
   isPlatformMobile:boolean;
 
+  accountDetail:any;
+  loginError:string;
   constructor(public http: HttpClient, private af: AngularFireDatabase, private toastCtrl: ToastController,private events:EventsService) {
     console.log('Hello HelperProvider Provider');
 
@@ -91,25 +92,15 @@ export class HelperProvider {
     this.getData(url);
   }
 
-  foo(xmlResp){
-    let that = this;
-    xml2js.parseString(xmlResp, function (err, result) {
-      console.log('Parsed response:',result);
-      // let resObj =  JSON.stringify(result);
-      // console.log('Result:',resObj);
-      // let abj = {'name':'sdfsdfds','age:num':45}
-      // let x = Object.values(result)[0];
-
-      // console.log('RES.x:',Object.keys(x));
-      // console.log('RES [0]',Object.keys(result)[0]);
-
-  
-  });
-}
-
   callAuthService(usr:string,pwd:string){
-
     let that = this;
+
+    // that.getAcctInfo(usr).subscribe(respObj => {
+    //   console.log('Retrieved account info:',respObj);
+    // }, err => {console.log('Error occured in retrieving account info..',err);
+    // });
+
+
     this.authenticate(usr,pwd).subscribe(resp => {  
       console.log('Auth resp:',resp);
       if(resp && resp.response == null) {
@@ -120,7 +111,10 @@ export class HelperProvider {
         that.events.sendLoggedInEvent();
         that.getAcctInfo(usr).subscribe(respObj => {
           console.log('Retrieved account info:',respObj);
-        }, err => {console.log('Error occured in retrieving account info..',err);
+          this.accountDetail = respObj;
+        }, err => {
+          console.log('Error occured in retrieving account info..',err);
+          this.accountDetail = null;
         });
       }
       if(resp && resp.response != null) {
@@ -130,18 +124,30 @@ export class HelperProvider {
     },
     error => { // error path
       console.log('something went wrong in authentication..',error);
+      that.loginError = error;
+      that.events.sendLogInErrorEvent();
     });
   }
 
+  getLoginError(){
+    console.log('Returning Login error from Helper: ',this.loginError);    
+    return this.loginError;
+  }
 
-  authenticate (usr:string,pwd:string): Observable {
+  getAccountDetail(){
+    console.log('Returning accountDetail from Helper: ',this.accountDetail);
+    return this.accountDetail;
+  }
+
+  authenticate (usr:string,pwd:string): Observable<any> {
     let url = auth_url_base + usr + '/authenticate';
-    let obj = {'password':pwd};
+    let obj = {"password":pwd};
+    console.log('object is...',obj);
     return this.http.post(url, obj, {});
   }
 
   getAcctInfo(usr:string) {
-    let url = acct_info_url_base + usr;
+    let url = auth_url_base + usr;
     return this.http.get(url);
   }
  

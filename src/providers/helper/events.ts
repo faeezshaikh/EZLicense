@@ -3,6 +3,7 @@ import {Injectable} from "@angular/core";
 
 // export const _USER_LOGOUT_EVENT = 'user:logout';
 export const _USER_LOGIN_EVENT = 'user:login';
+export const _LOGIN_ERROR_EVENT = 'login:error';
 
 @Injectable()
 export class EventsService {
@@ -16,6 +17,10 @@ export class EventsService {
     this.events.publish(_USER_LOGIN_EVENT);
   }
 
+  sendLogInErrorEvent() {
+    console.log("Publishing login error event");
+    this.events.publish(_LOGIN_ERROR_EVENT);
+  }
 
 
 }

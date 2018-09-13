@@ -13,6 +13,7 @@ import { FeedbackPage } from '../pages/feedback/feedback';
 import { AuthService } from '../providers/helper/AuthService';
 import {AuthPage} from '../pages/auth/auth';
 import {SettingsPage} from '../pages/settings/settings';
+import { HelperProvider } from '../providers/helper/helper';
 
 
 @Component({
@@ -24,10 +25,11 @@ export class MyApp {
   // rootPage: any = ListPage;
   rootPage: any = AuthPage;
   user:any;
+  accountDetail:any;
   
   pages: Array<{title: string, component: any,icon: string}>;
 
-  constructor(public platform: Platform,public auth: AuthService, public events:Events) {
+  constructor(public platform: Platform,public auth: AuthService, public events:Events,private helper: HelperProvider) {
   //  this.initializeApp();
 
   //  this.ga.startTrackerWithId('UA-123713684-1')
@@ -100,6 +102,8 @@ export class MyApp {
     this.events.subscribe('user:login', () => {
       console.log('Heard Login !!');
       this.checkLoginStatus();
+      console.log('Calling getAccountDetail ...');
+      this.accountDetail = this.helper.getAccountDetail();
       this.rootPage =  ListPage ;
     });
 
