@@ -27,6 +27,7 @@ export class MyApp {
   user:any;
   accountDetail:any;
   username; name; title; department;
+  loggedIn:boolean = false;
   
   pages: Array<{title: string, component: any,icon: string}>;
 
@@ -44,7 +45,6 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Projects', component: ListPage, icon: 'list' },
-      // { title: 'Video Resources', component: ListPage, icon: 'logo-youtube' },
       { title: 'Reference Resources', component: ResourcesPage, icon: 'folder' },
       { title: 'Contact Us', component: ContactusPage, icon: 'people' },
       { title: 'Feedback', component: FeedbackPage, icon: 'mail' },
@@ -54,19 +54,22 @@ export class MyApp {
     
     this.auth.anonymousLogin().then(() => console.log('Anonymous auth login successful'));
     this.listenToLoginEvents();
-    console.log('Checking whether to show login:',this.helper.getShowLogin());
+    
     
     this.helper.getShowLogin().subscribe(obj => {
-      console.log('TurboARB Config:',obj);
+      console.log('Checking whether to show login:..TurboARB Config:',obj);
       let config:any = obj;
       if(config.showLogin){ //config says yes..check if session exists..if it exists dont show
         console.log('config.showLogin',config.showLogin);
         if(this.checkLoginExpiry()){ // if session expired
           this.rootPage = AuthPage;
         } else {
-          console.log('session exists..');
+          console.log('session exists so dont show again...');
           this.rootPage = ListPage;
         }
+      } else {
+        console.log('config says dont show login page, hence skipping..');
+        this.rootPage = ListPage;
       }
       // this.rootPage = config.showLogin ? AuthPage : ListPage;
     });
@@ -87,16 +90,17 @@ export class MyApp {
   checkLoginExpiry(){
     let storedToken:any = localStorage.getItem('user');
     if(!storedToken) { // not logged in.
-      this.user = null; //important to hide the sidemenu if session is expired.
+      this.loggedIn = false; //important to hide the sidemenu if session is expired.
       return true; // yes session is expired
     } else {
       let token = JSON.parse(storedToken);
       if(new Date().getTime() > token.time) { // see if expired
         console.log('Login expired');
+        this.loggedIn = false;
         this.logout();
       } else {
         // this.rootPage =  ListPage ;
-        this.user = storedToken;
+        this.loggedIn = true;
         console.log('StoredToken found. Calling GetAcctDetail for:',token.username);
         this.username = token.username;
         this.name = token.name;
@@ -126,14 +130,17 @@ export class MyApp {
     this.events.subscribe('user:login', (userId) => {
       console.log('Heard Login !!');
       this.checkLoginExpiry();
-      console.log('Calling getAccountDetail ...');
-      this.accountDetail = this.helper.getAccountDetail(userId);
+      this.loggedIn = true;
+      // console.log('Calling getAccountDetail ...');
+      // this.accountDetail = this.helper.getAccountDetail(userId);
       this.rootPage =  ListPage ;
     });
+    
 
 
     this.events.subscribe('user:logout', () => {
       console.log('Heard Logout !!');
+      this.loggedIn = false;
       this.checkLoginExpiry();
       this.rootPage =  AuthPage;
     });

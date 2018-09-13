@@ -124,6 +124,7 @@ export class HelperProvider {
       console.log('Auth resp:',resp);
       if(resp && resp.response == null) {
         console.log('Login successful');  // Successful login
+        this.getAccountDetail(usr); // retreive acct detail and add to localstorage.
         that.events.sendLoggedInEvent(usr);
       }
       if(resp && resp.response != null) {
