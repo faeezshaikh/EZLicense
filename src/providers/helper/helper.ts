@@ -128,6 +128,10 @@ export class HelperProvider {
       if(resp && resp.response == null) {
         console.log('Login successful');  // Successful login
 
+        ///////// [ Start Block] /////////
+       
+        ///////// [End Block] /////////
+    
         this.getAccountDetail(usr); // retreive acct detail and add to localstorage.
         
       }
@@ -149,9 +153,19 @@ export class HelperProvider {
                   'name':acctDetail.account.attributes.givenName + ' ' + acctDetail.account.attributes.lastName,
                   'title':acctDetail.account.attributes.title,
                   'department':acctDetail.account.attributes.departmentDescription,
+                  'email': acctDetail.account.attributes.email,
                   'time': new Date().getTime() + expirationMS};
         localStorage.setItem('user', JSON.stringify(obj));
         this.events.sendLoggedInEvent(acctDetail.account.attributes.accountID);
+  }
+
+  getUserFromLocalStorage(){
+    let storedToken:any = localStorage.getItem('user');
+    if(storedToken) { // not logged in.
+      let token = JSON.parse(storedToken);
+      return token;
+    }
+    return null;
   }
 
   getLoginError(){

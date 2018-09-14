@@ -4,6 +4,7 @@ import { FormPage } from '../form/form';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { HelperProvider } from '../../providers/helper/helper';
 
 @Component({
   selector: 'page-home',
@@ -18,8 +19,10 @@ export class CreatePage {
   downloadURL: Observable<string>;
   uploading:boolean=false;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController,private storage: AngularFireStorage) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController,private storage: AngularFireStorage,private helper:HelperProvider) {
 
+    let user = this.helper.getUserFromLocalStorage();
+    if(user!=null)  this.assessor = user.email;
   }
 
   startAssessment() {
