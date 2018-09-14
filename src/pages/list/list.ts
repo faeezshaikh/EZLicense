@@ -29,7 +29,7 @@ export class ListPage {
   isIEOrEdge:boolean=false;
   gridMode=true;
   loading:boolean= true;
-  version:string="1.0.43";
+  version:string="1.0.59";
   bugsUnleashed=false;
   doRoll=false;
   rollOnlyBoxes=false;

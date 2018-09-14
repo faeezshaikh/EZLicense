@@ -63,13 +63,16 @@ export class MyApp {
         console.log('config.showLogin',config.showLogin);
         if(this.checkLoginExpiry()){ // if session expired
           this.rootPage = AuthPage;
+          this.loggedIn = false;
         } else {
           console.log('session exists so dont show again...');
           this.rootPage = ListPage;
+          this.loggedIn = true;
         }
       } else {
         console.log('config says dont show login page, hence skipping..');
         this.rootPage = ListPage;
+        this.loggedIn = true;
       }
       // this.rootPage = config.showLogin ? AuthPage : ListPage;
     });

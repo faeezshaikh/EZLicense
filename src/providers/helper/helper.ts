@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 // import * as xml2js from 'xml2js';
 import {EventsService} from './events';
+// import { log } from 'util';
 
 
 
@@ -34,7 +35,7 @@ export class HelperProvider {
     console.log('Hello HelperProvider Provider');
 
     this.projects$ = this.af.list('/projects');
-    this.objs$ = this.af.list('/objs');
+    // this.objs$ = this.af.list('/objs');
     this.itemsRef = this.af.list('projects');
     // Use snapshotChanges().map() to store the key
     this.items = this.itemsRef.snapshotChanges().pipe(
@@ -126,7 +127,7 @@ export class HelperProvider {
       console.log('Auth resp:',resp);
       if(resp && resp.response == null) {
         console.log('Login successful');  // Successful login
-        
+
         this.getAccountDetail(usr); // retreive acct detail and add to localstorage.
         
       }
