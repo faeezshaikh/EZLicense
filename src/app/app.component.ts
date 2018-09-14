@@ -126,8 +126,16 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
+    console.log('Page title..',page.title);
+    
+    if(page.title == 'Logout') {
+      this.logout();
+      return;
+    }
     this.nav.setRoot(page.component);
   }
+
+  
 
   listenToLoginEvents() {
     this.events.subscribe('user:login', (userId) => {
