@@ -12,8 +12,12 @@ export class AuthPage {
   id: string;
   password:any;
   loginError:any;
+  isIEOrEdge:boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private helper:HelperProvider,private events:Events,public alertCtrl: AlertController) {
+
+    this.isIEOrEdge = this.helper.isBrowserIE();
+
     this.events.subscribe('login:error', () => {
       console.log('Heard Login Error');
       this.loginError = this.helper.getLoginError();

@@ -22,7 +22,29 @@
     </ion-navbar>
   </ion-header>
   
-  <ion-content>
+  <ion-content *ngIf="isIEOrEdge">
+    <p></p>
+    <ion-card>
+      
+     
+      <ion-card-content>
+        <img src="https://s3.amazonaws.com/turboarb/assets/imgs/stopie.png" />
+        <ion-card-title>
+         Use a Modern Browser.
+        </ion-card-title>
+        <p>
+            Did you know that only
+            <a href="http://gs.statcounter.com/browser-market-share">3% of the world uses Internet Explorer</a> to browse the internet? About time you caught up with the ROW.
+          </p>
+          <p>Sorry this app is not supported in IE. Please use Chrome now. Thanks!</p>
+     
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+
+  
+
+  <ion-content *ngIf="!isIEOrEdge">
   
     <ion-list>
       <p>&nbsp;</p>

