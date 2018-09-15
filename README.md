@@ -3,7 +3,7 @@
 > Do not use open security rules in Firebase. TurboARB uses Anonymous login to authenticate the client to FB. This way the data is not open to the world for read and write (locking the backdoor)
 
 
-
+ionic build browser --minify
 
 `npm run build`
 
