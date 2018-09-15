@@ -22,8 +22,7 @@ import { ResourcesPage } from '../pages/resources/resources';
 import { Ng2OdometerModule } from 'ng2-odometer'; 
 // import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { AngularFireStorageModule } from 'angularfire2/storage';
-import {RoundProgressModule} from 'angular-svg-round-progressbar';
-import { AgGridModule } from 'ag-grid-angular';
+import {RoundProgressModule} from 'angular-svg-round-progressbar'
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { ReversePipe } from '../providers/helper/reversePipe';
@@ -79,8 +78,7 @@ export const firebaseConfig = {
     AngularFireStorageModule,
     RoundProgressModule,
     IonicImageViewerModule,
-    AngularFireAuthModule,
-    AgGridModule.withComponents([])
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
