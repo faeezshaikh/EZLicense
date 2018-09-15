@@ -10,6 +10,7 @@
         "Name": "What is the classification of data involved in your project?",
         "Description": "At Ameren, all data is classified in 4 broad categories depending on its sensitivity. To learn more click here:",
         "tag": "Data Classification",
+        "notes":"",
 
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Highly Confidential" },
@@ -22,6 +23,7 @@
         "Name": "Where do you plan on hosting the data?",
         "Description": "Typically you will need some kind of storage (think database) to store your data. This storage can be hosted inside the Ameren Data Center (on-prem network), or externally.",
         "tag": "Hosting",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Ameren Data Center" },
             { "Id": 1057, "QuestionId": 1010, "Name": "Ameren VPC in AWS" },
@@ -34,6 +36,7 @@
         "Name": "Does the solution involve integration with or management of Ameren control systems?",
         "Description": "Click here for more details:",
         "tag": "Information Rights Mgmt",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
@@ -44,6 +47,7 @@
         "Name": "Who will access the Ameren data?",
         "Description": "Click here for more details:",
         "tag": "Data Access",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Ameren Personnel (Employees / Consultant)" },
             { "Id": 1057, "QuestionId": 1010, "Name": "Non Ameren Personnel (eg. Service Provider)" },
@@ -55,6 +59,7 @@
         "Name": "In your project or solution how will Ameren data be accessed?",
         "Description": "Data can be accessed via devices that are managed by Ameren admin (eg. Airwatch managed mobile devices) or it can be accessed via devices that are not under Ameren admin's control (eg. contractor using their cell phone to access files in Office 365).",
         "tag": "Data access",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Through managed devices only" },
             { "Id": 1057, "QuestionId": 1010, "Name": "Through nonmanaged devices only" },
@@ -65,6 +70,7 @@
         "Name": "Is Ameren data encrypted at rest?",
         "Description": "Encryption of data is important. If bad actors get hold of Ameren data storage (database disks), they will be unable to make sense of it if its encrypted using a strong encryption algorithm like SHA 256. Click here to learn more:",
         "tag": "Encryption at rest",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
@@ -76,6 +82,7 @@
         "Name": "Is Ameren data encrypted in transit?",
         "Description": "It is important that when you are transferring data across the internet or across networks, you encrypt data. This will prevent from 'Man in the middle attacks' - a term used to describe programs or bad actors trying to hack into the system by listening to the traffic on the wire. Ckick here to learn more:",
         "tag": "Encryption in transit",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
@@ -86,6 +93,7 @@
         "Name": "Does software adhere to Ameren's preferred technology list?",
         "Description": "See the help section for the Preferred Tech List",
         "tag": "Preferred Technology",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
@@ -97,6 +105,7 @@
         "Name": "Is the Netskope rating of the product/solution you plan on using above 50?",
         "Pic": "https://s3.amazonaws.com/turboarb/assets/imgs/netskope.png",
         "tag": "Netskope",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
@@ -108,6 +117,7 @@
         "Name": "Assuming your solution requires access to Ameren's network including Ameren's control systems what is the integration pattern you will use?",
         "Description": "Many apps will require to integrate with existing Ameren systems in order to provide meaningful services. Sometimes an app or a solution maybe completely standalone with no integration requirements. When integration is required however, it is important to understand if the new app/solution will be accessing any systems that reside inside Ameren data center (examples include ADMS, CSS etc.) ",
         "tag": "Integartion Pattern",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "External to Internal" },
             { "Id": 1057, "QuestionId": 1010, "Name": "Internal to External" },
@@ -121,6 +131,7 @@
         "Name": "Does the application support role-based authorization?",
         "Description": "It is generally a good practice to allow role based access to your systems. See help for more details:",
         "tag": "RBAC",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
@@ -131,6 +142,7 @@
         "Name": "Assuming your solution uses a secondary user identity store, can this identity store be disabled?",
         "Description": "At Ameren we use Microsoft Active Directory to manage employee and contractor usernames and passwords. Sometimes a solution requires you to implement its own identiy system to manage its users. Click here to learn more:",
         "tag": "Active Directory (SSO)",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
@@ -141,6 +153,7 @@
         "Name": "Does the product's administration role support multi-factor authentication?",
         "Description": "Multi-factor authentication (MFA) is a method of confirming a user's claimed identity in which a computer user is granted access only after successfully presenting 2 or more pieces of evidence (or factors) to an authentication mechanism.Click here to learn more:",
         "tag": "Multi factor authentication",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
@@ -151,6 +164,7 @@
         "Name": "Roughly how many users will be using your solution/product/application?",
         "Description": "This will help determine the risk, should the product not support SSO",
         "tag": "User base",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Less than 25" },
             { "Id": 1057, "QuestionId": 1010, "Name": "Greater than 25" },
@@ -161,6 +175,7 @@
         "Name": "If this solution deals with PCI, HIPPA, NERC, FERC, NRC or SOX data does it adhere to their standards.",
         "Description": "Being in a regulated utility company, Ameren has to comply with various industry standards. Click here to learn more: ",
         "tag": "NERC, FERC Compliance",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
@@ -171,6 +186,7 @@
         "Description": "Some projects will hire a vendor who will help with implmenting a solution. Occassionaly the vendor will own or host Ameren data",
         "Name": "If the vendor owns data, is there a way for Ameren to download the data from the vendor?",
         "tag": "Data owner",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
@@ -182,6 +198,7 @@
         "Description": "It is a very good practice to backup data to prevent from accidental loss , theft and also for disaster recovery purposes.",
         "Name": "Is any customer data backed up to a different location other than Ameren Data Center or Ameren AWS VPC?",
         "tag": "Data Backup",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
@@ -193,6 +210,7 @@
         "Description": "From a regulatory standpoint it is very important that Ameren stores all data inside the US. Click here to learn more:",
         "Name": "Is the data and its backup always stored inside the US?",
         "tag": "USA storage",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
@@ -204,6 +222,7 @@
         "Name": "Has the vendor's data ever been breached?",
         "Description": "Occasionaly breaches happen. Remember the 2015 Anthem data breach or the many Yahoo security breaches? As such it is important that Ameren is aware of any historical breaches that may have occured at a vendor it plans on (or currently is) engaging",
         "tag": "Vendor security breach",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
@@ -216,6 +235,7 @@
         "Name": "Does your solution or app require access to Ameren's network?",
         "Description": "Many apps will require to integrate with existing Ameren systems in order to provide meaningful services. Sometimes app app or a solution maybe completely standalone with no integration requirements. When integration is required however, it is important to understand if the new app/solution will be accessing any systems that reside inside Ameren data center (examples include ADMS, CSS etc.) ",
         "tag": "Network connectivity",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
@@ -226,6 +246,7 @@
         "Name": "Select the Cyber Insurance amount:",
         "Description": "Many times vendors will have some insurance against security breaches.",
         "tag": "Cyber Insurance",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "None" },
             { "Id": 1057, "QuestionId": 1010, "Name": "Less than 1 million" },
@@ -237,6 +258,7 @@
         "Name": "Does the solution have a defined data retention and destruction policy?",
         "Description": "Click here for more details:",
         "tag": "Data Retention",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
@@ -247,6 +269,7 @@
         "Name": "Does the solution implement Information Rights Management Technology on the data accessed by the end user?",
         "Description": "Click here for more details:",
         "tag": "Information Rights Mgmt",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },
@@ -257,6 +280,7 @@
         "Name": "Does the solution support SSO or AD integration?",
         "Description": "Click here for more details:",
         "tag": "SSO or AD Integration",
+        "notes":"",
         "Options": [
             { "Id": 1055, "QuestionId": 1010, "Name": "Yes" },
             { "Id": 1057, "QuestionId": 1010, "Name": "No" },

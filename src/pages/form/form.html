@@ -28,9 +28,7 @@
 
                 <p style="text-align:center">Question {{questionNumber}} of {{questions.length}}.</p>
             </ion-item>
-            <!-- <ion-card-header>
-            </ion-card-header> -->
-
+      
             <ion-card-content>
                 <ion-item *ngIf="!question.Pic">
                     <h3 style="margin-top:-0rem;white-space:normal;">{{question.Description}}&nbsp;
@@ -63,7 +61,22 @@
                         <ion-radio item-left value="{{option.Name}}"></ion-radio>
                         <ion-label>{{option.Name}}</ion-label>
                     </ion-item>
+
+                    <ion-item >
+                            <ion-label floating>Notes.</ion-label>
+                            <ion-textarea type="text-area" 
+                            class="form-control" 
+                            name="question-notes"
+                            ngModel
+                            #nameField="ngModel"
+                            [(ngModel)] = "question.notes"></ion-textarea>
+                          </ion-item>
+
                 </ion-list>
+
+
+               
+
 
             </ion-card-content>
 
@@ -127,6 +140,8 @@
             
             <h4>Filing Your Application...</h4>
         </div>
+
+
     <div class="center result" *ngIf="mode=='result' && !showSpinner && !showFilingSpinner">
             <p></p>
            
@@ -287,34 +302,48 @@
             <div *ngFor="let question of questions; let i = index">
                     <div class="result-question">
                         <h3>{{i + 1}}. {{question.Name}}</h3>
-                        <!-- <div class="result-options">
-                            <div *ngFor="let Option of question.Options">
-                                <label *ngIf="disabled" class="{{  question.answer == Option.Name ? 'result-correct': 'result-incorrect' }}"> 
-                                    <input id="{{Option.Id}}" type="checkbox" disabled [checked]="question.answer == Option.Name" /> {{Option.Name}}
-                                </label>
-                                <input *ngIf="!disabled" id="{{Option.Id}}" type="checkbox"   [checked]="question.answer == Option.Name" /> {{Option.Name}}
-                            </div>
-                        </div> -->
+                   
+                        <ion-row>
+                            <ion-col>
+                                    <ion-list radio-group [(ngModel)]="question.answer" *ngIf="disabled">
+                                            <ion-item *ngFor="let option of question.Options">
+                                                <ion-radio  item-left value="{{option.Name}}" disabled></ion-radio>
+                                                <ion-label>{{option.Name}}</ion-label>
+                                            </ion-item>
+                                        </ion-list>
+                
+                                        <ion-list radio-group [(ngModel)]="question.answer" *ngIf="!disabled">
+                                                <ion-item *ngFor="let option of question.Options">
+                                                    <ion-radio  item-left value="{{option.Name}}"></ion-radio>
+                                                    <ion-label>{{option.Name}}</ion-label>
+                                                </ion-item>
+                                            </ion-list>
 
-                        <ion-list radio-group [(ngModel)]="question.answer" *ngIf="disabled">
-                            <ion-item *ngFor="let option of question.Options">
-                                <ion-radio  item-left value="{{option.Name}}" disabled></ion-radio>
-                                <ion-label>{{option.Name}}</ion-label>
-                            </ion-item>
-                        </ion-list>
+                            </ion-col>
+                            <ion-col>
 
-                        <ion-list radio-group [(ngModel)]="question.answer" *ngIf="!disabled">
-                                <ion-item *ngFor="let option of question.Options">
-                                    <ion-radio  item-left value="{{option.Name}}"></ion-radio>
-                                    <ion-label>{{option.Name}}</ion-label>
-                                </ion-item>
-                            </ion-list>
+                                    <ion-item >
+                                            <ion-label floating>Notes:</ion-label>
+                                            <ion-textarea type="text-area" [disabled]="disabled"
+                                            class="form-control" 
+                                            name="question-notes"
+                                            ngModel
+                                            #nameField="ngModel"
+                                            [(ngModel)] = "question.notes"></ion-textarea>
+                                          </ion-item>
+                            </ion-col>
+                        </ion-row>
+                      
 
-                        <p></p>
+
+                  
+
+                      
                     </div>
+                    <hr/>
             </div>
 
-
+            <p>&nbsp;</p>
 
 
 
