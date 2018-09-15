@@ -10,7 +10,7 @@ import { FormPage } from '../form/form';
 
 declare var BugController;
 declare var SpiderController;
-
+import _ from "lodash";
 
 @Component({
   selector: 'page-list',
@@ -24,12 +24,12 @@ export class ListPage {
   activeMenu: string;
   odo: any;
   isMobile = false;
-  showDelete: number = 0;
+  isAdminUser:boolean = false;
   detailsModal: any;
   isIEOrEdge:boolean=false;
   gridMode=true;
   loading:boolean= true;
-  version:string="1.0.63";
+  version:string="1.0.67";
   bugsUnleashed=false;
   doRoll=false;
   rollOnlyBoxes=false;
@@ -55,10 +55,7 @@ rowData = [
 ];
 
 
-  ///  Grid
 
-
-  //// Grid
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase,
     public modalCtrl: ModalController, public helper: HelperProvider, public menu: MenuController, public plt: Platform, private alertCtrl: AlertController) {
@@ -67,6 +64,11 @@ rowData = [
       this.isIEOrEdge = /msie\s|trident\/|edge\//i.test(window.navigator.userAgent);
       // this.isIEOrEdge = true;
       console.log('Is Browser IE?:',this.isIEOrEdge);
+
+      this.determineUserRole();
+
+
+
       
 
     if (this.plt.is('mobile') || this.plt.is('mobileweb')) {
@@ -80,6 +82,23 @@ rowData = [
     this.selectedItem = navParams.get('item');
     this.activeMenu = 'menu1'
     this.getProjects();
+  }
+
+  determineUserRole(){
+
+    let token = this.helper.getUserFromLocalStorage();
+    if(token!=null){
+      token.username;
+      let that = this;
+      this.helper.getAdminUsers().subscribe(adminList => {
+        console.log('Admins:',adminList);
+        let idx = _.findIndex(adminList,function(user){ return user.toLowerCase() == token.username.toLowerCase()});
+        if(idx != -1) { // found in admin list
+          that.isAdminUser = true;
+        }
+      });
+    }
+  
   }
 
   doRefresh(refresher) {
@@ -181,13 +200,8 @@ rowData = [
     }
 
   }
-  increment() {
-    this.showDelete++
-  }
-  hideDelete() {
-    this.showDelete = 0;
-  }
 
+ 
   deleteProject(project) {
     let _msg = 'This will delete: \'' + project.title + '\'. Are you sure?';
     this.confirmDelete(project,"Confirm Delete",_msg,"delete");

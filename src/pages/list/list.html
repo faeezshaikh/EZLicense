@@ -9,7 +9,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title *ngIf="!isMobile"><span>Assessed Projects</span></ion-title>
-    <ion-title *ngIf="isMobile" (click)="increment()">Projects</ion-title>
+    <ion-title *ngIf="isMobile">Projects</ion-title>
 
     <div *ngIf="!isMobile" class="titleicon" >
       <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Ameren_logo.svg/2000px-Ameren_logo.svg.png" width="100px" style="margin-bottom:9px;margin-right:10px;" /> -->
@@ -58,7 +58,7 @@
   </ion-refresher>
 
   <ion-list >
-    <ion-item-divider color="light" (click)="hideDelete()">Projects List</ion-item-divider>
+    <ion-item-divider color="light">Projects List</ion-item-divider>
 
 
     
@@ -115,13 +115,13 @@
                 <span *ngIf="!isMobile">View Details</span>
               </button>
 
-              <button *ngIf="showDelete>3" (click)="deleteProject(p)" ion-button icon-start clear item-end>
+              <button *ngIf="isAdminUser" (click)="deleteProject(p)" ion-button icon-start clear item-end>
                 <ion-icon name="trash"></ion-icon>
               </button>
-              <button *ngIf="showDelete>3" (click)="edit(p)" ion-button icon-start clear item-end>
+              <button *ngIf="isAdminUser" (click)="edit(p)" ion-button icon-start clear item-end>
                 <ion-icon name="create"></ion-icon>
               </button>
-              <button *ngIf="showDelete>3" (click)="approve(p)" ion-button icon-start clear item-end>
+              <button *ngIf="isAdminUser" (click)="approve(p)" ion-button icon-start clear item-end>
                 <ion-icon name="checkbox-outline"></ion-icon>
               </button>
             </ion-item>
@@ -158,8 +158,8 @@
           <ion-title style="font-family: Verdana;
           font-style: normal;
           font-weight: 600;
-          margin-bottom: 4px;" (click)="increment()"> Ameren EA</ion-title>
-          <ion-title (click)="hideDelete()"><small style="font-family:Arial Narrow, Helvetica, sans-serif;font-size:1.5rem">&copy; Copyright: 2018 All rights reserved for Ameren Corp </small></ion-title>
+          margin-bottom: 4px;"> Ameren EA</ion-title>
+          <ion-title><small style="font-family:Arial Narrow, Helvetica, sans-serif;font-size:1.5rem">&copy; Copyright: 2018 All rights reserved for Ameren Corp </small></ion-title>
         </div>
         
         <!-- <ion-title end><small style="margin-bottom: 15px;">Contact Us: ea@ameren.com</small></ion-title> -->

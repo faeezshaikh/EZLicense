@@ -129,7 +129,7 @@ export class HelperProvider {
         console.log('Login successful');  // Successful login
 
         ///////// [ Start Block] /////////
-       
+      
         ///////// [End Block] /////////
     
         this.getAccountDetail(usr); // retreive acct detail and add to localstorage.
@@ -166,6 +166,10 @@ export class HelperProvider {
       return token;
     }
     return null;
+  }
+
+  getAdminUsers():Observable<any> {
+    return this.af.list('/users/admins').valueChanges();
   }
 
   getLoginError(){
