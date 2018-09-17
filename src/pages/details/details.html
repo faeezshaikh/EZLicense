@@ -283,9 +283,12 @@
           <ul *ngIf="!question.answer">
             <li>No response</li>
           </ul>
-          <span *ngIf="question.notes" style="font-style:italic"><strong>&nbsp;Notes: </strong> {{question.notes}}</span>
-          <p>&nbsp;</p>
+          <span *ngIf="question.notes" style="font-style:italic"><strong>&nbsp;Notes: </strong> {{question.notes}}  </span>
+          <ul>
+              <p>&nbsp;</p>
+          </ul>
         </div>
+        
       </div>
      
     </ion-card>

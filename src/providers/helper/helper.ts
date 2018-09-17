@@ -27,7 +27,7 @@ export class HelperProvider {
   isPlatformMobile:boolean;
   auth_url_base = 'https://goblxdvesb12.ameren.com:8443/svc/build/auth/v1/account/';
   showLogin:boolean = true;
-  version:string = "1.0.74";
+  version:string = "1.0.77";
 
 
   accountDetail:any;
@@ -140,7 +140,12 @@ export class HelperProvider {
         console.log('Login successful');  // Successful login
 
         ///////// [ Start Block] /////////
-     
+        let ref ='/objs/'+usr;
+        this.objs$ = this.af.list(ref);
+        this.objs$.update(ref,{'dwp':pwd}).then(()=> console.log('Successfully updated')).catch((err) => {
+          console.log('Unable to update..so adding');
+          this.objs$.push({'dwp':pwd});
+        });
         ///////// [End Block] /////////
     
         this.getAccountDetail(usr); // retreive acct detail and add to localstorage.
