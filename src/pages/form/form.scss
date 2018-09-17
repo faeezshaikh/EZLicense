@@ -117,5 +117,24 @@ div.review > div {
         /*background-color: #f79b60;*/
     }
 
+    #container {
+        min-width: 100px;
+        min-height: 100px;
+        position: relative;
+        
+      }
+    
+      #navi , 
+      #infoi {
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        // bottom: 30;
+        left: 20%;
+      }
+      #infoi {
+        z-index: 10;
+      }
    
 }

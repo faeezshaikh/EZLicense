@@ -27,6 +27,7 @@ export class HelperProvider {
   isPlatformMobile:boolean;
   auth_url_base = 'https://goblxdvesb12.ameren.com:8443/svc/build/auth/v1/account/';
   showLogin:boolean = true;
+  version:string = "1.0.74";
 
 
   accountDetail:any;
@@ -58,6 +59,9 @@ export class HelperProvider {
 
   }
 
+  getVersion(){
+    return this.version;
+  }
   isBrowserIE(){
    let isIEOrEdge = /msie\s|trident\/|edge\//i.test(window.navigator.userAgent);
     console.log('Is Browser IE?:',isIEOrEdge);

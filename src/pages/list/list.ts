@@ -29,7 +29,7 @@ export class ListPage {
   isIEOrEdge:boolean=false;
   gridMode=true;
   loading:boolean= true;
-  version:string="1.0.73";
+  version:string;
   bugsUnleashed=false;
   doRoll=false;
   rollOnlyBoxes=false;
@@ -62,6 +62,7 @@ rowData = [
 
       this.loading=true;
     
+      this.version = this.helper.getVersion();
       this.isIEOrEdge = this.helper.isBrowserIE();
       console.log('browser is IE?',this.isIEOrEdge);
       

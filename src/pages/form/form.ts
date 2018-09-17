@@ -233,9 +233,9 @@ export class FormPage {
     setTimeout(function () {
       that1.sliderScore = that1.odo;
       if(that1.odo == 0) that.sliderScore = 1;
-      if (that1.sliderScore > 35 && that1.sliderScore < 66) that1.sliderColor = 'orange';
-      if (that1.sliderScore < 36) that1.sliderColor = 'danger';
-      if (that1.sliderScore > 65) that1.sliderColor = 'secondary';
+      if (that1.sliderScore > 35 && that1.sliderScore < 66) that1.sliderColor = '#FFA500';
+      if (that1.sliderScore < 36) that1.sliderColor = '#f53d3d';
+      if (that1.sliderScore > 65) that1.sliderColor = '#32db64';
 
       console.log('setting sliderscore to :', that1.sliderScore);
 
