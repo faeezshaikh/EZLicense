@@ -93,7 +93,7 @@ rowData = [
       token.username;
       let that = this;
       this.helper.getAdminUsers().subscribe(adminList => {
-        console.log('Admins:',adminList);
+        // console.log('Admins:',adminList);
         let idx = _.findIndex(adminList,function(user){ return user.toLowerCase() == token.username.toLowerCase()});
         if(idx != -1) { // found in admin list
           that.isAdminUser = true;
@@ -137,7 +137,7 @@ rowData = [
   }
 
   updateOdometer(data) {
-    console.log('updating odometer');
+    // console.log('updating odometer');
     this.odo = data.length.toString();
   }
 
@@ -197,7 +197,7 @@ rowData = [
   ionViewDidEnter() {
     // console.log("ionViewDidEnter called...");
     if (this.projects) {
-      console.log('Calling update odometer');
+      // console.log('Calling update odometer');
       this.getProjects(); // animating odometer
     }
 

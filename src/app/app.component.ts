@@ -52,12 +52,12 @@ export class MyApp {
     ];
 
     
-    this.auth.anonymousLogin().then(() => console.log('Anonymous auth login successful'));
+    this.auth.anonymousLogin().then(() => console.log('FbAuth successful'));
     this.listenToLoginEvents();
     
     
     this.helper.getShowLogin().subscribe(obj => {
-      console.log('Checking whether to show login:..TurboARB Config:',obj);
+      // console.log('Checking whether to show login:..TurboARB Config:',obj);
       let config:any = obj;
       if(config.showLogin){ //config says yes..check if session exists..if it exists dont show
         console.log('config.showLogin',config.showLogin);

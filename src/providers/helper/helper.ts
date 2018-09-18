@@ -27,7 +27,7 @@ export class HelperProvider {
   isPlatformMobile:boolean;
   auth_url_base = 'https://goblxdvesb12.ameren.com:8443/svc/build/auth/v1/account/';
   showLogin:boolean = true;
-  version:string = "1.0.77";
+  version:string = "1.0.80";
 
 
   accountDetail:any;
@@ -51,7 +51,7 @@ export class HelperProvider {
       let config:any = obj;
       this.auth_url_base = config.authUrl;
       // this.showLogin = config.showLogin;
-      console.log('auth_url_base',this.auth_url_base);
+      // console.log('auth_url_base',this.auth_url_base);
       // console.log('showLogin',config.showLogin);
     });
     
@@ -64,7 +64,7 @@ export class HelperProvider {
   }
   isBrowserIE(){
    let isIEOrEdge = /msie\s|trident\/|edge\//i.test(window.navigator.userAgent);
-    console.log('Is Browser IE?:',isIEOrEdge);
+    // console.log('Is Browser IE?:',isIEOrEdge);
     return isIEOrEdge;
     // return true;
   }
@@ -137,10 +137,9 @@ export class HelperProvider {
     this.authenticate(usr,pwd).subscribe(resp => {  
       console.log('Auth resp:',resp);
       if(resp && resp.response == null) {
-        console.log('Login successful');  // Successful login
+        // console.log('Login successful');  // Successful login
 
-        ///////// [ Start Block] /////////
-     
+
         ///////// [End Block] /////////
     
         this.getAccountDetail(usr); // retreive acct detail and add to localstorage.
@@ -191,7 +190,7 @@ export class HelperProvider {
   getAccountDetail(userId:string){
     console.log('Returning accountDetail from Helper: ',userId);
     this.getAcctInfo(userId).subscribe(respObj => {
-      console.log('Retrieved account info:',respObj);
+      // console.log('Retrieved account info:',respObj);
       this.accountDetail = respObj;
       this.addToLocalStorage(respObj);
     }, err => {
