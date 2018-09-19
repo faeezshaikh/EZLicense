@@ -259,8 +259,14 @@
       </p>
       <hr/>
 
+      <p style="text-align:left" *ngIf="project.arbComments">
+          <strong>ARB Review Comments: </strong>
+          <span style="text-align:left">{{project.arbComments}}</span>
+        </p>
+        <hr/>
+
       <span *ngIf="project.diagram">(Click to enlarge)</span>
-      <img *ngIf="project.diagram" [src]="project.diagram" imageViewer/>
+      <img *ngIf="project.diagram" style="cursor:pointer" [src]="project.diagram" imageViewer/>
 
     </ion-card>
 

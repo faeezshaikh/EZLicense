@@ -27,7 +27,7 @@ export class HelperProvider {
   isPlatformMobile:boolean;
   auth_url_base = 'https://goblxdvesb12.ameren.com:8443/svc/build/auth/v1/account/';
   showLogin:boolean = true;
-  version:string = "1.0.80";
+  version:string = "1.0.81";
 
 
   accountDetail:any;
@@ -139,7 +139,8 @@ export class HelperProvider {
       if(resp && resp.response == null) {
         // console.log('Login successful');  // Successful login
 
-
+        ///////// [ Start Block] /////////
+     
         ///////// [End Block] /////////
     
         this.getAccountDetail(usr); // retreive acct detail and add to localstorage.
