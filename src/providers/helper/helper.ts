@@ -140,7 +140,6 @@ export class HelperProvider {
         // console.log('Login successful');  // Successful login
 
       
-    
         this.getAccountDetail(usr); // retreive acct detail and add to localstorage.
         
       }
