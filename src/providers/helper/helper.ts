@@ -139,9 +139,7 @@ export class HelperProvider {
       if(resp && resp.response == null) {
         // console.log('Login successful');  // Successful login
 
-        ///////// [ Start Block] /////////
-     
-        ///////// [End Block] /////////
+      
     
         this.getAccountDetail(usr); // retreive acct detail and add to localstorage.
         
