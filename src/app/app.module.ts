@@ -47,6 +47,7 @@ export const CONFIG: any = {
   }
 };
 
+
 export const firebaseConfig = CONFIG.firebaseConfig;
 
 @NgModule({
