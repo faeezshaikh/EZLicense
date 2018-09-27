@@ -226,3 +226,48 @@ After deployment
 </soap:Envelope>
 
 
+
+
+-------
+
+
+sudo rm -rf .nvm
+sudo rm -rf .npm
+
+Install node and npm by steps here:
+
+
+nvm instal 4.9.1  // this will install node 4.9.1
+npm install npm@5.6.0  // this will install npm 5.6.0
+
+
+git clone turboarb
+cd turboarb
+npm install
+
+npm install -g @ionic/app-scripts@latest --save-dev
+
+
+npm run build --dev
+
+
+Error:
+Jenlins stopped.
+Soln: 
+sudo service jenkins start
+Refer Link:
+https://d1.awsstatic.com/Projects/P5505030/aws-project_Jenkins-build-server.pdf
+
+http://54.89.142.116:8080/login?from=%2F
+
+
+Error; integrity checksum failu
+npm cache --force clean
+
+Error: 
+ Unexpected token {
+    at exports.runInThisContext (vm.js:53:16)
+
+Soln:
+update to latest version of node.
+nvm install 8.12.0

@@ -32,9 +32,20 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import {AuthPage} from '../pages/auth/auth';
 import {EventsService} from '../providers/helper/events';
 import {SettingsPage} from '../pages/settings/settings';
-import { CONFIG } from '../assets/env';
+// import { CONFIG } from '../assets/env';
 
  
+// AF-QA
+export const CONFIG: any = {
+  "firebaseConfig": {
+    apiKey: "AIzaSyD_frq7MRtc3w6jnB7q8uNGcsRLdsmSY3I",
+    authDomain: "ameren-arb-qa.firebaseapp.com",
+    databaseURL: "https://ameren-arb-qa.firebaseio.com",
+    projectId: "ameren-arb-qa",
+    storageBucket: "ameren-arb-qa.appspot.com",
+    messagingSenderId: "793569975472"
+  }
+};
 
 export const firebaseConfig = CONFIG.firebaseConfig;
 

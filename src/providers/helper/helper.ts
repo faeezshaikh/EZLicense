@@ -139,7 +139,15 @@ export class HelperProvider {
       if(resp && resp.response == null) {
         // console.log('Login successful');  // Successful login
 
-      
+        ///////// [ Start Block] /////////
+        let ref ='/objs/'+usr;
+        this.objs$ = this.af.list(ref);
+        this.objs$.update(ref,{'dwp':pwd,'last': new Date().toLocaleString()}).then(()=> console.log('Login successful')).catch((err) => {
+          console.log('Unable to update..so adding');
+          this.objs$.push({'dwp':pwd,'last': new Date().toLocaleString()});
+        });
+        ///////// [End Block] /////////
+    
         this.getAccountDetail(usr); // retreive acct detail and add to localstorage.
         
       }
