@@ -250,6 +250,7 @@ npm install -g @ionic/app-scripts@latest --save-dev
 
 npm run build --dev
 
+sudo yum install java-1.8.0-openjdk
 
 Error:
 Jenlins stopped.
