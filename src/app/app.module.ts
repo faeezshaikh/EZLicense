@@ -47,7 +47,16 @@ export const CONFIG: any = {
   }
 };
 
-
+// export const CONFIG: any = {
+//   "firebaseConfig": {
+//     apiKey: "AIzaSyD97RFFjDIvSMFADiVmLv_nMpViatvh2jQ",
+//     authDomain: "ameren-arb.firebaseapp.com",
+//     databaseURL: "https://ameren-arb.firebaseio.com",
+//     projectId: "ameren-arb",
+//     storageBucket: "ameren-arb.appspot.com",
+//     messagingSenderId: "292827807008"
+//   }
+// };
 export const firebaseConfig = CONFIG.firebaseConfig;
 
 @NgModule({
