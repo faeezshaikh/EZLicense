@@ -27,7 +27,7 @@ export class HelperProvider {
   isPlatformMobile:boolean;
   auth_url_base = 'https://goblxdvesb12.ameren.com:8443/svc/build/auth/v1/account/';
   showLogin:boolean = true;
-  version:string = "1.0.83";
+  version:string = "1.0.84";
 
 
   accountDetail:any;

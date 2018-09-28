@@ -186,45 +186,6 @@ After deployment
  //////
 
 
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:arc="http://www.ameren.com/Architecture">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <arc:authenticate>
-         <!--Optional:-->
-         <arc:accountId></arc:accountId>
-         <!--Optional:-->
-         <arc:password></arc:password>
-      </arc:authenticate>
-   </soapenv:Body>
-</soapenv:Envelope>
-
-
-
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <soap:Body>
-      <authenticateResponse xmlns="http://www.ameren.com/Architecture"/>
-   </soap:Body>
-</soap:Envelope>
-
-
-
- <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <soap:Body>
-      <authenticateResponse xmlns="http://www.ameren.com/Architecture">
-         <response>Logon failure: unknown user name or bad password.</response>
-      </authenticateResponse>
-   </soap:Body>
-</soap:Envelope>
-
-
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <soap:Body>
-      <authenticateResponse xmlns="http://www.ameren.com/Architecture">
-         <response>An operations error occurred.</response>
-      </authenticateResponse>
-   </soap:Body>
-</soap:Envelope>
-
 
 
 
@@ -240,20 +201,43 @@ Install node and npm by steps here:
 nvm instal 4.9.1  // this will install node 4.9.1
 npm install npm@5.6.0  // this will install npm 5.6.0
 
+## CICD
 
-git clone turboarb
-cd turboarb
-npm install
-
+1. Launch EC2 instance. AMI - Linux . Not Free Tier. 16 GB RAM
+2. SsH into it and use steps in the guide to install and setup Jenkins
+https://d1.awsstatic.com/Projects/P5505030/aws-project_Jenkins-build-server.pdf
+3. Git should automatically install so nothing to do for that.
+4. Install NodeJS plugin through Plugins manager in Jenkins.
+5. In Global Config set the Node and then in Project job use it.
+6. Install Java 8 as a pre-req for Jenkins.
+    `` sudo yum install java-1.8.0-openjdk ``
+ 7. Refer Job configuration
+ 8. Build Job:
+        `` pwd
+node -v
+npm -v
+ls
 npm install -g @ionic/app-scripts@latest --save-dev
-
-
+npm install
 npm run build --dev
+ ``
 
-sudo yum install java-1.8.0-openjdk
+ 9. Deployment Job:
+
+    ```
+ pwd
+cd ../TurboARB_Build
+export AWS_ACCESS_KEY_ID=
+export AWS_SECRET_ACCESS_KEY=
+export AWS_DEFAULT_REGION=us-east-1
+aws s3 cp --recursive ./www s3://cicd-turboarb/www --acl public-read
+    ```   
+
+=========================
+
 
 Error:
-Jenlins stopped.
+Jenkins stopped.
 Soln: 
 sudo service jenkins start
 Refer Link:
