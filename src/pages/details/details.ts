@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import {  NavController, NavParams,ViewController } from 'ionic-angular';
+import {  NavController, NavParams,ViewController,AlertController } from 'ionic-angular';
 import { FormPage } from '../form/form';
 import { HelperProvider } from '../../providers/helper/helper';
 
@@ -22,7 +22,7 @@ export class DetailsPage {
 
   @ViewChild('content') content: ElementRef;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,private helper:HelperProvider) {
+  constructor(public navCtrl: NavController,private alertCtrl: AlertController, public navParams: NavParams,public viewCtrl: ViewController,private helper:HelperProvider) {
     this.project = navParams.get('item');
     console.log("project->", this.project);
 
@@ -59,13 +59,40 @@ export class DetailsPage {
     
   }
 
-  sendRequest(item){
-    item.requested = true;
-    console.log('Updating requested feature..',item);
-    this.helper.updateItem(item.key,item);
-    this.dismiss();
-    this.helper.presentToast("Successfuly sent request.", "bottom", "toastClass", false, '', 1500)
+
+  confirmSend(item,_title,_msg,_action) {
+    let confirmAbortAlert = this.alertCtrl.create({
+      title: _title,
+      message: _msg,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          cssClass: 'yesDeleteButton',
+          handler: () => {
+            item.requested = true;
+            console.log('Updating requested feature..',item);
+            this.helper.updateItem(item.key,item);
+            this.dismiss();
+            this.helper.presentToast("Successfuly sent request.", "bottom", "toastClass", false, '', 1500)
+          
+          }
+        }
+      ]
+    });
+    confirmAbortAlert.present();
   }
+
+  sendRequest(item){
+    let _msg = "This driver charges $" + item.rate + " / hr. Do you want to send request?";
+    this.confirmSend(item,"Confirm Send",_msg,"send");
+    }
   edit() {
     
     this.dismiss();
