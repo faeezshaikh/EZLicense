@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>ARB Self Assessment</title>
+
+  <!-- Author: Faeez Shaikh (faeez.shaikh@gmail.com)
+  For AMEREN Corporation - All rights reserved -->
+
+  <script>
+    window['GoogleAnalyticsObject'] = 'fooGa';
+    </script>
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4e8ef7">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
+
+
+
+<!-- <link href="/node_modules/ag-grid/dist/styles/ag-grid.css" type="text/css" rel="stylesheet">
+<link href="/node_modules/ag-grid/dist/styles/ag-theme-balham.css" type="text/css" rel="stylesheet"> -->
+
+  
+  <!-- cordova.js required for cordova apps (remove if not needed) -->
+  <!-- <script src="cordova.js"></script> -->
+
+  <!-- un-comment this code to enable service worker-->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.error('Error', err));
+    }
+  </script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123713684-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-123713684-1');
+</script>
+  <link href="build/main.css" rel="stylesheet">
+  
+  
+</head>
+<body>
+  
+  <noscript>
+    This application needs JavaScript to work, please enable JavaScript on your browser
+    </noscript>
+  <ion-app></ion-app>
+  
+  <!-- The polyfills js is generated during the build process -->
+  <script src="build/polyfills.js"></script>
+  
+  <!-- The vendor js is generated during the build process
+    It contains all of the dependencies in node_modules -->
+    <script src="build/vendor.js"></script>
+    
+    
+    <!-- The main bundle js is generated during the build process -->
+    <script src="build/main.js"></script>
+
+    <!-- <script type="text/javascript" src="http://frank.urugate.com/standalone_fly.js"></script> -->
+
+    <!-- Start of LiveChat (www.livechatinc.com) code -->
+<script type="text/javascript">
+  window.__lc = window.__lc || {};
+  window.__lc.license = 10101818;
+  (function() {
+    var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+    lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+  })();
+  </script>
+  <noscript>
+  <a href="https://www.livechatinc.com/chat-with/10101818/">Chat with us</a>,
+  powered by <a href="https://www.livechatinc.com/?welcome" rel="noopener" target="_blank">LiveChat</a>
+  </noscript>
+  <!-- End of LiveChat code -->
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+strong{
+    font-weight:bold;
+   }
+   
+   .center {
+       text-align: center;
+     }
+   
+   .card-background-page {
+   
+     ion-card {
+       position: relative;
+       text-align: center;
+       margin: 0px !important;
+       width: 100% !important;
+     }
+   
+     .card-title {
+      //  position: absolute;
+       top: 55%;
+       font-size: 2.0em;
+       width: 100%;
+       font-weight: bold;
+       // color: #fff;
+       color:#343434;;
+     }
+   
+     .card-subtitle {
+       font-size: 1.0em;
+      //  position: absolute;
+       top: 75%;
+       width: 100%;
+       // color: #fff;
+       color: #424242;;
+     }
+   
+   }
+body {
+  font-family:Avenir Next , sans-serif;
+}
+ion-app.md {
+  font-family:Avenir Next , sans-serif;
+}
+// .modal-wrapper {
+//   height: 900px;
+//   width: 700PX;
+//   top: calc(50% - (900px/2));
+// }
+
+.toastClass { .toast-message { border-radius: 0rem !important; background: color($colors, dark) ;color:#fff!important;} }
+// .toastClass { .toast-message { border-radius: 0rem !important; background: color($colors, boostrap-success) ;color:#155724!important;} }
+
+.toastClass2 { .toast-message { border-radius: 0rem !important; background: color($colors, grey) ;color:#fff!important;} }
+
+

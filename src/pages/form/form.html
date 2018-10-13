@@ -1,0 +1,408 @@
+
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>ARB Assessment</ion-title>
+    
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding id="listScroll" style="font-family:Avenir Next , sans-serif;" [ngClass]="(!showFilingSpinner)?'mycolor':''">
+
+    <p></p>
+    <div *ngIf="showSpinner" style="text-align:center;margin-top:150px;">
+            <img  src="https://s3.amazonaws.com/turboarb/assets/imgs/calculating.gif"/>
+            <h4>Calculating score...</h4>
+          </div>
+ 
+    <div id="quiz" *ngIf="data != undefined && data.quiz != undefined && mode === 'quiz' && !showSpinner">
+        <div class="center">
+            <h3>{{projectTitle}}</h3>
+            <p> {{data.quiz.name|| "Assessment"}}</p>
+            <img height="80" width="80" src="{{data.quiz.logo}}" />
+        </div>
+
+        <ion-card>
+
+            <ion-item>
+
+                <p style="text-align:center">Question {{questionNumber}} of {{questions.length}}.</p>
+            </ion-item>
+      
+            <ion-card-content>
+                <ion-item *ngIf="!question.Pic">
+                    <h3 style="margin-top:-0rem;white-space:normal;">{{question.Description}}&nbsp;
+                        <ion-icon item-center (click)="openHelp(question.Id)" name="help-circle" id="helpCircle"></ion-icon>
+                    </h3>
+                </ion-item>
+                
+                <ion-grid *ngIf="question.Pic"  >
+                        <ion-row>
+                            <ion-col> 
+                                <h3 style="margin-top:-0rem;white-space:normal;">{{question.Description}}&nbsp;
+                                    <ion-icon item-center (click)="openHelp(question.Id)" name="help-circle" id="helpCircle"></ion-icon>
+                                </h3>
+                                <ion-item class="item item-text-wrap item-divider " style="font-weight:bold">{{question.Name}}</ion-item>
+                                <ion-list id="radioGroup" radio-group [(ngModel)]="question.answer">
+                
+                                    <ion-item *ngFor="let option of question.Options">
+                                        <ion-radio item-left value="{{option.Name}}"></ion-radio>
+                                        <ion-label>{{option.Name}}</ion-label>
+                                    </ion-item>
+                                </ion-list>
+                            </ion-col>
+                            <ion-col> <img *ngIf="question.Pic" src="{{question.Pic}}" style="width:50%" /></ion-col>
+                        </ion-row>
+                </ion-grid>
+                <ion-item *ngIf="!question.Pic" class="item item-text-wrap item-divider " style="font-weight:bold">{{question.Name}}</ion-item>
+                <ion-list *ngIf="!question.Pic" id="radioGroup" radio-group [(ngModel)]="question.answer">
+
+                    <ion-item *ngFor="let option of question.Options">
+                        <ion-radio item-left value="{{option.Name}}"></ion-radio>
+                        <ion-label>{{option.Name}}</ion-label>
+                    </ion-item>
+
+                    <ion-item >
+                            <ion-label floating>Notes.</ion-label>
+                            <ion-textarea type="text-area" 
+                            class="form-control" 
+                            name="question-notes"
+                            ngModel
+                            #nameField="ngModel"
+                            [(ngModel)] = "question.notes"></ion-textarea>
+                          </ion-item>
+
+                </ion-list>
+
+
+               
+
+
+            </ion-card-content>
+
+
+            <br />
+
+        </ion-card>
+
+        <div style="text-align:center">
+
+            <button *ngIf="questionNumber!=1" (click)="left()" ion-button icon-left>
+                <ion-icon name="arrow-back"></ion-icon>
+                Prev
+            </button>
+
+            <button id="nextButton" [hidden]="questionNumber == questions.length" (click)="right()" ion-button icon-left>
+                Next &nbsp;
+                <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+
+        </div>
+        <div style="text-align:center">
+            <button (click)="presentAbortConfirm()" color="danger" ion-button icon-left>
+                <ion-icon name="close"></ion-icon>
+                Abort
+            </button>
+
+            <button (click)="setMode('review')" ion-button icon-left>
+                <ion-icon name="list"></ion-icon>
+                Review
+            </button>
+
+
+            <button id="scoreButton" (click)="presentSubmitConfirm()" ion-button icon-left>
+                
+                <ion-icon name="speedometer"></ion-icon>
+                Score it! &nbsp;
+            </button>
+
+        </div>
+    </div>
+
+
+    <p></p>
+
+
+    <div *ngIf="mode=='review' && !showSpinner" class="review">
+        <p></p>
+        <div *ngFor="let question of questions; let i = index;" >
+            <div (click)="goTo(i + 1)" class="{{ isAnswered(question) == 'Answered'? 'answered': 'not-answered' }}"> <strong>{{i + 1}}. {{question.tag}}</strong> <p>{{ isAnswered(question) }}</p></div>
+        </div>
+        <p></p>
+        <button ion-button (click)="setMode('quiz')"> Back </button>
+    </div>
+
+
+
+
+    <div style="text-align:center" *ngIf="showFilingSpinner">
+            <img src="https://s3.amazonaws.com/turboarb/assets/imgs/Sending.gif"/>
+            
+            <h4>Filing Your Application...</h4>
+        </div>
+
+
+    <div class="center result" *ngIf="mode=='result' && !showSpinner && !showFilingSpinner">
+            <p></p>
+           
+            <ion-card>
+                <ion-item>
+                    <ion-avatar item-left>
+                        <img src="https://vignette.wikia.nocookie.net/mysims/images/2/22/EA_logo.png/revision/latest?cb=20090801182220">
+                    </ion-avatar>
+                    <h2>{{projectTitle}}</h2>
+                    <h3>Score Card</h3>
+                    <p>{{verdict}}</p>
+                </ion-item>
+                <hr/>
+    
+                <ion-grid>
+                    <ion-row>
+                        <ion-col  >
+                            <!-- <div style="text-align:center; font-size:90px;">
+                                <ng2-odometer [number]="odo" [config]="{ animation: 'count', format: 'd', theme: 'car', value: 0, auto: true }">
+                                </ng2-odometer>
+                            </div>
+                            <ion-item>
+                                <ion-range min="0" max="100"[(ngModel)]="sliderScore" debounce="2000" pin="true" color="{{sliderColor}}">
+                                  <ion-label range-left>0</ion-label>
+                                  <ion-label range-right>100</ion-label>
+                                </ion-range>
+                              </ion-item> -->
+
+                              <div id="container">
+                                    <div id="navi">
+                                      <round-progress  [current]="odo" [max]="100" [color]="sliderColor" [background]="'#eaeaea'" [radius]="135" [stroke]="20"
+                                        [semicircle]="true" [rounded]="true" [clockwise]="true" [responsive]="true" [duration]="800" [animation]="'linearEase'"
+                                        [animationDelay]="0"></round-progress>
+                                    </div>
+                                    <div id="infoi" style="text-align:center; font-size:90px; top:85px; left:20%">
+                                      <ng2-odometer [number]="odo"  [config]="{ animation: 'count', format: 'd', theme: 'car', value: 0, auto: true }"></ng2-odometer>
+                                    </div>
+                                  </div>
+                              
+                            
+
+                            
+                        </ion-col>
+                        <ion-col>
+                                <div class="item item-body">
+                    
+                                    <div class="row">
+                                        <div class="col col-80">Total Questions</div>
+                                        <div class="col col-20">{{questions.length}}</div>
+                                    </div>
+                    
+                                    <div class="row">
+                                        <div class="col col-80">Total attempted</div>
+                                        <div class="col col-20">{{attempted}}</div>
+                                    </div>
+                    
+                                    <div class="row">
+                                        <div class="col col-80">Your score</div>
+                                        <!-- <div class="col col-20"><strong>{{score}} %</strong></div> -->
+                                        <div class="col col-20"> <ng2-odometer [number]="odo" [config]="{ animation: 'count', format: 'd', theme: 'minimal', value: 0, auto: true }"></ng2-odometer></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-80"><strong>Result</strong></div>
+                                        <div class="col col-20"><strong>{{verdict}}</strong></div>
+                                    </div>
+                                    <hr/>
+                                    <p><strong>Explanation: </strong><ul><li *ngFor="let reason of reasons">{{reason}}</li></ul> <span *ngIf="score==100">You're awesome! A 100% score is not very common. Make sure you do your due diligence. A perfect 100 may also require to submit additional supporting evidence. All the Best!</span>
+                                    <p><strong>Recommendations: </strong>  <span *ngIf="score!=100">{{recommendations}}</span> <span *ngIf="score==100"><p>&nbsp;</p>Great work! We recommend you to relax a bit now.</span></p>
+                                        <p>&nbsp;</p>
+                                    <!-- <img class="full-image" height="150" width="100" ng-src="data/img/table.jpg"> -->
+                                    <p class="center">
+                                        <button id="fileForAssessmentButton" ion-button (click)="submit(true)"  color="secondary" [disabled]="!areAllQuestionsAnswered() || buttonText=='Save'">File Assessment</button>
+                                        <button id="saveForLaterButton" ion-button (click)="submit(false)" color="light" [disabled]=" buttonText=='Save'">Save for Later</button>
+                                    </p>
+                                    <div style="text-align:center">
+                                        <p><small *ngIf="!areAllQuestionsAnswered()">You can only File after you have answered all questions.</small></p>
+
+                                    </div>
+                    
+                                </div></ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card>
+            <p></p>
+    
+    
+    
+            <p class="center">
+                Your responses are below.
+            </p>
+      
+            <div style="text-align:right">
+                    <button *ngIf="buttonText=='Edit'" ion-button (click)="edit(false)">{{buttonText}}</button>
+                    <button *ngIf="buttonText=='Save'" ion-button (click)="edit(true)" color="light" >{{buttonText}}</button>
+                </div>
+
+                    <ion-card>
+                    <ion-row>
+                        <ion-col>
+                            <form #companyForm="ngForm">
+                                
+                                  <ion-item class="mycolor">
+                                    <ion-label floating>Project Name </ion-label>
+                                    <!-- <ion-input type="text" required class="form-control"></ion-input> -->
+                                    <ion-input type="text" 
+                                    class="form-control" 
+                                    name="project-name"
+                                    ngModel
+                                    #nameField="ngModel"
+                                    [(ngModel)] = "projectTitle"
+                                    required
+                                    minlength="3"
+                                    [disabled]="disabled"></ion-input>
+                                  </ion-item>
+                            
+                                  <ion-item class="mycolor">
+                                      <ion-label floating>Brief Decription</ion-label>
+                                      <!-- <ion-input type="text" required class="form-control"></ion-input> -->
+                                      <ion-textarea type="text-area" 
+                                      class="form-control" 
+                                      name="project-desc"
+                                      ngModel
+                                      #nameField="ngModel"
+                                      [(ngModel)] = "projectDescription"
+                                      required
+                                      minlength="8"
+                                      [disabled]="disabled"></ion-textarea>
+                                    </ion-item>
+                            
+                            
+                                  <ion-item class="mycolor">
+                                      <ion-label floating>Your Email</ion-label>
+                                      <!-- <ion-input type="text" required class="form-control"></ion-input> -->
+                                      <ion-input type="text-area" 
+                                      class="form-control" 
+                                      name="project-assessor"
+                                      ngModel
+                                      #nameField="ngModel"
+                                      [(ngModel)] = "assessor"
+                                      required email
+                                      minlength="4"
+                                      [disabled]="disabled"></ion-input>
+                                    </ion-item>
+                            </form>
+                            
+                        </ion-col>
+                        <ion-col>  
+                                <ion-item class="mycolor">
+                                        <span style="color:grey">Solution Arch Diagram: (Image file)</span><p>&nbsp;</p>
+                                    <input type="file" (change)="uploadFile($event)" [disabled]="disabled"/>
+                                    <div *ngIf="uploading">Uploading {{ uploadPercent | async }}% ...</div>
+                                  
+                                  </ion-item>
+                            <!-- <img *ngIf="!downloadURL && project != 'undefined'&& project.diagram" [src]="project.diagram"  imageViewer/> -->
+                            <img *ngIf="project && project.diagram" [src]="project.diagram"  imageViewer/>
+                            <img  *ngIf="downloadURL" [src]="downloadURL | async" imageViewer/>
+                        </ion-col>
+                    </ion-row>
+                    </ion-card>
+        
+                    <div style="text-align:right">
+                            <button *ngIf="buttonText=='Edit'" ion-button (click)="edit(false)">{{buttonText}}</button>
+                            <button *ngIf="buttonText=='Save'" ion-button (click)="edit(true)" color="light" >{{buttonText}}</button>
+                        </div>
+            <div *ngFor="let question of questions; let i = index">
+                    <div class="result-question">
+                        <h3>{{i + 1}}. {{question.Name}}</h3>
+                   
+                        <ion-row>
+                            <ion-col>
+                                    <ion-list radio-group [(ngModel)]="question.answer" *ngIf="disabled">
+                                            <ion-item *ngFor="let option of question.Options">
+                                                <ion-radio  item-left value="{{option.Name}}" disabled></ion-radio>
+                                                <ion-label>{{option.Name}}</ion-label>
+                                            </ion-item>
+                                        </ion-list>
+                
+                                        <ion-list radio-group [(ngModel)]="question.answer" *ngIf="!disabled">
+                                                <ion-item *ngFor="let option of question.Options">
+                                                    <ion-radio  item-left value="{{option.Name}}"></ion-radio>
+                                                    <ion-label>{{option.Name}}</ion-label>
+                                                </ion-item>
+                                            </ion-list>
+
+                            </ion-col>
+                            <ion-col>
+
+                                    <ion-item >
+                                            <ion-label floating>Notes:</ion-label>
+                                            <ion-textarea type="text-area" [disabled]="disabled"
+                                            class="form-control" 
+                                            name="question-notes"
+                                            ngModel
+                                            #nameField="ngModel"
+                                            [(ngModel)] = "question.notes"></ion-textarea>
+                                          </ion-item>
+                            </ion-col>
+                        </ion-row>
+                      
+
+
+                  
+
+                      
+                    </div>
+                    <hr/>
+            </div>
+
+            <p>&nbsp;</p>
+
+
+
+
+            <div style="text-align:right">
+                <button *ngIf="buttonText=='Edit'" ion-button (click)="edit(false)">{{buttonText}}</button>
+                <button *ngIf="buttonText=='Save'" ion-button (click)="edit(true)" outline>{{buttonText}}</button>
+           
+            </div>
+    
+    
+        </div>
+    
+
+
+    <ion-menu [content]="mycontent" id="menu2" side="right" width="500">
+
+        <ion-header>
+            <ion-toolbar color="grey">
+                <ion-title>Help</ion-title>
+                <ion-buttons large end>
+                    <button ion-button outline clear menuClose="menu2" id="helpCloseButton">
+                        <ion-icon style="font-size:3rem;font-weight:bold;" name="close"></ion-icon>
+                    </button>
+                </ion-buttons>
+
+
+            </ion-toolbar>
+        </ion-header>
+
+        <ion-content>
+            <ion-list>
+                <div [innerHTML]="somedata"></div>
+                <p>&nbsp;</p>
+                <div *ngIf="!thanked">
+                    Was this helpful?
+                    <button ion-button color="light" outline (click)="thankyou()">No</button>
+                    <button ion-button color="light" outline (click)="thankyou()">Yes</button>
+                </div>
+                <div *ngIf="thanked">
+                        <ion-icon name="thumbs-up"></ion-icon>&nbsp;&nbsp;Thank you for your feedback!
+                        
+                    </div>
+            </ion-list>
+
+
+
+        </ion-content>
+
+    </ion-menu>
+
+
+</ion-content>
+
+<ion-nav [root]="ListPage" #mycontent swipeBackEnabled="false"></ion-nav>

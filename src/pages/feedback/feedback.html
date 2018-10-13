@@ -1,0 +1,85 @@
+<ion-header>
+    
+      <ion-navbar color="primary">
+        <ion-title>Feedback</ion-title>
+        <button ion-button [menuToggle]="activeMenu">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      </ion-navbar>
+    
+    </ion-header>
+
+
+<ion-content padding style="background-color:#f4f4f4">
+
+    <ion-card>
+        
+          <ion-card-header>
+              <div style="text-align: center">
+            <strong>Your Feedback</strong>
+              </div>
+          </ion-card-header>
+          <hr/>
+          
+
+          <ion-card-content>
+              <div style="text-align: center">
+                  
+                              <p>We would like your feedback to improve this tool</p>
+                              <p>&nbsp;</p>
+                            
+                              <p>What is your opinion of this tool? (Not the ARB process..we know what you think about that, just this tool)</p>
+                              <p>&nbsp;</p>
+                  
+                            
+                              <hr/>
+                              <p>Please select your feedback.</p>
+                              <!-- <button ion-button color="light" outline>  Bad</button> -->
+                  
+                              
+                              <!-- <i style="color:green" class="far fa-grin fa-3x"></i>&nbsp;&nbsp;
+                              <i style="color:blue"  class="far fa-meh fa-3x"></i> &nbsp;&nbsp;
+                              <i style="color:red"  class="far fa-angry fa-3x"></i>&nbsp;&nbsp;
+                              <i style="color:brown"  [ngClass]="clazz"  (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)"></i>
+                   -->
+
+                   <i  class="far fa-grin fa-3x"></i>&nbsp;&nbsp;
+                   <i  class="far fa-meh fa-3x"></i> &nbsp;&nbsp;
+                   <i  class="far fa-angry fa-3x"></i>&nbsp;&nbsp;
+                   <i   [ngClass]="clazz"  (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)"></i>
+       
+                              <div>
+                                
+                                
+                                <button ion-button color="secondary" outline (click)="enterText('yes')">Yes!</button>
+                                <button ion-button color="primary" outline (click)="enterText('meh')">Meh</button>
+                                <button ion-button color="danger" outline (click)="enterText('bad')">Bad</button>
+                                <button ion-button color="dark" outline (click)="enterText('luv')" (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)">{{btnText}}</button>
+                                
+                              </div>
+                              <hr/>
+                  
+                              <form #companyForm="ngForm">
+                              <ion-item class="mycolor">
+                                  <ion-label floating>Your Feedback</ion-label>
+                                  <!-- <ion-input type="text" required class="form-control"></ion-input> -->
+                                  <ion-textarea type="text-area" 
+                                  class="form-control" 
+                                  name="project-desc"
+                                  ngModel
+                                  #nameField="ngModel"
+                                  [(ngModel)] = "feedback"
+                                  required
+                                  minlength="3"></ion-textarea>
+                                </ion-item>
+                              </form>
+                            </div>
+
+
+                            <button ion-button block color="primary" (click)="sendfeedback()" [disabled]="!companyForm.valid">Send</button>
+                            
+
+          </ion-card-content>
+        
+        </ion-card>
+</ion-content>

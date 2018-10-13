@@ -1,0 +1,349 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{project.title}}</ion-title>
+    <ion-buttons large end>
+      <button id="closeButton" ion-button outline clear (click)="dismiss()">
+        <ion-icon style="font-size:3rem;font-weight:bold;" name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <div class="center result">
+    <p></p>
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="https://vignette.wikia.nocookie.net/mysims/images/2/22/EA_logo.png/revision/latest?cb=20090801182220">
+        </ion-avatar>
+        <h2>Assessment Details</h2>
+        <p>{{project.verdict}}</p>
+
+      </ion-item>
+
+      <ion-fab right top (click)="edit()" *ngIf="project.status == 'In Progress'">
+        <button ion-fab color="primary">
+          <ion-icon name="create"></ion-icon>
+        </button>
+
+      </ion-fab>
+      <hr/>
+
+      <ion-grid *ngIf="!isPlatformMobile">
+        <ion-row>
+          <ion-col>
+
+            <ion-row>
+                <ion-col></ion-col>
+                <ion-col>
+                    <div id="container" (click)="showComments()">
+                        <div id="navi">
+                          <round-progress [current]="project.score" [max]="100" [color]="sliderColor" [background]="'#eaeaea'" [radius]="125" [stroke]="20"
+                            [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="true" [duration]="800" [animation]="'easeInOutQuart'"
+                            [animationDelay]="0"></round-progress>
+                        </div>
+                        <div id="infoi" style="text-align:center; font-size:90px; top:40px;">
+                          <ng2-odometer [number]="project.score"></ng2-odometer>
+                        </div>
+                      </div>
+                </ion-col>
+                <ion-col></ion-col>
+
+            </ion-row>
+           
+
+          </ion-col>
+          <ion-col>
+            <div class="item item-body" style="text-align:left">
+
+              <div class="row">
+                <div class="col col-80" id="assessor">Assessor</div>
+                <div class="col col-20">{{project.assessor}}</div>
+              </div>
+
+              <div class="row">
+                <div class="col col-80">Last Assessed</div>
+                <div class="col col-20">{{project.lastUpdated}}</div>
+              </div>
+
+              <div class="row">
+                <div class="col col-80">Status</div>
+                <div class="col col-20">
+                  <strong>{{project.status}}</strong>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-80">Result</div>
+                <div class="col col-20">
+                  <strong>{{project.verdict}}</strong>
+                </div>
+              </div>
+
+
+            </div>
+            <p>&nbsp;</p>
+            <button ion-button icon-start outline item-end (click)="export()">
+                <ion-icon name="download"></ion-icon>
+                <span *ngIf="!isMobile">Download Report</span>
+              </button>
+          </ion-col>
+        </ion-row>
+        <p>&nbsp;</p>
+        
+        <div style="text-align:left" *ngIf="project.arbComments">
+          <strong>ARB Comments: </strong>
+          <ul>
+            <li>{{project.arbComments}}</li>
+          </ul>
+
+          <div style="text-align:right">
+            <p>
+              <small>{{project.lastUpdated}}</small>
+            </p>
+          </div>
+
+        </div>
+
+        <form #companyForm="ngForm" [hidden]='hideComments'>
+        <ion-item class="mycolor" >
+            <ion-label floating>ARB comments</ion-label>
+            <ion-textarea type="text-area" 
+            class="form-control" 
+            name="project-desc"
+            ngModel
+            #nameField="ngModel"
+            [(ngModel)] = "project.arbComments"
+            required
+            minlength="5"></ion-textarea>
+          </ion-item>
+
+              <button ion-button  color="primary" (click)="saveArbComments()" [disabled]="!companyForm.valid">Save</button>
+            </form>
+            <p>&nbsp;</p>
+        <ion-row>
+          <!-- <div style="text-align:left">
+            <strong>Explanation: </strong>
+          </div>
+          <div style="text-align:left">
+            <ul>
+                <li *ngFor="let obj of project.explanation "><span *ngIf='obj.expl'>{{obj.expl}}</span>  <span *ngIf='!obj.expl'>{{obj}}</span></li>
+              </ul>
+          </div> -->
+
+
+
+          <table style="width:100%" *ngIf='project.explanation[0].remedy'>
+              <tr>
+                <th>Recommended Remediation</th>
+                <th>Points</th>
+                <th>Accept (Yes/No)</th> 
+                <th>Remediate By</th>
+              </tr>
+              <tr *ngFor="let obj of project.explanation ">
+                <td style="text-align:left">&nbsp;{{obj.remedy}}</td>
+                <td style="text-align:center">{{obj.points}}</td>
+                <td style="text-align:center">
+<ion-row>
+                  <ion-col>&nbsp;</ion-col>
+                  <ion-col> <ion-item style="text-align:center">
+                      <ion-toggle  checked="false" (ionChange)="updateToggle(obj)"></ion-toggle>
+                    </ion-item></ion-col>
+                  <ion-col>&nbsp;</ion-col>
+                </ion-row>
+                 
+                </td>
+                <td> <ion-item>
+                    <ion-label stacked>Enter Date</ion-label>
+                    <ion-input type="text" placeholder="mm/dd/yyy"></ion-input>
+                  </ion-item></td>
+              </tr>
+            
+            </table>
+
+
+
+
+
+          <!-- </p> -->
+          <p>&nbsp;</p>
+          <!-- <p style="text-align:left" id="recommendations">
+            <strong>Recommendations: </strong>Based on the above reasons for losing points, try addressing the issues to improve
+            your score.
+          </p> -->
+        </ion-row>
+      </ion-grid>
+
+
+      <!-- //////////////// [Layout for Mobile Platforms] ////////////////// -->
+
+      <ion-grid *ngIf="isPlatformMobile">
+        <ion-row>
+          <ion-col>
+
+            <div id="container">
+              <div id="navi">
+                <round-progress [current]="project.score" [max]="100" [color]="sliderColor" [background]="'#eaeaea'" [radius]="125" [stroke]="20"
+                  [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="true" [duration]="800" [animation]="'easeInOutQuart'"
+                  [animationDelay]="0"></round-progress>
+              </div>
+              <div id="infoi" style="text-align:center; font-size:90px; top:40px;">
+                <ng2-odometer [number]="project.score"></ng2-odometer>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div class="item item-body" style="text-align:left">
+
+              <div class="row">
+                <div class="col col-80">Assessor</div>
+                <div class="col col-20">{{project.assessor}}</div>
+              </div>
+
+              <div class="row">
+                <div class="col col-80">Last Assessed</div>
+                <div class="col col-20">{{project.lastUpdated}}</div>
+              </div>
+
+              <div class="row">
+                <div class="col col-80">Assessment score</div>
+                <div class="col col-20">
+                  <strong>{{project.score}} %</strong>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-80">Result</div>
+                <div class="col col-20">
+                  <strong>{{project.verdict}}</strong>
+                </div>
+              </div>
+
+
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <hr/>
+          <p style="text-align:left">
+            <strong>Explanation: </strong>{{project.explanation}}</p>
+          <p>&nbsp;</p>
+          <p style="text-align:left">
+            <strong>Recommendations: </strong>Based on the above reasons for losing points, try addressing the issues to improve
+            your score.
+          </p>
+        </ion-row>
+      </ion-grid>
+      <!-- //////////////// [Layout for Mobile Platforms] ////////////////// -->
+
+
+
+
+
+
+
+
+    </ion-card>
+    <p></p>
+
+    <div id="content" #content>
+      <ion-row [hidden]='true'>
+        <h2>{{project.title}}</h2>
+        <hr/>
+        <p>&nbsp;</p>
+        <ion-col>
+          <div class="item item-body" style="text-align:left">
+
+            <div class="row">
+              <div class="col">Assessor: {{project.assessor}}</div>
+            </div>
+
+            <div class="row">
+              <div class="col ">Last Assessed: {{project.lastUpdated}}</div>
+            </div>
+
+            <div class="row">
+              <div class="col ">Assessment score:
+                <strong>{{project.score}} %</strong>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col">Status:
+                <strong>{{project.status}}</strong>
+              </div>
+            </div>
+          <div class="row">
+            <div class="col">Result:
+              <strong>{{project.verdict}}</strong>
+            </div>
+          </div>
+
+          <img src="project.diagram" />
+
+            <p style="color:red">! Please note: Diagram below has been omitted for security reasons !</p>
+
+        </ion-col>
+      </ion-row>
+   
+    <ion-card>
+      <p style="text-align:left" *ngIf="project.description">
+        <strong>Project Description: </strong>
+        <span style="text-align:left">{{project.description}}</span>
+      </p>
+      <hr/>
+
+      <p style="text-align:left" *ngIf="project.arbComments">
+          <strong>ARB Review Comments: </strong>
+          <span style="text-align:left">{{project.arbComments}}</span>
+        </p>
+        <hr/>
+
+      <span id="pictureText" *ngIf="project.diagram">(Click to enlarge)</span>
+      <img  id="picture"  *ngIf="project.diagram" style="cursor:pointer" [src]="project.diagram" imageViewer/>
+
+    </ion-card>
+
+
+    <ion-card *ngIf="project.questions">
+      <!-- <p>&nbsp;</p> -->
+
+      <p class="center" style="font-size:1.9rem" id="assessmentResponse">
+        <u>The Assessment Responses</u>
+      </p>
+      <hr/>
+
+
+      <div *ngFor="let question of project.questions; let i = index">
+        <div style="text-align:left">
+          <strong>{{i + 1}}. {{question.Name}}</strong>
+          <ul *ngIf="question.answer">
+            <li>{{question.answer}}</li>
+          </ul>
+          <ul *ngIf="!question.answer">
+            <li>No response</li>
+          </ul>
+          <span *ngIf="question.notes" style="font-style:italic"><strong>&nbsp;Notes: </strong> {{question.notes}}  </span>
+          <ul>
+              <p>&nbsp;</p>
+          </ul>
+        </div>
+        
+      </div>
+     
+    </ion-card>
+  </div>
+  <div class="center" >
+      <button ion-button (click)="edit()" *ngIf="project.status == 'In Progress'">Edit</button>
+      <button ion-button (click)="dismiss()" id="closeButton">Close</button>
+    </div>
+  </div>
+
+
+</ion-content>

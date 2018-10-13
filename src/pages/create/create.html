@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>New Assessment</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="mycolor">
+  <!-- <h3>Start a New Assessment</h3> -->
+
+
+  <ion-card style="font-family:Avenir Next , sans-serif;">
+
+    <ion-card-header>
+      Hello there!
+    </ion-card-header>
+
+    <ion-card-content>
+      ARB Assessment has never been this easy. We will guide you through each step. By the end of this you will not only have a
+      score for your project but will also have a good understanding of our Architecure standards. Start by telling us a few things about your project.
+    </ion-card-content>
+
+  </ion-card>
+  <p></p>
+    <form #companyForm="ngForm">
+    
+      <ion-item class="mycolor">
+        <ion-label floating>Project Name </ion-label>
+        <!-- <ion-input type="text" required class="form-control"></ion-input> -->
+        <ion-input type="text" 
+        class="form-control" 
+        name="project-name"
+        ngModel
+        #nameField="ngModel"
+        [(ngModel)] = "pname"
+        required
+        id="projectName"
+        minlength="3"></ion-input>
+      </ion-item>
+
+      <ion-item class="mycolor">
+          <ion-label floating>Brief Decription</ion-label>
+          <!-- <ion-input type="text" required class="form-control"></ion-input> -->
+          <ion-textarea type="text-area" 
+          class="form-control" 
+          name="project-desc"
+          ngModel
+          #nameField="ngModel"
+          [(ngModel)] = "pdesc"
+          required
+          id="projecDesc"
+          minlength="8"></ion-textarea>
+        </ion-item>
+
+
+      <ion-item class="mycolor">
+          <ion-label floating>Your Email</ion-label>
+          <!-- <ion-input type="text" required class="form-control"></ion-input> -->
+          <ion-input type="text-area" 
+          class="form-control" 
+          name="project-assessor"
+          ngModel
+          #nameField="ngModel"
+          [(ngModel)] = "assessor"
+          required email
+          id="assessorEmail"
+          minlength="4"></ion-input>
+        </ion-item>
+
+        
+        <!-- <p>&nbsp;</p> -->
+        <ion-item class="mycolor">
+            <span style="color:grey">Solution Arch Diagram: (Image file)</span><p>&nbsp;</p>
+        <input type="file" (change)="uploadFile($event)" />
+        <div *ngIf="uploading">Uploading {{ uploadPercent | async }}% ...</div>
+        <!-- <a [href]="downloadURL | async">{{ downloadURL | async }}</a> -->
+      
+      </ion-item>
+      <img  *ngIf="downloadURL" [src]="downloadURL | async"/>
+
+
+    </form>
+  
+  <ion-row>
+
+    <ion-col>
+      <button ion-button block color="danger" (click)="dismiss()">Cancel</button>
+    </ion-col>
+    <ion-col>
+      <!-- <button ion-button block color="primary" (click)="startAssessment()" >Enter</button> -->
+      <button id="createButton" ion-button block color="primary" (click)="startAssessment()" [disabled]="!companyForm.valid">Enter</button>
+
+    </ion-col>
+  </ion-row>
+
+
+
+</ion-content>

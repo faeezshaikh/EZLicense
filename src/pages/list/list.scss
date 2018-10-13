@@ -1,0 +1,55 @@
+.barrel_roll {
+  -webkit-transition: -webkit-transform 4s ease;
+  -webkit-transform: rotate(360deg);
+  -moz-transition: -moz-transform 4s ease;
+  -moz-transform: rotate(360deg);
+  -o-transition: -o-transform 4s ease;
+  -o-transform: rotate(360deg);
+  transition: transform 4s ease;
+  transform: rotate(360deg);
+}  
+
+page-list {
+    .titleicon {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        text-align:center;
+    }
+    .bottomTitleicon {
+        position: relative;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        text-align:center;
+    }
+    .mycolor{
+            background-color: #f5f5f5;
+    }
+
+    .odometer {
+        font-size: 30px;
+    }
+
+    .approved {
+        color:#32db64;;
+    }
+    .rejected {
+        color: #f53d3d;
+    }
+    .review {
+        color: #488aff;
+    }
+    .submitted {
+        color:#222;
+    }
+    .progress {
+        color:#222;
+    }
+    .inputs {
+        color: #FFA500;
+    }
+}
+
+          

@@ -1,0 +1,101 @@
+<!--<style>
+  .signup-background {
+    background-image: url('data:image/jpeg;base64,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')
+}
+
+.circle {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border: 4px solid;
+    border-color: white;
+  }
+</style>-->
+
+
+<ion-header>
+    <ion-navbar color="primary">
+      <!-- <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button> -->
+      <ion-title>Login</ion-title>
+
+
+      <ion-buttons large end>
+          <button ion-button outline clear>
+            <span style="font-family:Arial Narrow, Helvetica, sans-serif;font-size:2rem">Version: {{version}}</span> &nbsp;
+          </button>
+      </ion-buttons>
+        
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content *ngIf="isIEOrEdge">
+    <p></p>
+    <ion-card>
+      
+     
+      <ion-card-content>
+        <img src="https://s3.amazonaws.com/turboarb/assets/imgs/stopie.png" />
+        <ion-card-title>
+         Use a Modern Browser.
+        </ion-card-title>
+        <p>
+            Did you know that only
+            <a href="http://gs.statcounter.com/browser-market-share">3% of the world uses Internet Explorer</a> to browse the internet? About time you caught up with the ROW.
+          </p>
+          <p>Sorry this app is not supported in IE. Please use Chrome now. Thanks!</p>
+     
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+
+  
+
+  <ion-content *ngIf="!isIEOrEdge">
+  
+    <ion-list>
+      <p>&nbsp;</p>
+      <div class="center">
+      <img src="https://s3.amazonaws.com/turboarb/assets/imgs/logo.png" style="width:20%">
+      </div>
+      <form #turboForm="ngForm">
+      <ion-item>
+        <ion-label floating>Ameren Id</ion-label>
+        <ion-input [(ngModel)]="id" name="id" type="id" id='id' required minlength="5"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input [(ngModel)]="password" name="password" id='pwd' type="password" required></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <button ion-button block outline large (click)="signMeIn()" id="submitButton" [disabled]="!turboForm.valid">Sign in</button>
+      </ion-item>
+      </form>
+  
+      <div style="text-align: center">
+        <ion-spinner  *ngIf="processingSignin" name="circles"></ion-spinner>
+      </div>
+  
+    </ion-list>
+  
+ 
+    <div class="center">
+      <strong> Ameren Single Sign On. </strong>
+        <!-- <button margin-bottom ion-button clear small (click)="navToRegister()">Register</button> -->
+    </div>
+     <div class="center">
+        Use your Ameren Id to login.
+         <!-- <button margin-bottom ion-button clear small (click)="navToForgotPassword()">Forgot Password</button> -->
+    </div>
+    <p>&nbsp;</p>
+     <div class="center">
+        <small>For help or questions emails us at </small><br/>
+        <ion-chip color="primary">
+    <ion-label color="white">ea@ameren.com</ion-label>
+  </ion-chip>
+    </div>
+  </ion-content>
+  

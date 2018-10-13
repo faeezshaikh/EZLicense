@@ -1,0 +1,202 @@
+
+<style>
+  <link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-car.css" />
+</style>
+
+<ion-header [ngClass]="{'barrel_roll': doRoll == true }">
+  <ion-navbar color="primary">
+    <button ion-button [menuToggle]="activeMenu" id="sidemenuButton">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="!isMobile"><span>Drivers</span></ion-title>
+    <ion-title *ngIf="isMobile">Drivers</ion-title>
+
+    <div *ngIf="!isMobile" class="titleicon" >
+      <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Ameren_logo.svg/2000px-Ameren_logo.svg.png" width="100px" style="margin-bottom:9px;margin-right:10px;" /> -->
+      <img  (click)="roll()" src="https://licensingexpress.files.wordpress.com/2012/09/lx-color-logo-3-in2.jpg" width="100px" style="margin-right:10px; cursor:alias;" />
+
+    </div>
+
+    <ion-buttons large end>
+      <button ion-button outline clear (click)="animateOdometer(projects)">
+        <span style="font-family:Arial Narrow, Helvetica, sans-serif;font-size:2rem">Total:</span> &nbsp;
+        <ng2-odometer [number]="odo" [config]="{ animation: 'count', format: 'd', theme: 'car', value: 0, auto: true }">
+        </ng2-odometer>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content *ngIf="isIEOrEdge">
+  <p></p>
+  <ion-card>
+    <img src="https://s3.amazonaws.com/turboarb/assets/imgs/stopie.png" />
+    <ion-card-content>
+      <ion-card-title>
+       Use a Modern Browser.
+      </ion-card-title>
+      <p>
+        Did you know that only
+        <a href="http://gs.statcounter.com/browser-market-share">3% of the world uses Internet Explorer</a> to browse the internet? About time you caught up with the ROW.
+      </p>
+      <p>Sorry this app is not supported in IE. Please use Chrome now. Thanks!</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+
+
+<ion-content *ngIf="!isIEOrEdge" [ngClass]="{'barrel_roll': doRoll == true }"> 
+
+    <!-- <ag-grid-angular style="width: 80%; height: 50%; padding:100px" class="ag-theme-balham" [rowData]="projects | async" [columnDefs]="columnDefs"
+    [enableSorting]="true" [enableFilter]="true" rowSelection="single" [rowDragManaged]="true" [animateRows]="true" (selectionChanged)="onSelectionChanged($event)">
+    </ag-grid-angular> -->
+
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list >
+    <!-- <ion-item-divider color="light" style="cursor:url(http://lessonpix.com/drawings/1280/100x100/Fly.png),auto;" (click)="unleashBugs()">Projects List</ion-item-divider> -->
+    <ion-item-divider color="light"  (click)="unleashBugs()">Drivers Near Me</ion-item-divider>
+
+
+    
+    <div *ngIf="loading" style="text-align:center;margin-top:0px;">
+      <!-- <img  src="http://www.plateforme-re-sources.org/wp-content/uploads/2018/06/lg.rotating-balls-spinner.gif"/> -->
+      <img src="https://cdn.dribbble.com/users/375824/screenshots/2230417/dots-2.gif" />
+    </div>
+    <!-- <h4  *ngIf="projects && !projects.length>0"  style="font-weight:100;text-align:center">No projects. Click or Tap the round button up to create a new assessment</h4> -->
+    <ion-grid fixed >
+      <ion-row responsive-sm>
+        <ion-searchbar  id="searchBar" placeholder="Search..." *ngIf="projects && !loading" [showCancelButton]="shouldShowCancel" (ionInput)="filterItems($event)" (ionCancel)="onCancel($event)">
+        </ion-searchbar>
+        <ion-col  *ngFor="let p of projects | async | reverse" col-md>
+          <ion-card  [ngClass]="{'barrel_roll': rollOnlyBoxes == true }">
+            <!-- <i class="fa fa-plus" aria-hidden="true"></i> -->
+            <ion-fab right top (click)="itemTapped($event, p)" >
+              <button ion-fab *ngIf="p.score>=85" color="secondary" style="color:black">
+                <ion-icon name="">
+                  <label style="font-family:arial;font-size:1.9rem;font-weight:bold">${{p.score}}</label>
+                </ion-icon>
+              </button>
+              <button ion-fab *ngIf="p.score<=50" color="danger">
+                <ion-icon name="">
+                  <label style="font-family:arial;font-size:1.9rem;font-weight:bold">${{p.score}}</label>
+                </ion-icon>
+              </button>
+              <button ion-fab *ngIf="p.score>50 && p.score<85" color="orange">
+                <ion-icon name="">
+                  <label style="font-family:arial;font-size:1.9rem;font-weight:bold">${{p.score}}</label>
+                </ion-icon>
+              </button>
+            </ion-fab>
+
+           
+            <ion-item>
+              <!-- <ion-icon name="analytics" item-start large></ion-icon> -->
+              <ion-avatar item-start>
+                <!-- <img style="width:60px;height:60px" src="data:image/jpeg;base64,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"> -->
+                <img style="width:60px;height:60px" src="{{p.pic}}"/>
+
+              </ion-avatar>
+              <h2>{{p.title}}</h2>
+              <p><a><ion-icon name="compass"></ion-icon></a>&nbsp;{{p.verdict}} near me</p>
+            </ion-item>
+
+            <img src="{{p.diagram}}"/>
+            <!-- <img src="https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/media/assets/submodel/8569.jpg"> -->
+
+            <ion-item>
+              <ion-icon name="car" item-start large></ion-icon>
+              <h2>Status:
+                <span [ngClass]="{Approved:'approved','Rejected':'rejected','Under Review':'review',
+                      Submitted:'submitted','In Progress':'progress','Needs inputs':'inputs'}[p.status]">{{p.status}}</span>
+              </h2>
+              <p (click)="rollBoxes()" style="cursor:alias" >Insured. Requires International Permit</p>
+            </ion-item>
+
+            <ion-item>
+              <span item-start (click)="unleashBugs()"  >Rating:</span>
+              <span item-start ><ion-icon *ngFor="let i of [0,1,2,3]" name="star"></ion-icon><ion-icon name="star-half"></ion-icon></span>
+
+                &nbsp;&nbsp;
+              <span item-start (click)="unleashBugs()"  >Trainer: Yes</span>
+
+              <!-- <button ion-button icon-start item-end  small> -->
+                <ion-icon name="text"></ion-icon>
+                <!-- <div>4 Comments</div> -->
+              <!-- </button> -->
+
+              <button id="viewDetailsButton" ion-button icon-start clear item-end (click)="itemTapped($event, p)">
+                <ion-icon name="paper-plane"></ion-icon>
+                <span *ngIf="!isMobile">View Details</span>
+              </button>
+
+            </ion-item>
+
+            <!-- <ion-row>
+              <ion-col col-3>
+                <button ion-button icon-start clear small>
+                  <ion-icon name="thumbs-up"></ion-icon>
+                  <div>12 Likes</div>
+                </button>
+              </ion-col>
+              <ion-col col-3>
+                <button ion-button icon-start clear small>
+                  <ion-icon name="text"></ion-icon>
+                  <div>4 Comments</div>
+                </button>
+              </ion-col>
+              <ion-col col-6>
+                <button id="viewDetailsButton" ion-button icon-start clear item-end (click)="itemTapped($event, p)">
+                  <ion-icon name="paper-plane"></ion-icon>
+                  <span>View Details</span>
+                </button>
+              </ion-col>
+            </ion-row> -->
+            
+
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+
+
+
+
+  <ion-fab top right>
+    <button id="createButton" ion-fab color="primary" (click)="menu2Active()">
+      <!-- <ion-icon name="mail-unread"></ion-icon> -->
+      <ion-icon name="mail"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
+
+<ion-footer *ngIf="!isMobile && !bugsUnleashed" [ngClass]="{'barrel_roll': doRoll == true }">
+  <ion-navbar color='grey'>
+   
+      <ion-buttons large>
+          <button ion-button outline clear  (click)="unleashBugs()">
+            <span style="font-size:1.5rem" >Version:{{version}}</span> &nbsp;
+          </button>
+        </ion-buttons>
+
+     
+  
+        
+        <div class="titleicon">
+          <ion-title style="font-family: Verdana;
+          font-style: normal;
+          font-weight: 600;
+          margin-bottom: 4px; cursor:alias" (click)="roll()"> Ameren EA</ion-title>
+          <ion-title><small style="font-family:Arial Narrow, Helvetica, sans-serif;font-size:1.5rem">&copy; Copyright: 2018 All rights reserved for Ameren Corp </small></ion-title>
+        </div>
+        
+        <!-- <ion-title end><small style="margin-bottom: 15px;">Contact Us: ea@ameren.com</small></ion-title> -->
+  
+    
+    </ion-navbar>
+</ion-footer>
