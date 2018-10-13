@@ -23,7 +23,9 @@ export class HelperProvider {
   objs$: AngularFireList<Object>;
   data: any = null; // USed to read local files
   itemsRef: AngularFireList<any>;
+  requestsRef: AngularFireList<any>;
   items: Observable<any[]>;
+  requests: Observable<any[]>;
   isPlatformMobile:boolean;
   auth_url_base = 'https://goblxdvesb12.ameren.com:8443/svc/build/auth/v1/account/';
   showLogin:boolean = true;
@@ -40,6 +42,14 @@ export class HelperProvider {
     this.itemsRef = this.af.list('projects');
     // Use snapshotChanges().map() to store the key
     this.items = this.itemsRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+    );
+
+    this.requestsRef = this.af.list('requests');
+    // Use snapshotChanges().map() to store the key
+    this.requests = this.requestsRef.snapshotChanges().pipe(
       map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
@@ -79,6 +89,10 @@ export class HelperProvider {
     return this.isPlatformMobile ;
   }
   /////// [CRUD] //////
+  getLicenseRequests() {  // Returns Observable
+    return this.requests;
+  }
+
   getItems() {  // Returns Observable
     return this.items;
   }

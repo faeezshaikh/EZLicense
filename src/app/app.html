@@ -27,7 +27,7 @@
 
     <ion-list *ngIf='loggedIn'>
         <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-                <ion-icon item-left name="{{p.icon}}"></ion-icon> &nbsp; {{p.title}} 
+                <ion-icon item-left name="{{p.icon}}"></ion-icon> &nbsp; {{p.title}} &nbsp;
                 <ion-badge *ngIf="p.requests>0" color="primary">{{p.requests}}</ion-badge>
         </button>
 
