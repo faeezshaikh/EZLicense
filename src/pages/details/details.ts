@@ -55,8 +55,10 @@ export class DetailsPage {
   }
   dismiss() {
     this.viewCtrl.dismiss();
+    this.helper.presentToast("Successfuly sent request.", "bottom", "toastClass", false, '', 1500)
   }
   edit() {
+    
     this.dismiss();
     // console.log("project id:",this.project.id);
     this.navCtrl.setRoot(FormPage,{'project':this.project,'edit':true});
