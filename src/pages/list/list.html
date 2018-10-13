@@ -75,7 +75,7 @@
         <ion-col  *ngFor="let p of projects | async | reverse" col-md>
           <ion-card  [ngClass]="{'barrel_roll': rollOnlyBoxes == true }" (click)="itemTapped($event, p)">
             <!-- <i class="fa fa-plus" aria-hidden="true"></i> -->
-            <ion-fab right top (click)="itemTapped($event, p)" >
+            <ion-fab right top  >
               <button ion-fab *ngIf="p.rate>=85" color="secondary" style="color:black">
                 <ion-icon name="">
                   <label style="font-family:arial;font-size:1.9rem;font-weight:bold">${{p.rate}}</label>
@@ -103,6 +103,8 @@
               </ion-avatar>
               <h2>{{p.title}}</h2>
               <p><a><ion-icon name="compass"></ion-icon></a>&nbsp;{{p.verdict}} near me</p>
+              <!-- <p *ngIf="p.requested"></p> -->
+              <ion-badge *ngIf="p.requested == true" color="primary"> Request Sent</ion-badge>
             </ion-item>
 
             <img src="{{p.diagram}}"/>
@@ -129,7 +131,7 @@
                 <!-- <div>4 Comments</div> -->
               <!-- </button> -->
 
-              <button id="viewDetailsButton" ion-button icon-start clear item-end (click)="itemTapped($event, p)">
+              <button id="viewDetailsButton" ion-button icon-start clear item-end>
                 <ion-icon name="paper-plane"></ion-icon>
                 <span *ngIf="!isMobile">View Details</span>
               </button>

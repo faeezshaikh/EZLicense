@@ -54,8 +54,16 @@ export class DetailsPage {
     this.hideComments = true;
   }
   dismiss() {
+
     this.viewCtrl.dismiss();
     this.helper.presentToast("Successfuly sent request.", "bottom", "toastClass", false, '', 1500)
+  }
+
+  sendRequest(item){
+    item.requested = true;
+    console.log('Updating requested feature..',item);
+    this.helper.updateItem(item.key,item);
+    this.dismiss();
   }
   edit() {
     

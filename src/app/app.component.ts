@@ -46,8 +46,8 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Drivers', component: ListPage, icon: 'car' },
-      { title: 'Requests', component: ResourcesPage, icon: 'mail-open' }
+      { title: 'Drivers Near Me', component: ListPage, icon: 'car' },
+      { title: 'My Received Requests', component: ResourcesPage, icon: 'mail-open' }
       // { title: 'Contact Us', component: ContactusPage, icon: 'people' },
       // { title: 'Feedback', component: FeedbackPage, icon: 'mail' },
       // { title: 'Logout', component: SettingsPage, icon: 'log-out' }
