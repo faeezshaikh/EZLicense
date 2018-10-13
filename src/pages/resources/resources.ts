@@ -39,4 +39,16 @@ itemTapped(event, item) {
   this.detailsModal.present();
 }
 
+accept(item){
+  item.accepted = 'true';
+    this.helper.updateLicenseRequest(item.key,item);
+
+}
+
+
+decline(item){
+  item.accepted = 'false';
+    this.helper.updateLicenseRequest(item.key,item);
+
+}
 }

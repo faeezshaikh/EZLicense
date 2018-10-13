@@ -92,6 +92,9 @@ export class HelperProvider {
   getLicenseRequests() {  // Returns Observable
     return this.requests;
   }
+  updateLicenseRequest(key: string, obj: any){
+    this.requestsRef.update(key, obj);
+  }
 
   getItems() {  // Returns Observable
     return this.items;

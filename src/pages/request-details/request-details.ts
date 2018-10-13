@@ -29,8 +29,17 @@ export class RequestDetailsPage {
   }
   dismiss() {
 
+  
     this.viewCtrl.dismiss();
     
   }
 
+  foo(status){
+    console.log('Status is:',status);
+    
+    this.request.accepted = (status == 'accept') ? 'true' : 'false';
+    console.log('Res is:',this.request.accepted);
+    this.helper.updateLicenseRequest(this.request.key,this.request);
+    this.dismiss();
+  }
 }

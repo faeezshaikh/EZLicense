@@ -15,21 +15,23 @@
           <img src="https://cdn.dribbble.com/users/375824/screenshots/2230417/dots-2.gif" />
         </div>
       <ion-list>
-          <ion-item-sliding  *ngFor="let r of resources | async " (click)="itemTapped($event,r)">
+          <ion-item-sliding  *ngFor="let r of resources | async " >
               <ion-item>
             <ion-thumbnail item-start>
               <img src="{{r.pic}}"/>
             </ion-thumbnail>
             <h2>{{r.name}}</h2>
             <p>{{r.status}} • {{r.driverStatus}}</p>
-            <button ion-button clear item-end>View</button>
+            <p *ngIf="r.accepted && r.accepted == 'true' "><ion-badge style="font-size:13px" color="secondary">You Accepted</ion-badge></p>
+            <p *ngIf="r.accepted && r.accepted == 'false' "><ion-badge style="font-size:13px" color="danger">You Declined</ion-badge></p>
+            <button ion-button clear item-end (click)="itemTapped($event,r)">View</button>
           </ion-item>
           <ion-item-options side="left">
-              <button ion-button color="secondary">
+              <button ion-button color="secondary" (click)="accept(r)">
                 <ion-icon name="checkmark-circle"></ion-icon>
                 Accept
               </button>
-              <button ion-button color="danger">
+              <button ion-button color="danger" (click)="decline(r)">
                 <ion-icon name="trash"></ion-icon>
                 Decline
               </button>
