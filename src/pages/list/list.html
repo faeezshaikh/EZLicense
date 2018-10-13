@@ -76,19 +76,19 @@
           <ion-card  [ngClass]="{'barrel_roll': rollOnlyBoxes == true }">
             <!-- <i class="fa fa-plus" aria-hidden="true"></i> -->
             <ion-fab right top (click)="itemTapped($event, p)" >
-              <button ion-fab *ngIf="p.score>=85" color="secondary" style="color:black">
+              <button ion-fab *ngIf="p.rate>=85" color="secondary" style="color:black">
                 <ion-icon name="">
-                  <label style="font-family:arial;font-size:1.9rem;font-weight:bold">${{p.score}}</label>
+                  <label style="font-family:arial;font-size:1.9rem;font-weight:bold">${{p.rate}}</label>
                 </ion-icon>
               </button>
-              <button ion-fab *ngIf="p.score<=50" color="danger">
+              <button ion-fab *ngIf="p.rate<=50" color="danger">
                 <ion-icon name="">
-                  <label style="font-family:arial;font-size:1.9rem;font-weight:bold">${{p.score}}</label>
+                  <label style="font-family:arial;font-size:1.9rem;font-weight:bold">${{p.rate}}</label>
                 </ion-icon>
               </button>
-              <button ion-fab *ngIf="p.score>50 && p.score<85" color="orange">
+              <button ion-fab *ngIf="p.rate>50 && p.rate<85" color="orange">
                 <ion-icon name="">
-                  <label style="font-family:arial;font-size:1.9rem;font-weight:bold">${{p.score}}</label>
+                  <label style="font-family:arial;font-size:1.9rem;font-weight:bold">${{p.rate}}</label>
                 </ion-icon>
               </button>
             </ion-fab>

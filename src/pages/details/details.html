@@ -20,10 +20,11 @@
     <ion-card>
       <ion-item>
         <ion-avatar item-left>
-          <img src="https://vignette.wikia.nocookie.net/mysims/images/2/22/EA_logo.png/revision/latest?cb=20090801182220">
+          <!-- <img src="https://vignette.wikia.nocookie.net/mysims/images/2/22/EA_logo.png/revision/latest?cb=20090801182220"> -->
+          <img style="width:60px;height:60px" src="{{project.pic}}"/>
         </ion-avatar>
-        <h2>Assessment Details</h2>
-        <p>{{project.verdict}}</p>
+        <h2>{{project.title}}</h2>
+        <p>{{project.verdict}} near me &nbsp;<a><ion-icon name="compass"></ion-icon></a></p>
 
       </ion-item>
 
@@ -184,6 +185,7 @@
 
       <ion-grid *ngIf="isPlatformMobile">
         <ion-row>
+          <ion-col>&nbsp;</ion-col>
           <ion-col>
 
             <div id="container">
@@ -197,33 +199,39 @@
               </div>
             </div>
           </ion-col>
+          <ion-col>&nbsp;</ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <div class="item item-body" style="text-align:left">
 
               <div class="row">
-                <div class="col col-80">Assessor</div>
-                <div class="col col-20">{{project.assessor}}</div>
+                <div class="col col-80">Immigrant Friendliness</div>
+                <div class="col col-20" style="background-color: green; height: 10px; top: 10px;"></div>
               </div>
 
               <div class="row">
-                <div class="col col-80">Last Assessed</div>
-                <div class="col col-20">{{project.lastUpdated}}</div>
+                <div class="col col-80">Training</div>
+                <div class="col col-20" style="background-color: orange; max-width:100px;height: 10px; top: 10px;"></div>
               </div>
 
               <div class="row">
-                <div class="col col-80">Assessment score</div>
+                <div class="col col-80">Languages </div>
+                <div class="col col-20"style="background-color: red; max-width:40px;max-height: 10px; top: 10px;"></div>
+                </div>
+
+              <div class="row">
+                <div class="col col-80">EZ License Score:</div>
                 <div class="col col-20">
                   <strong>{{project.score}} %</strong>
                 </div>
               </div>
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col col-80">Result</div>
                 <div class="col col-20">
                   <strong>{{project.verdict}}</strong>
                 </div>
-              </div>
+              </div> -->
 
 
             </div>
@@ -231,13 +239,6 @@
         </ion-row>
         <ion-row>
           <hr/>
-          <p style="text-align:left">
-            <strong>Explanation: </strong>{{project.explanation}}</p>
-          <p>&nbsp;</p>
-          <p style="text-align:left">
-            <strong>Recommendations: </strong>Based on the above reasons for losing points, try addressing the issues to improve
-            your score.
-          </p>
         </ion-row>
       </ion-grid>
       <!-- //////////////// [Layout for Mobile Platforms] ////////////////// -->
@@ -293,20 +294,18 @@
       </ion-row>
    
     <ion-card>
-      <p style="text-align:left" *ngIf="project.description">
+      <!-- <p style="text-align:left" *ngIf="project.description">
         <strong>Project Description: </strong>
         <span style="text-align:left">{{project.description}}</span>
       </p>
-      <hr/>
+      <hr/> -->
 
-      <p style="text-align:left" *ngIf="project.arbComments">
-          <strong>ARB Review Comments: </strong>
-          <span style="text-align:left">{{project.arbComments}}</span>
-        </p>
-        <hr/>
+    
 
-      <span id="pictureText" *ngIf="project.diagram">(Click to enlarge)</span>
+      
+      <p><ion-badge style="font-size:30px" color="secondary">$25 / hr</ion-badge></p>
       <img  id="picture"  *ngIf="project.diagram" style="cursor:pointer" [src]="project.diagram" imageViewer/>
+      <span id="pictureText" *ngIf="project.diagram">(Click to enlarge)</span>
 
     </ion-card>
 
@@ -315,33 +314,40 @@
       <!-- <p>&nbsp;</p> -->
 
       <p class="center" style="font-size:1.9rem" id="assessmentResponse">
-        <u>The Assessment Responses</u>
+        <u>Details</u>
       </p>
       <hr/>
 
+      <ion-row>
+          <ion-col>
+            <div class="item item-body" style="text-align:left">
 
-      <div *ngFor="let question of project.questions; let i = index">
-        <div style="text-align:left">
-          <strong>{{i + 1}}. {{question.Name}}</strong>
-          <ul *ngIf="question.answer">
-            <li>{{question.answer}}</li>
-          </ul>
-          <ul *ngIf="!question.answer">
-            <li>No response</li>
-          </ul>
-          <span *ngIf="question.notes" style="font-style:italic"><strong>&nbsp;Notes: </strong> {{question.notes}}  </span>
-          <ul>
-              <p>&nbsp;</p>
-          </ul>
-        </div>
-        
-      </div>
+              <div class="row">
+                <div class="col col-80">Phone:</div>
+                <div class="col col-20">314-987-8734</div>
+              </div>
+
+              <div class="row">
+                <div class="col col-80">Rental only:</div>
+                <div class="col col-20">Available</div>
+              </div>
+
+              <div class="row">
+                <div class="col col-80">Pick up / Drop off:</div>
+                <div class="col col-20">Yes</div>
+                </div>
+
+
+            </div>
+          </ion-col>
+        </ion-row>
+
+  
      
     </ion-card>
   </div>
   <div class="center" >
-      <button ion-button (click)="edit()" *ngIf="project.status == 'In Progress'">Edit</button>
-      <button ion-button (click)="dismiss()" id="closeButton">Close</button>
+      <button ion-button block (click)="dismiss()" id="closeButton">Send Request</button>
     </div>
   </div>
 

@@ -166,10 +166,10 @@ export class HelperProvider {
     let account:any = {};
     let attributes:any = {};
     attributes.accountID = 'arb_bot';
-    attributes.givenName = 'ARB';
-    attributes.lastName = 'Bot';
-    attributes.title = 'The Terminator Bot';
-    attributes.departmentDescription = 'EA';
+    attributes.givenName = 'Faeez';
+    attributes.lastName = 'Shaikh';
+    attributes.title = 'faeez.shaikh@gmail.com';
+    attributes.departmentDescription = 'St. Louis, MO';
     attributes.email = 'arb_bot@ameren.com';
     account.attributes = attributes;
     acctDetail.account = account;

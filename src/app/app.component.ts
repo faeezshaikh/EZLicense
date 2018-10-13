@@ -4,15 +4,15 @@ import { Nav, Platform ,Events} from 'ionic-angular';
 // import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { ListPage } from '../pages/list/list';
-import { ContactusPage } from '../pages/contactus/contactus';
+// import { ContactusPage } from '../pages/contactus/contactus';
 import { ResourcesPage } from '../pages/resources/resources';
 
 // TS pluging didnt work..so added <script> tag in index.html for googgle analytics
-// import { GoogleAnalytics } from '@ionic-native/google-analytics';
-import { FeedbackPage } from '../pages/feedback/feedback';
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { FeedbackPage } from '../pages/feedback/feedback';
 import { AuthService } from '../providers/helper/AuthService';
 import { AuthPage } from '../pages/auth/auth';
-import {SettingsPage} from '../pages/settings/settings';
+// import {SettingsPage} from '../pages/settings/settings';
 import { HelperProvider } from '../providers/helper/helper';
 
 
@@ -31,7 +31,9 @@ export class MyApp {
   
   pages: Array<{title: string, component: any,icon: string}>;
 
-  constructor(public platform: Platform,public auth: AuthService, public events:Events,private helper: HelperProvider) {
+  constructor(public platform: Platform
+    ,public auth: AuthService
+    , public events:Events,private helper: HelperProvider) {
   //  this.initializeApp();
 
   //  this.ga.startTrackerWithId('UA-123713684-1')
@@ -44,11 +46,11 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Projects', component: ListPage, icon: 'list' },
-      { title: 'Reference Resources', component: ResourcesPage, icon: 'folder' },
-      { title: 'Contact Us', component: ContactusPage, icon: 'people' },
-      { title: 'Feedback', component: FeedbackPage, icon: 'mail' },
-      { title: 'Logout', component: SettingsPage, icon: 'log-out' }
+      { title: 'Drivers', component: ListPage, icon: 'car' },
+      { title: 'Requests', component: ResourcesPage, icon: 'mail-open' }
+      // { title: 'Contact Us', component: ContactusPage, icon: 'people' },
+      // { title: 'Feedback', component: FeedbackPage, icon: 'mail' },
+      // { title: 'Logout', component: SettingsPage, icon: 'log-out' }
     ];
 
     
