@@ -56,7 +56,7 @@ export class DetailsPage {
   dismiss() {
 
     this.viewCtrl.dismiss();
-    this.helper.presentToast("Successfuly sent request.", "bottom", "toastClass", false, '', 1500)
+    
   }
 
   sendRequest(item){
@@ -64,6 +64,7 @@ export class DetailsPage {
     console.log('Updating requested feature..',item);
     this.helper.updateItem(item.key,item);
     this.dismiss();
+    this.helper.presentToast("Successfuly sent request.", "bottom", "toastClass", false, '', 1500)
   }
   edit() {
     

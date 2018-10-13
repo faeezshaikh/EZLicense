@@ -29,7 +29,7 @@ export class MyApp {
   username; name; title; department;
   loggedIn:boolean = false;
   
-  pages: Array<{title: string, component: any,icon: string}>;
+  pages: Array<{title: string, component: any,icon: string,requests:number}>;
 
   constructor(public platform: Platform
     ,public auth: AuthService
@@ -46,8 +46,8 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Drivers Near Me', component: ListPage, icon: 'car' },
-      { title: 'My Received Requests', component: ResourcesPage, icon: 'mail-open' }
+      { title: 'Drivers Near Me', component: ListPage, icon: 'car',requests:0 },
+      { title: 'Requests Received', component: ResourcesPage, icon: 'mail-open',requests:4 }
       // { title: 'Contact Us', component: ContactusPage, icon: 'people' },
       // { title: 'Feedback', component: FeedbackPage, icon: 'mail' },
       // { title: 'Logout', component: SettingsPage, icon: 'log-out' }
