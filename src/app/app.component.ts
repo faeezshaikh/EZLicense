@@ -8,7 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { ResourcesPage } from '../pages/resources/resources';
 
 // TS pluging didnt work..so added <script> tag in index.html for googgle analytics
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 // import { FeedbackPage } from '../pages/feedback/feedback';
 import { AuthService } from '../providers/helper/AuthService';
 import { AuthPage } from '../pages/auth/auth';

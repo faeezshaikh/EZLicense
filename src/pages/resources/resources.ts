@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
+import {  NavController, NavParams,ModalController } from 'ionic-angular';
 import { HelperProvider } from '../../providers/helper/helper';
 import { Observable } from 'rxjs';
+import { RequestDetailsPage } from '../request-details/request-details';
 
 @Component({
   selector: 'page-resources',
@@ -10,16 +11,15 @@ import { Observable } from 'rxjs';
 export class ResourcesPage {
 
   // resources: Array<{ no: number, icon:string,symbol:string,title: string, note: string,link:string}>;
-  resources: Observable<any[]>;;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public helper:HelperProvider) {
-    // this.resources = [
-    // {no:1,icon:"https://s3.amazonaws.com/turboarb/assets/imgs/html.png",symbol:"paper-plane",title:"Ameren Architecture Patterns",note:"sdfsdfsd",link:"http://sharepoint/sites/techplan/governance/Patterns%20Documents/Forms/Architecture%20Patterns.aspx"},
-    // {no:3,icon:"https://s3.amazonaws.com/turboarb/assets/imgs/html.png",symbol:"paper-plane",title:"FERC Compliance Program",note:"sdfsdfsd",link:"http://scholar/NERCCompliance/Pages/FERC.aspx"},
-    // {no:4,icon:"https://s3.amazonaws.com/turboarb/assets/imgs/html.png",symbol:"paper-plane",title:"NERC Compliance Program",note:"sdfsdfsd",link:"http://scholar/NERCCompliance/Pages/Homepage.aspx"},
-    // {no:5,icon:"https://s3.amazonaws.com/turboarb/assets/imgs/pdf-icon.ico",symbol:"md-download",title:"Ameren Data and Information Encryption Policy",note:"sdfsdfsd",link:"http://scholar/ITPolicies/Documents/Data_Classification_Encryption/Data%20and%20Information%20Encryption%20Policy.pdf#search=Data%20and%20Information%20Encryption%20Policy"},
-    // {no:6,icon:"https://s3.amazonaws.com/turboarb/assets/imgs/pdf-icon.ico",symbol:"md-download",title:"Ameren Data and Information Classification Policy FAQs",note:"sdfsdfsd",link:"http://scholar/ITPolicies/Documents/Data_Classification_Encryption/Data%20and%20Information%20Classification%20Policy%20FAQs.pdf#search=Data%20and%20Information%20Encryption%20Policy"}];
-  
+  loading:boolean= true;
+  resources: Observable<any[]>;
+  detailsModal: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public helper:HelperProvider,public modalCtrl:ModalController) {
+    this.loading=true;
     this.resources = this.helper.getLicenseRequests(); 
+    this.resources.subscribe(list => {
+      this.loading=false;
+    });
   }
 
 
@@ -35,8 +35,8 @@ export class ResourcesPage {
 itemTapped(event, item) {
   console.log('Item clicked :',item);
   
-  // this.detailsModal = this.modalCtrl.create(DetailsPage, { item: item });
-  // this.detailsModal.present();
+  this.detailsModal = this.modalCtrl.create(RequestDetailsPage, { item: item });
+  this.detailsModal.present();
 }
 
 }

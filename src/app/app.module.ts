@@ -33,6 +33,7 @@ import {AuthPage} from '../pages/auth/auth';
 import {EventsService} from '../providers/helper/events';
 import {SettingsPage} from '../pages/settings/settings';
 import { CONFIG } from '../assets/env';
+import { RequestDetailsPage } from '../pages/request-details/request-details';
 
  
 export const firebaseConfig = CONFIG.firebaseConfig;
@@ -44,6 +45,7 @@ export const firebaseConfig = CONFIG.firebaseConfig;
     ListPage,
     FormPage,
     DetailsPage,
+    RequestDetailsPage,
     ContactusPage,
     ResourcesPage,
     FeedbackPage,
@@ -70,6 +72,7 @@ export const firebaseConfig = CONFIG.firebaseConfig;
     ListPage,
     FormPage,
     DetailsPage,
+    RequestDetailsPage,
     ContactusPage,
     ResourcesPage,
     FeedbackPage,

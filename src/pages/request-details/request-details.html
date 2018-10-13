@@ -1,0 +1,207 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+      <ion-title>{{request.name}}</ion-title>
+      <ion-buttons large end>
+        <button id="closeButton" ion-button outline clear (click)="dismiss()">
+          <ion-icon style="font-size:3rem;font-weight:bold;" name="close"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+  
+  
+    <div class="center result">
+      <p></p>
+      <ion-card>
+        <ion-item>
+          <ion-avatar item-left>
+            <!-- <img src="https://vignette.wikia.nocookie.net/mysims/images/2/22/EA_logo.png/revision/latest?cb=20090801182220"> -->
+            <img style="width:60px;height:60px" src="{{request.pic}}"/>
+          </ion-avatar>
+          <h2>{{request.name}}</h2>
+          <!-- <p>{{project.verdict}} near me &nbsp;<a><ion-icon name="compass"></ion-icon></a></p> -->
+  
+        </ion-item>
+  
+        <hr/>
+  
+        <!-- <ion-grid *ngIf="!isPlatformMobile">
+          <ion-row>
+            <ion-col>
+  
+              <ion-row>
+                  <ion-col></ion-col>
+                  <ion-col>
+                      <div id="container" (click)="showComments()">
+                          <div id="navi">
+                            <round-progress [current]="project.score" [max]="100" [color]="sliderColor" [background]="'#eaeaea'" [radius]="125" [stroke]="20"
+                              [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="true" [duration]="800" [animation]="'easeInOutQuart'"
+                              [animationDelay]="0"></round-progress>
+                          </div>
+                          <div id="infoi" style="text-align:center; font-size:90px; top:40px;">
+                            <ng2-odometer [number]="project.score"></ng2-odometer>
+                          </div>
+                        </div>
+                  </ion-col>
+                  <ion-col></ion-col>
+  
+              </ion-row>
+             
+  
+            </ion-col>
+            <ion-col>
+              <div class="item item-body" style="text-align:left">
+  
+                <div class="row">
+                  <div class="col col-80" id="assessor">Assessor</div>
+                  <div class="col col-20">{{project.assessor}}</div>
+                </div>
+  
+                <div class="row">
+                  <div class="col col-80">Last Assessed</div>
+                  <div class="col col-20">{{project.lastUpdated}}</div>
+                </div>
+  
+                <div class="row">
+                  <div class="col col-80">Status</div>
+                  <div class="col col-20">
+                    <strong>{{project.status}}</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col-80">Result</div>
+                  <div class="col col-20">
+                    <strong>{{project.verdict}}</strong>
+                  </div>
+                </div>
+  
+  
+              </div>
+              <p>&nbsp;</p>
+              <button ion-button icon-start outline item-end (click)="export()">
+                  <ion-icon name="download"></ion-icon>
+                  <span *ngIf="!isMobile">Download Report</span>
+                </button>
+            </ion-col>
+          </ion-row>
+          <p>&nbsp;</p>
+          
+          <div style="text-align:left" *ngIf="project.arbComments">
+            <strong>ARB Comments: </strong>
+            <ul>
+              <li>{{project.arbComments}}</li>
+            </ul>
+  
+            <div style="text-align:right">
+              <p>
+                <small>{{project.lastUpdated}}</small>
+              </p>
+            </div>
+  
+          </div>
+  
+          <ion-row>
+            <p>&nbsp;</p>
+         
+          </ion-row>
+        </ion-grid> -->
+        <div id="content" #content>
+       
+     
+            <ion-card>
+            
+              <!-- <p><ion-badge style="font-size:30px" color="danger">${{project.rate}} / hr</ion-badge></p> -->
+              <img  id="picture"  *ngIf="request.license" style="cursor:pointer" [src]="request.license" imageViewer/>
+              <span id="pictureText" *ngIf="request.license">(Click to enlarge)</span>
+        
+            </ion-card>
+        
+        
+          </div>
+  
+        <!-- //////////////// [Layout for Mobile Platforms] ////////////////// -->
+  
+        <ion-grid *ngIf="isPlatformMobile">
+          <ion-row>
+            <ion-col>&nbsp;</ion-col>
+            <ion-col>
+  
+              <div id="container">
+                <div id="navi">
+                  <round-progress [current]="request.score" [max]="100" [color]="sliderColor" [background]="'#eaeaea'" [radius]="125" [stroke]="20"
+                    [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="true" [duration]="800" [animation]="'easeInOutQuart'"
+                    [animationDelay]="0"></round-progress>
+                </div>
+                <div id="infoi" style="text-align:center; font-size:90px; top:40px;">
+                  <ng2-odometer [number]="request.score"></ng2-odometer>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col>&nbsp;</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="item item-body" style="text-align:left">
+  
+                <div class="row">
+                  <div class="col col-80">Immigrant Friendliness</div>
+                  <div class="col col-20" style="background-color: green; height: 10px; top: 10px;"></div>
+                </div>
+  
+                <div class="row">
+                  <div class="col col-80">Training</div>
+                  <div class="col col-20" style="background-color: orange; max-width:100px;height: 10px; top: 10px;"></div>
+                </div>
+  
+                <div class="row">
+                  <div class="col col-80">Languages </div>
+                  <div class="col col-20"style="background-color: red; max-width:40px;max-height: 10px; top: 10px;"></div>
+                  </div>
+  
+                <div class="row">
+                  <div class="col col-80">EZ License Score:</div>
+                  <div class="col col-20">
+                    <strong>{{request.score}} %</strong>
+                  </div>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <hr/>
+          </ion-row>
+        </ion-grid>
+        <!-- //////////////// [Layout for Mobile Platforms] ////////////////// -->
+  
+  
+  
+  
+  
+  
+  
+  
+      </ion-card>
+      <p></p>
+  
+     
+    <div class="center" >
+      <ion-row>
+        <ion-col>
+            <button ion-button block (click)="sendRequest(project)" color="secondary">Accept</button>
+        </ion-col>
+        <ion-col>
+            <button ion-button block (click)="sendRequest(project)" color="danger">Decline</button>
+        </ion-col>
+      </ion-row>
+       
+        
+      </div>
+    </div>
+  
+  
+  </ion-content>
