@@ -13,7 +13,7 @@
 
     <div *ngIf="!isMobile" class="titleicon" >
       <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Ameren_logo.svg/2000px-Ameren_logo.svg.png" width="100px" style="margin-bottom:9px;margin-right:10px;" /> -->
-      <img  (click)="roll()" src="https://licensingexpress.files.wordpress.com/2012/09/lx-color-logo-3-in2.jpg" width="100px" style="margin-right:10px; cursor:alias;" />
+      <!-- <img  (click)="roll()" src="https://licensingexpress.files.wordpress.com/2012/09/lx-color-logo-3-in2.jpg" width="100px" style="margin-right:10px; cursor:alias;" /> -->
 
     </div>
 
@@ -116,7 +116,8 @@
                 <span [ngClass]="{Approved:'approved','Rejected':'rejected','Under Review':'review',
                       Submitted:'submitted','In Progress':'progress','Needs inputs':'inputs'}[p.status]">{{p.status}}</span>
               </h2>
-              <p (click)="rollBoxes()" style="cursor:alias" >Insured. Requires International Permit</p>
+              <h3><ion-icon size="large" name="checkmark-circle-outline"></ion-icon> &nbsp; Liability Coverage Included &nbsp; </h3>
+              <p  style="cursor:alias" > <ion-icon size="large" name="paper"></ion-icon> &nbsp; Requires International Permit</p>
             </ion-item>
 
             <ion-item>
@@ -124,16 +125,16 @@
               <span item-start ><ion-icon *ngFor="let i of [0,1,2,3]" name="star"></ion-icon><ion-icon name="star-half"></ion-icon></span>
 
                 &nbsp;&nbsp;
-              <span item-start (click)="unleashBugs()"  >Trainer: Yes</span>
+              <span item-start (click)="unleashBugs()"  >&nbsp;Trainer: Yes</span>
 
               <!-- <button ion-button icon-start item-end  small> -->
                 <ion-icon name="text"></ion-icon>
                 <!-- <div>4 Comments</div> -->
               <!-- </button> -->
 
-              <button id="viewDetailsButton" ion-button icon-start clear item-end>
-                <ion-icon name="paper-plane"></ion-icon>
-                <span *ngIf="!isMobile">View Details</span>
+              <button id="viewDetailsButton" ion-button icon-start clear large item-end>
+                <ion-icon name="send"></ion-icon>
+                <!-- <span *ngIf="!isMobile">View Details</span> -->
               </button>
 
             </ion-item>
@@ -169,12 +170,21 @@
 
 
 
-  <ion-fab top right>
+  <!-- <ion-fab top right>
     <button id="createButton" ion-fab color="primary" (click)="menu2Active()">
-      <!-- <ion-icon name="mail-unread"></ion-icon> -->
       <ion-icon name="mail"></ion-icon>
     </button>
-  </ion-fab>
+  </ion-fab> -->
+
+  <ion-fab top right>
+      <button ion-fab mini><ion-icon name="share"></ion-icon></button>
+      <ion-fab-list>
+        <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+        <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+        <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+        <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+      </ion-fab-list>
+    </ion-fab>
 </ion-content>
 
 <ion-footer *ngIf="!isMobile && !bugsUnleashed" [ngClass]="{'barrel_roll': doRoll == true }">
@@ -193,8 +203,8 @@
           <ion-title style="font-family: Verdana;
           font-style: normal;
           font-weight: 600;
-          margin-bottom: 4px; cursor:alias" (click)="roll()"> Ameren EA</ion-title>
-          <ion-title><small style="font-family:Arial Narrow, Helvetica, sans-serif;font-size:1.5rem">&copy; Copyright: 2018 All rights reserved for Ameren Corp </small></ion-title>
+          margin-bottom: 4px; cursor:alias" (click)="roll()"> EZ License</ion-title>
+          <ion-title><small style="font-family:Arial Narrow, Helvetica, sans-serif;font-size:1.5rem">&copy; Copyright: 2018 All rights reserved </small></ion-title>
         </div>
         
         <!-- <ion-title end><small style="margin-bottom: 15px;">Contact Us: ea@ameren.com</small></ion-title> -->

@@ -61,123 +61,44 @@
 
           </ion-col>
           <ion-col>
-            <div class="item item-body" style="text-align:left">
-
-              <div class="row">
-                <div class="col col-80" id="assessor">Assessor</div>
-                <div class="col col-20">{{project.assessor}}</div>
-              </div>
-
-              <div class="row">
-                <div class="col col-80">Last Assessed</div>
-                <div class="col col-20">{{project.lastUpdated}}</div>
-              </div>
-
-              <div class="row">
-                <div class="col col-80">Status</div>
-                <div class="col col-20">
-                  <strong>{{project.status}}</strong>
+              <div class="item item-body" style="text-align:left">
+  
+                <div class="row">
+                  <div class="col col-80">Immigrant Friendliness</div>
+                  <div class="col col-20" style="background-color: green; height: 10px; top: 10px;"></div>
+                </div>
+  
+                <div class="row">
+                  <div class="col col-80">Training</div>
+                  <div class="col col-20" style="background-color: orange; max-width:100px;height: 10px; top: 10px;"></div>
+                </div>
+  
+                <div class="row">
+                  <div class="col col-80">Languages </div>
+                  <div class="col col-20"style="background-color: red; max-width:40px;max-height: 10px; top: 10px;"></div>
+                  </div>
+  
+                <div class="row">
+                  <div class="col col-80">EZ License Score:</div>
+                  <div class="col col-20">
+                    <strong>{{project.score}} %</strong>
+                  </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col col-80">Result</div>
-                <div class="col col-20">
-                  <strong>{{project.verdict}}</strong>
-                </div>
-              </div>
+            </ion-col>
 
 
-            </div>
-            <p>&nbsp;</p>
-            <button ion-button icon-start outline item-end (click)="export()">
-                <ion-icon name="download"></ion-icon>
-                <span *ngIf="!isMobile">Download Report</span>
-              </button>
-          </ion-col>
+
+
+
+       
         </ion-row>
         <p>&nbsp;</p>
         
-        <div style="text-align:left" *ngIf="project.arbComments">
-          <strong>ARB Comments: </strong>
-          <ul>
-            <li>{{project.arbComments}}</li>
-          </ul>
+      
 
-          <div style="text-align:right">
-            <p>
-              <small>{{project.lastUpdated}}</small>
-            </p>
-          </div>
-
-        </div>
-
-        <form #companyForm="ngForm" [hidden]='hideComments'>
-        <ion-item class="mycolor" >
-            <ion-label floating>ARB comments</ion-label>
-            <ion-textarea type="text-area" 
-            class="form-control" 
-            name="project-desc"
-            ngModel
-            #nameField="ngModel"
-            [(ngModel)] = "project.arbComments"
-            required
-            minlength="5"></ion-textarea>
-          </ion-item>
-
-              <button ion-button  color="primary" (click)="saveArbComments()" [disabled]="!companyForm.valid">Save</button>
-            </form>
             <p>&nbsp;</p>
-        <ion-row>
-          <!-- <div style="text-align:left">
-            <strong>Explanation: </strong>
-          </div>
-          <div style="text-align:left">
-            <ul>
-                <li *ngFor="let obj of project.explanation "><span *ngIf='obj.expl'>{{obj.expl}}</span>  <span *ngIf='!obj.expl'>{{obj}}</span></li>
-              </ul>
-          </div> -->
-
-
-
-          <table style="width:100%" *ngIf='project.explanation[0].remedy'>
-              <tr>
-                <th>Recommended Remediation</th>
-                <th>Points</th>
-                <th>Accept (Yes/No)</th> 
-                <th>Remediate By</th>
-              </tr>
-              <tr *ngFor="let obj of project.explanation ">
-                <td style="text-align:left">&nbsp;{{obj.remedy}}</td>
-                <td style="text-align:center">{{obj.points}}</td>
-                <td style="text-align:center">
-<ion-row>
-                  <ion-col>&nbsp;</ion-col>
-                  <ion-col> <ion-item style="text-align:center">
-                      <ion-toggle  checked="false" (ionChange)="updateToggle(obj)"></ion-toggle>
-                    </ion-item></ion-col>
-                  <ion-col>&nbsp;</ion-col>
-                </ion-row>
-                 
-                </td>
-                <td> <ion-item>
-                    <ion-label stacked>Enter Date</ion-label>
-                    <ion-input type="text" placeholder="mm/dd/yyy"></ion-input>
-                  </ion-item></td>
-              </tr>
-            
-            </table>
-
-
-
-
-
-          <!-- </p> -->
-          <p>&nbsp;</p>
-          <!-- <p style="text-align:left" id="recommendations">
-            <strong>Recommendations: </strong>Based on the above reasons for losing points, try addressing the issues to improve
-            your score.
-          </p> -->
-        </ion-row>
+       
       </ion-grid>
 
 
@@ -226,14 +147,6 @@
                   <strong>{{project.score}} %</strong>
                 </div>
               </div>
-              <!-- <div class="row">
-                <div class="col col-80">Result</div>
-                <div class="col col-20">
-                  <strong>{{project.verdict}}</strong>
-                </div>
-              </div> -->
-
-
             </div>
           </ion-col>
         </ion-row>
