@@ -21,6 +21,7 @@ Democratizes the driving school & license-acquisition process by crowd sourcing 
 
 ## How we built it
 In Typescript using Angular & Firebase.
+Its a PWA (Progressive Web App) that can be in
 
 ## Challenges we ran into
 Finding where to limit the scope of the MVP.

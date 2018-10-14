@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>ARB Self Assessment</name>
-    <description>ARB Self Assessment</description>
+    <name>EZ License</name>
+    <description>EZ License</description>
     <author email="faeez.shaikh@gmail.com" href="https://www.linkedin.com/in/faeezshaikh/">Ionic Framework Team</author>
     <content src="index.html" />
     <access origin="*" />
