@@ -8,7 +8,7 @@ One of the biggest challenges newly arriving immigrants face is getting a US dri
 
 Car rental companies require you to have a valid US drivers license (besides the other age-related restrictions that impose an additional burden on younger immigrants). With a small social circle, new immigrants are typically unable to find anyone who is willing to 'lend' them a ride to take their driving test.
 
-Such immigrants have no other choice but to call the driving schools. Unfortunately, these driving schools force them to purchase driving lessons from them before they feel comfortable renting their vehicle for the test. For experienced international drivers this is completely unnecessary and yet they do not have a choice. The driving lessons are anything but cheap. For new immigrants, getting a drivers license often translates to breaking the bank.
+Such immigrants have no other choice but to call the driving schools. Unfortunately, these driving schools force them to purchase driving lessons before they feel comfortable renting their vehicle for the test. For experienced international drivers this is completely unnecessary and yet there is no other option for them. The driving lessons are anything but cheap. For new immigrants, getting a drivers license often translates to breaking the bank.
 
 EZ license is a mobile platform that aims to solve this problem. It connects immigrants looking to acquire a US driver's license with individuals who are willing to teach driving and / or rent their vehicles to international drivers for a very minimal cost.
 
