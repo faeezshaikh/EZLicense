@@ -3,6 +3,8 @@ Makes acquiring the US driver's license a piece of cake for new immigrants.
 
 ## Problem it solves
 
+Focus Area 2: Navigating Resources & Systems & 
+Focus Area 5: Common problems experienced by immigrants that often go unnoticed.
 
 One of the biggest challenges newly arriving immigrants face is getting a US driver's license. Many new immigrants are seasoned drivers who have been driving in their native countries for several years. Several are international drivers permit holders who can drive all over the world and can quickly adapt to the US laws of driving. However, for obvious reasons, immigrants need to obtain a permanent driver's license. Taking the written test is typically easy and not an issue. The challenge arises in taking the driving test. To take the driving test, immigrants need a car. But without a valid US driver's license, there is no way for them to get one. It's a catch 22.
 
