@@ -133,12 +133,14 @@
 
               <div class="row">
                 <div class="col col-80">Training</div>
-                <div class="col col-20" style="background-color: orange; max-width:100px;height: 10px; top: 10px;"></div>
+                <div *ngIf="project.title != 'Joe Sanders'" class="col col-20" style="background-color: orange; max-width:100px;height: 10px; top: 10px;"></div>
+                <div *ngIf="project.title == 'Joe Sanders'" class="col col-20" style="background-color: orange; max-width:40px;height: 10px; top: 10px;"></div>
               </div>
 
               <div class="row">
                 <div class="col col-80">Languages </div>
-                <div class="col col-20"style="background-color: red; max-width:40px;max-height: 10px; top: 10px;"></div>
+                <div *ngIf="project.title != 'Joe Sanders'" class="col col-20"style="background-color: red; max-width:40px;max-height: 10px; top: 10px;"></div>
+                <div *ngIf="project.title == 'Joe Sanders'" class="col col-20" style="background-color: green; max-width:85px;height: 10px; top: 10px;"></div>
                 </div>
 
               <div class="row">
@@ -216,7 +218,7 @@
     
 
       
-      <p><ion-badge style="font-size:30px" color="danger">${{project.rate}} / hr</ion-badge></p>
+      <p><ion-badge style="font-size:30px" color="danger">${{project.rate}} / day</ion-badge></p>
       <img  id="picture"  *ngIf="project.diagram" style="cursor:pointer" [src]="project.diagram" imageViewer/>
       <span id="pictureText" *ngIf="project.diagram">(Click to enlarge)</span>
 
