@@ -32,7 +32,7 @@ export class AuthPage {
            msg = "Invalid credentials. Please try again.";
         }
       } else if(this.loginError.message.includes('Http failure response for')) {
-        msg = 'Great Scott! The 1.21 Gigawatts flux capacitor just exploded on the Mule server. Are you on the Ameren network? Try again later.';
+        msg = 'Great Scott! The 1.21 Gigawatts flux capacitor just exploded on the Login server. Try again later.';
       }
       this.showAlert(msg);
     });

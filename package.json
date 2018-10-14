@@ -55,7 +55,7 @@
     "protractor-beautiful-reporter": "^1.2.5",
     "typescript": "~2.6.2"
   },
-  "description": "Ameren ARB Self Assessment",
+  "description": "EZ License",
   "cordova": {
     "plugins": {
       "cordova-plugin-google-analytics": {},

@@ -27,7 +27,7 @@ export class HelperProvider {
   items: Observable<any[]>;
   requests: Observable<any[]>;
   isPlatformMobile:boolean;
-  auth_url_base = 'https://goblxdvesb12.ameren.com:8443/svc/build/auth/v1/account/';
+  auth_url_base = 'https://goblxdvesb12.com:8443/svc/build/auth/v1/account/';
   showLogin:boolean = true;
   version:string = "1.0.0";
 
@@ -187,7 +187,7 @@ export class HelperProvider {
     attributes.lastName = 'Shaikh';
     attributes.title = 'faeez.shaikh@gmail.com';
     attributes.departmentDescription = 'St. Louis, MO';
-    attributes.email = 'arb_bot@ameren.com';
+    attributes.email = 'arb_bot@gmail.com';
     account.attributes = attributes;
     acctDetail.account = account;
     return acctDetail;

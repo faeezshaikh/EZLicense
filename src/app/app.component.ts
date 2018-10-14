@@ -12,7 +12,7 @@ import { ResourcesPage } from '../pages/resources/resources';
 // import { FeedbackPage } from '../pages/feedback/feedback';
 import { AuthService } from '../providers/helper/AuthService';
 import { AuthPage } from '../pages/auth/auth';
-// import {SettingsPage} from '../pages/settings/settings';
+import {SettingsPage} from '../pages/settings/settings';
 import { HelperProvider } from '../providers/helper/helper';
 
 
@@ -47,10 +47,10 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Drivers Near Me', component: ListPage, icon: 'car',requests:0 },
-      { title: 'Requests Received', component: ResourcesPage, icon: 'mail-open',requests:4 }
+      { title: 'Requests Received', component: ResourcesPage, icon: 'mail-open',requests:4 },
+      { title: 'Logout', component: SettingsPage, icon: 'log-out',requests:0 }
       // { title: 'Contact Us', component: ContactusPage, icon: 'people' },
       // { title: 'Feedback', component: FeedbackPage, icon: 'mail' },
-      // { title: 'Logout', component: SettingsPage, icon: 'log-out' }
     ];
 
     
